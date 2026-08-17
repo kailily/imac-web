@@ -1277,7 +1277,7 @@ function JoinPage() {
     value: c
   }, c))), errors.channel && /*#__PURE__*/React.createElement("span", {
     className: "join-error-text"
-  }, errors.channel)), formData.channel && /*#__PURE__*/React.createElement("div", {
+  }, errors.channel)), formData.channel && formData.channel !== "社会招募" && /*#__PURE__*/React.createElement("div", {
     className: "join-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "join-label"

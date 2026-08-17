@@ -1169,7 +1169,7 @@ function JoinPage() {
                       </select>
                       {errors.channel && <span className="join-error-text">{errors.channel}</span>}
                     </div>
-                    {formData.channel && (
+                    {formData.channel && formData.channel !== "社会招募" && (
                       <div className="join-field">
                         <label className="join-label"><span className="opt">选填</span>推荐人</label>
                         <input type="text" className="join-input" value={formData.referral}
