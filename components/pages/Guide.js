@@ -273,7 +273,15 @@ function GuidePage() {
     className: "guide-back-home-wrap"
   }, /*#__PURE__*/React.createElement("button", {
     className: "guide-back-home",
-    onClick: () => navigate("/")
+    onClick: () => {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById("guide-quick");
+        if (el) el.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 200);
+    }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "14",
     height: "14",

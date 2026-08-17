@@ -1286,7 +1286,7 @@ function HomePage() {
       </section>
 
       {/* Quick Guide */}
-      <section className="hp-section">
+      <section id="guide-quick" className="hp-section">
         <div className="container">
           <div className="hp-section-header">
             <div className="hp-section-title-group centered">

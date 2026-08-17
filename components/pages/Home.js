@@ -1370,6 +1370,7 @@ function HomePage() {
   }, lv.publicDesc)))), /*#__PURE__*/React.createElement("div", {
     className: "levels-bottom-note"
   }, /*#__PURE__*/React.createElement("strong", null, "\u65E0\u8BBA\u54EA\u4E2A\u7B49\u7EA7\uFF0C\u53D1\u73B0\u5F02\u5E38\u8BF7\u7ACB\u5373\u8FDC\u79BB\u5E76\u62E8\u6253 99\u3002"), /*#__PURE__*/React.createElement("br", null), "\u4E0D\u8981\u597D\u5947\u3001\u4E0D\u8981\u9760\u8FD1\u3001\u4E0D\u8981\u62CD\u7167\u53D1\u793E\u4EA4\u5A92\u4F53\u2014\u2014\u4F60\u7684\u5B89\u5168\u6BD4\u4EC0\u4E48\u90FD\u91CD\u8981\u3002"))), /*#__PURE__*/React.createElement("section", {
+    id: "guide-quick",
     className: "hp-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"

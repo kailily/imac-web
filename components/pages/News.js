@@ -526,7 +526,15 @@ function NewsPage() {
     className: "news-back-home-wrap"
   }, /*#__PURE__*/React.createElement("button", {
     className: "news-back-home",
-    onClick: () => navigate("/")
+    onClick: () => {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById("news");
+        if (el) el.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 200);
+    }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "14",
     height: "14",
