@@ -953,7 +953,13 @@ function JoinPage() {
                 </div>
               </div>
               <div className="join-success-actions">
-                <button className="join-btn-primary" onClick={() => navigate("/")}>返回首页</button>
+                <button className="join-btn-primary" onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    const el = document.getElementById("boundary-walker");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }, 200);
+                }}>返回首页</button>
                 <button className="join-btn-secondary" onClick={() => navigate("/guide")}>了解异常</button>
               </div>
             </div>
@@ -1304,7 +1310,13 @@ function JoinPage() {
               </form>
 
               <div className="join-bottom-nav">
-                <a onClick={() => navigate("/")}>返回首页</a>
+                <a onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    const el = document.getElementById("boundary-walker");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }, 200);
+                }}>返回首页</a>
                 <span className="divider">|</span>
                 <a onClick={() => navigate("/guide")}>了解异常</a>
                 <span className="divider">|</span>

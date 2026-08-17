@@ -1025,7 +1025,15 @@ function JoinPage() {
     className: "join-success-actions"
   }, /*#__PURE__*/React.createElement("button", {
     className: "join-btn-primary",
-    onClick: () => navigate("/")
+    onClick: () => {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById("boundary-walker");
+        if (el) el.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 200);
+    }
   }, "\u8FD4\u56DE\u9996\u9875"), /*#__PURE__*/React.createElement("button", {
     className: "join-btn-secondary",
     onClick: () => navigate("/guide")
@@ -1480,7 +1488,15 @@ function JoinPage() {
   }, "\u63D0 \u4EA4 \u7533 \u8BF7"))), /*#__PURE__*/React.createElement("div", {
     className: "join-bottom-nav"
   }, /*#__PURE__*/React.createElement("a", {
-    onClick: () => navigate("/")
+    onClick: () => {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById("boundary-walker");
+        if (el) el.scrollIntoView({
+          behavior: "smooth"
+        });
+      }, 200);
+    }
   }, "\u8FD4\u56DE\u9996\u9875"), /*#__PURE__*/React.createElement("span", {
     className: "divider"
   }, "|"), /*#__PURE__*/React.createElement("a", {
