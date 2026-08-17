@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMAC · 国际异常管理联盟</title>
+  <meta name="creative-medium" content="interactive-prototype">
+  <meta name="description" content="国际异常管理联盟（International Anomaly Management Coalition）——全球统一的异常管理协调机构">
+  <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <script src="lib/react.production.min.js"></script>
+  <script src="lib/react-dom.production.min.js"></script>
+  <script src="lib/babel.min.js"></script>
+  <style>
+    :root {
+      --bg-deep: #0a0a0c;
+      --bg-primary: #0e0e12;
+      --bg-secondary: #141418;
+      --bg-tertiary: #1a1a20;
+      --bg-card: #121216;
+      --border-color: #2a2a32;
+      --border-light: #3a3a44;
+      --text-primary: #e8e8ec;
+      --text-secondary: #a8a8b4;
+      --text-tertiary: #70707c;
+      --text-muted: #50505c;
+      --accent-red: #8b1a1a;
+      --accent-red-bright: #c42828;
+      --accent-red-deep: #5c0f0f;
+      --accent-red-glow: rgba(196, 40, 40, 0.35);
+      --steel-blue: #4a5868;
+      --steel-blue-light: #6a7a8c;
+      --steel-blue-dark: #2a3440;
+      --level-ordinary: #4a7c59;
+      --level-hazardous: #c49a2c;
+      --level-doomed: #d46828;
+      --level-abyssal: #c42828;
+      --level-unknown: #7a3ab0;
+      --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-serif: "Noto Serif SC", "SimSun", serif;
+      --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+    }
+
+    .mono { font-family: var(--font-mono); letter-spacing: 0.02em; }
+    .serif { font-family: var(--font-serif); }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .section-title-cn {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .section-title-en {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .classification {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border: 1px solid;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .classification::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+
+    .classification.public { color: #5a8a6a; border-color: #5a8a6a; }
+    .classification.confidential { color: var(--accent-red-bright); border-color: var(--accent-red-bright); }
+    .classification.restricted { color: var(--level-hazardous); border-color: var(--level-hazardous); }
+    .classification.eyes-only { color: var(--level-abyssal); border-color: var(--level-abyssal); animation: pulse-glow 2s ease-in-out infinite; }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(196, 40, 40, 0.4); }
+      50% { box-shadow: 0 0 8px 2px rgba(196, 40, 40, 0.25); }
+    }
+
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border: 2px solid var(--accent-red-bright);
+      color: var(--accent-red-bright);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transform: rotate(-6deg);
+      opacity: 0.85;
+      position: relative;
+    }
+
+    .stamp::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border: 1px solid var(--accent-red-bright);
+      opacity: 0.5;
+    }
+
+    .archive-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .archive-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 16px; height: 16px;
+      border-top: 2px solid var(--accent-red);
+      border-left: 2px solid var(--accent-red);
+    }
+
+    .archive-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 16px; height: 16px;
+      border-bottom: 2px solid var(--accent-red);
+      border-right: 2px solid var(--accent-red);
+    }
+
+    .archive-card:hover {
+      border-color: var(--accent-red-bright);
+    }
+
+    .level-bar {
+      height: 4px;
+      width: 100%;
+    }
+    .level-ordinary { background-color: var(--level-ordinary); }
+    .level-hazardous { background-color: var(--level-hazardous); }
+    .level-doomed { background-color: var(--level-doomed); }
+    .level-abyssal { background-color: var(--level-abyssal); }
+    .level-unknown { background-color: var(--level-unknown); }
+
+    .level-text-ordinary { color: var(--level-ordinary); }
+    .level-text-hazardous { color: var(--level-hazardous); }
+    .level-text-doomed { color: var(--level-doomed); }
+    .level-text-abyssal { color: var(--level-abyssal); }
+    .level-text-unknown { color: var(--level-unknown); }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .tag.verified {
+      border-color: var(--level-ordinary);
+      color: var(--level-ordinary);
+    }
+
+    .tag.pending {
+      border-color: var(--text-muted);
+      color: var(--text-muted);
+    }
+
+    .tag.danger {
+      border-color: var(--accent-red-bright);
+      color: var(--accent-red-bright);
+    }
+
+    /* Page transition */
+    .page-enter {
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--border-color); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+    @media (max-width: 1024px) {
+      .container { padding: 0 24px; }
+      .section { padding: 70px 0; }
+      .section-title-cn { font-size: 26px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .section { padding: 50px 0; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .section-title-cn { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="components/router.jsx"></script>
+  <script type="text/babel" src="components/auth.jsx"></script>
+  <script type="text/babel" src="components/Header.jsx"></script>
+  <script type="text/babel" src="components/Footer.jsx"></script>
+  <script type="text/babel" src="components/WorldMap.jsx"></script>
+  <script type="text/babel" src="components/OrganizationsMap.jsx"></script>
+  <script type="text/babel" src="components/organizationsData.jsx"></script>
+  <script type="text/babel" src="components/AcademyMap.jsx"></script>
+  <script type="text/babel" src="components/pages/Home.jsx"></script>
+  <script type="text/babel" src="components/pages/Guide.jsx"></script>
+  <script type="text/babel" src="components/pages/Organizations.jsx"></script>
+  <script type="text/babel" src="components/pages/OrgDetail.jsx"></script>
+  <script type="text/babel" src="components/pages/News.jsx"></script>
+  <script type="text/babel" src="components/pages/Auth.jsx"></script>
+  <script type="text/babel" src="components/pages/Portal.jsx"></script>
+  <script type="text/babel" src="components/pages/ProfileCenter.jsx"></script>
+  <script type="text/babel" src="components/pages/RegisterPage.jsx"></script>
+  <script type="text/babel" src="components/pages/MailboxPage.jsx"></script>
+  <script type="text/babel" src="components/pages/Profile.jsx"></script>
+  <script type="text/babel" src="components/pages/Missions.jsx"></script>
+  <script type="text/babel" src="components/pages/Training.jsx"></script>
+  <script type="text/babel" src="components/pages/PsychEval.jsx"></script>
+  <script type="text/babel" src="components/pages/Admin.jsx"></script>
+  <script type="text/babel" src="components/pages/Join.jsx"></script>
+  <script type="text/babel" src="components/pages/AnomalyAuth.jsx"></script>
+  <script type="text/babel" src="components/pages/AnomalyArchive.jsx"></script>
+  <script type="text/babel" src="components/pages/AnomalyDetail.jsx"></script>
+  <script type="text/babel" src="components/pages/MediaAuth.jsx"></script>
+  <script type="text/babel" src="components/pages/MediaGuidelines.jsx"></script>
+  <script type="text/babel" src="components/App.jsx"></script>
+</body>
+</html>
