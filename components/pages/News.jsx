@@ -432,6 +432,29 @@ function NewsPage() {
           .news-item-tag { writing-mode: horizontal-tb; border-left: none; border-bottom: 2px solid var(--accent-red-bright); padding: 0 0 4px; }
           .news-detail-inner { padding: 20px; padding-left: 20px; }
         }
+
+        .news-back-home-wrap {
+          text-align: center;
+          padding: 0 24px 80px;
+        }
+        .news-back-home {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 32px;
+          background: transparent;
+          border: 1.5px solid var(--accent-red-bright);
+          color: var(--accent-red-bright);
+          font-family: var(--font-mono);
+          font-size: 12px;
+          letter-spacing: 0.15em;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .news-back-home:hover {
+          background-color: var(--accent-red-bright);
+          color: #fff;
+        }
       `}</style>
 
       <section className="news-page-hero">
@@ -565,6 +588,15 @@ function NewsPage() {
           </div>
         </div>
       </section>
+
+      <div className="news-back-home-wrap">
+        <button className="news-back-home" onClick={() => navigate("/")}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M19 12H5 M12 19l-7-7 7-7"/>
+          </svg>
+          返回首页
+        </button>
+      </div>
     </>
   );
 }

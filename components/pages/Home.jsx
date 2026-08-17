@@ -137,7 +137,7 @@ function HomePage() {
         }
         .hp-hero-inner { position: relative; z-index: 1; width: 100%; padding: 80px 0; }
         .hp-hero-content {
-          max-width: 720px;
+          /* 不再限制宽度，让下方的快速卡片/统计卡片横向铺满容器 */
           margin: 0 auto;
           text-align: center;
         }
@@ -166,7 +166,8 @@ function HomePage() {
           color: var(--text-primary);
           line-height: 1.2;
           letter-spacing: 0.04em;
-          margin-bottom: 20px;
+          margin: 0 auto 20px;
+          max-width: 820px;
         }
         .hp-hero-title .accent {
           color: var(--accent-red-bright);
