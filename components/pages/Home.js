@@ -708,6 +708,15 @@ function HomePage() {
           display: block;
           margin-bottom: 2px;
         }
+        .hotline-app-tip {
+          margin-top: 16px;
+          padding: 12px 20px;
+          border: 1px dashed rgba(196, 40, 40, 0.35);
+          background: rgba(196, 40, 40, 0.04);
+          font-size: 13px;
+          color: var(--text-secondary);
+          text-align: center;
+        }
 
         /* Orgs map section */
         .orgs-map-section {
@@ -1403,7 +1412,7 @@ function HomePage() {
     d: "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"
   }))), /*#__PURE__*/React.createElement("div", {
     className: "hotline-text"
-  }, /*#__PURE__*/React.createElement("h2", null, "\u53D1\u73B0\u7591\u4F3C\u5F02\u5E38\uFF1F\u4FDD\u6301\u8DDD\u79BB\uFF0C\u7ACB\u5373\u62E8\u6253"), /*#__PURE__*/React.createElement("p", null, "24\u5C0F\u65F6 \xB7 \u5168\u7403\u901A\u7528 \xB7 \u514D\u8D39 \xB7 \u65E0\u9700\u533A\u53F7 \xB7 \u4EFB\u4F55\u624B\u673A\u5747\u53EF\u63A5\u901A"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "\u53D1\u73B0\u7591\u4F3C\u5F02\u5E38\uFF1F\u4FDD\u6301\u8DDD\u79BB\uFF0C\u7ACB\u5373\u62E8\u6253"), /*#__PURE__*/React.createElement("p", null, "\u6240\u6709\u88AB\u6536\u7F16\u7EC4\u7EC7\u5F00\u8BBE24\u5C0F\u65F6\u5F02\u5E38\u70ED\u7EBF\uFF0C\u53F7\u7801\u300C99\u300D\u5F00\u5934\uFF0C\u5168\u7403\u901A\u7528\u524D\u7F00"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "hotline-number"
   }, "99"), /*#__PURE__*/React.createElement("div", {
     className: "hotline-number-label"
@@ -1415,19 +1424,27 @@ function HomePage() {
     className: "hotline-step-num"
   }, "1"), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-text"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u4FDD\u6301\u8DDD\u79BB"), "\u4E0D\u8981\u9760\u8FD1\uFF0C\u4E0D\u8981\u597D\u5947\uFF0C\u9000\u5230\u5B89\u5168\u533A\u57DF")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "\u4FDD\u6301\u8DDD\u79BB\uFF0C\u4E0D\u8981\u89E6\u78B0"), "\u8FDC\u79BB\u5F02\u5E38\u533A\u57DF\uFF0C\u5207\u52FF\u89E6\u78B0\u4EFB\u4F55\u5F02\u5E38\u7269\u54C1")), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-num"
   }, "2"), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-text"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u62E8\u6253 99"), "\u63CF\u8FF0\u4F60\u770B\u5230\u7684\u60C5\u51B5\uFF0C\u542C\u4ECE\u63A5\u7EBF\u5458\u6307\u5F15")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "\u62E8\u6253\u5F02\u5E38\u70ED\u7EBF"), "\u63D0\u4F9B\u4F4D\u7F6E\u548C\u5916\u89C2\u63CF\u8FF0\uFF0C\u542C\u4ECE\u63A5\u7EBF\u5458\u6307\u5F15")), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-num"
   }, "3"), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-text"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u5B89\u5168\u64A4\u79BB"), "\u6309\u7167\u6307\u5F15\u6709\u5E8F\u79BB\u5F00\uFF0C\u4E0D\u8981\u8FD4\u56DE\u53D6\u7269\u54C1"))))), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("strong", null, "\u6309\u6307\u5F15\u64A4\u79BB"), "\u4F9D\u7167\u63A5\u7EBF\u5458\u6307\u793A\u64A4\u79BB\u81F3\u5B89\u5168\u533A\u57DF")), /*#__PURE__*/React.createElement("div", {
+    className: "hotline-step"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hotline-step-num"
+  }, "4"), /*#__PURE__*/React.createElement("div", {
+    className: "hotline-step-text"
+  }, /*#__PURE__*/React.createElement("strong", null, "\u4E0D\u4F20\u64AD\u4F4D\u7F6E\u4FE1\u606F"), "\u4E0D\u5411\u4ED6\u4EBA\u900F\u9732\u5F02\u5E38\u7684\u5177\u4F53\u4F4D\u7F6E"))), /*#__PURE__*/React.createElement("div", {
+    className: "hotline-app-tip"
+  }, "\u5B89\u73C0\u538630\u5E74\u540E\uFF0C\u90E8\u5206\u57CE\u5E02\u8BD5\u70B9\u300C\u5F02\u5E38\u9884\u8B66APP\u300D\uFF0C\u5B9E\u65F6\u63A8\u9001\u5468\u8FB9\u5F02\u5E38\u98CE\u9669\u8BC4\u4F30\u3002"))), /*#__PURE__*/React.createElement("section", {
     id: "news",
     className: "hp-section"
   }, /*#__PURE__*/React.createElement("div", {

@@ -723,6 +723,15 @@ function HomePage() {
           display: block;
           margin-bottom: 2px;
         }
+        .hotline-app-tip {
+          margin-top: 16px;
+          padding: 12px 20px;
+          border: 1px dashed rgba(196, 40, 40, 0.35);
+          background: rgba(196, 40, 40, 0.04);
+          font-size: 13px;
+          color: var(--text-secondary);
+          text-align: center;
+        }
 
         /* Orgs map section */
         .orgs-map-section {
@@ -1311,7 +1320,7 @@ function HomePage() {
               </div>
               <div className="hotline-text">
                 <h2>发现疑似异常？保持距离，立即拨打</h2>
-                <p>24小时 · 全球通用 · 免费 · 无需区号 · 任何手机均可接通</p>
+                <p>所有被收编组织开设24小时异常热线，号码「99」开头，全球通用前缀</p>
               </div>
             </div>
             <div>
@@ -1324,24 +1333,34 @@ function HomePage() {
             <div className="hotline-step">
               <div className="hotline-step-num">1</div>
               <div className="hotline-step-text">
-                <strong>保持距离</strong>
-                不要靠近，不要好奇，退到安全区域
+                <strong>保持距离，不要触碰</strong>
+                远离异常区域，切勿触碰任何异常物品
               </div>
             </div>
             <div className="hotline-step">
               <div className="hotline-step-num">2</div>
               <div className="hotline-step-text">
-                <strong>拨打 99</strong>
-                描述你看到的情况，听从接线员指引
+                <strong>拨打异常热线</strong>
+                提供位置和外观描述，听从接线员指引
               </div>
             </div>
             <div className="hotline-step">
               <div className="hotline-step-num">3</div>
               <div className="hotline-step-text">
-                <strong>安全撤离</strong>
-                按照指引有序离开，不要返回取物品
+                <strong>按指引撤离</strong>
+                依照接线员指示撤离至安全区域
               </div>
             </div>
+            <div className="hotline-step">
+              <div className="hotline-step-num">4</div>
+              <div className="hotline-step-text">
+                <strong>不传播位置信息</strong>
+                不向他人透露异常的具体位置
+              </div>
+            </div>
+          </div>
+          <div className="hotline-app-tip">
+            安珀历30年后，部分城市试点「异常预警APP」，实时推送周边异常风险评估。
           </div>
         </div>
       </section>
