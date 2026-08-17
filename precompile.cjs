@@ -118,6 +118,18 @@ console.log(
   "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB，合并 " + BUNDLE_ORDER.length + " 个文件"
 );
 
+// 用 terser 压缩 app.js（减小下载体积；失败则保留未压缩版）
+try {
+  const terser = require("D:/dsh/deploy-tools/node_modules/terser");
+  const result = terser.minify_sync(bundle, { compress: true, mangle: true });
+  fs.writeFileSync("app.js", result.code, "utf8");
+  console.log(
+    "app.js 压缩: " + (bundle.length / 1024).toFixed(0) + " KB -> " + (result.code.length / 1024).toFixed(0) + " KB"
+  );
+} catch (e) {
+  console.log("压缩失败（保留未压缩版）:", e.message);
+}
+
 // index.html：确保只保留 react / react-dom / app.js 三个脚本（幂等，可重复运行）
 let html2 = fs.readFileSync("index.html", "utf8");
 html2 = html2.replace(/\n?\s*<script src="components\/[^"]+\.js"><\/script>/g, "");
