@@ -347,16 +347,18 @@ function HomePage() {
           color: var(--stat-accent, var(--text-primary));
           line-height: 1;
           letter-spacing: 0.02em;
+          white-space: nowrap;
         }
         .hp-stat-label {
           font-size: 12px;
           color: var(--text-secondary);
           font-family: var(--font-mono);
           letter-spacing: 0.06em;
-          line-height: 1.2;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          line-height: 1.3;
+          /* 允许换行，确保标签信息完整展示 */
+          white-space: normal;
+          overflow: visible;
+          text-overflow: clip;
         }
         .hp-stat-corner {
           position: absolute;

@@ -4,11 +4,15 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
-// [1/2] 生成单文件离线版（把 lib 与全部 JSX 按 index.html 顺序内联）
+// [1/2] 生成单文件离线版（把 lib 与 app.js 内联）
 let html = fs.readFileSync("index.html", "utf8");
 html = html.replace(/<script src="(lib\/[^"]+)"><\/script>/g, (m, src) => {
   return "<script>" + fs.readFileSync(src, "utf8") + "</script>";
 });
+html = html.replace(/<script src="app\.js"><\/script>/g, (m) => {
+  return "<script>" + fs.readFileSync("app.js", "utf8") + "</script>";
+});
+// 兼容旧 jsx 引用（如有）
 html = html.replace(
   /<script type="text\/babel" src="(components\/[^"]+)"><\/script>/g,
   (m, src) => {

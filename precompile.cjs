@@ -61,22 +61,67 @@ console.log(
   (check.match(/<script src="components\//g) || []).length
 );
 
-// 合并所有组件 JS 为 app.js（按 index.html 引用顺序），减少请求数
-let html2 = fs.readFileSync("index.html", "utf8");
-const order = [
-  ...html2.matchAll(/<script src="(components\/[^"]+)\.js"><\/script>/g),
-].map((m) => m[1]);
+// 合并所有组件 JS 为 app.js（固定顺序：根组件 → 页面 → App），减少请求数
+// 注意：顺序不能从 index.html 读取（首次运行后引用已被移除），必须硬编码
+const BUNDLE_ORDER = [
+  // 根级公共组件（router / auth / 公共组件 / 数据 / 子组件）
+  "components/router",
+  "components/auth",
+  "components/Header",
+  "components/Footer",
+  "components/WorldMap",
+  "components/OrganizationsMap",
+  "components/organizationsData",
+  "components/AcademyMap",
+  "components/AnomalyFile",
+  "components/AnomalyInfo",
+  "components/GuideNews",
+  "components/Hero",
+  "components/Organizations",
+  "components/Walker",
+  // 页面组件
+  "components/pages/Home",
+  "components/pages/Guide",
+  "components/pages/Organizations",
+  "components/pages/OrgDetail",
+  "components/pages/News",
+  "components/pages/Auth",
+  "components/pages/Portal",
+  "components/pages/ProfileCenter",
+  "components/pages/RegisterPage",
+  "components/pages/MailboxPage",
+  "components/pages/Profile",
+  "components/pages/Missions",
+  "components/pages/Training",
+  "components/pages/PsychEval",
+  "components/pages/Admin",
+  "components/pages/Join",
+  "components/pages/AnomalyAuth",
+  "components/pages/AnomalyArchive",
+  "components/pages/AnomalyDetail",
+  "components/pages/MediaAuth",
+  "components/pages/MediaGuidelines",
+  // 入口
+  "components/App",
+];
 let bundle = "";
-for (const f of order) {
-  bundle += fs.readFileSync(f + ".js", "utf8") + ";\n";
+for (const f of BUNDLE_ORDER) {
+  const src = f + ".js";
+  if (!fs.existsSync(src)) {
+    console.error("[错误] 缺少文件: " + src);
+    process.exit(1);
+  }
+  bundle += fs.readFileSync(src, "utf8") + ";\n";
 }
 fs.writeFileSync("app.js", bundle, "utf8");
 console.log(
-  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB，合并 " + order.length + " 个文件"
+  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB，合并 " + BUNDLE_ORDER.length + " 个文件"
 );
 
-// index.html：移除逐文件 script，替换为 app.js
+// index.html：确保只保留 react / react-dom / app.js 三个脚本（幂等，可重复运行）
+let html2 = fs.readFileSync("index.html", "utf8");
 html2 = html2.replace(/\n?\s*<script src="components\/[^"]+\.js"><\/script>/g, "");
+html2 = html2.replace(/\n?\s*<script src="app\.js"><\/script>/g, "");
 html2 = html2.replace(
   '  <script src="lib/react-dom.production.min.js"></script>',
   '  <script src="lib/react-dom.production.min.js"></script>\n  <script src="app.js"></script>'
