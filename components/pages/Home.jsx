@@ -241,13 +241,13 @@ function HomePage() {
           background-color: rgba(18, 18, 22, 0.7);
           backdrop-filter: blur(4px);
           border: 1px solid var(--border-color);
-          padding: 20px 22px;
+          padding: 26px 28px;
           cursor: pointer;
           transition: all 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 8px;
+          gap: 12px;
           text-align: center;
         }
         .hp-quick-card:hover {
@@ -262,26 +262,26 @@ function HomePage() {
           margin-bottom: 2px;
         }
         .hp-quick-icon {
-          width: 28px; height: 28px;
+          width: 36px; height: 36px;
           color: var(--accent-red-bright);
           flex-shrink: 0;
         }
         .hp-quick-title {
           font-family: var(--font-serif);
-          font-size: 16px;
+          font-size: 21px;
           font-weight: 700;
           color: var(--text-primary);
           line-height: 1.2;
         }
         .hp-quick-desc {
-          font-size: 12px;
+          font-size: 14px;
           color: var(--text-secondary);
           line-height: 1.6;
         }
         .hp-quick-arrow {
           margin-top: auto;
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 12px;
           color: var(--text-tertiary);
           letter-spacing: 0.1em;
           text-align: center;
@@ -289,21 +289,21 @@ function HomePage() {
         .hp-hero-stats-row {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 18px;
-          margin-top: 56px;
+          gap: 20px;
+          margin-top: 60px;
           width: 100%;
         }
         .hp-stat {
           position: relative;
           background: linear-gradient(135deg, rgba(20, 14, 16, 0.85) 0%, rgba(12, 10, 14, 0.9) 100%);
           border: 1px solid rgba(120, 40, 48, 0.3);
-          padding: 16px 18px;
+          padding: 22px 24px;
           overflow: hidden;
           transition: all 0.3s ease;
           cursor: default;
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 16px;
         }
         .hp-stat::before {
           content: "";
@@ -327,7 +327,7 @@ function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--stat-accent, rgba(196, 40, 40, 0.2));
         }
         .hp-stat-icon {
-          width: 30px; height: 30px;
+          width: 38px; height: 38px;
           color: var(--stat-accent, var(--accent-red-bright));
           opacity: 0.85;
           flex-shrink: 0;
@@ -336,17 +336,17 @@ function HomePage() {
           justify-content: center;
         }
         .hp-stat-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
-        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
         .hp-stat-num {
           font-family: var(--font-mono);
-          font-size: 24px;
+          font-size: 30px;
           font-weight: 700;
           color: var(--stat-accent, var(--text-primary));
           line-height: 1;
           letter-spacing: 0.02em;
         }
         .hp-stat-label {
-          font-size: 10px;
+          font-size: 12px;
           color: var(--text-secondary);
           font-family: var(--font-mono);
           letter-spacing: 0.06em;
