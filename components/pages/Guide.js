@@ -188,6 +188,30 @@ function GuidePage() {
           .guide-rule-card { flex-direction: column; gap: 12px; }
           .guide-rule-num-wrap { flex-direction: row; }
         }
+
+        .guide-back-home-wrap {
+          text-align: center;
+          margin-top: 48px;
+          padding-bottom: 40px;
+        }
+        .guide-back-home {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 32px;
+          background: transparent;
+          border: 1.5px solid var(--accent-red-bright);
+          color: var(--accent-red-bright);
+          font-family: var(--font-mono);
+          font-size: 12px;
+          letter-spacing: 0.15em;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .guide-back-home:hover {
+          background-color: var(--accent-red-bright);
+          color: #fff;
+        }
       `), /*#__PURE__*/React.createElement("section", {
     className: "guide-page-hero"
   }, /*#__PURE__*/React.createElement("div", {
@@ -245,6 +269,20 @@ function GuidePage() {
     className: "guide-rule-desc"
   }, r.desc))))), /*#__PURE__*/React.createElement("div", {
     className: "guide-warning-box"
-  }, /*#__PURE__*/React.createElement("h3", null, "\u8BF7\u8BB0\u4F4F\uFF1A\u4F60\u4E0D\u9700\u8981\u89E3\u51B3\u5F02\u5E38"), /*#__PURE__*/React.createElement("p", null, "\u666E\u901A\u4EBA\u9047\u5230\u5F02\u5E38\uFF0C\u552F\u4E00\u8981\u505A\u7684\u5C31\u662F\u4FDD\u6301\u51B7\u9759\u3001\u786E\u4FDD\u81EA\u5DF1\u5B89\u5168\u3001\u7136\u540E\u62E8\u625399\u3002 \u89E3\u51B3\u5F02\u5E38\u662F\u4E13\u4E1A\u6EAF\u754C\u8005\u7684\u5DE5\u4F5C\u3002\u4F60\u7684\u5B89\u5168\u6BD4\u4EFB\u4F55\u4E1C\u897F\u90FD\u91CD\u8981\u2014\u2014 \u5305\u62EC\u597D\u5947\u5FC3\u3001\u5305\u62EC\u88AB\u56F0\u7684\u670B\u53CB\u3001\u5305\u62EC\u4F60\u4EE5\u4E3A\u4F60\u80FD\u5E2E\u4E0A\u5FD9\u7684\u90A3\u4E9B\u4E8B\u3002")))));
+  }, /*#__PURE__*/React.createElement("h3", null, "\u8BF7\u8BB0\u4F4F\uFF1A\u4F60\u4E0D\u9700\u8981\u89E3\u51B3\u5F02\u5E38"), /*#__PURE__*/React.createElement("p", null, "\u666E\u901A\u4EBA\u9047\u5230\u5F02\u5E38\uFF0C\u552F\u4E00\u8981\u505A\u7684\u5C31\u662F\u4FDD\u6301\u51B7\u9759\u3001\u786E\u4FDD\u81EA\u5DF1\u5B89\u5168\u3001\u7136\u540E\u62E8\u625399\u3002 \u89E3\u51B3\u5F02\u5E38\u662F\u4E13\u4E1A\u6EAF\u754C\u8005\u7684\u5DE5\u4F5C\u3002\u4F60\u7684\u5B89\u5168\u6BD4\u4EFB\u4F55\u4E1C\u897F\u90FD\u91CD\u8981\u2014\u2014 \u5305\u62EC\u597D\u5947\u5FC3\u3001\u5305\u62EC\u88AB\u56F0\u7684\u670B\u53CB\u3001\u5305\u62EC\u4F60\u4EE5\u4E3A\u4F60\u80FD\u5E2E\u4E0A\u5FD9\u7684\u90A3\u4E9B\u4E8B\u3002")), /*#__PURE__*/React.createElement("div", {
+    className: "guide-back-home-wrap"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "guide-back-home",
+    onClick: () => navigate("/")
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M19 12H5 M12 19l-7-7 7-7"
+  })), "\u8FD4\u56DE\u9996\u9875")))));
 }
 window.GuidePage = GuidePage;

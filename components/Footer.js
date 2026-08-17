@@ -49,7 +49,7 @@ function Footer() {
     value: "press@imac.int"
   }, {
     label: "总部地址",
-    value: "中立城 · 第一大道"
+    value: "洛林自由市 · 第一大道"
   }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
         .footer {

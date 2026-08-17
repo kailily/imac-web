@@ -90,7 +90,7 @@ function HomePage() {
     },
     {
       title: "IMAC发布新版公民应急指南",
-      date: "安珀历39年·春 · 中立城",
+      date: "安珀历39年·春 · 洛林自由市",
       source: "IMAC信息协调办公室",
       desc: "国际异常管理联盟今日发布2024版公民应急指南，新增城市地铁异常应对章节，面向全球公众免费发放。",
       level: "public",
@@ -241,13 +241,15 @@ function HomePage() {
           background-color: rgba(18, 18, 22, 0.7);
           backdrop-filter: blur(4px);
           border: 1px solid var(--border-color);
-          padding: 34px 36px;
+          padding: 42px 46px;
+          min-height: 220px;
           cursor: pointer;
           transition: all 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 14px;
+          justify-content: center;
+          gap: 16px;
           text-align: center;
         }
         .hp-quick-card:hover {
@@ -262,26 +264,26 @@ function HomePage() {
           margin-bottom: 2px;
         }
         .hp-quick-icon {
-          width: 48px; height: 48px;
+          width: 54px; height: 54px;
           color: var(--accent-red-bright);
           flex-shrink: 0;
         }
         .hp-quick-title {
           font-family: var(--font-serif);
-          font-size: 27px;
+          font-size: 30px;
           font-weight: 700;
           color: var(--text-primary);
           line-height: 1.2;
         }
         .hp-quick-desc {
-          font-size: 16px;
+          font-size: 17px;
           color: var(--text-secondary);
           line-height: 1.6;
         }
         .hp-quick-arrow {
-          margin-top: auto;
+          margin-top: 10px;
           font-family: var(--font-mono);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--text-tertiary);
           letter-spacing: 0.1em;
           text-align: center;
@@ -289,7 +291,7 @@ function HomePage() {
         .hp-hero-stats-row {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
+          gap: 22px;
           margin-top: 64px;
           width: 100%;
         }
@@ -297,13 +299,14 @@ function HomePage() {
           position: relative;
           background: linear-gradient(135deg, rgba(20, 14, 16, 0.85) 0%, rgba(12, 10, 14, 0.9) 100%);
           border: 1px solid rgba(120, 40, 48, 0.3);
-          padding: 22px 26px;
+          padding: 30px 34px;
+          min-height: 116px;
           overflow: hidden;
           transition: all 0.3s ease;
           cursor: default;
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 18px;
         }
         .hp-stat::before {
           content: "";
@@ -327,7 +330,7 @@ function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--stat-accent, rgba(196, 40, 40, 0.2));
         }
         .hp-stat-icon {
-          width: 44px; height: 44px;
+          width: 48px; height: 48px;
           color: var(--stat-accent, var(--accent-red-bright));
           opacity: 0.85;
           flex-shrink: 0;
@@ -336,17 +339,17 @@ function HomePage() {
           justify-content: center;
         }
         .hp-stat-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
-        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
         .hp-stat-num {
           font-family: var(--font-mono);
-          font-size: 34px;
+          font-size: 38px;
           font-weight: 700;
           color: var(--stat-accent, var(--text-primary));
           line-height: 1;
           letter-spacing: 0.02em;
         }
         .hp-stat-label {
-          font-size: 13px;
+          font-size: 14px;
           color: var(--text-secondary);
           font-family: var(--font-mono);
           letter-spacing: 0.06em;

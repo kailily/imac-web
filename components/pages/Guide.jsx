@@ -201,6 +201,30 @@ function GuidePage() {
           .guide-rule-card { flex-direction: column; gap: 12px; }
           .guide-rule-num-wrap { flex-direction: row; }
         }
+
+        .guide-back-home-wrap {
+          text-align: center;
+          margin-top: 48px;
+          padding-bottom: 40px;
+        }
+        .guide-back-home {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 32px;
+          background: transparent;
+          border: 1.5px solid var(--accent-red-bright);
+          color: var(--accent-red-bright);
+          font-family: var(--font-mono);
+          font-size: 12px;
+          letter-spacing: 0.15em;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .guide-back-home:hover {
+          background-color: var(--accent-red-bright);
+          color: #fff;
+        }
       `}</style>
 
       <section className="guide-page-hero">
@@ -253,6 +277,15 @@ function GuidePage() {
               解决异常是专业溯界者的工作。你的安全比任何东西都重要——
               包括好奇心、包括被困的朋友、包括你以为你能帮上忙的那些事。
             </p>
+          </div>
+
+          <div className="guide-back-home-wrap">
+            <button className="guide-back-home" onClick={() => navigate("/")}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M19 12H5 M12 19l-7-7 7-7"/>
+              </svg>
+              返回首页
+            </button>
           </div>
         </div>
       </section>

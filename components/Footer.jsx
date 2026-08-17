@@ -15,7 +15,7 @@ function Footer() {
     { label: "异常紧急热线", value: "99（全球通用）" },
     { label: "公众咨询邮箱", value: "public@imac.int" },
     { label: "媒体联络", value: "press@imac.int" },
-    { label: "总部地址", value: "中立城 · 第一大道" },
+    { label: "总部地址", value: "洛林自由市 · 第一大道" },
   ];
 
   return (
