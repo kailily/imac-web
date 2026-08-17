@@ -291,7 +291,7 @@ function HomePage() {
         .hp-hero-stats-row {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 18px;
+          gap: 16px;
           margin-top: 56px;
           width: 100%;
         }
@@ -299,8 +299,7 @@ function HomePage() {
           position: relative;
           background: linear-gradient(135deg, rgba(20, 14, 16, 0.85) 0%, rgba(12, 10, 14, 0.9) 100%);
           border: 1px solid rgba(120, 40, 48, 0.3);
-          padding: 20px 24px;
-          min-height: 88px;
+          padding: 16px 18px;
           overflow: hidden;
           transition: all 0.3s ease;
           cursor: default;
@@ -330,7 +329,7 @@ function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--stat-accent, rgba(196, 40, 40, 0.2));
         }
         .hp-stat-icon {
-          width: 38px; height: 38px;
+          width: 30px; height: 30px;
           color: var(--stat-accent, var(--accent-red-bright));
           opacity: 0.85;
           flex-shrink: 0;
@@ -339,10 +338,10 @@ function HomePage() {
           justify-content: center;
         }
         .hp-stat-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
-        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
         .hp-stat-num {
           font-family: var(--font-mono);
-          font-size: 30px;
+          font-size: 24px;
           font-weight: 700;
           color: var(--stat-accent, var(--text-primary));
           line-height: 1;
@@ -350,7 +349,7 @@ function HomePage() {
           white-space: nowrap;
         }
         .hp-stat-label {
-          font-size: 12px;
+          font-size: 10px;
           color: var(--text-secondary);
           font-family: var(--font-mono);
           letter-spacing: 0.06em;
