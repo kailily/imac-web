@@ -6,6 +6,7 @@ function JoinPage() {
     realName: "",
     codename: "",
     channel: "",
+    referral: "",
     organization: "",
     country: "",
     region: "",
@@ -213,7 +214,6 @@ function JoinPage() {
     if (!formData.city) e.city = "请选择城市";
     if (!formData.age.trim()) e.age = "请输入年龄";else if (isNaN(Number(formData.age)) || Number(formData.age) < 18 || Number(formData.age) > 55) e.age = "年龄应在 18-55 岁之间";
     if (!formData.contact.trim()) e.contact = "请输入联系方式";
-    if (!formData.specialty.trim()) e.specialty = "请填写专业背景";
     if (!formData.experience.trim()) e.experience = "请填写相关经历简述";
     if (!formData.motivation.trim()) e.motivation = "请填写申请理由";
     if (!formData.healthDeclare) e.healthDeclare = "请确认健康声明";
@@ -1277,7 +1277,21 @@ function JoinPage() {
     value: c
   }, c))), errors.channel && /*#__PURE__*/React.createElement("span", {
     className: "join-error-text"
-  }, errors.channel)), /*#__PURE__*/React.createElement("div", {
+  }, errors.channel)), formData.channel && /*#__PURE__*/React.createElement("div", {
+    className: "join-field"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "join-label"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "opt"
+  }, "\u9009\u586B"), "\u63A8\u8350\u4EBA"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "join-input",
+    value: formData.referral,
+    onChange: e => handleChange("referral", e.target.value),
+    placeholder: "\u63A8\u8350\u60A8\u7684\u5728\u804C\u6EAF\u754C\u8005\u59D3\u540D\u6216\u4EE3\u53F7"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "join-hint"
+  }, "\u5982\u6709\u6EAF\u754C\u8005\u63A8\u8350\uFF0C\u53EF\u586B\u5199\u5176\u59D3\u540D\u6216\u4EE3\u53F7")), /*#__PURE__*/React.createElement("div", {
     className: "join-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "join-label"
@@ -1372,13 +1386,13 @@ function JoinPage() {
   }, /*#__PURE__*/React.createElement("label", {
     className: "join-label"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "req"
-  }, "*"), "\u4E13\u4E1A\u80CC\u666F"), /*#__PURE__*/React.createElement("input", {
+    className: "opt"
+  }, "\u9009\u586B"), "\u4E13\u4E1A\u80CC\u666F"), /*#__PURE__*/React.createElement("input", {
     type: "text",
     className: inputCls("specialty"),
     value: formData.specialty,
     onChange: e => handleChange("specialty", e.target.value),
-    placeholder: "\u5982\uFF1A\u5FC3\u7406\u5B66\u3001\u5211\u4FA6\u3001\u5DE5\u7A0B\u5B66\u3001\u533B\u5B66"
+    placeholder: "\u5982\uFF1A\u5FC3\u7406\u5B66\u3001\u5211\u4FA6\u3001\u5DE5\u7A0B\u5B66\u3001\u533B\u5B66\uFF08\u9009\u586B\uFF09"
   }), errors.specialty && /*#__PURE__*/React.createElement("span", {
     className: "join-error-text"
   }, errors.specialty)))), /*#__PURE__*/React.createElement("div", {

@@ -4,6 +4,7 @@ function JoinPage() {
     realName: "",
     codename: "",
     channel: "",
+    referral: "",
     organization: "",
     country: "",
     region: "",
@@ -165,7 +166,6 @@ function JoinPage() {
     else if (isNaN(Number(formData.age)) || Number(formData.age) < 18 || Number(formData.age) > 55)
       e.age = "年龄应在 18-55 岁之间";
     if (!formData.contact.trim()) e.contact = "请输入联系方式";
-    if (!formData.specialty.trim()) e.specialty = "请填写专业背景";
     if (!formData.experience.trim()) e.experience = "请填写相关经历简述";
     if (!formData.motivation.trim()) e.motivation = "请填写申请理由";
     if (!formData.healthDeclare) e.healthDeclare = "请确认健康声明";
@@ -1169,6 +1169,14 @@ function JoinPage() {
                       </select>
                       {errors.channel && <span className="join-error-text">{errors.channel}</span>}
                     </div>
+                    {formData.channel && (
+                      <div className="join-field">
+                        <label className="join-label"><span className="opt">选填</span>推荐人</label>
+                        <input type="text" className="join-input" value={formData.referral}
+                          onChange={(e) => handleChange("referral", e.target.value)} placeholder="推荐您的在职溯界者姓名或代号"/>
+                        <span className="join-hint">如有溯界者推荐，可填写其姓名或代号</span>
+                      </div>
+                    )}
                   <div className="join-field">
                       <label className="join-label"><span className="req">*</span>意向组织</label>
                       <select className={`join-select ${errors.organization ? "error" : ""}`} value={formData.organization}
@@ -1232,9 +1240,9 @@ function JoinPage() {
                       {errors.contact && <span className="join-error-text">{errors.contact}</span>}
                     </div>
                     <div className="join-field">
-                      <label className="join-label"><span className="req">*</span>专业背景</label>
+                      <label className="join-label"><span className="opt">选填</span>专业背景</label>
                       <input type="text" className={inputCls("specialty")} value={formData.specialty}
-                        onChange={(e) => handleChange("specialty", e.target.value)} placeholder="如：心理学、刑侦、工程学、医学"/>
+                        onChange={(e) => handleChange("specialty", e.target.value)} placeholder="如：心理学、刑侦、工程学、医学（选填）"/>
                       {errors.specialty && <span className="join-error-text">{errors.specialty}</span>}
                     </div>
                   </div>
