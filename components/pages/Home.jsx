@@ -241,13 +241,13 @@ function HomePage() {
           background-color: rgba(18, 18, 22, 0.7);
           backdrop-filter: blur(4px);
           border: 1px solid var(--border-color);
-          padding: 26px 28px;
+          padding: 34px 36px;
           cursor: pointer;
           transition: all 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 12px;
+          gap: 14px;
           text-align: center;
         }
         .hp-quick-card:hover {
@@ -262,26 +262,26 @@ function HomePage() {
           margin-bottom: 2px;
         }
         .hp-quick-icon {
-          width: 36px; height: 36px;
+          width: 48px; height: 48px;
           color: var(--accent-red-bright);
           flex-shrink: 0;
         }
         .hp-quick-title {
           font-family: var(--font-serif);
-          font-size: 21px;
+          font-size: 27px;
           font-weight: 700;
           color: var(--text-primary);
           line-height: 1.2;
         }
         .hp-quick-desc {
-          font-size: 14px;
+          font-size: 16px;
           color: var(--text-secondary);
           line-height: 1.6;
         }
         .hp-quick-arrow {
           margin-top: auto;
           font-family: var(--font-mono);
-          font-size: 12px;
+          font-size: 13px;
           color: var(--text-tertiary);
           letter-spacing: 0.1em;
           text-align: center;
@@ -289,21 +289,21 @@ function HomePage() {
         .hp-hero-stats-row {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
-          margin-top: 60px;
+          gap: 22px;
+          margin-top: 64px;
           width: 100%;
         }
         .hp-stat {
           position: relative;
           background: linear-gradient(135deg, rgba(20, 14, 16, 0.85) 0%, rgba(12, 10, 14, 0.9) 100%);
           border: 1px solid rgba(120, 40, 48, 0.3);
-          padding: 22px 24px;
+          padding: 28px 30px;
           overflow: hidden;
           transition: all 0.3s ease;
           cursor: default;
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 18px;
         }
         .hp-stat::before {
           content: "";
@@ -327,7 +327,7 @@ function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--stat-accent, rgba(196, 40, 40, 0.2));
         }
         .hp-stat-icon {
-          width: 38px; height: 38px;
+          width: 50px; height: 50px;
           color: var(--stat-accent, var(--accent-red-bright));
           opacity: 0.85;
           flex-shrink: 0;
@@ -336,17 +336,17 @@ function HomePage() {
           justify-content: center;
         }
         .hp-stat-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
-        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
         .hp-stat-num {
           font-family: var(--font-mono);
-          font-size: 30px;
+          font-size: 40px;
           font-weight: 700;
           color: var(--stat-accent, var(--text-primary));
           line-height: 1;
           letter-spacing: 0.02em;
         }
         .hp-stat-label {
-          font-size: 12px;
+          font-size: 14px;
           color: var(--text-secondary);
           font-family: var(--font-mono);
           letter-spacing: 0.06em;
@@ -415,19 +415,19 @@ function HomePage() {
         }
         .hp-section-label {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 13px;
           color: var(--accent-red-bright);
           letter-spacing: 0.2em;
           text-transform: uppercase;
         }
         .hp-section-title {
           font-family: var(--font-serif);
-          font-size: 34px;
+          font-size: 42px;
           font-weight: 700;
           color: var(--text-primary);
         }
         .hp-section-subtitle {
-          font-size: 15px;
+          font-size: 17px;
           color: var(--text-secondary);
           max-width: 500px;
           line-height: 1.7;
@@ -654,21 +654,21 @@ function HomePage() {
           color: var(--accent-red-bright);
           flex-shrink: 0;
         }
-        .hotline-icon-lg svg { width: 36px; height: 36px; }
+        .hotline-icon-lg svg { width: 46px; height: 46px; }
         .hotline-text h2 {
           font-family: var(--font-serif);
-          font-size: 24px;
+          font-size: 30px;
           font-weight: 700;
           color: var(--text-primary);
-          margin-bottom: 6px;
+          margin-bottom: 8px;
         }
         .hotline-text p {
-          font-size: 14px;
+          font-size: 16px;
           color: var(--text-secondary);
         }
         .hotline-number {
           font-family: var(--font-serif);
-          font-size: 72px;
+          font-size: 88px;
           font-weight: 900;
           color: var(--accent-red-bright);
           line-height: 1;
@@ -676,11 +676,11 @@ function HomePage() {
         }
         .hotline-number-label {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 13px;
           color: var(--text-tertiary);
           letter-spacing: 0.2em;
           text-align: right;
-          margin-top: 6px;
+          margin-top: 8px;
         }
         .hotline-steps {
           display: flex;
@@ -698,7 +698,7 @@ function HomePage() {
           gap: 14px;
         }
         .hotline-step-num {
-          width: 32px; height: 32px;
+          width: 38px; height: 38px;
           border-radius: 50%;
           background-color: var(--bg-card);
           border: 1.5px solid var(--accent-red-bright);
@@ -706,13 +706,13 @@ function HomePage() {
           align-items: center;
           justify-content: center;
           font-family: var(--font-mono);
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           color: var(--accent-red-bright);
           flex-shrink: 0;
         }
         .hotline-step-text {
-          font-size: 14px;
+          font-size: 16px;
           color: var(--text-secondary);
         }
         .hotline-step-text strong {
