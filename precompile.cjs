@@ -60,3 +60,30 @@ console.log(
   "js script refs:",
   (check.match(/<script src="components\//g) || []).length
 );
+
+// 合并所有组件 JS 为 app.js（按 index.html 引用顺序），减少请求数
+let html2 = fs.readFileSync("index.html", "utf8");
+const order = [
+  ...html2.matchAll(/<script src="(components\/[^"]+)\.js"><\/script>/g),
+].map((m) => m[1]);
+let bundle = "";
+for (const f of order) {
+  bundle += fs.readFileSync(f + ".js", "utf8") + ";\n";
+}
+fs.writeFileSync("app.js", bundle, "utf8");
+console.log(
+  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB，合并 " + order.length + " 个文件"
+);
+
+// index.html：移除逐文件 script，替换为 app.js
+html2 = html2.replace(/\n?\s*<script src="components\/[^"]+\.js"><\/script>/g, "");
+html2 = html2.replace(
+  '  <script src="lib/react-dom.production.min.js"></script>',
+  '  <script src="lib/react-dom.production.min.js"></script>\n  <script src="app.js"></script>'
+);
+fs.writeFileSync("index.html", html2, "utf8");
+console.log(
+  "index.html 脚本数:",
+  (html2.match(/<script src=/g) || []).length,
+  "（react + react-dom + app.js）"
+);
