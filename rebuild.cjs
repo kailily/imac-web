@@ -21,12 +21,25 @@ console.log(
     (Buffer.byteLength(html) / 1024 / 1024).toFixed(2) + " MB)"
 );
 
-// [2/2] 打包部署文件（index.html + components/ + lib/），输出到上级目录
+// [2/2] 打包部署文件（index.html + components/ + lib/，排除预编译不再需要的 babel.min.js）
 const dest = path.resolve("..", "IMAC-网站部署包.zip");
 if (fs.existsSync(dest)) fs.unlinkSync(dest);
+// 先复制到临时目录，排除 babel.min.js
+const tmp = path.resolve("..", "_deploy_tmp");
+fs.rmSync(tmp, { recursive: true, force: true });
+fs.mkdirSync(path.join(tmp, "components"), { recursive: true });
+fs.mkdirSync(path.join(tmp, "lib"), { recursive: true });
+fs.copyFileSync("index.html", path.join(tmp, "index.html"));
+fs.cpSync("components", path.join(tmp, "components"), { recursive: true });
+for (const f of fs.readdirSync("lib")) {
+  if (f === "babel.min.js") continue;
+  fs.copyFileSync(path.join("lib", f), path.join(tmp, "lib", f));
+}
 const r = spawnSync("tar", ["-a", "-cf", dest, "index.html", "components", "lib"], {
+  cwd: tmp,
   stdio: "inherit",
 });
+fs.rmSync(tmp, { recursive: true, force: true });
 if (r.status !== 0) {
   console.error("[错误] 部署包打包失败（tar 退出码 " + r.status + "）");
   process.exit(1);

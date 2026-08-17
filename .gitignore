@@ -33,3 +33,6 @@ temp/
 
 # Build outputs（可随时用「重新打包.bat」重新生成）
 预览-双击打开.html
+
+# 预编译工具依赖（本地编译用，不上传/不上线）
+lib/babel.min.js
