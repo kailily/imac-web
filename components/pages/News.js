@@ -457,19 +457,7 @@ function NewsPage() {
       strokeWidth: "2"
     }, /*#__PURE__*/React.createElement("polyline", {
       points: "18 15 12 9 6 15"
-    })), "\u6536\u8D77"), /*#__PURE__*/React.createElement("button", {
-      className: "news-detail-close-btn",
-      onClick: () => navigate("/")
-    }, /*#__PURE__*/React.createElement("svg", {
-      width: "12",
-      height: "12",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "2"
-    }, /*#__PURE__*/React.createElement("path", {
-      d: "M19 12H5 M12 19l-7-7 7-7"
-    })), "\u8FD4\u56DE\u9996\u9875")))));
+    })), "\u6536\u8D77")))));
   })), /*#__PURE__*/React.createElement("aside", {
     className: "news-sidebar"
   }, /*#__PURE__*/React.createElement("div", {

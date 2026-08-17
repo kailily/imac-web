@@ -222,6 +222,7 @@ function HomePage() {
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
           margin-top: 20px;
+          width: 100%;
         }
         .hp-quick-card {
           background-color: rgba(18, 18, 22, 0.7);
