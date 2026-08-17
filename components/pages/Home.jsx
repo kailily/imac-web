@@ -238,6 +238,8 @@ function HomePage() {
           gap: 16px;
           margin-top: 20px;
           width: 100%;
+          box-sizing: border-box;
+          padding: 0 24px;
         }
         .hp-quick-card {
           background-color: rgba(18, 18, 22, 0.7);
@@ -296,6 +298,8 @@ function HomePage() {
           gap: 18px;
           margin-top: 56px;
           width: 100%;
+          box-sizing: border-box;
+          padding: 0 24px;
         }
         .hp-stat {
           position: relative;
