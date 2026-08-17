@@ -1037,7 +1037,12 @@ function HomePage() {
           .hotline-number { font-size: 48px; }
           .hotline-steps { flex-direction: column; gap: 14px; padding: 20px; }
           .hotline-left { flex-direction: column; align-items: flex-start; }
-          .hp-hero-stats-row { grid-template-columns: 1fr 1fr; }
+          /* 移动端统计卡片：纵向排列，保证图标/数字/标签完整显示 */
+          .hp-hero-stats-row { grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 8px; }
+          .hp-stat { flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 18px 12px; min-height: 0; }
+          .hp-stat-icon { width: 30px; height: 30px; }
+          .hp-stat-num { font-size: 24px; }
+          .hp-stat-label { font-size: 11px; }
         }
       `), /*#__PURE__*/React.createElement("section", {
     className: "hp-hero"
