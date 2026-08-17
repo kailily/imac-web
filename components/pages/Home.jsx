@@ -289,7 +289,7 @@ function HomePage() {
         .hp-hero-stats-row {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 22px;
+          gap: 20px;
           margin-top: 64px;
           width: 100%;
         }
@@ -297,13 +297,13 @@ function HomePage() {
           position: relative;
           background: linear-gradient(135deg, rgba(20, 14, 16, 0.85) 0%, rgba(12, 10, 14, 0.9) 100%);
           border: 1px solid rgba(120, 40, 48, 0.3);
-          padding: 28px 30px;
+          padding: 22px 26px;
           overflow: hidden;
           transition: all 0.3s ease;
           cursor: default;
           display: flex;
           align-items: center;
-          gap: 18px;
+          gap: 16px;
         }
         .hp-stat::before {
           content: "";
@@ -327,7 +327,7 @@ function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--stat-accent, rgba(196, 40, 40, 0.2));
         }
         .hp-stat-icon {
-          width: 50px; height: 50px;
+          width: 44px; height: 44px;
           color: var(--stat-accent, var(--accent-red-bright));
           opacity: 0.85;
           flex-shrink: 0;
@@ -336,17 +336,17 @@ function HomePage() {
           justify-content: center;
         }
         .hp-stat-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; }
-        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+        .hp-stat-info { flex: 1; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
         .hp-stat-num {
           font-family: var(--font-mono);
-          font-size: 40px;
+          font-size: 34px;
           font-weight: 700;
           color: var(--stat-accent, var(--text-primary));
           line-height: 1;
           letter-spacing: 0.02em;
         }
         .hp-stat-label {
-          font-size: 14px;
+          font-size: 13px;
           color: var(--text-secondary);
           font-family: var(--font-mono);
           letter-spacing: 0.06em;
@@ -1005,12 +1005,15 @@ function HomePage() {
           font-size: 11px;
         }
 
+        @media (max-width: 1280px) {
+          .hp-hero-stats-row { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+          .hp-quick-cards { gap: 14px; }
+        }
         @media (max-width: 1024px) {
           .intro-body { grid-template-columns: 1fr; gap: 40px; }
           .levels-citizen { grid-template-columns: repeat(3, 1fr); }
           .guide-quick-grid { grid-template-columns: repeat(2, 1fr); }
           .hp-quick-cards { grid-template-columns: 1fr; }
-          .hp-hero-stats-row { grid-template-columns: repeat(2, 1fr); gap: 14px; }
           .orgs-map-wrap { grid-template-columns: 1fr; }
           .news-citizen-grid { grid-template-columns: 1fr; }
           .about-grid { grid-template-columns: 1fr; }
