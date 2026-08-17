@@ -130,14 +130,17 @@ try {
   console.log("压缩失败（保留未压缩版）:", e.message);
 }
 
-// index.html：确保只保留 react / react-dom / app.js 三个脚本（幂等，可重复运行）
+// index.html：确保只保留 react / react-dom（head）与 app.js（body #root 之后），幂等可重复运行
 let html2 = fs.readFileSync("index.html", "utf8");
 html2 = html2.replace(/\n?\s*<script src="components\/[^"]+\.js"><\/script>/g, "");
 html2 = html2.replace(/\n?\s*<script src="app\.js"><\/script>/g, "");
-html2 = html2.replace(
-  '  <script src="lib/react-dom.production.min.js"></script>',
-  '  <script src="lib/react-dom.production.min.js"></script>\n  <script src="app.js"></script>'
-);
+// app.js 必须位于 #root 之后（DOM 就绪后执行），否则 createRoot 拿不到容器
+if (!/<div id="root"><\/div>[\s\S]*<script src="app\.js">/.test(html2)) {
+  html2 = html2.replace(
+    '  <div id="root"></div>',
+    '  <div id="root"></div>\n  <script src="app.js"></script>'
+  );
+}
 fs.writeFileSync("index.html", html2, "utf8");
 console.log(
   "index.html 脚本数:",

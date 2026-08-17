@@ -9,7 +9,6 @@
   <!-- 字体已改为系统字体（PingFang SC / 微软雅黑），移除外部字体请求以加快加载 -->
   <script src="lib/react.production.min.js"></script>
   <script src="lib/react-dom.production.min.js"></script>
-  <script src="app.js"></script>
   <!-- Babel 已预编译移除 -->
 <style>
     :root {
@@ -279,5 +278,7 @@
 </head>
 <body>
   <div id="root"></div>
+  <!-- 应用脚本必须位于 #root 之后，确保 DOM 就绪后再挂载 React -->
+  <script src="app.js"></script>
 </body>
 </html>
