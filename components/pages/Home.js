@@ -1432,7 +1432,7 @@ function HomePage() {
     className: "hotline-step-num"
   }, "2"), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-text"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u62E8\u6253\u5F02\u5E38\u70ED\u7EBF"), "\u63D0\u4F9B\u4F4D\u7F6E\u548C\u5916\u89C2\u63CF\u8FF0\uFF0C\u542C\u4ECE\u63A5\u7EBF\u5458\u6307\u5F15")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "\u62E8\u6253\u5F02\u5E38\u70ED\u7EBF"), "\u63D0\u4F9B\u4F4D\u7F6E\u548C\u5916\u89C2\u63CF\u8FF0")), /*#__PURE__*/React.createElement("div", {
     className: "hotline-step"
   }, /*#__PURE__*/React.createElement("div", {
     className: "hotline-step-num"

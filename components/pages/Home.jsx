@@ -1343,7 +1343,7 @@ function HomePage() {
               <div className="hotline-step-num">2</div>
               <div className="hotline-step-text">
                 <strong>拨打异常热线</strong>
-                提供位置和外观描述，听从接线员指引
+                提供位置和外观描述
               </div>
             </div>
             <div className="hotline-step">
