@@ -136,9 +136,6 @@ function AnomalyDossier({ data }) {
       align-items: center;
       gap: 8px;
       padding: 4px 14px;
-      background-color: rgba(196, 40, 40, 0.15);
-      border: 1px solid var(--accent-red-bright);
-      color: var(--accent-red-bright);
       font-family: var(--font-mono);
       font-size: 13px;
       font-weight: 700;
@@ -148,8 +145,12 @@ function AnomalyDossier({ data }) {
       content: "";
       width: 8px;
       height: 8px;
-      background-color: var(--accent-red-bright);
-      box-shadow: 0 0 8px var(--accent-red-bright);
+      background-color: currentColor;
+      box-shadow: 0 0 8px currentColor;
+    }
+    .status-text {
+      font-family: var(--font-mono);
+      letter-spacing: 0.1em;
     }
     .status-active-text {
       color: var(--level-hazardous);
@@ -480,6 +481,39 @@ function AnomalyDossier({ data }) {
     return String(sectionNo).padStart(2, "0");
   };
 
+  // 等级/状态颜色映射（等级与状态按各自类型着色）
+  const levelColors = {
+    ordinary: "#4a7c59",
+    hazardous: "#c49a2c",
+    doomed: "#d46828",
+    abyssal: "#c42828",
+    unknown: "#7a3ab0",
+  };
+  const statusColors = {
+    active: "#c42828",
+    resolved: "#4a7c59",
+    dormant: "#6a7a8c",
+    safe: "#4a7c59",
+    quarantined: "#7a3ab0",
+  };
+  const renderCell = (v) => {
+    if (v && typeof v === "object") {
+      if (v.levelKey) {
+        const c = levelColors[v.levelKey] || "#c42828";
+        return (
+          <span className="level-badge-inline" style={{ backgroundColor: c + "26", border: "1px solid " + c, color: c }}>
+            {v.text}
+          </span>
+        );
+      }
+      if (v.statusKey) {
+        const c = statusColors[v.statusKey] || "#c42828";
+        return <span className="status-text" style={{ color: c }}>{v.text}</span>;
+      }
+    }
+    return v;
+  };
+
   return (
     <>
       <style>{detailCss}</style>
@@ -519,8 +553,8 @@ function AnomalyDossier({ data }) {
               <tbody>
                 {infoRows.map((r, i) => (
                   <tr key={i}>
-                    <th>{r[0]}</th><td>{r[1]}</td>
-                    <th>{r[2]}</th><td>{r[3]}</td>
+                    <th>{r[0]}</th><td>{renderCell(r[1])}</td>
+                    <th>{r[2]}</th><td>{renderCell(r[3])}</td>
                   </tr>
                 ))}
                 {data.extraRow && (

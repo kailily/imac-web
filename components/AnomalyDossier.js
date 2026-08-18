@@ -139,9 +139,6 @@ function AnomalyDossier({
       align-items: center;
       gap: 8px;
       padding: 4px 14px;
-      background-color: rgba(196, 40, 40, 0.15);
-      border: 1px solid var(--accent-red-bright);
-      color: var(--accent-red-bright);
       font-family: var(--font-mono);
       font-size: 13px;
       font-weight: 700;
@@ -151,8 +148,12 @@ function AnomalyDossier({
       content: "";
       width: 8px;
       height: 8px;
-      background-color: var(--accent-red-bright);
-      box-shadow: 0 0 8px var(--accent-red-bright);
+      background-color: currentColor;
+      box-shadow: 0 0 8px currentColor;
+    }
+    .status-text {
+      font-family: var(--font-mono);
+      letter-spacing: 0.1em;
     }
     .status-active-text {
       color: var(--level-hazardous);
@@ -482,6 +483,47 @@ function AnomalyDossier({
     sectionNo += 1;
     return String(sectionNo).padStart(2, "0");
   };
+
+  // 等级/状态颜色映射（等级与状态按各自类型着色）
+  const levelColors = {
+    ordinary: "#4a7c59",
+    hazardous: "#c49a2c",
+    doomed: "#d46828",
+    abyssal: "#c42828",
+    unknown: "#7a3ab0"
+  };
+  const statusColors = {
+    active: "#c42828",
+    resolved: "#4a7c59",
+    dormant: "#6a7a8c",
+    safe: "#4a7c59",
+    quarantined: "#7a3ab0"
+  };
+  const renderCell = v => {
+    if (v && typeof v === "object") {
+      if (v.levelKey) {
+        const c = levelColors[v.levelKey] || "#c42828";
+        return /*#__PURE__*/React.createElement("span", {
+          className: "level-badge-inline",
+          style: {
+            backgroundColor: c + "26",
+            border: "1px solid " + c,
+            color: c
+          }
+        }, v.text);
+      }
+      if (v.statusKey) {
+        const c = statusColors[v.statusKey] || "#c42828";
+        return /*#__PURE__*/React.createElement("span", {
+          className: "status-text",
+          style: {
+            color: c
+          }
+        }, v.text);
+      }
+    }
+    return v;
+  };
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, detailCss), /*#__PURE__*/React.createElement("div", {
     className: "detail-page"
   }, /*#__PURE__*/React.createElement("div", {
@@ -535,7 +577,7 @@ function AnomalyDossier({
     className: "detail-info-table"
   }, /*#__PURE__*/React.createElement("tbody", null, infoRows.map((r, i) => /*#__PURE__*/React.createElement("tr", {
     key: i
-  }, /*#__PURE__*/React.createElement("th", null, r[0]), /*#__PURE__*/React.createElement("td", null, r[1]), /*#__PURE__*/React.createElement("th", null, r[2]), /*#__PURE__*/React.createElement("td", null, r[3]))), data.extraRow && /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, data.extraRow.label), /*#__PURE__*/React.createElement("td", {
+  }, /*#__PURE__*/React.createElement("th", null, r[0]), /*#__PURE__*/React.createElement("td", null, renderCell(r[1])), /*#__PURE__*/React.createElement("th", null, r[2]), /*#__PURE__*/React.createElement("td", null, renderCell(r[3])))), data.extraRow && /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, data.extraRow.label), /*#__PURE__*/React.createElement("td", {
     style: {
       color: "var(--accent-red-bright)"
     },

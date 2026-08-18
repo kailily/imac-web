@@ -430,11 +430,13 @@ function AnomalyDetailPage() {
         style: {
           fontSize: "18px"
         }
-      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院 BRI · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", /*#__PURE__*/React.createElement("span", {
-        className: "level-badge-inline"
-      }, "\u5371\u9669\u7EA7 \xB7 HAZARDOUS"), "当前状态", /*#__PURE__*/React.createElement("span", {
-        className: "status-active-text"
-      }, "\u25CF \u6D3B\u8DC3 ACTIVE")], ["生还率", /*#__PURE__*/React.createElement("span", {
+      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院 BRI · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", {
+        levelKey: "hazardous",
+        text: "危险级 · HAZARDOUS"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", /*#__PURE__*/React.createElement("span", {
         className: "survival-rate-red"
       }, "\u7EA6 23%"), "信息价值", "高（空间折叠机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"]],
       discovery: ["安珀历12年秋，洛林自由市旧城区的「白鸽公寓」B座住户连续向警署报案：多名居民表示在下楼时「走了很久都到不了一楼」，一名住户甚至在三楼台阶上原地消失，数小时后从四楼平台重新出现，全程无意识。", "BRI 调查组介入后确认，公寓2层至3层之间的楼梯间存在空间折叠异常。此后异常范围缓慢向整栋公寓的楼梯系统蔓延，现已覆盖全部三个楼梯井。公寓于安珀历14年整体封闭，原住民全部迁出。"],
@@ -1005,9 +1007,17 @@ function AnomalyDetailPage() {
       fontSize: "18px"
     }
   }, "LOA-0073")), /*#__PURE__*/React.createElement("th", null, "\u540D\u79F0"), /*#__PURE__*/React.createElement("td", null, "\u8D64\u6708\u5B66\u9662 \xB7 Crimson Moon Academy")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "\u6240\u5C5E\u7BA1\u8F96"), /*#__PURE__*/React.createElement("td", null, "\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240 \xB7 Ouroboros Agency"), /*#__PURE__*/React.createElement("th", null, "\u9996\u6B21\u8BB0\u5F55"), /*#__PURE__*/React.createElement("td", null, "\u5B89\u73C0\u538628\u5E74 \xB7 \u79CB")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "\u5F02\u5E38\u7B49\u7EA7"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
-    className: "level-badge-inline"
+    className: "level-badge-inline",
+    style: {
+      color: "#c42828",
+      borderColor: "#c42828",
+      backgroundColor: "rgba(196,40,40,0.15)"
+    }
   }, "\u6DF1\u6E0A\u7EA7 \xB7 ABYSSAL")), /*#__PURE__*/React.createElement("th", null, "\u5F53\u524D\u72B6\u6001"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
-    className: "status-active-text"
+    className: "status-active-text",
+    style: {
+      color: "#c42828"
+    }
   }, "\u25CF \u6D3B\u8DC3 ACTIVE"))), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "\u751F\u8FD8\u7387"), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("span", {
     className: "survival-rate-red"
   }, "\u7EA6 1.7%"), " \uFF08116\u4EBA\u8FDB\u5165\uFF0C2\u4EBA\u751F\u8FD8\u540E\u6B7B\u4EA1\uFF09"), /*#__PURE__*/React.createElement("th", null, "\u6863\u6848\u66F4\u65B0"), /*#__PURE__*/React.createElement("td", null, "\u5B89\u73C0\u538639\u5E74 \xB7 \u79CB")), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "\u5F53\u524D\u6279\u6B21"), /*#__PURE__*/React.createElement("td", {

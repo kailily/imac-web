@@ -186,7 +186,7 @@ function AnomalyDetailPage() {
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-0021</span>, "名称", "无尽楼梯 · Endless Stairwell"],
         ["所属管辖", "边界研究院 BRI · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"],
-        ["异常等级", <span className="level-badge-inline">危险级 · HAZARDOUS</span>, "当前状态", <span className="status-active-text">● 活跃 ACTIVE</span>],
+        ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
         ["生还率", <span className="survival-rate-red">约 23%</span>, "信息价值", "高（空间折叠机理研究价值高）"],
         ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"],
       ],
@@ -775,9 +775,9 @@ function AnomalyDetailPage() {
                 </tr>
                 <tr>
                   <th>异常等级</th>
-                  <td><span className="level-badge-inline">深渊级 · ABYSSAL</span></td>
+                  <td><span className="level-badge-inline" style={{ color: "#c42828", borderColor: "#c42828", backgroundColor: "rgba(196,40,40,0.15)" }}>深渊级 · ABYSSAL</span></td>
                   <th>当前状态</th>
-                  <td><span className="status-active-text">● 活跃 ACTIVE</span></td>
+                  <td><span className="status-active-text" style={{ color: "#c42828" }}>● 活跃 ACTIVE</span></td>
                 </tr>
                 <tr>
                   <th>生还率</th>
