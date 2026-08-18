@@ -23,14 +23,14 @@ function AnomalyFile() {
     term: "第一届",
     year: "安珀历28年·冬",
     count: 12,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "全员失踪",
     status: "death"
   }, {
     term: "第二届",
     year: "安珀历29年·春",
     count: 8,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "2人生还，6人失踪",
     status: "mixed"
   }, {
@@ -51,7 +51,7 @@ function AnomalyFile() {
     term: "第五届",
     year: "安珀历31年·冬",
     count: 6,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "1人生还，5人失踪",
     status: "mixed"
   }, {
@@ -65,14 +65,14 @@ function AnomalyFile() {
     term: "第七届",
     year: "安珀历34年·秋",
     count: 9,
-    org: "悬铃木学会",
+    org: "悬铃木",
     result: "全员同化",
     status: "assim"
   }, {
     term: "第八届",
     year: "安珀历36年·夏",
     count: 12,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "10人失踪，2人死亡",
     status: "death"
   }, {
@@ -86,14 +86,14 @@ function AnomalyFile() {
     term: "第十届",
     year: "安珀历38年·秋",
     count: 9,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "1人生还，8人失踪",
     status: "mixed"
   }, {
     term: "第十一届",
     year: "安珀历39年·秋",
     count: 8,
-    org: "衔尾蛇事务所主导",
+    org: "衔尾蛇主导",
     result: "进行中",
     status: "active",
     current: true

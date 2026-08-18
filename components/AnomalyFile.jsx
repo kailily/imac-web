@@ -38,17 +38,17 @@ function AnomalyFile() {
   ];
 
   const entryRecords = [
-    { term: "第一届", year: "安珀历28年·冬", count: 12, org: "衔尾蛇事务所", result: "全员失踪", status: "death" },
-    { term: "第二届", year: "安珀历29年·春", count: 8, org: "衔尾蛇事务所", result: "2人生还，6人失踪", status: "mixed" },
+    { term: "第一届", year: "安珀历28年·冬", count: 12, org: "衔尾蛇", result: "全员失踪", status: "death" },
+    { term: "第二届", year: "安珀历29年·春", count: 8, org: "衔尾蛇", result: "2人生还，6人失踪", status: "mixed" },
     { term: "第三届", year: "安珀历29年·秋", count: 15, org: "BRI联合考察", result: "13人死亡，2人同化", status: "death" },
     { term: "第四届", year: "安珀历30年·夏", count: 10, org: "晨星团", result: "全员失踪", status: "death" },
-    { term: "第五届", year: "安珀历31年·冬", count: 6, org: "衔尾蛇事务所", result: "1人生还，5人失踪", status: "mixed" },
+    { term: "第五届", year: "安珀历31年·冬", count: 6, org: "衔尾蛇", result: "1人生还，5人失踪", status: "mixed" },
     { term: "第六届", year: "安珀历33年·春", count: 20, org: "BRI/衔尾蛇联合", result: "18人死亡，2人生还后死亡", status: "death" },
-    { term: "第七届", year: "安珀历34年·秋", count: 9, org: "悬铃木学会", result: "全员同化", status: "assim" },
-    { term: "第八届", year: "安珀历36年·夏", count: 12, org: "衔尾蛇事务所", result: "10人失踪，2人死亡", status: "death" },
+    { term: "第七届", year: "安珀历34年·秋", count: 9, org: "悬铃木", result: "全员同化", status: "assim" },
+    { term: "第八届", year: "安珀历36年·夏", count: 12, org: "衔尾蛇", result: "10人失踪，2人死亡", status: "death" },
     { term: "第九届", year: "安珀历37年·冬", count: 7, org: "长桥会社", result: "全员失踪", status: "death" },
-    { term: "第十届", year: "安珀历38年·秋", count: 9, org: "衔尾蛇事务所", result: "1人生还，8人失踪", status: "mixed" },
-    { term: "第十一届", year: "安珀历39年·秋", count: 8, org: "衔尾蛇事务所主导", result: "进行中", status: "active", current: true },
+    { term: "第十届", year: "安珀历38年·秋", count: 9, org: "衔尾蛇", result: "1人生还，8人失踪", status: "mixed" },
+    { term: "第十一届", year: "安珀历39年·秋", count: 8, org: "衔尾蛇主导", result: "进行中", status: "active", current: true },
   ];
 
   return (

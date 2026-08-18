@@ -121,14 +121,14 @@ function AnomalyDetailPage() {
     term: "第一届",
     year: "安珀历28年·冬",
     count: 12,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "全员失踪",
     status: "death"
   }, {
     term: "第二届",
     year: "安珀历29年·春",
     count: 8,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "2人生还，6人失踪",
     status: "mixed"
   }, {
@@ -149,7 +149,7 @@ function AnomalyDetailPage() {
     term: "第五届",
     year: "安珀历31年·冬",
     count: 6,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "1人生还，5人失踪",
     status: "mixed"
   }, {
@@ -163,14 +163,14 @@ function AnomalyDetailPage() {
     term: "第七届",
     year: "安珀历34年·秋",
     count: 9,
-    org: "悬铃木学会",
+    org: "悬铃木",
     result: "全员同化",
     status: "assim"
   }, {
     term: "第八届",
     year: "安珀历36年·夏",
     count: 12,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "10人失踪，2人死亡",
     status: "death"
   }, {
@@ -184,7 +184,7 @@ function AnomalyDetailPage() {
     term: "第十届",
     year: "安珀历38年·秋",
     count: 9,
-    org: "衔尾蛇事务所",
+    org: "衔尾蛇",
     result: "1人生还，8人失踪",
     status: "mixed"
   }, {
@@ -198,14 +198,14 @@ function AnomalyDetailPage() {
     members: [{
       name: "沈彻",
       rank: "资深溯界者·执灯",
-      org: "衔尾蛇事务所",
+      org: "衔尾蛇",
       role: "队长 · 行动指挥",
       isLeader: true,
       orgType: "anomalist"
     }, {
       name: "季明轩",
       rank: "溯界者·破界",
-      org: "衔尾蛇事务所",
+      org: "衔尾蛇",
       role: "队员",
       isLeader: false,
       orgType: "anomalist"
@@ -435,7 +435,7 @@ function AnomalyDetailPage() {
         term: "二次",
         year: "安珀历2年·春",
         count: 6,
-        org: "衔尾蛇事务所",
+        org: "衔尾蛇",
         result: "2人生还，4人死亡",
         status: "death"
       }, {
@@ -449,14 +449,14 @@ function AnomalyDetailPage() {
         term: "四次",
         year: "安珀历21年·冬",
         count: 5,
-        org: "衔尾蛇事务所",
+        org: "衔尾蛇",
         result: "1人生还，4人死亡",
         status: "death"
       }, {
         term: "五次",
         year: "安珀历35年·夏",
         count: 4,
-        org: "衔尾蛇事务所·最小接触",
+        org: "衔尾蛇·最小接触",
         result: "1人生还，3人死亡",
         status: "death"
       }],
@@ -1520,7 +1520,7 @@ function AnomalyDetailPage() {
         term: "第三次",
         year: "安珀历15年·春",
         count: 4,
-        org: "边界研究院",
+        org: "BRI",
         result: "2人生还，2人死亡",
         status: "death"
       }, {

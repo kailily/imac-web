@@ -69,19 +69,19 @@ function AnomalyDetailPage() {
   ];
 
   const entryRecords = [
-    { term: "第一届", year: "安珀历28年·冬", count: 12, org: "衔尾蛇事务所", result: "全员失踪", status: "death" },
-    { term: "第二届", year: "安珀历29年·春", count: 8, org: "衔尾蛇事务所", result: "2人生还，6人失踪", status: "mixed" },
+    { term: "第一届", year: "安珀历28年·冬", count: 12, org: "衔尾蛇", result: "全员失踪", status: "death" },
+    { term: "第二届", year: "安珀历29年·春", count: 8, org: "衔尾蛇", result: "2人生还，6人失踪", status: "mixed" },
     { term: "第三届", year: "安珀历29年·秋", count: 15, org: "BRI联合考察", result: "13人死亡，2人同化", status: "death" },
     { term: "第四届", year: "安珀历30年·夏", count: 10, org: "晨星团", result: "全员失踪", status: "death" },
-    { term: "第五届", year: "安珀历31年·冬", count: 6, org: "衔尾蛇事务所", result: "1人生还，5人失踪", status: "mixed" },
+    { term: "第五届", year: "安珀历31年·冬", count: 6, org: "衔尾蛇", result: "1人生还，5人失踪", status: "mixed" },
     { term: "第六届", year: "安珀历33年·春", count: 20, org: "BRI/衔尾蛇联合", result: "18人死亡，2人生还后死亡", status: "death" },
-    { term: "第七届", year: "安珀历34年·秋", count: 9, org: "悬铃木学会", result: "全员同化", status: "assim" },
-    { term: "第八届", year: "安珀历36年·夏", count: 12, org: "衔尾蛇事务所", result: "10人失踪，2人死亡", status: "death" },
+    { term: "第七届", year: "安珀历34年·秋", count: 9, org: "悬铃木", result: "全员同化", status: "assim" },
+    { term: "第八届", year: "安珀历36年·夏", count: 12, org: "衔尾蛇", result: "10人失踪，2人死亡", status: "death" },
     { term: "第九届", year: "安珀历37年·冬", count: 7, org: "长桥会社", result: "全员失踪", status: "death" },
-    { term: "第十届", year: "安珀历38年·秋", count: 9, org: "衔尾蛇事务所", result: "1人生还，8人失踪", status: "mixed" },
+    { term: "第十届", year: "安珀历38年·秋", count: 9, org: "衔尾蛇", result: "1人生还，8人失踪", status: "mixed" },
     { term: "第十一届", year: "安珀历39年·秋", count: 6, org: "BRI/衔尾蛇联合", result: "进行中 · 全员失联", status: "active", current: true, members: [
-      { name: "沈彻", rank: "资深溯界者·执灯", org: "衔尾蛇事务所", role: "队长 · 行动指挥", isLeader: true, orgType: "anomalist" },
-      { name: "季明轩", rank: "溯界者·破界", org: "衔尾蛇事务所", role: "队员", isLeader: false, orgType: "anomalist" },
+      { name: "沈彻", rank: "资深溯界者·执灯", org: "衔尾蛇", role: "队长 · 行动指挥", isLeader: true, orgType: "anomalist" },
+      { name: "季明轩", rank: "溯界者·破界", org: "衔尾蛇", role: "队员", isLeader: false, orgType: "anomalist" },
       { name: "顾泽鸣", rank: "资深溯界者·执灯", org: "BRI", role: "队长 · 学术负责", isLeader: true, orgType: "anomalist" },
       { name: "林薇", rank: "溯界者·破界", org: "BRI", role: "队员 · 外勤侦察", isLeader: false, orgType: "anomalist" },
       { name: "姜言", rank: "平民", org: "被卷入民众", role: "广告公司职员", isLeader: false, orgType: "civilian" },
@@ -217,10 +217,10 @@ function AnomalyDetailPage() {
       ],
       entryRecords: [
         { term: "首批", year: "安珀历元年·9月", count: 9, org: "格伦贝尔联邦勘测队", result: "1人生还，8人死亡", status: "death" },
-        { term: "二次", year: "安珀历2年·春", count: 6, org: "衔尾蛇事务所", result: "2人生还，4人死亡", status: "death" },
+        { term: "二次", year: "安珀历2年·春", count: 6, org: "衔尾蛇", result: "2人生还，4人死亡", status: "death" },
         { term: "三次", year: "安珀历9年·秋", count: 8, org: "BRI/衔尾蛇联合考察", result: "3人生还，5人死亡", status: "death" },
-        { term: "四次", year: "安珀历21年·冬", count: 5, org: "衔尾蛇事务所", result: "1人生还，4人死亡", status: "death" },
-        { term: "五次", year: "安珀历35年·夏", count: 4, org: "衔尾蛇事务所·最小接触", result: "1人生还，3人死亡", status: "death" },
+        { term: "四次", year: "安珀历21年·冬", count: 5, org: "衔尾蛇", result: "1人生还，4人死亡", status: "death" },
+        { term: "五次", year: "安珀历35年·夏", count: 4, org: "衔尾蛇·最小接触", result: "1人生还，3人死亡", status: "death" },
       ],
       phenomena: [
         "<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。",
@@ -802,7 +802,7 @@ function AnomalyDetailPage() {
       entryRecords: [
         { term: "初期勘查", year: "安珀历9年·秋", count: 6, org: "BRI/晨星团联合", result: "2人生还，4人死亡", status: "death" },
         { term: "第二次", year: "安珀历12年·夏", count: 5, org: "晨星团", result: "3人生还，2人死亡", status: "death" },
-        { term: "第三次", year: "安珀历15年·春", count: 4, org: "边界研究院", result: "2人生还，2人死亡", status: "death" },
+        { term: "第三次", year: "安珀历15年·春", count: 4, org: "BRI", result: "2人生还，2人死亡", status: "death" },
         { term: "第四次", year: "安珀历22年·冬", count: 6, org: "BRI/晨星团联合", result: "1人生还，5人死亡", status: "death" },
       ],
       phenomena: [
