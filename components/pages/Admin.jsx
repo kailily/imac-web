@@ -1637,7 +1637,7 @@ function AdminPage() {
                 <span>/</span>
                 <span>
                   {activeModule === "users" && "用户管理"}
-                  {activeModule === "operations" && "联合行动调度"}
+                  {activeModule === "operations" && "行动调度"}
                   {activeModule === "logs" && "系统日志"}
                 </span>
               </>
@@ -1652,7 +1652,7 @@ function AdminPage() {
 
           <h1 className="page-title">
             {activeModule === "users" && "用户管理"}
-            {activeModule === "operations" && "联合行动调度"}
+            {activeModule === "operations" && "行动调度"}
             {activeModule === "logs" && "系统日志"}
             {!activeModule && "系统管理"}
           </h1>
@@ -2235,7 +2235,7 @@ function AdminPage() {
                 <div className="admin-card clickable" onClick={() => goToModule("operations")}>
                   <div className="admin-card-head">
                     <div>
-                      <span className="admin-card-title">联合行动调度</span>
+                      <span className="admin-card-title">行动调度</span>
                       <span className="admin-card-title-en">JRP OPERATIONS</span>
                     </div>
                     <span className="admin-card-action">调度 →</span>

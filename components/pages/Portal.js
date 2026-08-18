@@ -1469,7 +1469,7 @@ function PortalPage() {
     className: "portal-card-title"
   }, /*#__PURE__*/React.createElement("span", {
     className: "code"
-  }, "OPS"), "\u6D3B\u8DC3\u8054\u5408\u884C\u52A8"), /*#__PURE__*/React.createElement("span", {
+  }, "OPS"), "\u76EE\u524D\u6D3B\u8DC3\u884C\u52A8"), /*#__PURE__*/React.createElement("span", {
     className: "portal-card-en"
   }, "ACTIVE OPERATIONS")), /*#__PURE__*/React.createElement("div", {
     className: "portal-card-body"

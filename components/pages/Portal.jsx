@@ -1329,7 +1329,7 @@ function PortalPage() {
                 <div className="portal-card-header">
                   <div className="portal-card-title">
                     <span className="code">OPS</span>
-                    活跃联合行动
+                    目前活跃行动
                   </div>
                   <span className="portal-card-en">ACTIVE OPERATIONS</span>
                 </div>

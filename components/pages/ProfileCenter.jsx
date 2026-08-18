@@ -76,27 +76,29 @@ function ProfileCenterPage() {
 
   // === 行动申请 ===
   const [opAppList, setOpAppList] = React.useState([
-    { opCode: "LOA-1045", opName: "失物公寓异常处置", submitDate: "安珀历39年夏·15", status: "已批准", role: "行动队长" },
-    { opCode: "SPB-0890", opName: "镜像走廊勘探任务", submitDate: "安珀历39年夏·02", status: "已批准", role: "副队长" },
-    { opCode: "CGA-0502", opName: "无声剧场调查", submitDate: "安珀历39年春·18", status: "已驳回", role: "—", reason: "同期已有其他任务安排" },
+    { opCode: "LOA-1045", opName: "失物公寓异常处置", type: "联合行动参与申请", submitDate: "安珀历39年夏·15", status: "已批准", role: "行动队长" },
+    { opCode: "SPB-0890", opName: "镜像走廊勘探任务", type: "联合行动参与申请", submitDate: "安珀历39年夏·02", status: "已批准", role: "副队长" },
+    { opCode: "CGA-0502", opName: "无声剧场调查", type: "联合行动参与申请", submitDate: "安珀历39年春·18", status: "已驳回", role: "—", reason: "同期已有其他任务安排" },
   ]);
-  const [opForm, setOpForm] = React.useState({ opCode: "PHA-0182", reason: "", availability: "夏·31 起可待命" });
+  const [opForm, setOpForm] = React.useState({ opType: "联合行动参与申请", opCode: "PHA-0182", reason: "", availability: "夏·31 起可待命" });
   const [opSubmitted, setOpSubmitted] = React.useState(false);
   const [showOpForm, setShowOpForm] = React.useState(false);
 
   const submitOp = () => {
     if (!opForm.reason.trim()) return;
     const opNames = {
+      "LOA-0073": "赤月学院异常介入行动",
       "PHA-0182": "洛林自由市边境裂隙",
       "TMB-0089": "白松城冻土层时间停滞",
-      "SPA-1120": "回声走廊空间测量",
+      "SPA-1120": "回声走廊空间偏移",
     };
     setOpAppList([{
       opCode: opForm.opCode,
       opName: opNames[opForm.opCode] || "待补充",
+      type: opForm.opType,
       submitDate: "安珀历39年夏·30",
       status: "审核中",
-      role: "待分配",
+      role: opForm.opType === "救援队申请" ? "救援队员" : opForm.opType === "后勤保障申请" ? "后勤队员" : "待分配",
     }, ...opAppList]);
     setOpSubmitted(true);
     setShowOpForm(false);
@@ -975,10 +977,16 @@ function ProfileCenterPage() {
                         <div className="form-row">
                           <div className="form-field">
                             <label className="form-label">申请类型</label>
-                            <select className="form-select">
+                            <select
+                              className="form-select"
+                              value={opForm.opType}
+                              onChange={(e) => setOpForm({ ...opForm, opType: e.target.value })}
+                            >
                               <option>联合行动参与申请</option>
                               <option>独立行动许可申请</option>
                               <option>装备/资源支援申请</option>
+                              <option>救援队申请</option>
+                              <option>后勤保障申请</option>
                             </select>
                           </div>
                           <div className="form-field">
@@ -988,9 +996,10 @@ function ProfileCenterPage() {
                               value={opForm.opCode}
                               onChange={(e) => setOpForm({ ...opForm, opCode: e.target.value })}
                             >
+                              <option value="LOA-0073">LOA-0073 赤月学院异常介入行动</option>
                               <option value="PHA-0182">PHA-0182 洛林自由市边境裂隙</option>
                               <option value="TMB-0089">TMB-0089 白松城冻土层时间停滞</option>
-                              <option value="SPA-1120">SPA-1120 回声走廊</option>
+                              <option value="SPA-1120">SPA-1120 回声走廊空间偏移</option>
                             </select>
                           </div>
                         </div>
@@ -1010,6 +1019,8 @@ function ProfileCenterPage() {
                               <option>副队长</option>
                               <option>队员</option>
                               <option>技术支援</option>
+                              <option>救援队员</option>
+                              <option>后勤队员</option>
                             </select>
                           </div>
                         </div>
@@ -1034,6 +1045,7 @@ function ProfileCenterPage() {
                       <div className="op-table-head">
                         <span>行动编号</span>
                         <span>行动名称</span>
+                        <span>申请类型</span>
                         <span>申请时间</span>
                         <span>状态</span>
                         <span>分配角色</span>
@@ -1047,6 +1059,7 @@ function ProfileCenterPage() {
                         >
                           <span className="op-code">{o.opCode}</span>
                           <span style={{ color: "var(--text-primary)" }}>{o.opName}</span>
+                          <span style={{ color: "var(--text-tertiary)" }}>{o.type || "联合行动参与申请"}</span>
                           <span style={{ color: "var(--text-secondary)" }}>{o.submitDate}</span>
                           <span className="cert-status">
                             {o.status === "已批准" && <span className="result-success">{o.status}</span>}

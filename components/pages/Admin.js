@@ -2341,12 +2341,12 @@ function AdminPage() {
   }, activeModule ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
     className: "crumb-link",
     onClick: backToDashboard
-  }, "\u7CFB\u7EDF\u7BA1\u7406"), /*#__PURE__*/React.createElement("span", null, "/"), /*#__PURE__*/React.createElement("span", null, activeModule === "users" && "用户管理", activeModule === "operations" && "联合行动调度", activeModule === "logs" && "系统日志")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
+  }, "\u7CFB\u7EDF\u7BA1\u7406"), /*#__PURE__*/React.createElement("span", null, "/"), /*#__PURE__*/React.createElement("span", null, activeModule === "users" && "用户管理", activeModule === "operations" && "行动调度", activeModule === "logs" && "系统日志")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
     className: "crumb-link",
     onClick: () => navigate("/portal")
   }, "\u5185\u90E8\u6307\u6325\u4E2D\u5FC3"), /*#__PURE__*/React.createElement("span", null, "/"), /*#__PURE__*/React.createElement("span", null, "\u7CFB\u7EDF\u7BA1\u7406"))), /*#__PURE__*/React.createElement("h1", {
     className: "page-title"
-  }, activeModule === "users" && "用户管理", activeModule === "operations" && "联合行动调度", activeModule === "logs" && "系统日志", !activeModule && "系统管理"), /*#__PURE__*/React.createElement("div", {
+  }, activeModule === "users" && "用户管理", activeModule === "operations" && "行动调度", activeModule === "logs" && "系统日志", !activeModule && "系统管理"), /*#__PURE__*/React.createElement("div", {
     className: "page-title-en"
   }, activeModule === "users" && "USER MANAGEMENT", activeModule === "operations" && "JOINT RESPONSE OPERATIONS", activeModule === "logs" && "SYSTEM LOG CONSOLE", !activeModule && "SYSTEM ADMINISTRATION"), activeModule === "users" && /*#__PURE__*/React.createElement("div", {
     className: "module-panel"
@@ -3115,7 +3115,7 @@ function AdminPage() {
     className: "admin-card-head"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
     className: "admin-card-title"
-  }, "\u8054\u5408\u884C\u52A8\u8C03\u5EA6"), /*#__PURE__*/React.createElement("span", {
+  }, "\u884C\u52A8\u8C03\u5EA6"), /*#__PURE__*/React.createElement("span", {
     className: "admin-card-title-en"
   }, "JRP OPERATIONS")), /*#__PURE__*/React.createElement("span", {
     className: "admin-card-action"

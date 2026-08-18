@@ -251,13 +251,13 @@ function AnomalyArchivePage({ routeQuery }) {
       id: "SPA-1120",
       name: "回声走廊",
       nameEn: "Echo Corridor",
-      level: "ordinary",
-      levelText: "常规级",
+      level: "hazardous",
+      levelText: "危险级",
       category: "SP",
       categoryName: "空间类",
-      org: "边界研究院",
-      status: "resolved",
-      statusText: "已解决",
+      org: "衔尾蛇事务所",
+      status: "active",
+      statusText: "待命",
       survival: "76%",
       firstRecord: "安珀历31年",
       featured: false,
@@ -275,6 +275,21 @@ function AnomalyArchivePage({ routeQuery }) {
       statusText: "已解决",
       survival: "19%",
       firstRecord: "安珀历30年",
+      featured: false,
+    },
+    {
+      id: "TMB-0089",
+      name: "白松城冻土层",
+      nameEn: "Baishong Permafrost",
+      level: "hazardous",
+      levelText: "危险级",
+      category: "TM",
+      categoryName: "时间类",
+      org: "北境守望",
+      status: "active",
+      statusText: "活跃",
+      survival: "—",
+      firstRecord: "安珀历39年",
       featured: false,
     },
     {
@@ -807,7 +822,7 @@ function AnomalyArchivePage({ routeQuery }) {
                     </div>
                     <div className="archive-row-org">{a.org}</div>
                     <div className={`archive-row-status status-${a.status}`}>
-                      {a.status === "active" && "● 活跃"}
+                      {a.status === "active" && (a.statusText === "待命" ? "● 待命" : "● 活跃")}
                       {a.status === "resolved" && "● 已解决"}
                       {a.status === "quarantined" && "● 隔离中"}
                     </div>
