@@ -21,7 +21,7 @@ function RegisterPage() {
   const organizations = [
     "衔尾蛇事务所",
     "北境守望",
-    "边界研究院 BRI",
+    "边界研究院",
     "晨星团",
     "第四面墙",
     "悬铃木学会",

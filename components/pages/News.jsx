@@ -50,7 +50,7 @@ function NewsPage() {
       id: "bri-annual-report",
       title: "边界研究院公布年度异常统计报告",
       date: "安珀历39年 · 冬 · 第 156 号报告",
-      source: "边界研究院BRI",
+      source: "边界研究院",
       sourceEn: "BRI STATISTICS",
       desc: "边界研究院（BRI）发布年度异常现象统计分析报告。数据显示，全球异常出现频率与去年基本持平，新发现异常327起，其中常规级占比74%，危险级21%，厄运级4%，深渊级1%。",
       level: "public",

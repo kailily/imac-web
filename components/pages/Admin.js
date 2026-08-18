@@ -23,7 +23,7 @@ function AdminPage() {
     name: "顾晚舟",
     code: "晚",
     rank: "溯界者",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     applyTime: "安珀历39年夏·15 14:23",
     status: "pending"
   }, {
@@ -131,7 +131,7 @@ function AdminPage() {
     ip: "10.0.0.12"
   }, {
     name: "顾远舟",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     loginTime: "08:15",
     ip: "10.1.3.44"
   }, {
@@ -151,7 +151,7 @@ function AdminPage() {
     ip: "10.4.2.91"
   }, {
     name: "陈之岸",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     loginTime: "08:34",
     ip: "10.1.3.107"
   }, {
@@ -461,14 +461,14 @@ function AdminPage() {
     code: "远",
     id: "IMAC-BRI-0001",
     rank: "首席研究员",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     status: "在岗",
     access: "绝密级",
     department: "BRI院长 · 空间异常研究所",
     ops: 156,
     hours: 1987,
     lastOp: "PHB-0815 重力偏移区",
-    note: "边界研究院BRI现任院长，空间异常领域权威。"
+    note: "边界研究院现任院长，空间异常领域权威。"
   }, {
     name: "陆明远",
     code: "明",
@@ -554,7 +554,7 @@ function AdminPage() {
     code: "泽",
     id: "IMAC-BRI-0247",
     rank: "资深溯界者",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     status: "失联",
     access: "机密级",
     department: "空间异常研究所 · BRI队长",
@@ -567,7 +567,7 @@ function AdminPage() {
     code: "薇",
     id: "IMAC-BRI-0356",
     rank: "溯界者",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     status: "失联",
     access: "秘密级",
     department: "空间异常研究所 · 队员",
@@ -595,7 +595,7 @@ function AdminPage() {
     code: "晚",
     id: "IMAC-BRI-0312",
     rank: "研究员",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     status: "外勤",
     access: "机密级",
     department: "认知异常研究组",
@@ -660,7 +660,7 @@ function AdminPage() {
     code: "岸",
     id: "IMAC-BRI-0412",
     rank: "初级研究员",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     status: "在岗",
     access: "秘密级",
     department: "异常数据中心",
@@ -761,7 +761,7 @@ function AdminPage() {
     lastContact: "夏·29 14:32",
     commander: "沈彻",
     sector: "东侧主入口 · 深入未知",
-    orgs: ["衔尾蛇事务所", "边界研究院BRI"],
+    orgs: ["衔尾蛇事务所", "边界研究院"],
     notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（BRI）等6人。"
   }, {
     code: "PHA-0182",
@@ -777,7 +777,7 @@ function AdminPage() {
     lastContact: "实时通讯中",
     commander: "陆明远",
     sector: "边境裂隙带 · 外围安全",
-    orgs: ["边界研究院BRI", "晨星团"],
+    orgs: ["边界研究院", "晨星团"],
     notes: "裂隙范围稳定，内部规则初步建立。平民撤离已完成。边界测绘进入第3阶段。"
   }, {
     code: "TMB-0089",
@@ -816,7 +816,7 @@ function AdminPage() {
     name: "记忆回廊认知污染",
     level: "厄运级",
     levelClass: "doomed",
-    org: "边界研究院BRI",
+    org: "边界研究院",
     response: "三级响应",
     status: "已结束",
     personnel: 6,
@@ -825,7 +825,7 @@ function AdminPage() {
     lastContact: "已结束",
     commander: "顾远舟",
     sector: "老城区精神病院旧址",
-    orgs: ["边界研究院BRI", "悬铃木学会"],
+    orgs: ["边界研究院", "悬铃木学会"],
     notes: "异常核心已定位并封存，12名受影响平民记忆重建完成。行动总结报告待审批。"
   }];
   const logs = [{
@@ -1021,7 +1021,7 @@ function AdminPage() {
     const matchStatus = userStatusFilter === "all" || u.status === userStatusFilter;
     return matchSearch && matchOrg && matchRank && matchStatus;
   });
-  const orgs = ["全部", "IMAC总部", "衔尾蛇事务所", "边界研究院BRI", "北境守望", "晨星团", "悬铃木学会", "白夜哨站", "长桥会社", "第四面墙", "医疗保障部"];
+  const orgs = ["全部", "IMAC总部", "衔尾蛇事务所", "边界研究院", "北境守望", "晨星团", "悬铃木学会", "白夜哨站", "长桥会社", "第四面墙", "医疗保障部"];
   const ranks = ["全部", "界标级", "首席溯界者", "首席研究员", "首席科学家", "行动总协调官", "高级管理员", "资深溯界者", "研究员", "溯界者", "主治医师", "初级研究员", "见习溯界者"];
   const statuses = ["全部", "在岗", "外勤", "休假", "失联", "荣誉"];
   const filteredLogs = logs.filter(l => logFilter === "all" || l.level.toLowerCase() === logFilter);

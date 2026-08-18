@@ -215,7 +215,7 @@ function WorldMap({ orgs }) {
             <text y="-14" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" fill="#e8e8ec">NW</text>
           </g>
 
-          {/* 洛林自由市 - 边界研究院BRI (Central) */}
+          {/* 洛林自由市 - 边界研究院 (Central) */}
           <g
             className={`map-marker ${activeOrg === "bri" ? "active" : ""}`}
             style={{ color: "#7a8a9c" }}

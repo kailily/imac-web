@@ -18,7 +18,7 @@ function RegisterPage() {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const organizations = ["衔尾蛇事务所", "北境守望", "边界研究院 BRI", "晨星团", "第四面墙", "悬铃木学会", "白夜哨站", "长桥会社"];
+  const organizations = ["衔尾蛇事务所", "北境守望", "边界研究院", "晨星团", "第四面墙", "悬铃木学会", "白夜哨站", "长桥会社"];
   const ranks = ["见习", "溯界者"];
 
   // 密码强度计算
