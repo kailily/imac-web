@@ -83,7 +83,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault) {
+  if (!isDefault && !isStairwell) {
     return (
       <>
         <style>{`

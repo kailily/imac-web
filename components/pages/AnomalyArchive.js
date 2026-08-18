@@ -652,7 +652,10 @@ function AnomalyArchivePage({
       label: a.accessLevel === "topsecret" ? "绝密级" : "机密级",
       compact: true
     }, /*#__PURE__*/React.createElement("div", {
-      className: `archive-row ${a.featured ? "featured" : ""}`,
+      className: "archive-row",
+      style: {
+        borderLeft: `3px solid ${a.level === "ordinary" ? "#4a7c59" : a.level === "hazardous" ? "#c49a2c" : a.level === "doomed" ? "#d46828" : a.level === "abyssal" ? "#c42828" : a.level === "unknown" ? "#7a3ab0" : "var(--accent-red-bright)"}`
+      },
       onClick: () => navigate(`/anomaly/${a.id}`)
     }, /*#__PURE__*/React.createElement("div", {
       className: "archive-row-id mono"

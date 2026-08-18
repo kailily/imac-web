@@ -1109,7 +1109,7 @@ function PortalPage() {
                 {categories.map((cat) => (
                   <div
                     key={cat.code}
-                    className={`category-card ${cat.featured ? "featured" : ""}`}
+                    className="category-card featured"
                     style={{ "--cat-color": cat.color }}
                     onClick={() => navigate(`/database?cat=${cat.code}`)}
                   >

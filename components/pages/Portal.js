@@ -1176,7 +1176,7 @@ function PortalPage() {
     className: "categories-grid"
   }, categories.map(cat => /*#__PURE__*/React.createElement("div", {
     key: cat.code,
-    className: `category-card ${cat.featured ? "featured" : ""}`,
+    className: "category-card featured",
     style: {
       "--cat-color": cat.color
     },
