@@ -73,6 +73,7 @@ const BUNDLE_ORDER = [
   "components/OrganizationsMap",
   "components/organizationsData",
   "components/AcademyMap",
+  "components/AnomalyDossier",
   "components/AnomalyFile",
   "components/AnomalyInfo",
   "components/GuideNews",

@@ -14,6 +14,84 @@ function AnomalyDetailPage() {
 
   // Default to LOA-0073 full data; others show placeholder
   const isDefault = anomalyId === "LOA-0073";
+  const isStairwell = anomalyId === "SPA-0021";
+
+  // === SPA-0021 无尽楼梯 档案数据 ===
+  const stairVerifiedRules = [{
+    num: "一",
+    title: "方向守恒",
+    desc: "进入异常后，无论向上还是向下，行走方向感始终指向「下楼」，但楼层会循环：从2层平台下楼会回到4层，从4层下楼回到3层，依次循环。1层与5层从未被观测到。"
+  }, {
+    num: "二",
+    title: "停留惩罚",
+    desc: "在任意楼梯平台上停留超过约3分钟，楼梯会「变化」——扶手变旧、墙面出现细密裂缝、台阶边缘磨损加剧；再次观察时，所在位置相对原位置偏移约半层。连续触发两次停留惩罚后，楼梯将无法再次识别。"
+  }, {
+    num: "三",
+    title: "同伴不可回应",
+    desc: "同行者始终可见，彼此能正常行走，但互相呼喊没有任何声音传回——声波被折叠空间吸收。通过身体接触（握手/搭肩）可以维持位置确认。"
+  }, {
+    num: "四",
+    title: "光照恒定",
+    desc: "异常楼梯间无自然光，照明恒定且无光源可见。不存在「黑暗阶段」，手电等光源无效但也不受影响。"
+  }];
+  const stairSpeculatedRules = ["楼梯可能具有「活体」特性：调查显示，与白鸽公寓同款式楼梯的多栋建筑，其楼梯间开始出现细微异常（台阶数增加、扶手老旧速度加快）", "到达1层的条件可能不是「走完楼梯」，而是满足某种空间条件（如同时有两组人从上下两个方向经过折叠点）", "异常核心疑似位于2层平台与3层平台之间的「折叠点」，该处温度比楼梯间其他位置低约4℃", "部分失踪者可能在楼梯「折叠层」中存活——有返回者称在循环中看到过疑似人影"];
+  const stairEntryRecords = [{
+    term: "第一批",
+    year: "安珀历12年·秋",
+    count: 5,
+    org: "洛林警署",
+    result: "2人生还，3人失踪",
+    status: "mixed"
+  }, {
+    term: "第二批",
+    year: "安珀历13年·春",
+    count: 8,
+    org: "边界研究院 BRI",
+    result: "3人生还，5人失踪",
+    status: "mixed"
+  }, {
+    term: "第三批",
+    year: "安珀历15年",
+    count: 10,
+    org: "边界研究院 BRI",
+    result: "2人生还，8人失踪",
+    status: "death"
+  }, {
+    term: "第四批",
+    year: "安珀历18年",
+    count: 12,
+    org: "边界研究院 BRI",
+    result: "3人生还，9人失踪",
+    status: "death"
+  }, {
+    term: "第五批",
+    year: "安珀历22年",
+    count: 14,
+    org: "边界研究院 BRI",
+    result: "3人生还，11人失踪",
+    status: "death"
+  }, {
+    term: "第六批",
+    year: "安珀历27年",
+    count: 15,
+    org: "BRI/晨星团联合",
+    result: "3人生还，12人失踪",
+    status: "death"
+  }, {
+    term: "第七批",
+    year: "安珀历31年",
+    count: 12,
+    org: "边界研究院 BRI",
+    result: "2人生还，10人失踪",
+    status: "death"
+  }, {
+    term: "第八批",
+    year: "安珀历36年·冬",
+    count: 11,
+    org: "边界研究院 BRI",
+    result: "2人生还，9人失踪",
+    status: "death"
+  }];
   const verifiedRules = [{
     num: "一",
     title: "身份分配",
@@ -225,6 +303,165 @@ function AnomalyDetailPage() {
     }, "\u672C\u6863\u6848\u5DF2\u7EB3\u5165 IMAC \u5168\u7403\u5F02\u5E38\u4FE1\u606F\u603B\u5E93\uFF0C\u672A\u7ECF IMAC \u8054\u5408\u884C\u52A8\u6307\u6325\u4E2D\u5FC3\u6388\u6743\uFF0C\u4E0D\u5F97\u64C5\u81EA\u590D\u5236\u6216\u4F20\u64AD\u3002", /*#__PURE__*/React.createElement("div", {
       className: "file-archive-signature"
     }, "\u2014\u2014 IMAC \u5F02\u5E38\u4FE1\u606F\u603B\u5E93 \xB7 \u5B89\u73C0\u538639\u5E74\u6625")))));
+  }
+  if (isStairwell) {
+    const stairMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 320 200",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "40",
+      y: "10",
+      width: "240",
+      height: "180",
+      fill: "rgba(20,20,24,0.5)",
+      stroke: "rgba(74,88,104,0.4)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "50",
+      y: "18",
+      width: "64",
+      height: "8",
+      fill: "rgba(74,88,104,0.55)"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "210",
+      y: "68",
+      width: "64",
+      height: "8",
+      fill: "rgba(74,88,104,0.55)"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "50",
+      y: "118",
+      width: "64",
+      height: "8",
+      fill: "rgba(74,88,104,0.55)"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "114",
+      y1: "22",
+      x2: "210",
+      y2: "72",
+      stroke: "rgba(196,40,40,0.5)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "210",
+      y1: "72",
+      x2: "114",
+      y2: "122",
+      stroke: "rgba(196,40,40,0.5)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M60 132 C 30 132, 30 22, 50 22",
+      fill: "none",
+      stroke: "rgba(196,154,44,0.7)",
+      strokeWidth: "1.5",
+      strokeDasharray: "4 3",
+      markerEnd: "url(#stairArrow)"
+    }), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("marker", {
+      id: "stairArrow",
+      markerWidth: "6",
+      markerHeight: "6",
+      refX: "5",
+      refY: "3",
+      orient: "auto"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M0,0 L6,3 L0,6 Z",
+      fill: "rgba(196,154,44,0.9)"
+    }))), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "16",
+      fill: "rgba(168,168,180,0.8)",
+      fontSize: "11",
+      fontFamily: "monospace"
+    }, "4F"), /*#__PURE__*/React.createElement("text", {
+      x: "220",
+      y: "66",
+      fill: "rgba(168,168,180,0.8)",
+      fontSize: "11",
+      fontFamily: "monospace"
+    }, "3F"), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "116",
+      fill: "rgba(168,168,180,0.8)",
+      fontSize: "11",
+      fontFamily: "monospace"
+    }, "2F"), /*#__PURE__*/React.createElement("circle", {
+      cx: "150",
+      cy: "95",
+      r: "4",
+      fill: "#c42828"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "160",
+      y: "99",
+      fill: "rgba(196,40,40,0.9)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u6298\u53E0\u70B9"), /*#__PURE__*/React.createElement("text", {
+      x: "230",
+      y: "180",
+      fill: "rgba(112,112,124,0.6)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "1F / 5F \u4E0D\u53EF\u8FBE")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u697C\u5C42\u5FAA\u73AF\uFF1A2F \u2192 3F \u2192 4F \u2192 2F \xB7 \u6298\u53E0\u70B9\u4F4D\u4E8E 2F\u20133F \u4E4B\u95F4\uFF08\u6E29\u5EA6\u4F4E\u7EA6 4\u2103\uFF09"));
+    const stairData = {
+      id: "SPA-0021",
+      name: "无尽楼梯",
+      nameEn: "ENDLESS STAIRWELL · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.1",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院 BRI · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", /*#__PURE__*/React.createElement("span", {
+        className: "level-badge-inline"
+      }, "\u5371\u9669\u7EA7 \xB7 HAZARDOUS"), "当前状态", /*#__PURE__*/React.createElement("span", {
+        className: "status-active-text"
+      }, "\u25CF \u6D3B\u8DC3 ACTIVE")], ["生还率", /*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red"
+      }, "\u7EA6 23%"), "信息价值", "高（空间折叠机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"]],
+      discovery: ["安珀历12年秋，洛林自由市旧城区的「白鸽公寓」B座住户连续向警署报案：多名居民表示在下楼时「走了很久都到不了一楼」，一名住户甚至在三楼台阶上原地消失，数小时后从四楼平台重新出现，全程无意识。", "BRI 调查组介入后确认，公寓2层至3层之间的楼梯间存在空间折叠异常。此后异常范围缓慢向整栋公寓的楼梯系统蔓延，现已覆盖全部三个楼梯井。公寓于安珀历14年整体封闭，原住民全部迁出。"],
+      features: ["无尽楼梯是一处典型的<strong>空间折叠型异常</strong>（SPA 子类·折叠）。异常主体为白鸽公寓B座楼梯间：进入后楼梯可无限延伸，无论向上还是向下，台阶数恒定，楼层标识在 2/3/4 层之间循环，1层与5层从未被观测到。", "异常内部光照恒定、无自然光、无声源。同行者始终可见，但声音无法在楼梯间传递。扶手、墙面与台阶材质与正常建筑一致，但会随停留时间发生缓慢「老化」。", "异常入口位于2层平台，进入条件未知。部分报告显示，与白鸽公寓同款式的其他建筑楼梯间也可能成为异常入口——相关建筑已被列为观察对象。"],
+      mapNode: stairMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: stairVerifiedRules,
+      speculatedRules: stairSpeculatedRules,
+      entryRecords: stairEntryRecords,
+      phenomena: ["<strong>楼梯「老化」残留：</strong>返回者描述，停留后楼梯扶手会出现明显旧化；且旧化痕迹在返回正常世界后，仍出现在白鸽公寓未被异常覆盖的楼梯段上，疑似异常具有「溢出」特性。", "<strong>「折叠层」人影：</strong>第三批进入的返回者声称，在循环中多次看到台阶下方半层处有疑似人影站立，呼喊无回应，人影始终保持固定姿势。", "<strong>同款式建筑征兆：</strong>监测显示，洛林自由市内另有两栋同款式公寓的楼梯间出现台阶数异常增加、扶手旧化加速等前兆，是否发展为异常尚在观察。"],
+      imacNote: "无尽楼梯是空间折叠型异常的典型案例，其「循环楼层」结构对异常空间学具有重要参考价值。异常长期活跃但拉入频率较低（年均约2-3起），对周边居民影响可控。任何组织进入前须向 IMAC 登记并获得 BRI 许可；涉事公寓及其同款式建筑群已被列为「空间异常扩散观察区」。",
+      suggestedActions: ["在公寓周边布设空间波动监测装置，记录异常「呼吸」周期与折叠点位移规律", "联合晨星团开展几何拓扑测绘，尝试定位 2F–3F 间「折叠点」的空间坐标", "评估异常扩张趋势，必要时启动洛林自由市同款式公寓居民的整体迁移预案"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u8FB9\u754C\u7814\u7A76\u9662\u5185\u90E8\u8BC4\u4F30 \xB7 \u7A7A\u95F4\u5F02\u5E38\u7814\u7A76\u6240\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u65E0\u5C3D\u697C\u68AF\u7684\u7A7A\u95F4\u6298\u53E0\u673A\u7406\u4E0E\u300C\u6D1B\u6797\u88C2\u9699\u300D\uFF08PHA-0182\uFF09\u5B58\u5728\u663E\u8457\u76F8\u4F3C\u6027\u2014\u2014\u4E24\u8005\u90FD\u53EF\u80FD\u5171\u4EAB\u540C\u4E00\u7C7B\u7A7A\u95F4\u7ED3\u6784\u6E90\u3002 \u82E5\u63A8\u6D4B\u89C4\u5219\u4E00\uFF08\u300C\u6D3B\u4F53\u300D\u7279\u6027\uFF09\u6210\u7ACB\uFF0C\u8BE5\u5F02\u5E38\u53EF\u80FD\u662F\u540C\u7C7B\u6298\u53E0\u5F02\u5E38\u7684\u300C\u6BCD\u4F53\u300D\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5EFA\u8BAE\u5C06\u5176\u7EB3\u5165\u300C\u7A7A\u95F4\u5F02\u5E38\u8054\u5408\u7814\u7A76\u8BA1\u5212\u300D\uFF0C\u5E76\u5C1D\u8BD5\u5728\u6298\u53E0\u70B9\u5E03\u8BBE MK-III \u578B\u4FE1\u6807\uFF0C \u4EE5\u9A8C\u8BC1\u300C\u53CC\u5411\u7ECF\u8FC7\u6298\u53E0\u70B9\u300D\u80FD\u5426\u62B5\u8FBE 1 \u5C42\u3002\u6B64\u4E3E\u98CE\u9669\u53EF\u63A7\uFF0C\u5EFA\u8BAE\u7531 BRI \u4E0E\u6668\u661F\u56E2\u8054\u5408\u6267\u884C\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u987E\u8FDC\u821F \xB7 \u8FB9\u754C\u7814\u7A76\u9662\u9662\u957F \xB7 \u7A7A\u95F4\u5F02\u5E38\u7814\u7A76\u6240")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: stairData
+    });
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
         .detail-page {
