@@ -548,7 +548,7 @@ function AnomalyDossier({ data }) {
               <div className="file-section">
                 <div className="file-section-header">
                   <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">基本信息</span>
+                  <span className="file-section-title">基本特征</span>
                 </div>
                 <div className="file-section-text">
                   {data.features.map((p, i) => <p key={i}>{p}</p>)}
@@ -608,7 +608,7 @@ function AnomalyDossier({ data }) {
               <div className="file-section">
                 <div className="file-section-header">
                   <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">进入记录汇总</span>
+                  <span className="file-section-title">进入记录</span>
                 </div>
                 <table className="entry-records">
                   <thead>
@@ -658,7 +658,7 @@ function AnomalyDossier({ data }) {
               <div className="file-section">
                 <div className="file-section-header">
                   <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">特殊现象备注</span>
+                  <span className="file-section-title">特殊现象</span>
                 </div>
                 <ul className="phenomena-list">
                   {data.phenomena.map((p, i) => <li key={i} dangerouslySetInnerHTML={{ __html: p }} />)}

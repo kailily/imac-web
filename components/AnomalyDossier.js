@@ -560,7 +560,7 @@ function AnomalyDossier({
     className: "file-section-num mono"
   }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
     className: "file-section-title"
-  }, "\u57FA\u672C\u4FE1\u606F")), /*#__PURE__*/React.createElement("div", {
+  }, "\u57FA\u672C\u7279\u5F81")), /*#__PURE__*/React.createElement("div", {
     className: "file-section-text"
   }, data.features.map((p, i) => /*#__PURE__*/React.createElement("p", {
     key: i
@@ -621,7 +621,7 @@ function AnomalyDossier({
     className: "file-section-num mono"
   }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
     className: "file-section-title"
-  }, "\u8FDB\u5165\u8BB0\u5F55\u6C47\u603B")), /*#__PURE__*/React.createElement("table", {
+  }, "\u8FDB\u5165\u8BB0\u5F55")), /*#__PURE__*/React.createElement("table", {
     className: "entry-records"
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "\u6279\u6B21"), /*#__PURE__*/React.createElement("th", null, "\u5E74\u4EFD"), /*#__PURE__*/React.createElement("th", null, "\u8FDB\u5165\u4EBA\u6570"), /*#__PURE__*/React.createElement("th", null, "\u4E3B\u5BFC\u7EC4\u7EC7"), /*#__PURE__*/React.createElement("th", null, "\u7ED3\u679C"))), /*#__PURE__*/React.createElement("tbody", null, data.entryRecords.map(rec => /*#__PURE__*/React.createElement(React.Fragment, {
     key: rec.term
@@ -664,7 +664,7 @@ function AnomalyDossier({
     className: "file-section-num mono"
   }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
     className: "file-section-title"
-  }, "\u7279\u6B8A\u73B0\u8C61\u5907\u6CE8")), /*#__PURE__*/React.createElement("ul", {
+  }, "\u7279\u6B8A\u73B0\u8C61")), /*#__PURE__*/React.createElement("ul", {
     className: "phenomena-list"
   }, data.phenomena.map((p, i) => /*#__PURE__*/React.createElement("li", {
     key: i,
