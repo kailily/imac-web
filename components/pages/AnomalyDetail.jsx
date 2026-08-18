@@ -14,6 +14,7 @@ function AnomalyDetailPage() {
   // Default to LOA-0073 full data; others show placeholder
   const isDefault = anomalyId === "LOA-0073";
   const isStairwell = anomalyId === "SPA-0021";
+  const isTrain = anomalyId === "TMA-0045";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -83,7 +84,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isStairwell) {
+  if (!isDefault && !isStairwell && !isTrain) {
     return (
       <>
         <style>{`
@@ -185,9 +186,9 @@ function AnomalyDetailPage() {
       archiveDate: "安珀历39年春",
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-0021</span>, "名称", "无尽楼梯 · Endless Stairwell"],
-        ["所属管辖", "边界研究院（BRI）· Boundary Research Institute", "首次记录", "安珀历12年 · 秋"],
+        ["所属管辖", "边界研究院 · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"],
         ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
-        ["生还率", <span className="survival-rate-red">约 23%</span>, "信息价值", "高（空间折叠机理研究价值高）"],
+        ["生还率", [<span className="survival-rate-red" key="s">约 23%</span>, "（87人进入，67人死亡）"], "信息价值", "高（空间折叠机理研究价值高）"],
         ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"],
       ],
       discovery: [
@@ -232,6 +233,126 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={stairData} />;
+  }
+
+  if (isTrain) {
+    const trainMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 雾区背景 */}
+          <rect x="10" y="20" width="320" height="110" fill="rgba(138,180,212,0.05)" stroke="rgba(138,180,212,0.25)" strokeWidth="1" strokeDasharray="4 3"/>
+          <text x="20" y="38" fill="rgba(138,180,212,0.6)" fontSize="9" fontFamily="monospace">雾区 · FOG ZONE</text>
+          {/* 铁轨 */}
+          <line x1="20" y1="120" x2="320" y2="120" stroke="rgba(74,88,104,0.5)" strokeWidth="1.5"/>
+          <line x1="20" y1="126" x2="320" y2="126" stroke="rgba(74,88,104,0.5)" strokeWidth="1.5"/>
+          {/* 列车主体 */}
+          <rect x="30" y="70" width="280" height="46" rx="4" fill="rgba(20,20,24,0.9)" stroke="rgba(196,40,40,0.6)" strokeWidth="1.5"/>
+          {/* 车头 */}
+          <path d="M30 70 L20 84 L30 116 Z" fill="rgba(196,40,40,0.5)"/>
+          {/* 车厢分隔 */}
+          <line x1="100" y1="70" x2="100" y2="116" stroke="rgba(74,88,104,0.4)" strokeWidth="1"/>
+          <line x1="170" y1="70" x2="170" y2="116" stroke="rgba(74,88,104,0.4)" strokeWidth="1"/>
+          <line x1="240" y1="70" x2="240" y2="116" stroke="rgba(74,88,104,0.4)" strokeWidth="1"/>
+          {/* 车厢编号 */}
+          <text x="50" y="96" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">1-5 节</text>
+          <text x="120" y="96" fill="rgba(74,154,44,0.95)" fontSize="10" fontFamily="monospace" fontWeight="700">第6节</text>
+          <text x="185" y="96" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">7-8 节</text>
+          <text x="252" y="96" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">餐车</text>
+          {/* 循环箭头 */}
+          <path d="M300 60 C 330 20, 330 10, 280 10 C 240 10, 200 20, 60 20" fill="none" stroke="rgba(196,154,44,0.8)" strokeWidth="1.5" strokeDasharray="5 3" markerEnd="url(#trainArrow)"/>
+          <defs>
+            <marker id="trainArrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="rgba(196,154,44,0.9)"/>
+            </marker>
+          </defs>
+          <text x="200" y="14" fill="rgba(196,154,44,0.85)" fontSize="9" fontFamily="monospace">时间循环 47min</text>
+          {/* 虚假站台 */}
+          <rect x="300" y="132" width="30" height="10" fill="rgba(196,40,40,0.25)" stroke="rgba(196,40,40,0.5)" strokeWidth="1"/>
+          <text x="296" y="150" fill="rgba(196,40,40,0.7)" fontSize="8" fontFamily="monospace">虚假站台</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          循环周期约 47 分钟 · 第6节车厢时间流速正常 · 虚假站台下车即消失
+        </div>
+      </div>
+    );
+
+    const trainData = {
+      id: "TMA-0045",
+      name: "雾中列车",
+      nameEn: "FOG TRAIN · DOOMED",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.2",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>TMA-0045</span>, "名称", "雾中列车 · Fog Train"],
+        ["所属管辖", "长桥会社 · Long Bridge Company", "首次记录", "安珀历19年 · 冬"],
+        ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 8%</span>, "（125人进入，115人死亡）"], "信息价值", "高（时间循环与移动锚定机理研究价值高）"],
+        ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均发生 3-4 起"],
+      ],
+      discovery: [
+        "安珀历19年冬，格伦贝尔联邦东部铁路网的一列夜班列车在驶入鸣海城以北约60公里的山区雾带后失踪。搜索队在沿线未发现任何残骸；48小时后，该列车在下一班列车时刻重新出现在同一区间——车厢内乘客全部失踪，仅列车员一人存活，返回后始终重复「我数不清站台」这句话。",
+        "此后数年间，这列幽灵列车多次在东部铁路网不同区段出现：任何驶入「雾区」的列车，其车厢内人员都会被替换为幽灵列车内的时间循环参与者。长桥会社接管调查后确认其为时间循环型异常，列车本身即异常的移动载体。",
+      ],
+      features: [
+        "雾中列车是一处典型的<strong>时间循环型异常</strong>（TMA 子类·循环）。异常载体为一列老式蒸汽列车，编号已不可考。列车在东部铁路网行驶时周期性驶入「雾区」，循环周期约47分钟；循环结束后列车短暂消失，随后在另一区段重新出现并进入下一循环。",
+        "循环中经过的所有车站均为虚假站台，下车者立即消失。列车上的时钟永远停在 23:47。乘务员会在每次循环开始约10分钟后逐一检票，票面上的目的地从未被看清。",
+        "第6节车厢为「安全车厢」——该车厢内时间流速正常，是已知唯一不受循环重置影响的区域，也是历次行动的临时据点。",
+      ],
+      mapNode: trainMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "雾区入口", desc: "列车驶入特定雾区后进入异常，车厢内时间开始循环（约47分钟）。雾区位置随时间漂移，无固定坐标；近期出现频率在极寒区段明显上升。" },
+        { num: "二", title: "循环重置", desc: "循环结束时列车内时间重置，乘客回到循环起点；记忆完整保留，但随身物品状态全部重置（伤口、饥饿感、电量、携带的标记物均回到循环开始状态）。" },
+        { num: "三", title: "虚假站台", desc: "循环中经过的所有车站均为虚假站台，下车者立即消失，无返回记录。唯一例外：若列车自行停靠（而非进站），该站为真实站点。" },
+        { num: "四", title: "检票规则", desc: "循环开始约10分钟后乘务员开始检票，无票者（非乘客身份进入者）会被「带走」，不再出现。持有车票者可通过检票。" },
+      ],
+      speculatedRules: [
+        "列车长为核心 NPC，其胸前怀表的分针在每次循环中偏移1分钟——若偏移量累积至60分钟，可能出现「第48小时」的完整循环出口",
+        "雾区入口可能锚定在东部铁路网某段废弃隧道中，列车在其中循环后从不同出口驶出",
+        "循环中存在「记忆回声」：循环第3次后，车厢内开始出现与之前循环完全一致的乘客对话",
+        "若在循环中集齐所有乘客的「票根」，可能触发出口条件——但票根在循环重置时会被收走",
+      ],
+      entryRecords: [
+        { term: "第一批", year: "安珀历19年·冬", count: 18, org: "长桥会社", result: "2人生还，16人失踪", status: "death" },
+        { term: "第二批", year: "安珀历21年", count: 20, org: "长桥会社", result: "1人生还，19人失踪", status: "death" },
+        { term: "第三批", year: "安珀历24年", count: 22, org: "长桥会社", result: "2人生还，20人失踪", status: "death" },
+        { term: "第四批", year: "安珀历27年", count: 25, org: "长桥会社/北境守望联合", result: "2人生还，23人失踪", status: "death" },
+        { term: "第五批", year: "安珀历32年", count: 20, org: "长桥会社", result: "2人生还，18人失踪", status: "death" },
+        { term: "第六批", year: "安珀历37年·秋", count: 20, org: "长桥会社", result: "1人生还，19人失踪", status: "death" },
+      ],
+      phenomena: [
+        "<strong>「雾中回声」：</strong>循环第3次后，车厢内开始出现与之前循环完全一致的乘客对话，逐字逐句重复；生还者称「像是有人在播放录音」。",
+        "<strong>「站台人影」：</strong>虚假站台上始终站着同一批人影，数量随循环次数逐次减少；没有人影下过站台，但每次循环人影都会少一人。",
+        "<strong>「怀表计数」：</strong>列车长怀表显示 23:47，但分针在每次循环后偏移约1分钟——生还者推测这是循环次数的记录方式。",
+        "<strong>雾区漂移：</strong>近两年雾区出现位置明显北移，且更频繁地出现在北境冻土区段，与白松城周边异常活动是否存在关联尚在调查。",
+      ],
+      imacNote: "雾中列车是目前已知最活跃的时间循环型异常之一，其「移动载体」特性使常规封锁方案失效。鉴于其高死亡率与不可预测的雾区漂移，IMAC 协调办公室已将其列为「优先级-贝塔」观察对象，并协调长桥会社与东部铁路网设立联合监测机制。任何组织在采取行动前必须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: [
+        "在东部铁路网重点区段布设雾区预警装置，记录雾区出现规律与漂移轨迹，绘制雾区热力图",
+        "由长桥会社牵头组织「第6节安全车厢」专项侦察，验证安全车厢假说并测绘车厢内部结构",
+        "与北境守望联合制定极寒区段应对预案——该区段雾区出现频率近期明显上升",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【长桥会社内部评估 · 移动指挥系统】<br/><br/>
+              雾中列车是我们遇到的最棘手的「会跑」的异常——它的载体是移动的，任何固定封锁方案都无效。
+              我们判断循环出口与列车长的怀表存在关联：分针每次循环偏移1分钟，当偏移累积到60分钟时，
+              可能出现完整的「第48小时」出口循环。<br/><br/>
+              建议下一次行动聚焦第6节安全车厢与列车长怀表，行动风险评级为厄运级，
+              由现任总协调官桥本彻带队执行，行动代号「票根」。
+            </p>
+            <div className="internal-note-signature">— 桥本彻 · 长桥会社现任总协调官</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={trainData} />;
   }
 
   return (
@@ -963,6 +1084,16 @@ function AnomalyDetailPage() {
                   「优先级-阿尔法」观察对象。任何组织在采取行动前必须提交完整方案并获得 IMAC 审批。
                   未经授权的私自进入将被视为严重违规。
                 </p>
+                <div style={{ marginTop: "14px", paddingTop: "12px", borderTop: "1px dashed rgba(196, 40, 40, 0.2)" }}>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-red-bright)", letterSpacing: "0.15em", marginBottom: "8px" }}>
+                    建议后续行动
+                  </div>
+                  <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: "1.8", margin: 0 }}>
+                    在条件成熟前，不建议组织大规模进入。优先维持外围监测，
+                    等待第十一届内部存活者的信标状态变化——无论其最终恢复正常或完全消失，
+                    都将为该异常的解析提供关键信息。
+                  </p>
+                </div>
               </div>
               <div className="internal-note">
                 <Restricted level="internal" label="机密级内容" compact>

@@ -15,6 +15,7 @@ function AnomalyDetailPage() {
   // Default to LOA-0073 full data; others show placeholder
   const isDefault = anomalyId === "LOA-0073";
   const isStairwell = anomalyId === "SPA-0021";
+  const isTrain = anomalyId === "TMA-0045";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -233,7 +234,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isStairwell) {
+  if (!isDefault && !isStairwell && !isTrain) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -430,15 +431,16 @@ function AnomalyDetailPage() {
         style: {
           fontSize: "18px"
         }
-      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院（BRI）· Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", {
+      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院 · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", {
         levelKey: "hazardous",
         text: "危险级 · HAZARDOUS"
       }, "当前状态", {
         statusKey: "active",
         text: "● 活跃 ACTIVE"
-      }], ["生还率", /*#__PURE__*/React.createElement("span", {
-        className: "survival-rate-red"
-      }, "\u7EA6 23%"), "信息价值", "高（空间折叠机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"]],
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 23%"), "（87人进入，67人死亡）"], "信息价值", "高（空间折叠机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"]],
       discovery: ["安珀历12年秋，洛林自由市旧城区的「白鸽公寓」B座住户连续向警署报案：多名居民表示在下楼时「走了很久都到不了一楼」，一名住户甚至在三楼台阶上原地消失，数小时后从四楼平台重新出现，全程无意识。", "BRI 调查组介入后确认，公寓2层至3层之间的楼梯间存在空间折叠异常。此后异常范围缓慢向整栋公寓的楼梯系统蔓延，现已覆盖全部三个楼梯井。公寓于安珀历14年整体封闭，原住民全部迁出。"],
       features: ["无尽楼梯是一处典型的<strong>空间折叠型异常</strong>（SPA 子类·折叠）。异常主体为白鸽公寓B座楼梯间：进入后楼梯可无限延伸，无论向上还是向下，台阶数恒定，楼层标识在 2/3/4 层之间循环，1层与5层从未被观测到。", "异常内部光照恒定、无自然光、无声源。同行者始终可见，但声音无法在楼梯间传递。扶手、墙面与台阶材质与正常建筑一致，但会随停留时间发生缓慢「老化」。", "异常入口位于2层平台，进入条件未知。部分报告显示，与白鸽公寓同款式的其他建筑楼梯间也可能成为异常入口——相关建筑已被列为观察对象。"],
       mapNode: stairMap,
@@ -463,6 +465,257 @@ function AnomalyDetailPage() {
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: stairData
+    });
+  }
+  if (isTrain) {
+    const trainMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "10",
+      y: "20",
+      width: "320",
+      height: "110",
+      fill: "rgba(138,180,212,0.05)",
+      stroke: "rgba(138,180,212,0.25)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "20",
+      y: "38",
+      fill: "rgba(138,180,212,0.6)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u96FE\u533A \xB7 FOG ZONE"), /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "120",
+      x2: "320",
+      y2: "120",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "126",
+      x2: "320",
+      y2: "126",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "30",
+      y: "70",
+      width: "280",
+      height: "46",
+      rx: "4",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(196,40,40,0.6)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M30 70 L20 84 L30 116 Z",
+      fill: "rgba(196,40,40,0.5)"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "100",
+      y1: "70",
+      x2: "100",
+      y2: "116",
+      stroke: "rgba(74,88,104,0.4)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "170",
+      y1: "70",
+      x2: "170",
+      y2: "116",
+      stroke: "rgba(74,88,104,0.4)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "240",
+      y1: "70",
+      x2: "240",
+      y2: "116",
+      stroke: "rgba(74,88,104,0.4)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "50",
+      y: "96",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "1-5 \u8282"), /*#__PURE__*/React.createElement("text", {
+      x: "120",
+      y: "96",
+      fill: "rgba(74,154,44,0.95)",
+      fontSize: "10",
+      fontFamily: "monospace",
+      fontWeight: "700"
+    }, "\u7B2C6\u8282"), /*#__PURE__*/React.createElement("text", {
+      x: "185",
+      y: "96",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "7-8 \u8282"), /*#__PURE__*/React.createElement("text", {
+      x: "252",
+      y: "96",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u9910\u8F66"), /*#__PURE__*/React.createElement("path", {
+      d: "M300 60 C 330 20, 330 10, 280 10 C 240 10, 200 20, 60 20",
+      fill: "none",
+      stroke: "rgba(196,154,44,0.8)",
+      strokeWidth: "1.5",
+      strokeDasharray: "5 3",
+      markerEnd: "url(#trainArrow)"
+    }), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("marker", {
+      id: "trainArrow",
+      markerWidth: "6",
+      markerHeight: "6",
+      refX: "5",
+      refY: "3",
+      orient: "auto"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M0,0 L6,3 L0,6 Z",
+      fill: "rgba(196,154,44,0.9)"
+    }))), /*#__PURE__*/React.createElement("text", {
+      x: "200",
+      y: "14",
+      fill: "rgba(196,154,44,0.85)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u65F6\u95F4\u5FAA\u73AF 47min"), /*#__PURE__*/React.createElement("rect", {
+      x: "300",
+      y: "132",
+      width: "30",
+      height: "10",
+      fill: "rgba(196,40,40,0.25)",
+      stroke: "rgba(196,40,40,0.5)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "296",
+      y: "150",
+      fill: "rgba(196,40,40,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u865A\u5047\u7AD9\u53F0")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u5FAA\u73AF\u5468\u671F\u7EA6 47 \u5206\u949F \xB7 \u7B2C6\u8282\u8F66\u53A2\u65F6\u95F4\u6D41\u901F\u6B63\u5E38 \xB7 \u865A\u5047\u7AD9\u53F0\u4E0B\u8F66\u5373\u6D88\u5931"));
+    const trainData = {
+      id: "TMA-0045",
+      name: "雾中列车",
+      nameEn: "FOG TRAIN · DOOMED",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.2",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "TMA-0045"), "名称", "雾中列车 · Fog Train"], ["所属管辖", "长桥会社 · Long Bridge Company", "首次记录", "安珀历19年 · 冬"], ["异常等级", {
+        levelKey: "doomed",
+        text: "厄运级 · DOOMED"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 8%"), "（125人进入，115人死亡）"], "信息价值", "高（时间循环与移动锚定机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均发生 3-4 起"]],
+      discovery: ["安珀历19年冬，格伦贝尔联邦东部铁路网的一列夜班列车在驶入鸣海城以北约60公里的山区雾带后失踪。搜索队在沿线未发现任何残骸；48小时后，该列车在下一班列车时刻重新出现在同一区间——车厢内乘客全部失踪，仅列车员一人存活，返回后始终重复「我数不清站台」这句话。", "此后数年间，这列幽灵列车多次在东部铁路网不同区段出现：任何驶入「雾区」的列车，其车厢内人员都会被替换为幽灵列车内的时间循环参与者。长桥会社接管调查后确认其为时间循环型异常，列车本身即异常的移动载体。"],
+      features: ["雾中列车是一处典型的<strong>时间循环型异常</strong>（TMA 子类·循环）。异常载体为一列老式蒸汽列车，编号已不可考。列车在东部铁路网行驶时周期性驶入「雾区」，循环周期约47分钟；循环结束后列车短暂消失，随后在另一区段重新出现并进入下一循环。", "循环中经过的所有车站均为虚假站台，下车者立即消失。列车上的时钟永远停在 23:47。乘务员会在每次循环开始约10分钟后逐一检票，票面上的目的地从未被看清。", "第6节车厢为「安全车厢」——该车厢内时间流速正常，是已知唯一不受循环重置影响的区域，也是历次行动的临时据点。"],
+      mapNode: trainMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "雾区入口",
+        desc: "列车驶入特定雾区后进入异常，车厢内时间开始循环（约47分钟）。雾区位置随时间漂移，无固定坐标；近期出现频率在极寒区段明显上升。"
+      }, {
+        num: "二",
+        title: "循环重置",
+        desc: "循环结束时列车内时间重置，乘客回到循环起点；记忆完整保留，但随身物品状态全部重置（伤口、饥饿感、电量、携带的标记物均回到循环开始状态）。"
+      }, {
+        num: "三",
+        title: "虚假站台",
+        desc: "循环中经过的所有车站均为虚假站台，下车者立即消失，无返回记录。唯一例外：若列车自行停靠（而非进站），该站为真实站点。"
+      }, {
+        num: "四",
+        title: "检票规则",
+        desc: "循环开始约10分钟后乘务员开始检票，无票者（非乘客身份进入者）会被「带走」，不再出现。持有车票者可通过检票。"
+      }],
+      speculatedRules: ["列车长为核心 NPC，其胸前怀表的分针在每次循环中偏移1分钟——若偏移量累积至60分钟，可能出现「第48小时」的完整循环出口", "雾区入口可能锚定在东部铁路网某段废弃隧道中，列车在其中循环后从不同出口驶出", "循环中存在「记忆回声」：循环第3次后，车厢内开始出现与之前循环完全一致的乘客对话", "若在循环中集齐所有乘客的「票根」，可能触发出口条件——但票根在循环重置时会被收走"],
+      entryRecords: [{
+        term: "第一批",
+        year: "安珀历19年·冬",
+        count: 18,
+        org: "长桥会社",
+        result: "2人生还，16人失踪",
+        status: "death"
+      }, {
+        term: "第二批",
+        year: "安珀历21年",
+        count: 20,
+        org: "长桥会社",
+        result: "1人生还，19人失踪",
+        status: "death"
+      }, {
+        term: "第三批",
+        year: "安珀历24年",
+        count: 22,
+        org: "长桥会社",
+        result: "2人生还，20人失踪",
+        status: "death"
+      }, {
+        term: "第四批",
+        year: "安珀历27年",
+        count: 25,
+        org: "长桥会社/北境守望联合",
+        result: "2人生还，23人失踪",
+        status: "death"
+      }, {
+        term: "第五批",
+        year: "安珀历32年",
+        count: 20,
+        org: "长桥会社",
+        result: "2人生还，18人失踪",
+        status: "death"
+      }, {
+        term: "第六批",
+        year: "安珀历37年·秋",
+        count: 20,
+        org: "长桥会社",
+        result: "1人生还，19人失踪",
+        status: "death"
+      }],
+      phenomena: ["<strong>「雾中回声」：</strong>循环第3次后，车厢内开始出现与之前循环完全一致的乘客对话，逐字逐句重复；生还者称「像是有人在播放录音」。", "<strong>「站台人影」：</strong>虚假站台上始终站着同一批人影，数量随循环次数逐次减少；没有人影下过站台，但每次循环人影都会少一人。", "<strong>「怀表计数」：</strong>列车长怀表显示 23:47，但分针在每次循环后偏移约1分钟——生还者推测这是循环次数的记录方式。", "<strong>雾区漂移：</strong>近两年雾区出现位置明显北移，且更频繁地出现在北境冻土区段，与白松城周边异常活动是否存在关联尚在调查。"],
+      imacNote: "雾中列车是目前已知最活跃的时间循环型异常之一，其「移动载体」特性使常规封锁方案失效。鉴于其高死亡率与不可预测的雾区漂移，IMAC 协调办公室已将其列为「优先级-贝塔」观察对象，并协调长桥会社与东部铁路网设立联合监测机制。任何组织在采取行动前必须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: ["在东部铁路网重点区段布设雾区预警装置，记录雾区出现规律与漂移轨迹，绘制雾区热力图", "由长桥会社牵头组织「第6节安全车厢」专项侦察，验证安全车厢假说并测绘车厢内部结构", "与北境守望联合制定极寒区段应对预案——该区段雾区出现频率近期明显上升"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u957F\u6865\u4F1A\u793E\u5185\u90E8\u8BC4\u4F30 \xB7 \u79FB\u52A8\u6307\u6325\u7CFB\u7EDF\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u96FE\u4E2D\u5217\u8F66\u662F\u6211\u4EEC\u9047\u5230\u7684\u6700\u68D8\u624B\u7684\u300C\u4F1A\u8DD1\u300D\u7684\u5F02\u5E38\u2014\u2014\u5B83\u7684\u8F7D\u4F53\u662F\u79FB\u52A8\u7684\uFF0C\u4EFB\u4F55\u56FA\u5B9A\u5C01\u9501\u65B9\u6848\u90FD\u65E0\u6548\u3002 \u6211\u4EEC\u5224\u65AD\u5FAA\u73AF\u51FA\u53E3\u4E0E\u5217\u8F66\u957F\u7684\u6000\u8868\u5B58\u5728\u5173\u8054\uFF1A\u5206\u9488\u6BCF\u6B21\u5FAA\u73AF\u504F\u79FB1\u5206\u949F\uFF0C\u5F53\u504F\u79FB\u7D2F\u79EF\u523060\u5206\u949F\u65F6\uFF0C \u53EF\u80FD\u51FA\u73B0\u5B8C\u6574\u7684\u300C\u7B2C48\u5C0F\u65F6\u300D\u51FA\u53E3\u5FAA\u73AF\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5EFA\u8BAE\u4E0B\u4E00\u6B21\u884C\u52A8\u805A\u7126\u7B2C6\u8282\u5B89\u5168\u8F66\u53A2\u4E0E\u5217\u8F66\u957F\u6000\u8868\uFF0C\u884C\u52A8\u98CE\u9669\u8BC4\u7EA7\u4E3A\u5384\u8FD0\u7EA7\uFF0C \u7531\u73B0\u4EFB\u603B\u534F\u8C03\u5B98\u6865\u672C\u5F7B\u5E26\u961F\u6267\u884C\uFF0C\u884C\u52A8\u4EE3\u53F7\u300C\u7968\u6839\u300D\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u6865\u672C\u5F7B \xB7 \u957F\u6865\u4F1A\u793E\u73B0\u4EFB\u603B\u534F\u8C03\u5B98")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: trainData
     });
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
@@ -1164,7 +1417,28 @@ function AnomalyDetailPage() {
     className: "note-box"
   }, /*#__PURE__*/React.createElement("p", {
     className: "note-text"
-  }, "\u8D64\u6708\u5B66\u9662\u662F\u76EE\u524D\u5DF2\u77E5\u6301\u7EED\u65F6\u95F4\u6700\u957F\u3001\u81F4\u6B7B\u7387\u6700\u9AD8\u7684\u6DF1\u6E0A\u7EA7\u5F02\u5E38\u4E4B\u4E00\u3002 \u9274\u4E8E\u5176\u4E0D\u53EF\u9884\u6D4B\u7684\u62C9\u5165\u673A\u5236\u548C\u6781\u9AD8\u7684\u6B7B\u4EA1\u7387\uFF0CIMAC \u534F\u8C03\u529E\u516C\u5BA4\u5DF2\u5C06\u5176\u5217\u4E3A \u300C\u4F18\u5148\u7EA7-\u963F\u5C14\u6CD5\u300D\u89C2\u5BDF\u5BF9\u8C61\u3002\u4EFB\u4F55\u7EC4\u7EC7\u5728\u91C7\u53D6\u884C\u52A8\u524D\u5FC5\u987B\u63D0\u4EA4\u5B8C\u6574\u65B9\u6848\u5E76\u83B7\u5F97 IMAC \u5BA1\u6279\u3002 \u672A\u7ECF\u6388\u6743\u7684\u79C1\u81EA\u8FDB\u5165\u5C06\u88AB\u89C6\u4E3A\u4E25\u91CD\u8FDD\u89C4\u3002")), /*#__PURE__*/React.createElement("div", {
+  }, "\u8D64\u6708\u5B66\u9662\u662F\u76EE\u524D\u5DF2\u77E5\u6301\u7EED\u65F6\u95F4\u6700\u957F\u3001\u81F4\u6B7B\u7387\u6700\u9AD8\u7684\u6DF1\u6E0A\u7EA7\u5F02\u5E38\u4E4B\u4E00\u3002 \u9274\u4E8E\u5176\u4E0D\u53EF\u9884\u6D4B\u7684\u62C9\u5165\u673A\u5236\u548C\u6781\u9AD8\u7684\u6B7B\u4EA1\u7387\uFF0CIMAC \u534F\u8C03\u529E\u516C\u5BA4\u5DF2\u5C06\u5176\u5217\u4E3A \u300C\u4F18\u5148\u7EA7-\u963F\u5C14\u6CD5\u300D\u89C2\u5BDF\u5BF9\u8C61\u3002\u4EFB\u4F55\u7EC4\u7EC7\u5728\u91C7\u53D6\u884C\u52A8\u524D\u5FC5\u987B\u63D0\u4EA4\u5B8C\u6574\u65B9\u6848\u5E76\u83B7\u5F97 IMAC \u5BA1\u6279\u3002 \u672A\u7ECF\u6388\u6743\u7684\u79C1\u81EA\u8FDB\u5165\u5C06\u88AB\u89C6\u4E3A\u4E25\u91CD\u8FDD\u89C4\u3002"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "14px",
+      paddingTop: "12px",
+      borderTop: "1px dashed rgba(196, 40, 40, 0.2)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "11px",
+      color: "var(--accent-red-bright)",
+      letterSpacing: "0.15em",
+      marginBottom: "8px"
+    }
+  }, "\u5EFA\u8BAE\u540E\u7EED\u884C\u52A8"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "13px",
+      color: "var(--text-secondary)",
+      lineHeight: "1.8",
+      margin: 0
+    }
+  }, "\u5728\u6761\u4EF6\u6210\u719F\u524D\uFF0C\u4E0D\u5EFA\u8BAE\u7EC4\u7EC7\u5927\u89C4\u6A21\u8FDB\u5165\u3002\u4F18\u5148\u7EF4\u6301\u5916\u56F4\u76D1\u6D4B\uFF0C \u7B49\u5F85\u7B2C\u5341\u4E00\u5C4A\u5185\u90E8\u5B58\u6D3B\u8005\u7684\u4FE1\u6807\u72B6\u6001\u53D8\u5316\u2014\u2014\u65E0\u8BBA\u5176\u6700\u7EC8\u6062\u590D\u6B63\u5E38\u6216\u5B8C\u5168\u6D88\u5931\uFF0C \u90FD\u5C06\u4E3A\u8BE5\u5F02\u5E38\u7684\u89E3\u6790\u63D0\u4F9B\u5173\u952E\u4FE1\u606F\u3002"))), /*#__PURE__*/React.createElement("div", {
     className: "internal-note"
   }, /*#__PURE__*/React.createElement(Restricted, {
     level: "internal",
