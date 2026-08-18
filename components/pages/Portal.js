@@ -518,7 +518,7 @@ function PortalPage() {
           background-color: #13131a;
         }
         .category-card.featured {
-          background: linear-gradient(180deg, rgba(196, 40, 40, 0.12), #0d0d12);
+          background: linear-gradient(180deg, color-mix(in srgb, var(--cat-color) 24%, transparent), #0d0d12);
         }
         .category-code {
           font-family: var(--font-mono);
