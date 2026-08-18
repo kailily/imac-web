@@ -261,7 +261,7 @@ function ProfileCenterPage() {
   }]);
   const [opForm, setOpForm] = React.useState({
     opType: "联合行动参与申请",
-    opCode: "PHA-0182",
+    opCode: "SPA-1120",
     reason: "",
     availability: "夏·31 起可待命"
   });
@@ -270,9 +270,6 @@ function ProfileCenterPage() {
   const submitOp = () => {
     if (!opForm.reason.trim()) return;
     const opNames = {
-      "LOA-0073": "赤月学院异常介入行动",
-      "PHA-0182": "洛林自由市边境裂隙",
-      "TMB-0089": "白松城冻土层时间停滞",
       "SPA-1120": "回声走廊空间偏移"
     };
     setOpAppList([{
@@ -1236,7 +1233,7 @@ function ProfileCenterPage() {
       fontSize: "12px",
       color: "var(--text-secondary)"
     }
-  }, "\u7533\u8BF7\u52A0\u5165\u8054\u5408\u884C\u52A8 / \u72EC\u7ACB\u884C\u52A8\u8BB8\u53EF / \u88C5\u5907\u8D44\u6E90\u652F\u63F4"), /*#__PURE__*/React.createElement("button", {
+  }, "\u76EE\u524D\u4EC5\u5F85\u547D\u72B6\u6001\u884C\u52A8\u5F00\u653E\u62DB\u4EBA \xB7 \u7533\u8BF7\u52A0\u5165\u884C\u52A8 / \u72EC\u7ACB\u884C\u52A8\u8BB8\u53EF / \u6551\u63F4\u961F / \u540E\u52E4\u4FDD\u969C"), /*#__PURE__*/React.createElement("button", {
     className: "apply-btn",
     onClick: () => {
       setShowOpForm(!showOpForm);
@@ -1271,14 +1268,8 @@ function ProfileCenterPage() {
       opCode: e.target.value
     })
   }, /*#__PURE__*/React.createElement("option", {
-    value: "LOA-0073"
-  }, "LOA-0073 \u8D64\u6708\u5B66\u9662\u5F02\u5E38\u4ECB\u5165\u884C\u52A8"), /*#__PURE__*/React.createElement("option", {
-    value: "PHA-0182"
-  }, "PHA-0182 \u6D1B\u6797\u81EA\u7531\u5E02\u8FB9\u5883\u88C2\u9699"), /*#__PURE__*/React.createElement("option", {
-    value: "TMB-0089"
-  }, "TMB-0089 \u767D\u677E\u57CE\u51BB\u571F\u5C42\u65F6\u95F4\u505C\u6EDE"), /*#__PURE__*/React.createElement("option", {
     value: "SPA-1120"
-  }, "SPA-1120 \u56DE\u58F0\u8D70\u5ECA\u7A7A\u95F4\u504F\u79FB")))), /*#__PURE__*/React.createElement("div", {
+  }, "SPA-1120 \u56DE\u58F0\u8D70\u5ECA\u7A7A\u95F4\u504F\u79FB\uFF08\u5F85\u547D \xB7 \u5728\u62DB\u4EBA\uFF09")))), /*#__PURE__*/React.createElement("div", {
     className: "form-row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "form-field"

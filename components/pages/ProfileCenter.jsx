@@ -80,16 +80,13 @@ function ProfileCenterPage() {
     { opCode: "SPB-0890", opName: "镜像走廊勘探任务", type: "联合行动参与申请", submitDate: "安珀历39年夏·02", status: "已批准", role: "副队长" },
     { opCode: "CGA-0502", opName: "无声剧场调查", type: "联合行动参与申请", submitDate: "安珀历39年春·18", status: "已驳回", role: "—", reason: "同期已有其他任务安排" },
   ]);
-  const [opForm, setOpForm] = React.useState({ opType: "联合行动参与申请", opCode: "PHA-0182", reason: "", availability: "夏·31 起可待命" });
+  const [opForm, setOpForm] = React.useState({ opType: "联合行动参与申请", opCode: "SPA-1120", reason: "", availability: "夏·31 起可待命" });
   const [opSubmitted, setOpSubmitted] = React.useState(false);
   const [showOpForm, setShowOpForm] = React.useState(false);
 
   const submitOp = () => {
     if (!opForm.reason.trim()) return;
     const opNames = {
-      "LOA-0073": "赤月学院异常介入行动",
-      "PHA-0182": "洛林自由市边境裂隙",
-      "TMB-0089": "白松城冻土层时间停滞",
       "SPA-1120": "回声走廊空间偏移",
     };
     setOpAppList([{
@@ -961,7 +958,7 @@ function ProfileCenterPage() {
                   <div className="pc-card-body">
                     <div className="apply-header">
                       <div style={{ fontSize: "12px", color: "var(--text-secondary)" }}>
-                        申请加入联合行动 / 独立行动许可 / 装备资源支援
+                        目前仅待命状态行动开放招人 · 申请加入行动 / 独立行动许可 / 救援队 / 后勤保障
                       </div>
                       <button className="apply-btn" onClick={() => { setShowOpForm(!showOpForm); setOpSubmitted(false); }}>
                         {showOpForm ? "取消申请" : "+ 提交新申请"}
@@ -996,10 +993,7 @@ function ProfileCenterPage() {
                               value={opForm.opCode}
                               onChange={(e) => setOpForm({ ...opForm, opCode: e.target.value })}
                             >
-                              <option value="LOA-0073">LOA-0073 赤月学院异常介入行动</option>
-                              <option value="PHA-0182">PHA-0182 洛林自由市边境裂隙</option>
-                              <option value="TMB-0089">TMB-0089 白松城冻土层时间停滞</option>
-                              <option value="SPA-1120">SPA-1120 回声走廊空间偏移</option>
+                              <option value="SPA-1120">SPA-1120 回声走廊空间偏移（待命 · 在招人）</option>
                             </select>
                           </div>
                         </div>
