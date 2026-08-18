@@ -242,7 +242,7 @@ function ProfileCenterPage() {
     type: "异常行动参与申请",
     submitDate: "安珀历39年夏·15",
     status: "已批准",
-    role: "行动指挥"
+    role: "行动队长"
   }, {
     opCode: "SPB-0890",
     opName: "镜像走廊勘探任务",
@@ -298,9 +298,10 @@ function ProfileCenterPage() {
     code: "PHA-0182",
     name: "洛林裂隙"
   }];
-  // 角色：异常行动参与（无行动队长）；救援/后勤为详细分工
+  // 角色：异常行动参与（无行动队长）；救援队/后勤保障为各自独立的详细分工
   const joinRoles = ["副队长", "队员", "技术支援"];
-  const supportRoles = ["通讯技术支援", "装备技术支援", "测绘技术支援", "前线救援员", "医疗急救员", "搜救侦察员", "伤员转运员", "物资管理", "交通调度", "装备维护", "营地保障"];
+  const rescueRoles = ["前线救援员", "医疗急救员", "搜救侦察员", "伤员转运员", "破拆作业员", "绳索技术员"];
+  const logisticsRoles = ["物资管理", "交通调度", "装备维护", "营地保障", "通讯保障", "测绘技术支援"];
   const [opForm, setOpForm] = React.useState({
     opType: "异常行动参与申请",
     opCode: "SPA-1120",
@@ -1309,10 +1310,15 @@ function ProfileCenterPage() {
   }, "\u7533\u8BF7\u7C7B\u578B"), /*#__PURE__*/React.createElement("select", {
     className: "form-select",
     value: opForm.opType,
-    onChange: e => setOpForm({
-      ...opForm,
-      opType: e.target.value
-    })
+    onChange: e => {
+      const v = e.target.value;
+      const defRole = v === "救援队申请" ? "前线救援员" : v === "后勤保障申请" ? "物资管理" : "队员";
+      setOpForm({
+        ...opForm,
+        opType: v,
+        role: defRole
+      });
+    }
   }, /*#__PURE__*/React.createElement("option", null, "\u5F02\u5E38\u884C\u52A8\u53C2\u4E0E\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u5F02\u5E38\u884C\u52A8\u8BB8\u53EF\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u88C5\u5907/\u8D44\u6E90\u652F\u63F4\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u6551\u63F4\u961F\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u540E\u52E4\u4FDD\u969C\u7533\u8BF7"))), opForm.opType === "异常行动许可申请" ? /*#__PURE__*/React.createElement("div", {
     className: "form-field"
   }, /*#__PURE__*/React.createElement("label", {
@@ -1391,7 +1397,7 @@ function ProfileCenterPage() {
       ...opForm,
       role: e.target.value
     })
-  }, (opForm.opType === "救援队申请" || opForm.opType === "后勤保障申请" ? supportRoles : joinRoles).map(r => /*#__PURE__*/React.createElement("option", {
+  }, (opForm.opType === "救援队申请" ? rescueRoles : opForm.opType === "后勤保障申请" ? logisticsRoles : joinRoles).map(r => /*#__PURE__*/React.createElement("option", {
     key: r,
     value: r
   }, r))))), /*#__PURE__*/React.createElement("div", {
