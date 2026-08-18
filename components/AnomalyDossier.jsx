@@ -670,7 +670,7 @@ function AnomalyDossier({ data }) {
               <div className="file-section">
                 <div className="file-section-header">
                   <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">IMAC 备注</span>
+                  <span className="file-section-title">备注</span>
                 </div>
                 <div className="note-box">
                   <p className="note-text">{data.imacNote}</p>

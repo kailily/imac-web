@@ -679,7 +679,7 @@ function AnomalyDossier({
     className: "file-section-num mono"
   }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
     className: "file-section-title"
-  }, "IMAC \u5907\u6CE8")), /*#__PURE__*/React.createElement("div", {
+  }, "\u5907\u6CE8")), /*#__PURE__*/React.createElement("div", {
     className: "note-box"
   }, /*#__PURE__*/React.createElement("p", {
     className: "note-text"
