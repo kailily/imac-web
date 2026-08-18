@@ -80,23 +80,74 @@ function ProfileCenterPage() {
     { opCode: "SPB-0890", opName: "镜像走廊勘探任务", type: "联合行动参与申请", submitDate: "安珀历39年夏·02", status: "已批准", role: "副队长" },
     { opCode: "CGA-0502", opName: "无声剧场调查", type: "联合行动参与申请", submitDate: "安珀历39年春·18", status: "已驳回", role: "—", reason: "同期已有其他任务安排" },
   ]);
-  const [opForm, setOpForm] = React.useState({ opType: "联合行动参与申请", opCode: "SPA-1120", reason: "", availability: "夏·31 起可待命" });
+
+  // 招人中的行动：待命（联合行动参与）/ 进行中+待命（救援队、后勤保障）
+  const standbyOps = [
+    { code: "SPA-1120", name: "回声走廊空间偏移", status: "待命" },
+  ];
+  const supportOps = [
+    { code: "LOA-0073", name: "赤月学院异常介入行动", status: "进行中" },
+    { code: "PHA-0182", name: "洛林自由市边境裂隙", status: "进行中" },
+    { code: "TMB-0089", name: "白松城冻土层时间停滞", status: "进行中" },
+    { code: "SPA-1120", name: "回声走廊空间偏移", status: "待命" },
+  ];
+  // 独立行动许可：可自行选择想要调查的异常
+  const anomalyTargets = [
+    { code: "LOA-0001", name: "灰港仓库" },
+    { code: "LOA-0073", name: "赤月学院" },
+    { code: "SPA-0021", name: "无尽楼梯" },
+    { code: "SPA-0421", name: "灰松岭循环路段" },
+    { code: "SPB-0089", name: "镜像医院" },
+    { code: "TMA-0045", name: "雾中列车" },
+    { code: "TMB-0117", name: "冰封哨站" },
+    { code: "PHA-0182", name: "洛林裂隙" },
+    { code: "CGA-0003", name: "回音巷" },
+  ];
+  // 装备/资源支援：可自行选择需要的装备/资源
+  const gearTargets = [
+    "MK-III 型信标阵列",
+    "同化抑制剂（应急剂量）",
+    "异常通讯器（加密）",
+    "锚定物套装",
+    "急救与止血装备",
+    "极地生存装备",
+    "测绘/记录设备",
+    "移动电源与照明",
+    "越野/雪地载具",
+  ];
+
+  const [opForm, setOpForm] = React.useState({ opType: "联合行动参与申请", opCode: "SPA-1120", people: "2", gear: "MK-III 型信标阵列", reason: "", availability: "夏·31 起可待命" });
   const [opSubmitted, setOpSubmitted] = React.useState(false);
   const [showOpForm, setShowOpForm] = React.useState(false);
 
+  const opNameOf = (type, code) => {
+    if (type === "独立行动许可申请") {
+      const t = anomalyTargets.find(a => a.code === code);
+      return (t ? t.name : code) + " · 独立调查";
+    }
+    if (type === "装备/资源支援申请") return opForm.gear + " · 装备支援";
+    const pool = type === "救援队申请" || type === "后勤保障申请" ? supportOps : standbyOps;
+    const t = pool.find(o => o.code === code);
+    return t ? t.name : code;
+  };
+
   const submitOp = () => {
     if (!opForm.reason.trim()) return;
-    const opNames = {
-      "SPA-1120": "回声走廊空间偏移",
-    };
-    setOpAppList([{
-      opCode: opForm.opCode,
-      opName: opNames[opForm.opCode] || "待补充",
+    let role = "待分配";
+    if (opForm.opType === "救援队申请") role = "救援队员";
+    else if (opForm.opType === "后勤保障申请") role = "后勤队员";
+    else if (opForm.opType === "独立行动许可申请") role = "独立行动负责人";
+    else if (opForm.opType === "装备/资源支援申请") role = "装备/后勤支援";
+    const entry = {
+      opCode: opForm.opType === "装备/资源支援申请" ? "GEAR" : opForm.opCode,
+      opName: opNameOf(opForm.opType, opForm.opCode),
       type: opForm.opType,
       submitDate: "安珀历39年夏·30",
       status: "审核中",
-      role: opForm.opType === "救援队申请" ? "救援队员" : opForm.opType === "后勤保障申请" ? "后勤队员" : "待分配",
-    }, ...opAppList]);
+      role,
+    };
+    if (opForm.opType === "独立行动许可申请") entry.detail = `申请人数：${opForm.people} 人`;
+    setOpAppList([entry, ...opAppList]);
     setOpSubmitted(true);
     setShowOpForm(false);
   };
@@ -986,16 +1037,46 @@ function ProfileCenterPage() {
                               <option>后勤保障申请</option>
                             </select>
                           </div>
-                          <div className="form-field">
-                            <label className="form-label">目标行动编号</label>
-                            <select
-                              className="form-select"
-                              value={opForm.opCode}
-                              onChange={(e) => setOpForm({ ...opForm, opCode: e.target.value })}
-                            >
-                              <option value="SPA-1120">SPA-1120 回声走廊空间偏移（待命 · 在招人）</option>
-                            </select>
-                          </div>
+                          {opForm.opType === "独立行动许可申请" ? (
+                            <div className="form-field">
+                              <label className="form-label">选择调查异常</label>
+                              <select
+                                className="form-select"
+                                value={opForm.opCode}
+                                onChange={(e) => setOpForm({ ...opForm, opCode: e.target.value })}
+                              >
+                                {anomalyTargets.map((a) => (
+                                  <option key={a.code} value={a.code}>{a.code} {a.name}</option>
+                                ))}
+                              </select>
+                            </div>
+                          ) : opForm.opType === "装备/资源支援申请" ? (
+                            <div className="form-field">
+                              <label className="form-label">选择装备/资源</label>
+                              <select
+                                className="form-select"
+                                value={opForm.gear}
+                                onChange={(e) => setOpForm({ ...opForm, gear: e.target.value })}
+                              >
+                                {gearTargets.map((g) => (
+                                  <option key={g} value={g}>{g}</option>
+                                ))}
+                              </select>
+                            </div>
+                          ) : (
+                            <div className="form-field">
+                              <label className="form-label">目标行动编号</label>
+                              <select
+                                className="form-select"
+                                value={opForm.opCode}
+                                onChange={(e) => setOpForm({ ...opForm, opCode: e.target.value })}
+                              >
+                                {(opForm.opType === "救援队申请" || opForm.opType === "后勤保障申请" ? supportOps : standbyOps).map((o) => (
+                                  <option key={o.code} value={o.code}>{o.code} {o.name}（{o.status}）</option>
+                                ))}
+                              </select>
+                            </div>
+                          )}
                         </div>
                         <div className="form-row">
                           <div className="form-field">
@@ -1006,17 +1087,32 @@ function ProfileCenterPage() {
                               onChange={(e) => setOpForm({ ...opForm, availability: e.target.value })}
                             />
                           </div>
-                          <div className="form-field">
-                            <label className="form-label">申请角色</label>
-                            <select className="form-select">
-                              <option>行动队长</option>
-                              <option>副队长</option>
-                              <option>队员</option>
-                              <option>技术支援</option>
-                              <option>救援队员</option>
-                              <option>后勤队员</option>
-                            </select>
-                          </div>
+                          {opForm.opType === "独立行动许可申请" ? (
+                            <div className="form-field">
+                              <label className="form-label">申请人数</label>
+                              <select
+                                className="form-select"
+                                value={opForm.people}
+                                onChange={(e) => setOpForm({ ...opForm, people: e.target.value })}
+                              >
+                                {["1", "2", "3", "4", "5", "6", "7", "8"].map((n) => (
+                                  <option key={n} value={n}>{n} 人</option>
+                                ))}
+                              </select>
+                            </div>
+                          ) : (
+                            <div className="form-field">
+                              <label className="form-label">申请角色</label>
+                              <select className="form-select">
+                                <option>行动队长</option>
+                                <option>副队长</option>
+                                <option>队员</option>
+                                <option>技术支援</option>
+                                <option>救援队员</option>
+                                <option>后勤队员</option>
+                              </select>
+                            </div>
+                          )}
                         </div>
                         <div className="form-field" style={{ marginBottom: "10px" }}>
                           <label className="form-label">申请理由</label>
@@ -1061,6 +1157,9 @@ function ProfileCenterPage() {
                             {o.status === "已驳回" && <span className="result-fail">{o.status}</span>}
                           </span>
                           <span style={{ color: "var(--text-tertiary)" }}>{o.role}</span>
+                          {o.detail && (
+                            <span style={{ color: "var(--text-tertiary)", fontSize: "11px" }}>{o.detail}</span>
+                          )}
                         </div>
                       ))}
                     </div>
