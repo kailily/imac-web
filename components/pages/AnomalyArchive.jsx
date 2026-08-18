@@ -6,6 +6,21 @@ function AnomalyArchivePage({ routeQuery }) {
 
   const anomalies = [
     {
+      id: "LOA-0001",
+      name: "灰港仓库",
+      nameEn: "Harbor Warehouse",
+      level: "doomed",
+      levelText: "厄运级",
+      category: "LO",
+      categoryName: "地点类",
+      org: "IMAC 直辖",
+      status: "active",
+      statusText: "活跃",
+      survival: "11%",
+      firstRecord: "安珀历元年",
+      featured: true,
+    },
+    {
       id: "LOA-0073",
       name: "赤月学院",
       nameEn: "Crimson Moon Academy",

@@ -13,6 +13,7 @@ function AnomalyDetailPage() {
 
   // Default to LOA-0073 full data; others show placeholder
   const isDefault = anomalyId === "LOA-0073";
+  const isHarbor = anomalyId === "LOA-0001";
   const isStairwell = anomalyId === "SPA-0021";
   const isTrain = anomalyId === "TMA-0045";
   const isOutpost = anomalyId === "TMB-0117";
@@ -86,7 +87,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isStairwell && !isTrain && !isOutpost && !isVoid) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid) {
     return (
       <>
         <style>{`
@@ -146,6 +147,101 @@ function AnomalyDetailPage() {
         </div>
       </>
     );
+  }
+
+  if (isHarbor) {
+    const harborMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 铁门 */}
+          <rect x="60" y="20" width="70" height="120" fill="rgba(20,20,24,0.9)" stroke="rgba(196,40,40,0.7)" strokeWidth="2"/>
+          <rect x="70" y="30" width="50" height="100" fill="rgba(10,10,12,0.9)" stroke="rgba(196,40,40,0.4)" strokeWidth="1"/>
+          {/* 铁门符号 */}
+          {[40, 60, 80, 100, 120].map((y, i) => (
+            <circle key={i} cx="95" cy={y} r="2" fill="rgba(196,154,44,0.8)"/>
+          ))}
+          <text x="60" y="14" fill="rgba(196,40,40,0.8)" fontSize="9" fontFamily="monospace">刻满符号的铁门</text>
+          {/* 走廊（无限延伸透视） */}
+          <polygon points="130,40 320,65 320,125 130,150" fill="rgba(20,20,24,0.55)" stroke="rgba(74,88,104,0.5)" strokeWidth="1.5"/>
+          <line x1="130" y1="95" x2="320" y2="95" stroke="rgba(196,40,40,0.3)" strokeWidth="0.8" strokeDasharray="4 3"/>
+          {/* 走廊尽头（无限） */}
+          <text x="240" y="90" fill="rgba(168,168,180,0.6)" fontSize="9" fontFamily="monospace">无限延伸…</text>
+          {/* 返回者标注 */}
+          <text x="200" y="158" fill="rgba(196,154,44,0.8)" fontSize="9" fontFamily="monospace">「它记得每一个来过的人」</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          全球第一起被正式记录的异常事件 · 铁门符号无法拓印 · 走廊可无限延伸
+        </div>
+      </div>
+    );
+
+    const harborData = {
+      id: "LOA-0001",
+      name: "灰港仓库",
+      nameEn: "HARBOR WAREHOUSE · THE FIRST",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>LOA-0001</span>, "名称", "灰港仓库 · Harbor Warehouse"],
+        ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 9月"],
+        ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 11%</span>, "（9人进入，8人死亡）"], "信息价值", "极高（全球第一起被正式记录的异常事件，异常学起源档案）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "遗址封闭管理 · 未解决"],
+      ],
+      discovery: [
+        "安珀历元年9月，格伦贝尔联邦第七大城市「灰港」的港区一座仓库在夜间凭空消失。原址上出现了一扇刻满符号的铁门——推开铁门后，通向一个与其外部外观完全不符的、无限延伸的走廊空间。",
+        "首批进入探索的九人小队仅一人生还，获救后精神严重受损，反复重复同一句话：「它记得每一个来过的人。」这是全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。",
+      ],
+      features: [
+        "灰港仓库是全球第一起被正式记录的异常事件，也是「安珀历」纪年的起点——安珀历以第一起异常事件为元年，此前被称为「前安珀时代」。",
+        "异常本体为消失的仓库与替代它的铁门走廊：铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符。异常具有「记忆」特性——它记得每一个进入过的人。",
+        "截至安珀历39年，全球已记录的异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态。异常的出现没有规律可循——任意地点、任意时间，规模从一间卧室到整个城区皆有案例。灰港仓库正是这一切的起点。",
+      ],
+      mapNode: harborMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "铁门入口", desc: "仓库原址的铁门为唯一已知入口，推开后进入走廊；铁门符号无法拓印，任何复制品均会迅速褪色模糊，照片与文字描述同样失真。" },
+        { num: "二", title: "走廊延伸", desc: "走廊可无限延伸且方向感不可靠。返回者描述「走廊在改变」——同一段路在不同时间通过时，长度与布局均不相同。" },
+        { num: "三", title: "记忆识别", desc: "异常能识别进入者。二次进入者报告走廊对其表现出「熟悉」——灯光自动亮起、门自动开启；这与生还者反复重复的「它记得每一个来过的人」一致。" },
+      ],
+      speculatedRules: [
+        "铁门上的符号可能是异常「记忆」的载体或索引——符号无法被记录，或许正是异常自我保护机制的一部分",
+        "走廊中疑似存在与进入者对应的「房间」，房间内容与进入者的记忆相关",
+        "异常未表现出主动扩张迹象，但误入事件仍不定期发生——灰港港区遗址周围仍会偶发「看到铁门」的报告",
+      ],
+      entryRecords: [
+        { term: "首批", year: "安珀历元年·9月", count: 9, org: "格伦贝尔联邦勘测队", result: "1人生还，8人死亡", status: "death" },
+      ],
+      phenomena: [
+        "<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。",
+        "<strong>记忆响应：</strong>二次进入者报告走廊对自身表现出「熟悉」——疑似异常能够识别并记忆进入者，且会对其「打招呼」。",
+      ],
+      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。该异常至今未解决，且未表现出扩张或衰竭迹象。鉴于其「记忆」特性与起源意义，IMAC 已将其列为「起源档案」永久保存。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: [
+        "维持灰港港区遗址的封闭管理，防止误入事件，并记录周边「看到铁门」的报告",
+        "成立专项研究组研究铁门符号（符号无法拓印，可尝试长曝光观测与多人同步记录比对）",
+        "评估灰港异常的「记忆特性」与其他异常（如赤月学院 LOA-0073）是否存在共性，探索异常「记忆」的普遍性",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【IMAC 异常信息管理委员会评估 · 起源档案】<br/><br/>
+              灰港事件作为第一起被记录的异常，其「记忆」特性可能是理解异常本质的关键线索——
+              如果异常能够「记得」进入者，那么异常或许也存在「遗忘」与「记录」的机制。<br/><br/>
+              铁门符号无法被记录，这本身就是异常自我保护机制的一部分。
+              建议将灰港仓库列为「起源档案」永久保存，保持最低限度接触，并持续记录铁门周边的一切异常前兆。
+            </p>
+            <div className="internal-note-signature">— IMAC 理事会 · 异常信息管理委员会</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={harborData} />;
   }
 
   if (isStairwell) {
@@ -471,13 +567,13 @@ function AnomalyDetailPage() {
       archiveDate: "安珀历39年春",
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>PHA-0001</span>, "名称", "空白地带 · The Void"],
-        ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 大裂隙后"],
+        ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 灰港事件后"],
         ["异常等级", { levelKey: "unknown", text: "未知级 · UNKNOWN" }, "当前状态", { statusKey: "quarantined", text: "● 隔离中 QUARANTINED" }],
         ["生还率", <span className="survival-rate-red">—</span>, "信息价值", "极高（未知级现象，信息极度匮乏，任何样本价值不可估量）"],
         ["档案更新", "安珀历39年 · 春", "处置状态", "全封闭隔离 · 禁止任何接触"],
       ],
       discovery: [
-        "安珀历元年「大裂隙」事件结束后，多国勘测队在极北冰原的某处坐标附近发现一片「什么都没有」的区域——范围内重力、电磁、时间读数全部失效，进入该区域的一切物质均失去信号。最早的两份勘察记录因设备失灵仅保留残缺片段。",
+        "安珀历元年灰港事件之后，多国勘测队在极北冰原的某处坐标附近发现一片「什么都没有」的区域——范围内重力、电磁、时间读数全部失效，进入该区域的一切物质均失去信号。最早的两份勘察记录因设备失灵仅保留残缺片段。",
         "此后该区域由 IMAC 直辖封闭隔离。所有关于空白地带的直接观测记录均已归档为最高机密，公开档案中仅保留本条目与极少数间接信息。",
       ],
       features: [
@@ -491,7 +587,7 @@ function AnomalyDetailPage() {
         "唯一返回者的记忆空白暗示认知层面同样被「抹除」",
       ],
       entryRecords: [
-        { term: "首次接触", year: "安珀历元年 · 大裂隙后", count: 0, org: "IMAC 直属勘察队", result: "人数未知 · 全员失踪，无返回记录", status: "death" },
+        { term: "首次接触", year: "安珀历元年 · 灰港事件后", count: 0, org: "IMAC 直属勘察队", result: "人数未知 · 全员失踪，无返回记录", status: "death" },
         { term: "第二次勘察", year: "安珀历4年", count: 3, org: "IMAC 直属", result: "2人失踪 · 1人返回后记忆空白", status: "death" },
       ],
       phenomena: [
@@ -502,7 +598,7 @@ function AnomalyDetailPage() {
       suggestedActions: [
         "维持现有全封闭隔离，不主动接触或投放测试物（历年投放均无有效数据返回）",
         "以外围遥感手段持续记录边界变化，积累长期监测数据",
-        "评估「大裂隙」事件档案的关联性——空白地带是否为大裂隙的残留影响",
+        "评估灰港事件档案的关联性——空白地带是否为异常初现时的残留影响",
       ],
       internalNode: (
         <Restricted level="topsecret" label="绝密级内容" compact>

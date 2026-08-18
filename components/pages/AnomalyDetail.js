@@ -14,6 +14,7 @@ function AnomalyDetailPage() {
 
   // Default to LOA-0073 full data; others show placeholder
   const isDefault = anomalyId === "LOA-0073";
+  const isHarbor = anomalyId === "LOA-0001";
   const isStairwell = anomalyId === "SPA-0021";
   const isTrain = anomalyId === "TMA-0045";
   const isOutpost = anomalyId === "TMB-0117";
@@ -236,7 +237,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isStairwell && !isTrain && !isOutpost && !isVoid) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -306,6 +307,147 @@ function AnomalyDetailPage() {
     }, "\u672C\u6863\u6848\u5DF2\u7EB3\u5165 IMAC \u5168\u7403\u5F02\u5E38\u4FE1\u606F\u603B\u5E93\uFF0C\u672A\u7ECF IMAC \u8054\u5408\u884C\u52A8\u6307\u6325\u4E2D\u5FC3\u6388\u6743\uFF0C\u4E0D\u5F97\u64C5\u81EA\u590D\u5236\u6216\u4F20\u64AD\u3002", /*#__PURE__*/React.createElement("div", {
       className: "file-archive-signature"
     }, "\u2014\u2014 IMAC \u5F02\u5E38\u4FE1\u606F\u603B\u5E93 \xB7 \u5B89\u73C0\u538639\u5E74\u6625")))));
+  }
+  if (isHarbor) {
+    const harborMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "60",
+      y: "20",
+      width: "70",
+      height: "120",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(196,40,40,0.7)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "70",
+      y: "30",
+      width: "50",
+      height: "100",
+      fill: "rgba(10,10,12,0.9)",
+      stroke: "rgba(196,40,40,0.4)",
+      strokeWidth: "1"
+    }), [40, 60, 80, 100, 120].map((y, i) => /*#__PURE__*/React.createElement("circle", {
+      key: i,
+      cx: "95",
+      cy: y,
+      r: "2",
+      fill: "rgba(196,154,44,0.8)"
+    })), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "14",
+      fill: "rgba(196,40,40,0.8)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u523B\u6EE1\u7B26\u53F7\u7684\u94C1\u95E8"), /*#__PURE__*/React.createElement("polygon", {
+      points: "130,40 320,65 320,125 130,150",
+      fill: "rgba(20,20,24,0.55)",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "130",
+      y1: "95",
+      x2: "320",
+      y2: "95",
+      stroke: "rgba(196,40,40,0.3)",
+      strokeWidth: "0.8",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "240",
+      y: "90",
+      fill: "rgba(168,168,180,0.6)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u65E0\u9650\u5EF6\u4F38\u2026"), /*#__PURE__*/React.createElement("text", {
+      x: "200",
+      y: "158",
+      fill: "rgba(196,154,44,0.8)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u300C\u5B83\u8BB0\u5F97\u6BCF\u4E00\u4E2A\u6765\u8FC7\u7684\u4EBA\u300D")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u5168\u7403\u7B2C\u4E00\u8D77\u88AB\u6B63\u5F0F\u8BB0\u5F55\u7684\u5F02\u5E38\u4E8B\u4EF6 \xB7 \u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u62D3\u5370 \xB7 \u8D70\u5ECA\u53EF\u65E0\u9650\u5EF6\u4F38"));
+    const harborData = {
+      id: "LOA-0001",
+      name: "灰港仓库",
+      nameEn: "HARBOR WAREHOUSE · THE FIRST",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "LOA-0001"), "名称", "灰港仓库 · Harbor Warehouse"], ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 9月"], ["异常等级", {
+        levelKey: "doomed",
+        text: "厄运级 · DOOMED"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 11%"), "（9人进入，8人死亡）"], "信息价值", "极高（全球第一起被正式记录的异常事件，异常学起源档案）"], ["档案更新", "安珀历39年 · 春", "处置状态", "遗址封闭管理 · 未解决"]],
+      discovery: ["安珀历元年9月，格伦贝尔联邦第七大城市「灰港」的港区一座仓库在夜间凭空消失。原址上出现了一扇刻满符号的铁门——推开铁门后，通向一个与其外部外观完全不符的、无限延伸的走廊空间。", "首批进入探索的九人小队仅一人生还，获救后精神严重受损，反复重复同一句话：「它记得每一个来过的人。」这是全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。"],
+      features: ["灰港仓库是全球第一起被正式记录的异常事件，也是「安珀历」纪年的起点——安珀历以第一起异常事件为元年，此前被称为「前安珀时代」。", "异常本体为消失的仓库与替代它的铁门走廊：铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符。异常具有「记忆」特性——它记得每一个进入过的人。", "截至安珀历39年，全球已记录的异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态。异常的出现没有规律可循——任意地点、任意时间，规模从一间卧室到整个城区皆有案例。灰港仓库正是这一切的起点。"],
+      mapNode: harborMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "铁门入口",
+        desc: "仓库原址的铁门为唯一已知入口，推开后进入走廊；铁门符号无法拓印，任何复制品均会迅速褪色模糊，照片与文字描述同样失真。"
+      }, {
+        num: "二",
+        title: "走廊延伸",
+        desc: "走廊可无限延伸且方向感不可靠。返回者描述「走廊在改变」——同一段路在不同时间通过时，长度与布局均不相同。"
+      }, {
+        num: "三",
+        title: "记忆识别",
+        desc: "异常能识别进入者。二次进入者报告走廊对其表现出「熟悉」——灯光自动亮起、门自动开启；这与生还者反复重复的「它记得每一个来过的人」一致。"
+      }],
+      speculatedRules: ["铁门上的符号可能是异常「记忆」的载体或索引——符号无法被记录，或许正是异常自我保护机制的一部分", "走廊中疑似存在与进入者对应的「房间」，房间内容与进入者的记忆相关", "异常未表现出主动扩张迹象，但误入事件仍不定期发生——灰港港区遗址周围仍会偶发「看到铁门」的报告"],
+      entryRecords: [{
+        term: "首批",
+        year: "安珀历元年·9月",
+        count: 9,
+        org: "格伦贝尔联邦勘测队",
+        result: "1人生还，8人死亡",
+        status: "death"
+      }],
+      phenomena: ["<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。", "<strong>记忆响应：</strong>二次进入者报告走廊对自身表现出「熟悉」——疑似异常能够识别并记忆进入者，且会对其「打招呼」。"],
+      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。该异常至今未解决，且未表现出扩张或衰竭迹象。鉴于其「记忆」特性与起源意义，IMAC 已将其列为「起源档案」永久保存。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: ["维持灰港港区遗址的封闭管理，防止误入事件，并记录周边「看到铁门」的报告", "成立专项研究组研究铁门符号（符号无法拓印，可尝试长曝光观测与多人同步记录比对）", "评估灰港异常的「记忆特性」与其他异常（如赤月学院 LOA-0073）是否存在共性，探索异常「记忆」的普遍性"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010IMAC \u5F02\u5E38\u4FE1\u606F\u7BA1\u7406\u59D4\u5458\u4F1A\u8BC4\u4F30 \xB7 \u8D77\u6E90\u6863\u6848\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u6E2F\u4E8B\u4EF6\u4F5C\u4E3A\u7B2C\u4E00\u8D77\u88AB\u8BB0\u5F55\u7684\u5F02\u5E38\uFF0C\u5176\u300C\u8BB0\u5FC6\u300D\u7279\u6027\u53EF\u80FD\u662F\u7406\u89E3\u5F02\u5E38\u672C\u8D28\u7684\u5173\u952E\u7EBF\u7D22\u2014\u2014 \u5982\u679C\u5F02\u5E38\u80FD\u591F\u300C\u8BB0\u5F97\u300D\u8FDB\u5165\u8005\uFF0C\u90A3\u4E48\u5F02\u5E38\u6216\u8BB8\u4E5F\u5B58\u5728\u300C\u9057\u5FD8\u300D\u4E0E\u300C\u8BB0\u5F55\u300D\u7684\u673A\u5236\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u88AB\u8BB0\u5F55\uFF0C\u8FD9\u672C\u8EAB\u5C31\u662F\u5F02\u5E38\u81EA\u6211\u4FDD\u62A4\u673A\u5236\u7684\u4E00\u90E8\u5206\u3002 \u5EFA\u8BAE\u5C06\u7070\u6E2F\u4ED3\u5E93\u5217\u4E3A\u300C\u8D77\u6E90\u6863\u6848\u300D\u6C38\u4E45\u4FDD\u5B58\uFF0C\u4FDD\u6301\u6700\u4F4E\u9650\u5EA6\u63A5\u89E6\uFF0C\u5E76\u6301\u7EED\u8BB0\u5F55\u94C1\u95E8\u5468\u8FB9\u7684\u4E00\u5207\u5F02\u5E38\u524D\u5146\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 IMAC \u7406\u4E8B\u4F1A \xB7 \u5F02\u5E38\u4FE1\u606F\u7BA1\u7406\u59D4\u5458\u4F1A")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: harborData
+    });
   }
   if (isStairwell) {
     const stairMap = /*#__PURE__*/React.createElement("div", {
@@ -949,7 +1091,7 @@ function AnomalyDetailPage() {
         style: {
           fontSize: "18px"
         }
-      }, "PHA-0001"), "名称", "空白地带 · The Void"], ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 大裂隙后"], ["异常等级", {
+      }, "PHA-0001"), "名称", "空白地带 · The Void"], ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 灰港事件后"], ["异常等级", {
         levelKey: "unknown",
         text: "未知级 · UNKNOWN"
       }, "当前状态", {
@@ -958,12 +1100,12 @@ function AnomalyDetailPage() {
       }], ["生还率", /*#__PURE__*/React.createElement("span", {
         className: "survival-rate-red"
       }, "\u2014"), "信息价值", "极高（未知级现象，信息极度匮乏，任何样本价值不可估量）"], ["档案更新", "安珀历39年 · 春", "处置状态", "全封闭隔离 · 禁止任何接触"]],
-      discovery: ["安珀历元年「大裂隙」事件结束后，多国勘测队在极北冰原的某处坐标附近发现一片「什么都没有」的区域——范围内重力、电磁、时间读数全部失效，进入该区域的一切物质均失去信号。最早的两份勘察记录因设备失灵仅保留残缺片段。", "此后该区域由 IMAC 直辖封闭隔离。所有关于空白地带的直接观测记录均已归档为最高机密，公开档案中仅保留本条目与极少数间接信息。"],
+      discovery: ["安珀历元年灰港事件之后，多国勘测队在极北冰原的某处坐标附近发现一片「什么都没有」的区域——范围内重力、电磁、时间读数全部失效，进入该区域的一切物质均失去信号。最早的两份勘察记录因设备失灵仅保留残缺片段。", "此后该区域由 IMAC 直辖封闭隔离。所有关于空白地带的直接观测记录均已归档为最高机密，公开档案中仅保留本条目与极少数间接信息。"],
       features: ["空白地带是目前唯一被评定为「未知级」的异常。其本质、范围、边界运动规律均未被确认——已知信息仅来自两次勘察的残缺记录与外围间接观测，信息总量低于任何已归档的深渊级异常。", "外围观测确认：空白地带边界内不存在任何可探测的物理信号；接触边界的物质会「消失」，消失方向未知。唯一返回的勘察人员出现了完全的记忆空白。"],
       speculatedRules: ["空白地带内物理法则完全失效：重力、电磁、时间均无可测读数", "接触空白地带的物质会「消失」——消失方向未知，无返回记录", "空白地带边界疑似在缓慢扩张（两次勘测的外围标记间距存在微小差异，但精度不足以确认）", "唯一返回者的记忆空白暗示认知层面同样被「抹除」"],
       entryRecords: [{
         term: "首次接触",
-        year: "安珀历元年 · 大裂隙后",
+        year: "安珀历元年 · 灰港事件后",
         count: 0,
         org: "IMAC 直属勘察队",
         result: "人数未知 · 全员失踪，无返回记录",
@@ -978,7 +1120,7 @@ function AnomalyDetailPage() {
       }],
       phenomena: ["<strong>「消失的物质」：</strong>外围投放的测试物（金属块、信标、记录器）接触边界后信号消失，无任何残留，无返回记录。", "<strong>记忆空白：</strong>唯一返回者在返回后无法回忆起勘察期间的任何内容，且其随身记录设备内数据完全为空。"],
       imacNote: "空白地带是 IMAC 档案中信息最有限的异常条目。鉴于其完全未知的性质与「物质消失」特性，IMAC 协调办公室已将其列为最高隔离等级（全封闭 · 禁止接触）。任何关于空白地带的调查申请均须提交理事会单独审批。未经授权的一切接近行为将被视为最高等级违规。",
-      suggestedActions: ["维持现有全封闭隔离，不主动接触或投放测试物（历年投放均无有效数据返回）", "以外围遥感手段持续记录边界变化，积累长期监测数据", "评估「大裂隙」事件档案的关联性——空白地带是否为大裂隙的残留影响"],
+      suggestedActions: ["维持现有全封闭隔离，不主动接触或投放测试物（历年投放均无有效数据返回）", "以外围遥感手段持续记录边界变化，积累长期监测数据", "评估灰港事件档案的关联性——空白地带是否为异常初现时的残留影响"],
       internalNode: /*#__PURE__*/React.createElement(Restricted, {
         level: "topsecret",
         label: "\u7EDD\u5BC6\u7EA7\u5185\u5BB9",
