@@ -954,7 +954,22 @@ function ProfileCenterPage() {
       color: "var(--text-primary)"
     }
   }, m.name), /*#__PURE__*/React.createElement("span", {
-    className: "mission-code"
+    className: "mission-code",
+    style: {
+      cursor: "pointer",
+      color: "var(--steel-blue-light)",
+      borderBottom: "1px dotted rgba(106,122,140,0.6)"
+    },
+    onClick: () => navigate(`/anomaly/${m.code}`),
+    title: "\u67E5\u770B\u5F02\u5E38\u5F52\u6863",
+    onMouseEnter: e => {
+      e.currentTarget.style.color = "var(--accent-red-bright)";
+      e.currentTarget.style.borderBottomColor = "var(--accent-red-bright)";
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.color = "var(--steel-blue-light)";
+      e.currentTarget.style.borderBottomColor = "rgba(106,122,140,0.6)";
+    }
   }, m.code), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
     className: `level-badge ${m.levelClass}`
   }, m.level)), /*#__PURE__*/React.createElement("span", {

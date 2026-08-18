@@ -745,7 +745,16 @@ function ProfileCenterPage() {
                     {missionHistory.map((m, i) => (
                       <div key={i} className="pc-table-row">
                         <span style={{ color: "var(--text-primary)" }}>{m.name}</span>
-                        <span className="mission-code">{m.code}</span>
+                        <span
+                          className="mission-code"
+                          style={{ cursor: "pointer", color: "var(--steel-blue-light)", borderBottom: "1px dotted rgba(106,122,140,0.6)" }}
+                          onClick={() => navigate(`/anomaly/${m.code}`)}
+                          title="查看异常归档"
+                          onMouseEnter={(e) => { e.currentTarget.style.color = "var(--accent-red-bright)"; e.currentTarget.style.borderBottomColor = "var(--accent-red-bright)"; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.color = "var(--steel-blue-light)"; e.currentTarget.style.borderBottomColor = "rgba(106,122,140,0.6)"; }}
+                        >
+                          {m.code}
+                        </span>
                         <span><span className={`level-badge ${m.levelClass}`}>{m.level}</span></span>
                         <span style={{ color: "var(--text-secondary)" }}>{m.role}</span>
                         <span style={{ color: "var(--text-tertiary)" }}>{m.time}</span>

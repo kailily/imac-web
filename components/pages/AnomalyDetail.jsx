@@ -15,6 +15,7 @@ function AnomalyDetailPage() {
   const isDefault = anomalyId === "LOA-0073";
   const isStairwell = anomalyId === "SPA-0021";
   const isTrain = anomalyId === "TMA-0045";
+  const isOutpost = anomalyId === "TMB-0117";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -84,7 +85,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isStairwell && !isTrain) {
+  if (!isDefault && !isStairwell && !isTrain && !isOutpost) {
     return (
       <>
         <style>{`
@@ -196,7 +197,7 @@ function AnomalyDetailPage() {
         "BRI 调查组介入后确认，公寓2层至3层之间的楼梯间存在空间折叠异常。此后异常范围缓慢向整栋公寓的楼梯系统蔓延，现已覆盖全部三个楼梯井。公寓于安珀历14年整体封闭，原住民全部迁出。",
       ],
       features: [
-        "无尽楼梯是一处典型的<strong>空间折叠型异常</strong>（SPA 子类·折叠）。异常主体为白鸽公寓B座楼梯间：进入后楼梯可无限延伸，无论向上还是向下，台阶数恒定，楼层标识在 2/3/4 层之间循环，1层与5层从未被观测到。",
+        "无尽楼梯是一处典型的<strong>空间折叠型异常</strong>。异常主体为白鸽公寓B座楼梯间：进入后楼梯可无限延伸，无论向上还是向下，台阶数恒定，楼层标识在 2/3/4 层之间循环，1层与5层从未被观测到。",
         "异常内部光照恒定、无自然光、无声源。同行者始终可见，但声音无法在楼梯间传递。扶手、墙面与台阶材质与正常建筑一致，但会随停留时间发生缓慢「老化」。",
         "异常入口位于2层平台，进入条件未知。部分报告显示，与白鸽公寓同款式的其他建筑楼梯间也可能成为异常入口——相关建筑已被列为观察对象。",
       ],
@@ -297,7 +298,7 @@ function AnomalyDetailPage() {
         "此后数年间，这列幽灵列车多次在东部铁路网不同区段出现：任何驶入「雾区」的列车，其车厢内人员都会被替换为幽灵列车内的时间循环参与者。长桥会社接管调查后确认其为时间循环型异常，列车本身即异常的移动载体。",
       ],
       features: [
-        "雾中列车是一处典型的<strong>时间循环型异常</strong>（TMA 子类·循环）。异常载体为一列老式蒸汽列车，编号已不可考。列车在东部铁路网行驶时周期性驶入「雾区」，循环周期约47分钟；循环结束后列车短暂消失，随后在另一区段重新出现并进入下一循环。",
+        "雾中列车是一处典型的<strong>时间循环型异常</strong>。异常载体为一列老式蒸汽列车，编号已不可考。列车在东部铁路网行驶时周期性驶入「雾区」，循环周期约47分钟；循环结束后列车短暂消失，随后在另一区段重新出现并进入下一循环。",
         "循环中经过的所有车站均为虚假站台，下车者立即消失。列车上的时钟永远停在 23:47。乘务员会在每次循环开始约10分钟后逐一检票，票面上的目的地从未被看清。",
         "第6节车厢为「安全车厢」——该车厢内时间流速正常，是已知唯一不受循环重置影响的区域，也是历次行动的临时据点。",
       ],
@@ -353,6 +354,108 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={trainData} />;
+  }
+
+  if (isOutpost) {
+    const outpostMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 冻结范围 */}
+          <rect x="20" y="15" width="300" height="120" fill="rgba(138,180,212,0.05)" stroke="rgba(138,180,212,0.35)" strokeWidth="1" strokeDasharray="4 3"/>
+          <text x="28" y="30" fill="rgba(138,180,212,0.7)" fontSize="9" fontFamily="monospace">时间冻结范围 · 约600㎡</text>
+          {/* 哨站建筑 */}
+          <rect x="50" y="45" width="240" height="70" fill="rgba(20,20,24,0.9)" stroke="rgba(74,88,104,0.6)" strokeWidth="1.5"/>
+          {/* 房间分隔 */}
+          <line x1="110" y1="45" x2="110" y2="115" stroke="rgba(74,88,104,0.5)" strokeWidth="1"/>
+          <line x1="180" y1="45" x2="180" y2="115" stroke="rgba(74,88,104,0.5)" strokeWidth="1"/>
+          <line x1="250" y1="45" x2="250" y2="115" stroke="rgba(74,88,104,0.5)" strokeWidth="1"/>
+          {/* 房间标注 */}
+          <text x="65" y="72" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">宿舍</text>
+          <text x="122" y="72" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">值班室</text>
+          <text x="192" y="72" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">仓库</text>
+          <text x="258" y="72" fill="rgba(168,168,180,0.7)" fontSize="9" fontFamily="monospace">锅炉房</text>
+          {/* 地下室入口 + 核心钟 */}
+          <rect x="120" y="120" width="40" height="12" fill="rgba(196,40,40,0.15)" stroke="rgba(196,40,40,0.5)" strokeWidth="1"/>
+          <text x="110" y="145" fill="rgba(196,40,40,0.85)" fontSize="9" fontFamily="monospace">地下室 · 核心钟</text>
+          {/* 钟表图标 */}
+          <circle cx="140" cy="126" r="4" fill="none" stroke="rgba(196,154,44,0.9)" strokeWidth="1.5"/>
+          <line x1="140" y1="126" x2="140" y2="123.5" stroke="rgba(196,154,44,0.9)" strokeWidth="1"/>
+          {/* 冻结核爆点 */}
+          <text x="240" y="140" fill="rgba(74,154,44,0.85)" fontSize="9" fontFamily="monospace">坍缩点 · 已解除</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          核心锚点：地下室机械钟（停摆 23:47）· 拨动钟摆后异常坍缩 · 现为封存监测状态
+        </div>
+      </div>
+    );
+
+    const outpostData = {
+      id: "TMB-0117",
+      name: "冰封哨站",
+      nameEn: "FROZEN OUTPOST · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>TMB-0117</span>, "名称", "冰封哨站 · Frozen Outpost"],
+        ["所属管辖", "北境守望 · Northwatch", "首次记录", "安珀历15年 · 冬"],
+        ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "resolved", text: "● 已解决 · 坍缩 RESOLVED" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 31%</span>, "（55人进入，38人死亡）"], "信息价值", "高（时间停滞解除案例研究价值高）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 现场封存监测"],
+      ],
+      discovery: [
+        "安珀历15年冬，白松城以北冻土区的一支勘探队在测绘旧边境设施时发现废弃哨站（安珀历9年因极寒撤离）内部一切「冻结」：钟表停走、炉火不燃、墙上的值班日志保持翻开状态，连炉灰都悬浮在半空。勘探队撤离后立即上报，北境守望接管调查并确认哨站主体建筑陷入时间停滞。",
+        "异常范围始终局限在哨站主体建筑（约600平方米）内，未向冻土区扩散。安珀历21年，北境守望在第四批行动中成功使异常坍缩，哨站时间恢复流动，异常被判定为已解决。",
+      ],
+      features: [
+        "冰封哨站是一处典型的<strong>时间停滞型异常</strong>。异常覆盖哨站主体建筑，内部所有非生命体的时间完全静止——钟表停走、火焰凝固、液体冻结，连空气中的尘埃都悬浮不动。",
+        "进入者的时间不受影响，但无法改变任何冻结物体；食物、饮水、工具等外部物品带入哨站后同样被「冻结」。异常核心位于地下室的机械钟，钟摆停摆于安珀历9年冬·23:47。",
+        "安珀历21年，北境守望第四批行动通过使核心钟摆恢复摆动，异常整体坍缩。坍缩后哨站时间恢复流动，残留的冻结痕迹随坍缩消散，现场被封存监测。",
+      ],
+      mapNode: outpostMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "时间冻结", desc: "哨站内所有非生命体的时间完全静止；进入者时间正常流动，但无法与冻结物体产生任何物理交互。" },
+        { num: "二", title: "冻结不可逆（行动中）", desc: "进入者尝试破坏、移动或加热冻结物品时，会遭遇「反向冻结」——身体局部开始失去知觉，触碰部位最先冻结。该效应在撤离冻结区域后自行消退。" },
+        { num: "三", title: "核心锚点", desc: "地下室机械钟为异常核心，钟摆停摆时刻（安珀历9年冬·23:47）与哨站废弃时间完全一致。异常范围与核心钟的「可听范围」基本重合。" },
+        { num: "四", title: "解冻条件", desc: "使核心钟摆重新摆动（拨动指针或重新上弦）后，异常整体坍缩，时间恢复流动。安珀历21年第四批行动验证了该条件。" },
+      ],
+      entryRecords: [
+        { term: "第一批", year: "安珀历15年·冬", count: 12, org: "北境守望", result: "4人生还，8人死亡", status: "death" },
+        { term: "第二批", year: "安珀历16年", count: 14, org: "北境守望", result: "5人生还，9人死亡", status: "death" },
+        { term: "第三批", year: "安珀历18年", count: 15, org: "北境守望", result: "4人生还，11人死亡", status: "death" },
+        { term: "第四批", year: "安珀历21年", count: 14, org: "北境守望", result: "4人生还，10人死亡 · 成功解除", status: "death" },
+      ],
+      phenomena: [
+        "<strong>「值班日志」末行：</strong>地下室值班日志的最后一页写着「冬·23:47 钟停了，我们走不出去」——与核心钟停摆时刻一致，疑似哨站撤离时的最后记录。",
+        "<strong>冻结残留：</strong>坍缩后，哨站墙面上留有疑似「时间冻结时的空气划痕」，分析显示为异常内部最后的物理痕迹，已采样封存。",
+        "<strong>同型前兆监测：</strong>坍缩后，白松城周边两处废弃设施出现「钟表集体停走」前兆，是否发展为同类异常正在监测中。",
+      ],
+      imacNote: "冰封哨站是时间停滞型异常的首个成功解除案例，其「核心锚点-解冻」机制为同类异常提供了完整处置范式。鉴于异常已坍缩，IMAC 已将其列为「已解决·样本封存」档案，现场保留供研究。任何组织如需重新进入现场进行研究，须获得 IMAC 及北境守望联合许可。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: [
+        "维护坍缩后现场并封存关键物证（核心钟残件、值班日志、冻结划痕样本）",
+        "整理第四批行动完整记录，形成时间停滞型异常处置标准流程并纳入训练教材",
+        "持续监测白松城周边废弃设施，排查同型异常前兆，建立常驻监测哨",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【北境守望内部评估 · 冻土探索营】<br/><br/>
+              第四批行动的成功验证了一个假设：时间停滞型异常的核心锚点是可以被「说服」的——
+              拨动钟摆的行为本身并不特殊，特殊的是在冻结环境下保持清醒决策的人。这是冻土区教给我们的道理。<br/><br/>
+              建议将「冰封哨站处置流程」纳入北境守望训练教材，并针对白松城周边前兆建立常驻监测哨。
+              下一次如果再有钟表集体停走，我们要比这次更快。
+            </p>
+            <div className="internal-note-signature">— 韩凛 · 北境守望冻土探索营队长</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={outpostData} />;
   }
 
   return (

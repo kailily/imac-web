@@ -16,6 +16,7 @@ function AnomalyDetailPage() {
   const isDefault = anomalyId === "LOA-0073";
   const isStairwell = anomalyId === "SPA-0021";
   const isTrain = anomalyId === "TMA-0045";
+  const isOutpost = anomalyId === "TMB-0117";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -234,7 +235,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isStairwell && !isTrain) {
+  if (!isDefault && !isStairwell && !isTrain && !isOutpost) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -442,7 +443,7 @@ function AnomalyDetailPage() {
         key: "s"
       }, "\u7EA6 23%"), "（87人进入，67人死亡）"], "信息价值", "高（空间折叠机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均拉入 2-3 起"]],
       discovery: ["安珀历12年秋，洛林自由市旧城区的「白鸽公寓」B座住户连续向警署报案：多名居民表示在下楼时「走了很久都到不了一楼」，一名住户甚至在三楼台阶上原地消失，数小时后从四楼平台重新出现，全程无意识。", "BRI 调查组介入后确认，公寓2层至3层之间的楼梯间存在空间折叠异常。此后异常范围缓慢向整栋公寓的楼梯系统蔓延，现已覆盖全部三个楼梯井。公寓于安珀历14年整体封闭，原住民全部迁出。"],
-      features: ["无尽楼梯是一处典型的<strong>空间折叠型异常</strong>（SPA 子类·折叠）。异常主体为白鸽公寓B座楼梯间：进入后楼梯可无限延伸，无论向上还是向下，台阶数恒定，楼层标识在 2/3/4 层之间循环，1层与5层从未被观测到。", "异常内部光照恒定、无自然光、无声源。同行者始终可见，但声音无法在楼梯间传递。扶手、墙面与台阶材质与正常建筑一致，但会随停留时间发生缓慢「老化」。", "异常入口位于2层平台，进入条件未知。部分报告显示，与白鸽公寓同款式的其他建筑楼梯间也可能成为异常入口——相关建筑已被列为观察对象。"],
+      features: ["无尽楼梯是一处典型的<strong>空间折叠型异常</strong>。异常主体为白鸽公寓B座楼梯间：进入后楼梯可无限延伸，无论向上还是向下，台阶数恒定，楼层标识在 2/3/4 层之间循环，1层与5层从未被观测到。", "异常内部光照恒定、无自然光、无声源。同行者始终可见，但声音无法在楼梯间传递。扶手、墙面与台阶材质与正常建筑一致，但会随停留时间发生缓慢「老化」。", "异常入口位于2层平台，进入条件未知。部分报告显示，与白鸽公寓同款式的其他建筑楼梯间也可能成为异常入口——相关建筑已被列为观察对象。"],
       mapNode: stairMap,
       mapTag: "结构示意 · DIAGRAM",
       verifiedRules: stairVerifiedRules,
@@ -635,7 +636,7 @@ function AnomalyDetailPage() {
         key: "s"
       }, "\u7EA6 8%"), "（125人进入，115人死亡）"], "信息价值", "高（时间循环与移动锚定机理研究价值高）"], ["档案更新", "安珀历39年 · 春", "监测状态", "持续监测中 · 年均发生 3-4 起"]],
       discovery: ["安珀历19年冬，格伦贝尔联邦东部铁路网的一列夜班列车在驶入鸣海城以北约60公里的山区雾带后失踪。搜索队在沿线未发现任何残骸；48小时后，该列车在下一班列车时刻重新出现在同一区间——车厢内乘客全部失踪，仅列车员一人存活，返回后始终重复「我数不清站台」这句话。", "此后数年间，这列幽灵列车多次在东部铁路网不同区段出现：任何驶入「雾区」的列车，其车厢内人员都会被替换为幽灵列车内的时间循环参与者。长桥会社接管调查后确认其为时间循环型异常，列车本身即异常的移动载体。"],
-      features: ["雾中列车是一处典型的<strong>时间循环型异常</strong>（TMA 子类·循环）。异常载体为一列老式蒸汽列车，编号已不可考。列车在东部铁路网行驶时周期性驶入「雾区」，循环周期约47分钟；循环结束后列车短暂消失，随后在另一区段重新出现并进入下一循环。", "循环中经过的所有车站均为虚假站台，下车者立即消失。列车上的时钟永远停在 23:47。乘务员会在每次循环开始约10分钟后逐一检票，票面上的目的地从未被看清。", "第6节车厢为「安全车厢」——该车厢内时间流速正常，是已知唯一不受循环重置影响的区域，也是历次行动的临时据点。"],
+      features: ["雾中列车是一处典型的<strong>时间循环型异常</strong>。异常载体为一列老式蒸汽列车，编号已不可考。列车在东部铁路网行驶时周期性驶入「雾区」，循环周期约47分钟；循环结束后列车短暂消失，随后在另一区段重新出现并进入下一循环。", "循环中经过的所有车站均为虚假站台，下车者立即消失。列车上的时钟永远停在 23:47。乘务员会在每次循环开始约10分钟后逐一检票，票面上的目的地从未被看清。", "第6节车厢为「安全车厢」——该车厢内时间流速正常，是已知唯一不受循环重置影响的区域，也是历次行动的临时据点。"],
       mapNode: trainMap,
       mapTag: "结构示意 · DIAGRAM",
       verifiedRules: [{
@@ -716,6 +717,220 @@ function AnomalyDetailPage() {
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: trainData
+    });
+  }
+  if (isOutpost) {
+    const outpostMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "20",
+      y: "15",
+      width: "300",
+      height: "120",
+      fill: "rgba(138,180,212,0.05)",
+      stroke: "rgba(138,180,212,0.35)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "28",
+      y: "30",
+      fill: "rgba(138,180,212,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u65F6\u95F4\u51BB\u7ED3\u8303\u56F4 \xB7 \u7EA6600\u33A1"), /*#__PURE__*/React.createElement("rect", {
+      x: "50",
+      y: "45",
+      width: "240",
+      height: "70",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(74,88,104,0.6)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "110",
+      y1: "45",
+      x2: "110",
+      y2: "115",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "180",
+      y1: "45",
+      x2: "180",
+      y2: "115",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "250",
+      y1: "45",
+      x2: "250",
+      y2: "115",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "65",
+      y: "72",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u5BBF\u820D"), /*#__PURE__*/React.createElement("text", {
+      x: "122",
+      y: "72",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u503C\u73ED\u5BA4"), /*#__PURE__*/React.createElement("text", {
+      x: "192",
+      y: "72",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u4ED3\u5E93"), /*#__PURE__*/React.createElement("text", {
+      x: "258",
+      y: "72",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u9505\u7089\u623F"), /*#__PURE__*/React.createElement("rect", {
+      x: "120",
+      y: "120",
+      width: "40",
+      height: "12",
+      fill: "rgba(196,40,40,0.15)",
+      stroke: "rgba(196,40,40,0.5)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "110",
+      y: "145",
+      fill: "rgba(196,40,40,0.85)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u5730\u4E0B\u5BA4 \xB7 \u6838\u5FC3\u949F"), /*#__PURE__*/React.createElement("circle", {
+      cx: "140",
+      cy: "126",
+      r: "4",
+      fill: "none",
+      stroke: "rgba(196,154,44,0.9)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "140",
+      y1: "126",
+      x2: "140",
+      y2: "123.5",
+      stroke: "rgba(196,154,44,0.9)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "240",
+      y: "140",
+      fill: "rgba(74,154,44,0.85)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u574D\u7F29\u70B9 \xB7 \u5DF2\u89E3\u9664")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u6838\u5FC3\u951A\u70B9\uFF1A\u5730\u4E0B\u5BA4\u673A\u68B0\u949F\uFF08\u505C\u6446 23:47\uFF09\xB7 \u62E8\u52A8\u949F\u6446\u540E\u5F02\u5E38\u574D\u7F29 \xB7 \u73B0\u4E3A\u5C01\u5B58\u76D1\u6D4B\u72B6\u6001"));
+    const outpostData = {
+      id: "TMB-0117",
+      name: "冰封哨站",
+      nameEn: "FROZEN OUTPOST · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "TMB-0117"), "名称", "冰封哨站 · Frozen Outpost"], ["所属管辖", "北境守望 · Northwatch", "首次记录", "安珀历15年 · 冬"], ["异常等级", {
+        levelKey: "hazardous",
+        text: "危险级 · HAZARDOUS"
+      }, "当前状态", {
+        statusKey: "resolved",
+        text: "● 已解决 · 坍缩 RESOLVED"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 31%"), "（55人进入，38人死亡）"], "信息价值", "高（时间停滞解除案例研究价值高）"], ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 现场封存监测"]],
+      discovery: ["安珀历15年冬，白松城以北冻土区的一支勘探队在测绘旧边境设施时发现废弃哨站（安珀历9年因极寒撤离）内部一切「冻结」：钟表停走、炉火不燃、墙上的值班日志保持翻开状态，连炉灰都悬浮在半空。勘探队撤离后立即上报，北境守望接管调查并确认哨站主体建筑陷入时间停滞。", "异常范围始终局限在哨站主体建筑（约600平方米）内，未向冻土区扩散。安珀历21年，北境守望在第四批行动中成功使异常坍缩，哨站时间恢复流动，异常被判定为已解决。"],
+      features: ["冰封哨站是一处典型的<strong>时间停滞型异常</strong>。异常覆盖哨站主体建筑，内部所有非生命体的时间完全静止——钟表停走、火焰凝固、液体冻结，连空气中的尘埃都悬浮不动。", "进入者的时间不受影响，但无法改变任何冻结物体；食物、饮水、工具等外部物品带入哨站后同样被「冻结」。异常核心位于地下室的机械钟，钟摆停摆于安珀历9年冬·23:47。", "安珀历21年，北境守望第四批行动通过使核心钟摆恢复摆动，异常整体坍缩。坍缩后哨站时间恢复流动，残留的冻结痕迹随坍缩消散，现场被封存监测。"],
+      mapNode: outpostMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "时间冻结",
+        desc: "哨站内所有非生命体的时间完全静止；进入者时间正常流动，但无法与冻结物体产生任何物理交互。"
+      }, {
+        num: "二",
+        title: "冻结不可逆（行动中）",
+        desc: "进入者尝试破坏、移动或加热冻结物品时，会遭遇「反向冻结」——身体局部开始失去知觉，触碰部位最先冻结。该效应在撤离冻结区域后自行消退。"
+      }, {
+        num: "三",
+        title: "核心锚点",
+        desc: "地下室机械钟为异常核心，钟摆停摆时刻（安珀历9年冬·23:47）与哨站废弃时间完全一致。异常范围与核心钟的「可听范围」基本重合。"
+      }, {
+        num: "四",
+        title: "解冻条件",
+        desc: "使核心钟摆重新摆动（拨动指针或重新上弦）后，异常整体坍缩，时间恢复流动。安珀历21年第四批行动验证了该条件。"
+      }],
+      entryRecords: [{
+        term: "第一批",
+        year: "安珀历15年·冬",
+        count: 12,
+        org: "北境守望",
+        result: "4人生还，8人死亡",
+        status: "death"
+      }, {
+        term: "第二批",
+        year: "安珀历16年",
+        count: 14,
+        org: "北境守望",
+        result: "5人生还，9人死亡",
+        status: "death"
+      }, {
+        term: "第三批",
+        year: "安珀历18年",
+        count: 15,
+        org: "北境守望",
+        result: "4人生还，11人死亡",
+        status: "death"
+      }, {
+        term: "第四批",
+        year: "安珀历21年",
+        count: 14,
+        org: "北境守望",
+        result: "4人生还，10人死亡 · 成功解除",
+        status: "death"
+      }],
+      phenomena: ["<strong>「值班日志」末行：</strong>地下室值班日志的最后一页写着「冬·23:47 钟停了，我们走不出去」——与核心钟停摆时刻一致，疑似哨站撤离时的最后记录。", "<strong>冻结残留：</strong>坍缩后，哨站墙面上留有疑似「时间冻结时的空气划痕」，分析显示为异常内部最后的物理痕迹，已采样封存。", "<strong>同型前兆监测：</strong>坍缩后，白松城周边两处废弃设施出现「钟表集体停走」前兆，是否发展为同类异常正在监测中。"],
+      imacNote: "冰封哨站是时间停滞型异常的首个成功解除案例，其「核心锚点-解冻」机制为同类异常提供了完整处置范式。鉴于异常已坍缩，IMAC 已将其列为「已解决·样本封存」档案，现场保留供研究。任何组织如需重新进入现场进行研究，须获得 IMAC 及北境守望联合许可。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: ["维护坍缩后现场并封存关键物证（核心钟残件、值班日志、冻结划痕样本）", "整理第四批行动完整记录，形成时间停滞型异常处置标准流程并纳入训练教材", "持续监测白松城周边废弃设施，排查同型异常前兆，建立常驻监测哨"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u51BB\u571F\u63A2\u7D22\u8425\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7B2C\u56DB\u6279\u884C\u52A8\u7684\u6210\u529F\u9A8C\u8BC1\u4E86\u4E00\u4E2A\u5047\u8BBE\uFF1A\u65F6\u95F4\u505C\u6EDE\u578B\u5F02\u5E38\u7684\u6838\u5FC3\u951A\u70B9\u662F\u53EF\u4EE5\u88AB\u300C\u8BF4\u670D\u300D\u7684\u2014\u2014 \u62E8\u52A8\u949F\u6446\u7684\u884C\u4E3A\u672C\u8EAB\u5E76\u4E0D\u7279\u6B8A\uFF0C\u7279\u6B8A\u7684\u662F\u5728\u51BB\u7ED3\u73AF\u5883\u4E0B\u4FDD\u6301\u6E05\u9192\u51B3\u7B56\u7684\u4EBA\u3002\u8FD9\u662F\u51BB\u571F\u533A\u6559\u7ED9\u6211\u4EEC\u7684\u9053\u7406\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5EFA\u8BAE\u5C06\u300C\u51B0\u5C01\u54E8\u7AD9\u5904\u7F6E\u6D41\u7A0B\u300D\u7EB3\u5165\u5317\u5883\u5B88\u671B\u8BAD\u7EC3\u6559\u6750\uFF0C\u5E76\u9488\u5BF9\u767D\u677E\u57CE\u5468\u8FB9\u524D\u5146\u5EFA\u7ACB\u5E38\u9A7B\u76D1\u6D4B\u54E8\u3002 \u4E0B\u4E00\u6B21\u5982\u679C\u518D\u6709\u949F\u8868\u96C6\u4F53\u505C\u8D70\uFF0C\u6211\u4EEC\u8981\u6BD4\u8FD9\u6B21\u66F4\u5FEB\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u97E9\u51DB \xB7 \u5317\u5883\u5B88\u671B\u51BB\u571F\u63A2\u7D22\u8425\u961F\u957F")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: outpostData
     });
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
