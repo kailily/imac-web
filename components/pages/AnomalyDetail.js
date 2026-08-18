@@ -19,6 +19,7 @@ function AnomalyDetailPage() {
   const isTrain = anomalyId === "TMA-0045";
   const isOutpost = anomalyId === "TMB-0117";
   const isVoid = anomalyId === "PHA-0001";
+  const isLoop = anomalyId === "SPA-0421";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -237,7 +238,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -394,7 +395,7 @@ function AnomalyDetailPage() {
         style: {
           fontSize: "18px"
         }
-      }, "LOA-0001"), "名称", "灰港仓库 · Harbor Warehouse"], ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 9月"], ["异常等级", {
+      }, "LOA-0001"), "名称", "灰港仓库 · Harbor Warehouse"], ["所属管辖", "衔尾蛇事务所 · Ouroboros Agency", "首次记录", "安珀历元年 · 9月"], ["异常等级", {
         levelKey: "doomed",
         text: "厄运级 · DOOMED"
       }, "当前状态", {
@@ -405,7 +406,7 @@ function AnomalyDetailPage() {
         key: "s"
       }, "\u7EA6 11%"), "（9人进入，8人死亡）"], "信息价值", "极高（全球第一起被正式记录的异常事件，异常学起源档案）"], ["档案更新", "安珀历39年 · 春", "处置状态", "遗址封闭管理 · 未解决"]],
       discovery: ["安珀历元年9月，格伦贝尔联邦第七大城市「灰港」的港区一座仓库在夜间凭空消失。原址上出现了一扇刻满符号的铁门——推开铁门后，通向一个与其外部外观完全不符的、无限延伸的走廊空间。", "首批进入探索的九人小队仅一人生还，获救后精神严重受损，反复重复同一句话：「它记得每一个来过的人。」这是全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。"],
-      features: ["灰港仓库是全球第一起被正式记录的异常事件，也是「安珀历」纪年的起点——安珀历以第一起异常事件为元年，此前被称为「前安珀时代」。", "异常本体为消失的仓库与替代它的铁门走廊：铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符。异常具有「记忆」特性——它记得每一个进入过的人。", "截至安珀历39年，全球已记录的异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态。异常的出现没有规律可循——任意地点、任意时间，规模从一间卧室到整个城区皆有案例。灰港仓库正是这一切的起点。"],
+      features: ["异常本体为消失的仓库与替代它的铁门走廊：仓库原址上出现的铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符，方向感与空间布局均不可靠。", "异常具有「记忆」特性——它记得每一个进入过的人。二次进入者会被识别，走廊会对其表现出「熟悉」：灯光自动亮起、门自动开启。", "铁门符号无法被任何方式记录：拓印会迅速褪色，照片与文字描述同样失真——这被认为是异常自我保护机制的一部分。"],
       mapNode: harborMap,
       mapTag: "结构示意 · DIAGRAM",
       verifiedRules: [{
@@ -431,7 +432,7 @@ function AnomalyDetailPage() {
         status: "death"
       }],
       phenomena: ["<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。", "<strong>记忆响应：</strong>二次进入者报告走廊对自身表现出「熟悉」——疑似异常能够识别并记忆进入者，且会对其「打招呼」。"],
-      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。该异常至今未解决，且未表现出扩张或衰竭迹象。鉴于其「记忆」特性与起源意义，IMAC 已将其列为「起源档案」永久保存。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用——安珀历以第一起异常事件为元年。截至安珀历39年，全球已记录异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态；异常的出现没有规律可循。该异常至今未解决，且未表现出扩张或衰竭迹象。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
       suggestedActions: ["维持灰港港区遗址的封闭管理，防止误入事件，并记录周边「看到铁门」的报告", "成立专项研究组研究铁门符号（符号无法拓印，可尝试长曝光观测与多人同步记录比对）", "评估灰港异常的「记忆特性」与其他异常（如赤月学院 LOA-0073）是否存在共性，探索异常「记忆」的普遍性"],
       internalNode: /*#__PURE__*/React.createElement(Restricted, {
         level: "internal",
@@ -441,9 +442,9 @@ function AnomalyDetailPage() {
         className: "internal-note"
       }, /*#__PURE__*/React.createElement("p", {
         className: "internal-note-text"
-      }, "\u3010IMAC \u5F02\u5E38\u4FE1\u606F\u7BA1\u7406\u59D4\u5458\u4F1A\u8BC4\u4F30 \xB7 \u8D77\u6E90\u6863\u6848\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u6E2F\u4E8B\u4EF6\u4F5C\u4E3A\u7B2C\u4E00\u8D77\u88AB\u8BB0\u5F55\u7684\u5F02\u5E38\uFF0C\u5176\u300C\u8BB0\u5FC6\u300D\u7279\u6027\u53EF\u80FD\u662F\u7406\u89E3\u5F02\u5E38\u672C\u8D28\u7684\u5173\u952E\u7EBF\u7D22\u2014\u2014 \u5982\u679C\u5F02\u5E38\u80FD\u591F\u300C\u8BB0\u5F97\u300D\u8FDB\u5165\u8005\uFF0C\u90A3\u4E48\u5F02\u5E38\u6216\u8BB8\u4E5F\u5B58\u5728\u300C\u9057\u5FD8\u300D\u4E0E\u300C\u8BB0\u5F55\u300D\u7684\u673A\u5236\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u88AB\u8BB0\u5F55\uFF0C\u8FD9\u672C\u8EAB\u5C31\u662F\u5F02\u5E38\u81EA\u6211\u4FDD\u62A4\u673A\u5236\u7684\u4E00\u90E8\u5206\u3002 \u5EFA\u8BAE\u5C06\u7070\u6E2F\u4ED3\u5E93\u5217\u4E3A\u300C\u8D77\u6E90\u6863\u6848\u300D\u6C38\u4E45\u4FDD\u5B58\uFF0C\u4FDD\u6301\u6700\u4F4E\u9650\u5EA6\u63A5\u89E6\uFF0C\u5E76\u6301\u7EED\u8BB0\u5F55\u94C1\u95E8\u5468\u8FB9\u7684\u4E00\u5207\u5F02\u5E38\u524D\u5146\u3002"), /*#__PURE__*/React.createElement("div", {
+      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u521B\u59CB\u4EBA\u6863\u6848\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u6E2F\u4ED3\u5E93\u662F\u7B2C\u4E00\u8D77\u5F02\u5E38\uFF0C\u4E5F\u662F\u6211\u4EEC\u8FD9\u4E00\u884C\u7684\u8D77\u70B9\u3002\u4F5C\u4E3A\u5F02\u5E38\u521D\u73B0\u65F6\u671F\u7684\u5E78\u5B58\u8005\uFF0C \u6211\u4EEC\u6BD4\u4EFB\u4F55\u4EBA\u90FD\u6E05\u695A\u5B83\u7684\u5206\u91CF\u2014\u2014\u300C\u5B83\u8BB0\u5F97\u6BCF\u4E00\u4E2A\u6765\u8FC7\u7684\u4EBA\u300D\uFF0C\u8FD9\u53E5\u8BDD\u4E0D\u662F\u5A01\u80C1\uFF0C\u662F\u4E8B\u5B9E\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u88AB\u8BB0\u5F55\uFF0C\u8FD9\u672C\u8EAB\u5C31\u662F\u5F02\u5E38\u81EA\u6211\u4FDD\u62A4\u673A\u5236\u7684\u4E00\u90E8\u5206\u3002 \u6211\u4EEC\u5EFA\u8BAE\u4FDD\u6301\u6700\u4F4E\u9650\u5EA6\u63A5\u89E6\uFF0C\u7531\u4E8B\u52A1\u6240\u6301\u7EED\u503C\u5B88\u7070\u6E2F\u9057\u5740\uFF0C\u5E76\u8BB0\u5F55\u94C1\u95E8\u5468\u8FB9\u7684\u4E00\u5207\u5F02\u5E38\u524D\u5146\u3002 \u5982\u679C\u5F02\u5E38\u7684\u300C\u8BB0\u5FC6\u300D\u5B58\u5728\u4E0A\u9650\uFF0C\u6211\u4EEC\u5E0C\u671B\u5728\u90A3\u4E00\u5929\u5230\u6765\u4E4B\u524D\uFF0C\u5148\u8BB0\u4F4F\u5B83\u3002"), /*#__PURE__*/React.createElement("div", {
         className: "internal-note-signature"
-      }, "\u2014 IMAC \u7406\u4E8B\u4F1A \xB7 \u5F02\u5E38\u4FE1\u606F\u7BA1\u7406\u59D4\u5458\u4F1A")))
+      }, "\u2014 \u9648\u9ED8 \xB7 \u8854\u5C3E\u86C7\u4E8B\u52A1\u6240 \xB7 \u7B2C\u4E00\u4EFB\u6240\u957F")))
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: harborData
@@ -1135,6 +1136,200 @@ function AnomalyDetailPage() {
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: voidData
+    });
+  }
+  if (isLoop) {
+    const loopMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("line", {
+      x1: "30",
+      y1: "90",
+      x2: "310",
+      y2: "90",
+      stroke: "rgba(74,88,104,0.6)",
+      strokeWidth: "4"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "30",
+      y1: "87",
+      x2: "310",
+      y2: "87",
+      stroke: "rgba(196,40,40,0.4)",
+      strokeWidth: "0.8",
+      strokeDasharray: "6 4"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "120",
+      y: "78",
+      width: "50",
+      height: "24",
+      fill: "rgba(74,88,104,0.2)",
+      stroke: "rgba(138,180,212,0.5)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "128",
+      y: "94",
+      fill: "rgba(138,180,212,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6865"), /*#__PURE__*/React.createElement("line", {
+      x1: "230",
+      y1: "90",
+      x2: "230",
+      y2: "70",
+      stroke: "rgba(196,154,44,0.8)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "230",
+      y1: "75",
+      x2: "222",
+      y2: "66",
+      stroke: "rgba(196,154,44,0.8)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "230",
+      y1: "75",
+      x2: "238",
+      y2: "66",
+      stroke: "rgba(196,154,44,0.8)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "220",
+      y: "64",
+      fill: "rgba(196,154,44,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u67AF\u6811\uFF08\u951A\u70B9\uFF09"), /*#__PURE__*/React.createElement("rect", {
+      x: "110",
+      y: "50",
+      width: "150",
+      height: "60",
+      fill: "none",
+      stroke: "rgba(196,40,40,0.4)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "120",
+      y: "46",
+      fill: "rgba(196,40,40,0.7)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u5FAA\u73AF\u533A\u95F4 \xB7 \u7EA6200m"), /*#__PURE__*/React.createElement("path", {
+      d: "M185 112 C 175 128, 165 128, 155 112",
+      fill: "none",
+      stroke: "rgba(196,154,44,0.8)",
+      strokeWidth: "1.5",
+      strokeDasharray: "4 3",
+      markerEnd: "url(#loopArrow)"
+    }), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("marker", {
+      id: "loopArrow",
+      markerWidth: "6",
+      markerHeight: "6",
+      refX: "5",
+      refY: "3",
+      orient: "auto"
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M0,0 L6,3 L0,6 Z",
+      fill: "rgba(196,154,44,0.9)"
+    }))), /*#__PURE__*/React.createElement("text", {
+      x: "150",
+      y: "130",
+      fill: "rgba(196,154,44,0.8)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u8F66\u8F86\u5FAA\u73AF \xB7 \u5F92\u6B65\u8C41\u514D"), /*#__PURE__*/React.createElement("text", {
+      x: "250",
+      y: "140",
+      fill: "rgba(74,154,44,0.85)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u5DF2\u574D\u7F29 \xB7 \u6062\u590D\u6B63\u5E38\u901A\u884C")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u5FAA\u73AF\u4EC5\u5BF9\u884C\u9A76\u4E2D\u7684\u8F66\u8F86\u751F\u6548 \xB7 \u951A\u70B9\u4E3A\u67AF\u6811 \xB7 72\u5C0F\u65F6\u5185\u5B8C\u6210\u5904\u7F6E\u5E76\u574D\u7F29"));
+    const loopData = {
+      id: "SPA-0421",
+      name: "灰松岭循环路段",
+      nameEn: "HUISONG RIDGE LOOP · ORDINARY",
+      stamp: "公开 · PUBLIC",
+      classification: "PUBLIC",
+      ver: "38.4",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "SPA-0421"), "名称", "灰松岭循环路段 · Huisong Ridge Loop"], ["所属管辖", "北境守望 · Northwatch", "首次记录", "安珀历38年 · 冬"], ["异常等级", {
+        levelKey: "ordinary",
+        text: "常规级 · ORDINARY"
+      }, "当前状态", {
+        statusKey: "resolved",
+        text: "● 已解决 · 坍缩 RESOLVED"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "100%"), "（7人进入，0人死亡）"], "信息价值", "中"], ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 路段恢复正常通行"]],
+      discovery: ["安珀历38年冬，灰松岭山区的伐木工人发现公路上一段约两百米的路段出现异常：车辆驶入后会反复经过同一座桥和同一棵枯树，无法驶出。工人徒步通过该路段时未受影响，于发现十日后通过异常热线上报。", "北境守望派出四名溯界者进入异常区域，经过七十二小时的规则解析与内部干预，于次日清晨七时三十分确认异常已「坍缩」。所有受影响路段恢复正常通行，周边三公里内居民已提前疏散，无人员伤亡。"],
+      features: ["灰松岭循环路段是一处典型的<strong>空间循环型异常</strong>（常规级）。异常表现为山区公路上一段约两百米的循环区间：车辆驶入后反复经过同一座桥与同一棵枯树，无法驶出；而徒步行人不受影响。", "异常于安珀历38年冬被发现，北境守望在七十二小时内完成规则解析并使其坍缩。本次行动顺利的关键在于当地居民的及时上报——异常发现的越早，处理难度越低。"],
+      mapNode: loopMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "循环区间",
+        desc: "公路约200米路段内空间循环：车辆驶入后反复经过同一座桥与同一棵枯树，无法驶出，直至异常被解除。"
+      }, {
+        num: "二",
+        title: "载具触发",
+        desc: "循环仅对「行驶中的车辆」生效；徒步行人通过不受影响（发现异常的伐木工人徒步往返正常）。"
+      }, {
+        num: "三",
+        title: "坍缩条件",
+        desc: "在循环锚点（枯树）处完成规则干预后，异常整体坍缩，路段恢复正常通行，现场无异常残留。"
+      }],
+      entryRecords: [{
+        term: "被困车辆",
+        year: "安珀历38年·冬",
+        count: 3,
+        org: "北境守望救援",
+        result: "2车3人 · 全员获救",
+        status: "safe"
+      }, {
+        term: "处置行动",
+        year: "安珀历38年·冬",
+        count: 4,
+        org: "北境守望",
+        result: "全员安全返回 · 异常坍缩",
+        status: "safe"
+      }],
+      phenomena: ["<strong>「桥与枯树」参照物：</strong>循环中车辆唯一可识别的参照物为同一座桥与同一棵枯树；坍缩后两者均无异常残留，枯树为本次处置的规则锚点。", "<strong>徒步豁免：</strong>循环仅作用于载具而不作用于行人——此类「选择性触发」在常规级空间异常中较为少见，可能与异常以「道路使用方式」为规则基础有关。"],
+      imacNote: "灰松岭循环路段是常规级异常成功处置的典型案例，充分体现了「及时发现-及时上报-快速处置」流程的价值。异常已坍缩，路段恢复正常通行。IMAC 借此重申：如发现道路、建筑或任何空间出现重复性、不合理的变化，请保持距离，拨打99异常热线，切勿自行进入或拍摄。",
+      suggestedActions: ["维持周边短期监测，确认异常无复发迹象，保留临时警示标识至观测期结束", "将「灰松岭处置流程」纳入北境守望快速响应训练案例", "继续向公众普及异常识别与上报知识——本次行动的关键在于伐木工人的及时上报"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u7070\u677E\u5CAD\u884C\u52A8\u961F\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u677E\u5CAD\u662F\u4E00\u6B21\u6559\u79D1\u4E66\u5F0F\u7684\u5FEB\u901F\u5904\u7F6E\uFF1A\u4ECE\u63A5\u5230\u4E0A\u62A5\u5230\u574D\u7F29\uFF0C\u4E03\u5341\u4E8C\u5C0F\u65F6\u3002 \u5F02\u5E38\u5E76\u4E0D\u603B\u662F\u5371\u9669\u2014\u2014\u8FD9\u4E00\u6B21\uFF0C\u5B83\u53EA\u662F\u8BA9\u4E00\u8F86\u8F66\u5728\u4E24\u767E\u7C73\u7684\u8DEF\u6BB5\u4E0A\u591A\u8F6C\u4E86\u51E0\u5708\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4F46\u8FD9\u6B21\u7684\u771F\u6B63\u529F\u81E3\u662F\u90A3\u4F4D\u4F10\u6728\u5DE5\u4EBA\uFF1A\u4ED6\u6CA1\u6709\u597D\u5947\u9760\u8FD1\uFF0C\u6CA1\u6709\u62CD\u6444\u53D1\u5230\u7F51\u4E0A\uFF0C \u800C\u662F\u8BB0\u4E0B\u4F4D\u7F6E\u3001\u9000\u51FA\u8DEF\u6BB5\u3001\u62E8\u6253\u4E8699\u3002\u6BCF\u4E2A\u516C\u6C11\u90FD\u8BE5\u5B66\u4F1A\u4ED6\u505A\u7684\u8FD9\u4E09\u4EF6\u4E8B\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u4F0A\u4E07\xB7\u6C83\u5C14\u79D1\u592B\uFF08\u971C\u96BC\uFF09\xB7 \u5317\u5883\u5B88\u671B\u8D44\u6DF1\u6EAF\u754C\u8005")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: loopData
     });
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `

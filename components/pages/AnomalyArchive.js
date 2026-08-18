@@ -15,7 +15,7 @@ function AnomalyArchivePage({
     levelText: "厄运级",
     category: "LO",
     categoryName: "地点类",
-    org: "IMAC 直辖",
+    org: "衔尾蛇事务所",
     status: "active",
     statusText: "活跃",
     survival: "11%",
@@ -247,6 +247,20 @@ function AnomalyArchivePage({
     statusText: "已解决",
     survival: "19%",
     firstRecord: "安珀历30年",
+    featured: false
+  }, {
+    id: "SPA-0421",
+    name: "灰松岭循环路段",
+    nameEn: "Huisong Ridge Loop",
+    level: "ordinary",
+    levelText: "常规级",
+    category: "SP",
+    categoryName: "空间类",
+    org: "北境守望",
+    status: "resolved",
+    statusText: "已解决",
+    survival: "100%",
+    firstRecord: "安珀历38年",
     featured: false
   }];
   const getInitialCat = () => {

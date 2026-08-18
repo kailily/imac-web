@@ -18,6 +18,7 @@ function AnomalyDetailPage() {
   const isTrain = anomalyId === "TMA-0045";
   const isOutpost = anomalyId === "TMB-0117";
   const isVoid = anomalyId === "PHA-0001";
+  const isLoop = anomalyId === "SPA-0421";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -87,7 +88,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop) {
     return (
       <>
         <style>{`
@@ -186,7 +187,7 @@ function AnomalyDetailPage() {
       archiveDate: "安珀历39年春",
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>LOA-0001</span>, "名称", "灰港仓库 · Harbor Warehouse"],
-        ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 9月"],
+        ["所属管辖", "衔尾蛇事务所 · Ouroboros Agency", "首次记录", "安珀历元年 · 9月"],
         ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
         ["生还率", [<span className="survival-rate-red" key="s">约 11%</span>, "（9人进入，8人死亡）"], "信息价值", "极高（全球第一起被正式记录的异常事件，异常学起源档案）"],
         ["档案更新", "安珀历39年 · 春", "处置状态", "遗址封闭管理 · 未解决"],
@@ -196,9 +197,9 @@ function AnomalyDetailPage() {
         "首批进入探索的九人小队仅一人生还，获救后精神严重受损，反复重复同一句话：「它记得每一个来过的人。」这是全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。",
       ],
       features: [
-        "灰港仓库是全球第一起被正式记录的异常事件，也是「安珀历」纪年的起点——安珀历以第一起异常事件为元年，此前被称为「前安珀时代」。",
-        "异常本体为消失的仓库与替代它的铁门走廊：铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符。异常具有「记忆」特性——它记得每一个进入过的人。",
-        "截至安珀历39年，全球已记录的异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态。异常的出现没有规律可循——任意地点、任意时间，规模从一间卧室到整个城区皆有案例。灰港仓库正是这一切的起点。",
+        "异常本体为消失的仓库与替代它的铁门走廊：仓库原址上出现的铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符，方向感与空间布局均不可靠。",
+        "异常具有「记忆」特性——它记得每一个进入过的人。二次进入者会被识别，走廊会对其表现出「熟悉」：灯光自动亮起、门自动开启。",
+        "铁门符号无法被任何方式记录：拓印会迅速褪色，照片与文字描述同样失真——这被认为是异常自我保护机制的一部分。",
       ],
       mapNode: harborMap,
       mapTag: "结构示意 · DIAGRAM",
@@ -219,7 +220,7 @@ function AnomalyDetailPage() {
         "<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。",
         "<strong>记忆响应：</strong>二次进入者报告走廊对自身表现出「熟悉」——疑似异常能够识别并记忆进入者，且会对其「打招呼」。",
       ],
-      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。该异常至今未解决，且未表现出扩张或衰竭迹象。鉴于其「记忆」特性与起源意义，IMAC 已将其列为「起源档案」永久保存。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用——安珀历以第一起异常事件为元年。截至安珀历39年，全球已记录异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态；异常的出现没有规律可循。该异常至今未解决，且未表现出扩张或衰竭迹象。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
       suggestedActions: [
         "维持灰港港区遗址的封闭管理，防止误入事件，并记录周边「看到铁门」的报告",
         "成立专项研究组研究铁门符号（符号无法拓印，可尝试长曝光观测与多人同步记录比对）",
@@ -229,13 +230,14 @@ function AnomalyDetailPage() {
         <Restricted level="internal" label="机密级内容" compact>
           <div className="internal-note">
             <p className="internal-note-text">
-              【IMAC 异常信息管理委员会评估 · 起源档案】<br/><br/>
-              灰港事件作为第一起被记录的异常，其「记忆」特性可能是理解异常本质的关键线索——
-              如果异常能够「记得」进入者，那么异常或许也存在「遗忘」与「记录」的机制。<br/><br/>
+              【衔尾蛇事务所内部评估 · 创始人档案】<br/><br/>
+              灰港仓库是第一起异常，也是我们这一行的起点。作为异常初现时期的幸存者，
+              我们比任何人都清楚它的分量——「它记得每一个来过的人」，这句话不是威胁，是事实。<br/><br/>
               铁门符号无法被记录，这本身就是异常自我保护机制的一部分。
-              建议将灰港仓库列为「起源档案」永久保存，保持最低限度接触，并持续记录铁门周边的一切异常前兆。
+              我们建议保持最低限度接触，由事务所持续值守灰港遗址，并记录铁门周边的一切异常前兆。
+              如果异常的「记忆」存在上限，我们希望在那一天到来之前，先记住它。
             </p>
-            <div className="internal-note-signature">— IMAC 理事会 · 异常信息管理委员会</div>
+            <div className="internal-note-signature">— 陈默 · 衔尾蛇事务所 · 第一任所长</div>
           </div>
         </Restricted>
       ),
@@ -617,6 +619,105 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={voidData} />;
+  }
+
+  if (isLoop) {
+    const loopMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 公路 */}
+          <line x1="30" y1="90" x2="310" y2="90" stroke="rgba(74,88,104,0.6)" strokeWidth="4"/>
+          <line x1="30" y1="87" x2="310" y2="87" stroke="rgba(196,40,40,0.4)" strokeWidth="0.8" strokeDasharray="6 4"/>
+          {/* 桥 */}
+          <rect x="120" y="78" width="50" height="24" fill="rgba(74,88,104,0.2)" stroke="rgba(138,180,212,0.5)" strokeWidth="1"/>
+          <text x="128" y="94" fill="rgba(138,180,212,0.8)" fontSize="8" fontFamily="monospace">桥</text>
+          {/* 枯树 */}
+          <line x1="230" y1="90" x2="230" y2="70" stroke="rgba(196,154,44,0.8)" strokeWidth="2"/>
+          <line x1="230" y1="75" x2="222" y2="66" stroke="rgba(196,154,44,0.8)" strokeWidth="1.5"/>
+          <line x1="230" y1="75" x2="238" y2="66" stroke="rgba(196,154,44,0.8)" strokeWidth="1.5"/>
+          <text x="220" y="64" fill="rgba(196,154,44,0.85)" fontSize="8" fontFamily="monospace">枯树（锚点）</text>
+          {/* 循环区间 */}
+          <rect x="110" y="50" width="150" height="60" fill="none" stroke="rgba(196,40,40,0.4)" strokeWidth="1" strokeDasharray="4 3"/>
+          <text x="120" y="46" fill="rgba(196,40,40,0.7)" fontSize="9" fontFamily="monospace">循环区间 · 约200m</text>
+          {/* 循环箭头 */}
+          <path d="M185 112 C 175 128, 165 128, 155 112" fill="none" stroke="rgba(196,154,44,0.8)" strokeWidth="1.5" strokeDasharray="4 3" markerEnd="url(#loopArrow)"/>
+          <defs>
+            <marker id="loopArrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="rgba(196,154,44,0.9)"/>
+            </marker>
+          </defs>
+          <text x="150" y="130" fill="rgba(196,154,44,0.8)" fontSize="9" fontFamily="monospace">车辆循环 · 徒步豁免</text>
+          {/* 坍缩标注 */}
+          <text x="250" y="140" fill="rgba(74,154,44,0.85)" fontSize="9" fontFamily="monospace">已坍缩 · 恢复正常通行</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          循环仅对行驶中的车辆生效 · 锚点为枯树 · 72小时内完成处置并坍缩
+        </div>
+      </div>
+    );
+
+    const loopData = {
+      id: "SPA-0421",
+      name: "灰松岭循环路段",
+      nameEn: "HUISONG RIDGE LOOP · ORDINARY",
+      stamp: "公开 · PUBLIC",
+      classification: "PUBLIC",
+      ver: "38.4",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-0421</span>, "名称", "灰松岭循环路段 · Huisong Ridge Loop"],
+        ["所属管辖", "北境守望 · Northwatch", "首次记录", "安珀历38年 · 冬"],
+        ["异常等级", { levelKey: "ordinary", text: "常规级 · ORDINARY" }, "当前状态", { statusKey: "resolved", text: "● 已解决 · 坍缩 RESOLVED" }],
+        ["生还率", [<span className="survival-rate-red" key="s">100%</span>, "（7人进入，0人死亡）"], "信息价值", "中"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 路段恢复正常通行"],
+      ],
+      discovery: [
+        "安珀历38年冬，灰松岭山区的伐木工人发现公路上一段约两百米的路段出现异常：车辆驶入后会反复经过同一座桥和同一棵枯树，无法驶出。工人徒步通过该路段时未受影响，于发现十日后通过异常热线上报。",
+        "北境守望派出四名溯界者进入异常区域，经过七十二小时的规则解析与内部干预，于次日清晨七时三十分确认异常已「坍缩」。所有受影响路段恢复正常通行，周边三公里内居民已提前疏散，无人员伤亡。",
+      ],
+      features: [
+        "灰松岭循环路段是一处典型的<strong>空间循环型异常</strong>（常规级）。异常表现为山区公路上一段约两百米的循环区间：车辆驶入后反复经过同一座桥与同一棵枯树，无法驶出；而徒步行人不受影响。",
+        "异常于安珀历38年冬被发现，北境守望在七十二小时内完成规则解析并使其坍缩。本次行动顺利的关键在于当地居民的及时上报——异常发现的越早，处理难度越低。",
+      ],
+      mapNode: loopMap,
+      mapTag: "结构示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "循环区间", desc: "公路约200米路段内空间循环：车辆驶入后反复经过同一座桥与同一棵枯树，无法驶出，直至异常被解除。" },
+        { num: "二", title: "载具触发", desc: "循环仅对「行驶中的车辆」生效；徒步行人通过不受影响（发现异常的伐木工人徒步往返正常）。" },
+        { num: "三", title: "坍缩条件", desc: "在循环锚点（枯树）处完成规则干预后，异常整体坍缩，路段恢复正常通行，现场无异常残留。" },
+      ],
+      entryRecords: [
+        { term: "被困车辆", year: "安珀历38年·冬", count: 3, org: "北境守望救援", result: "2车3人 · 全员获救", status: "safe" },
+        { term: "处置行动", year: "安珀历38年·冬", count: 4, org: "北境守望", result: "全员安全返回 · 异常坍缩", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「桥与枯树」参照物：</strong>循环中车辆唯一可识别的参照物为同一座桥与同一棵枯树；坍缩后两者均无异常残留，枯树为本次处置的规则锚点。",
+        "<strong>徒步豁免：</strong>循环仅作用于载具而不作用于行人——此类「选择性触发」在常规级空间异常中较为少见，可能与异常以「道路使用方式」为规则基础有关。",
+      ],
+      imacNote: "灰松岭循环路段是常规级异常成功处置的典型案例，充分体现了「及时发现-及时上报-快速处置」流程的价值。异常已坍缩，路段恢复正常通行。IMAC 借此重申：如发现道路、建筑或任何空间出现重复性、不合理的变化，请保持距离，拨打99异常热线，切勿自行进入或拍摄。",
+      suggestedActions: [
+        "维持周边短期监测，确认异常无复发迹象，保留临时警示标识至观测期结束",
+        "将「灰松岭处置流程」纳入北境守望快速响应训练案例",
+        "继续向公众普及异常识别与上报知识——本次行动的关键在于伐木工人的及时上报",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【北境守望内部评估 · 灰松岭行动队】<br/><br/>
+              灰松岭是一次教科书式的快速处置：从接到上报到坍缩，七十二小时。
+              异常并不总是危险——这一次，它只是让一辆车在两百米的路段上多转了几圈。<br/><br/>
+              但这次的真正功臣是那位伐木工人：他没有好奇靠近，没有拍摄发到网上，
+              而是记下位置、退出路段、拨打了99。每个公民都该学会他做的这三件事。
+            </p>
+            <div className="internal-note-signature">— 伊万·沃尔科夫（霜隼）· 北境守望资深溯界者</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={loopData} />;
   }
 
   return (
