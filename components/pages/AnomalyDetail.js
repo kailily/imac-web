@@ -404,9 +404,9 @@ function AnomalyDetailPage() {
       }], ["生还率", [/*#__PURE__*/React.createElement("span", {
         className: "survival-rate-red",
         key: "s"
-      }, "\u7EA6 11%"), "（9人进入，8人死亡）"], "信息价值", "极高（全球第一起被正式记录的异常事件，异常学起源档案）"], ["档案更新", "安珀历39年 · 春", "处置状态", "遗址封闭管理 · 未解决"]],
-      discovery: ["安珀历元年9月，格伦贝尔联邦第七大城市「灰港」的港区一座仓库在夜间凭空消失。原址上出现了一扇刻满符号的铁门——推开铁门后，通向一个与其外部外观完全不符的、无限延伸的走廊空间。", "首批进入探索的九人小队仅一人生还，获救后精神严重受损，反复重复同一句话：「它记得每一个来过的人。」这是全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。"],
-      features: ["异常本体为消失的仓库与替代它的铁门走廊：仓库原址上出现的铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符，方向感与空间布局均不可靠。", "异常具有「记忆」特性——它记得每一个进入过的人。二次进入者会被识别，走廊会对其表现出「熟悉」：灯光自动亮起、门自动开启。", "铁门符号无法被任何方式记录：拓印会迅速褪色，照片与文字描述同样失真——这被认为是异常自我保护机制的一部分。"],
+      }, "\u7EA6 25%"), "（累计32人进入，24人死亡）"], "信息价值", "极高（全球第一起被正式记录的异常事件，异常学起源档案）"], ["档案更新", "安珀历39年 · 春", "处置状态", "遗址封闭管理 · 未解决"]],
+      discovery: ["安珀历元年9月，格伦贝尔联邦第七大城市「灰港」的港区一座仓库在夜间凭空消失。原址上出现了一扇刻满符号的铁门——推开铁门后，通向一个与其外部外观完全不符的、无限延伸的走廊空间。", "首批进入探索的九人小队仅一人生还，获救后精神严重受损，反复重复同一句话：「它记得每一个来过的人。」这是全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用。", "此后灰港异常又被多次进入，截至安珀历39年共确认五次进入行动。二次进入者（进入过一次后再次进入者）共三名，其报告相互印证：异常确实记得他们。"],
+      features: ["异常本体为消失的仓库与替代它的铁门走廊：仓库原址上出现的铁门刻满无法拓印的符号，门后走廊无限延伸、与仓库外部外观完全不符，方向感与空间布局均不可靠。", "异常具有「记忆」特性——它记得每一个进入过的人。已确认的三名二次进入者报告相互印证：再次进入时走廊会对其表现出「熟悉」——灯光自动亮起、门自动开启。但「被记住」并不等于「被放行」，二次进入同样有伤亡。", "铁门符号无法被任何方式记录：拓印会迅速褪色，照片与文字描述同样失真——这被认为是异常自我保护机制的一部分。"],
       mapNode: harborMap,
       mapTag: "结构示意 · DIAGRAM",
       verifiedRules: [{
@@ -420,7 +420,7 @@ function AnomalyDetailPage() {
       }, {
         num: "三",
         title: "记忆识别",
-        desc: "异常能识别进入者。二次进入者报告走廊对其表现出「熟悉」——灯光自动亮起、门自动开启；这与生还者反复重复的「它记得每一个来过的人」一致。"
+        desc: "异常能识别进入者。三名已确认的二次进入者报告相互印证：再次进入时走廊表现出「熟悉」——灯光自动亮起、门自动开启；这与生还者反复重复的「它记得每一个来过的人」一致。"
       }],
       speculatedRules: ["铁门上的符号可能是异常「记忆」的载体或索引——符号无法被记录，或许正是异常自我保护机制的一部分", "走廊中疑似存在与进入者对应的「房间」，房间内容与进入者的记忆相关", "异常未表现出主动扩张迹象，但误入事件仍不定期发生——灰港港区遗址周围仍会偶发「看到铁门」的报告"],
       entryRecords: [{
@@ -430,10 +430,38 @@ function AnomalyDetailPage() {
         org: "格伦贝尔联邦勘测队",
         result: "1人生还，8人死亡",
         status: "death"
+      }, {
+        term: "二次",
+        year: "安珀历2年·春",
+        count: 6,
+        org: "衔尾蛇事务所",
+        result: "2人生还，4人死亡",
+        status: "death"
+      }, {
+        term: "三次",
+        year: "安珀历9年·秋",
+        count: 8,
+        org: "BRI/衔尾蛇联合考察",
+        result: "3人生还，5人死亡",
+        status: "death"
+      }, {
+        term: "四次",
+        year: "安珀历21年·冬",
+        count: 5,
+        org: "衔尾蛇事务所",
+        result: "1人生还，4人死亡",
+        status: "death"
+      }, {
+        term: "五次",
+        year: "安珀历35年·夏",
+        count: 4,
+        org: "衔尾蛇事务所·最小接触",
+        result: "1人生还，3人死亡",
+        status: "death"
       }],
-      phenomena: ["<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。", "<strong>记忆响应：</strong>二次进入者报告走廊对自身表现出「熟悉」——疑似异常能够识别并记忆进入者，且会对其「打招呼」。"],
-      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用——安珀历以第一起异常事件为元年。截至安珀历39年，全球已记录异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态；异常的出现没有规律可循。该异常至今未解决，且未表现出扩张或衰竭迹象。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
-      suggestedActions: ["维持灰港港区遗址的封闭管理，防止误入事件，并记录周边「看到铁门」的报告", "成立专项研究组研究铁门符号（符号无法拓印，可尝试长曝光观测与多人同步记录比对）", "评估灰港异常的「记忆特性」与其他异常（如赤月学院 LOA-0073）是否存在共性，探索异常「记忆」的普遍性"],
+      phenomena: ["<strong>「它记得每一个来过的人」：</strong>唯一生还者反复重复此句。其描述的铁门符号与走廊细节与其他目击记录完全一致，但符号无法被任何方式记录。", "<strong>记忆响应：</strong>三名已确认的二次进入者报告相互印证——再次进入时走廊表现出「熟悉」：灯光自动亮起、门自动开启。异常能够识别并记忆进入者，但「被记住」不等于「被放行」。"],
+      imacNote: "灰港事件为全球第一起被正式记录的异常事件，标志着「前安珀时代」的终结与安珀历纪年的启用——安珀历以第一起异常事件为元年。截至安珀历39年，全球已记录异常事件累计超过两万起，仍有超过65%处于「未解决」或「休眠」状态；异常的出现没有规律可循。该异常至今未解决，且未表现出扩张或衰竭迹象；自首次记录以来累计进入五次，二次进入者确认异常具有稳定的识别能力。任何组织进入前须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: ["维持灰港港区遗址的封闭管理，防止误入事件，并记录周边「看到铁门」的报告", "成立专项研究组研究铁门符号（符号无法拓印，可尝试长曝光观测与多人同步记录比对）", "对三名二次进入者建立长期跟踪档案，记录其后续精神状况与再次进入的意愿变化", "评估灰港异常的「记忆特性」与其他异常（如赤月学院 LOA-0073）是否存在共性，探索异常「记忆」的普遍性"],
       internalNode: /*#__PURE__*/React.createElement(Restricted, {
         level: "internal",
         label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
@@ -442,7 +470,7 @@ function AnomalyDetailPage() {
         className: "internal-note"
       }, /*#__PURE__*/React.createElement("p", {
         className: "internal-note-text"
-      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u521B\u59CB\u4EBA\u6863\u6848\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u6E2F\u4ED3\u5E93\u662F\u7B2C\u4E00\u8D77\u5F02\u5E38\uFF0C\u4E5F\u662F\u6211\u4EEC\u8FD9\u4E00\u884C\u7684\u8D77\u70B9\u3002\u4F5C\u4E3A\u5F02\u5E38\u521D\u73B0\u65F6\u671F\u7684\u5E78\u5B58\u8005\uFF0C \u6211\u4EEC\u6BD4\u4EFB\u4F55\u4EBA\u90FD\u6E05\u695A\u5B83\u7684\u5206\u91CF\u2014\u2014\u300C\u5B83\u8BB0\u5F97\u6BCF\u4E00\u4E2A\u6765\u8FC7\u7684\u4EBA\u300D\uFF0C\u8FD9\u53E5\u8BDD\u4E0D\u662F\u5A01\u80C1\uFF0C\u662F\u4E8B\u5B9E\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u88AB\u8BB0\u5F55\uFF0C\u8FD9\u672C\u8EAB\u5C31\u662F\u5F02\u5E38\u81EA\u6211\u4FDD\u62A4\u673A\u5236\u7684\u4E00\u90E8\u5206\u3002 \u6211\u4EEC\u5EFA\u8BAE\u4FDD\u6301\u6700\u4F4E\u9650\u5EA6\u63A5\u89E6\uFF0C\u7531\u4E8B\u52A1\u6240\u6301\u7EED\u503C\u5B88\u7070\u6E2F\u9057\u5740\uFF0C\u5E76\u8BB0\u5F55\u94C1\u95E8\u5468\u8FB9\u7684\u4E00\u5207\u5F02\u5E38\u524D\u5146\u3002 \u5982\u679C\u5F02\u5E38\u7684\u300C\u8BB0\u5FC6\u300D\u5B58\u5728\u4E0A\u9650\uFF0C\u6211\u4EEC\u5E0C\u671B\u5728\u90A3\u4E00\u5929\u5230\u6765\u4E4B\u524D\uFF0C\u5148\u8BB0\u4F4F\u5B83\u3002"), /*#__PURE__*/React.createElement("div", {
+      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u884C\u52A8\u6863\u6848\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E00\u3001\u6001\u52BF\uFF1A\u7070\u6E2F\u5F02\u5E38\u5904\u4E8E\u6D3B\u8DC3\u671F\uFF0C\u65E0\u6269\u5F20\u3001\u65E0\u8870\u7AED\u8FF9\u8C61\u3002\u7D2F\u8BA1\u8FDB\u51655\u6B21\u300132\u4EBA\u6B21\uFF0C\u751F\u8FD88\u4EBA\u3001\u6B7B\u4EA124\u4EBA\uFF0C\u751F\u8FD8\u7387\u7EA625%\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E8C\u3001\u786E\u8BA4\u4E8B\u9879\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u8BB0\u5FC6\u7279\u6027\u5C5E\u5B9E\u3002\u4E09\u540D\u4E8C\u6B21\u8FDB\u5165\u8005\u7684\u62A5\u544A\u76F8\u4E92\u5370\u8BC1\uFF1A\u518D\u6B21\u8FDB\u5165\u65F6\u8D70\u5ECA\u706F\u5149\u81EA\u4EAE\u3001\u95E8\u81EA\u542F\uFF0C\u5F02\u5E38\u80FD\u8BC6\u522B\u6765\u8005\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u62D3\u5370\u3001\u65E0\u6CD5\u6444\u5F55\u3001\u65E0\u6CD5\u8F6C\u8FF0\u2014\u2014\u5224\u5B9A\u4E3A\u5F02\u5E38\u81EA\u6211\u4FDD\u62A4\u673A\u5236\uFF0C\u5217\u4E3A\u957F\u671F\u89C2\u6D4B\u9879\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E09\u3001\u5904\u7F6E\u51B3\u5B9A\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u7EF4\u6301\u7070\u6E2F\u9057\u5740\u5C01\u95ED\u7BA1\u7406\u3002\u672A\u7ECF IMAC \u5BA1\u6279\uFF0C\u4EFB\u4F55\u7EC4\u7EC7\u4E0D\u5F97\u8FDB\u5165\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u4E8C\u6B21\u8FDB\u5165\u8005\u4E00\u5F8B\u767B\u8BB0\u5907\u6848\uFF0C\u8FDB\u5165\u524D\u540E\u5F3A\u5236\u63A5\u53D7\u5FC3\u7406\u8BC4\u4F30\u3002", /*#__PURE__*/React.createElement("br", null), "3. \u4FDD\u6301\u6700\u4F4E\u9650\u5EA6\u63A5\u89E6\uFF0C\u4EE5\u8FDC\u8DDD\u76D1\u6D4B\u4E0E\u76EE\u51FB\u62A5\u544A\u6536\u96C6\u4E3A\u4E3B\uFF0C\u4E0D\u518D\u7EC4\u7EC7\u4E3B\u52A8\u63A2\u7D22\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u56DB\u3001\u5173\u4E8E\u300C\u8BB0\u5FC6\u4E0A\u9650\u300D\uFF1A\u6682\u4E0D\u7ACB\u9879\u3002\u5728\u786E\u8BA4\u5F02\u5E38\u8BB0\u5FC6\u8303\u56F4\u4E4B\u524D\uFF0C\u4EFB\u4F55\u8BD5\u63A2\u90FD\u610F\u5473\u7740\u518D\u4ED8\u4EBA\u547D\u3002\u5148\u5B88\u4F4F\uFF0C\u518D\u95EE\u4E3A\u4EC0\u4E48\u3002"), /*#__PURE__*/React.createElement("div", {
         className: "internal-note-signature"
       }, "\u2014 \u9648\u9ED8 \xB7 \u8854\u5C3E\u86C7\u4E8B\u52A1\u6240 \xB7 \u7B2C\u4E00\u4EFB\u6240\u957F")))
     };
