@@ -16,6 +16,7 @@ function AnomalyDetailPage() {
   const isStairwell = anomalyId === "SPA-0021";
   const isTrain = anomalyId === "TMA-0045";
   const isOutpost = anomalyId === "TMB-0117";
+  const isVoid = anomalyId === "PHA-0001";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -75,7 +76,7 @@ function AnomalyDetailPage() {
     { term: "第八届", year: "安珀历36年·夏", count: 12, org: "衔尾蛇事务所", result: "10人失踪，2人死亡", status: "death" },
     { term: "第九届", year: "安珀历37年·冬", count: 7, org: "长桥会社", result: "全员失踪", status: "death" },
     { term: "第十届", year: "安珀历38年·秋", count: 9, org: "衔尾蛇事务所", result: "1人生还，8人失踪", status: "mixed" },
-    { term: "第十一届", year: "安珀历39年·秋", count: 6, org: "衔尾蛇事务所 + BRI 联合行动", result: "进行中 · 全员失联", status: "active", current: true, members: [
+    { term: "第十一届", year: "安珀历39年·秋", count: 6, org: "BRI/衔尾蛇联合", result: "进行中 · 全员失联", status: "active", current: true, members: [
       { name: "沈彻", rank: "资深溯界者·执灯", org: "衔尾蛇事务所", role: "队长 · 行动指挥", isLeader: true, orgType: "anomalist" },
       { name: "季明轩", rank: "溯界者·破界", org: "衔尾蛇事务所", role: "队员", isLeader: false, orgType: "anomalist" },
       { name: "顾泽鸣", rank: "资深溯界者·执灯", org: "BRI", role: "队长 · 学术负责", isLeader: true, orgType: "anomalist" },
@@ -85,7 +86,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isStairwell && !isTrain && !isOutpost) {
+  if (!isDefault && !isStairwell && !isTrain && !isOutpost && !isVoid) {
     return (
       <>
         <style>{`
@@ -456,6 +457,70 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={outpostData} />;
+  }
+
+  if (isVoid) {
+    const voidData = {
+      id: "PHA-0001",
+      name: "空白地带",
+      nameEn: "THE VOID · UNKNOWN",
+      stamp: "绝密 · EYES ONLY",
+      classification: "EYES ONLY",
+      ver: "39.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>PHA-0001</span>, "名称", "空白地带 · The Void"],
+        ["所属管辖", "IMAC 直辖 · IMAC DIRECT", "首次记录", "安珀历元年 · 大裂隙后"],
+        ["异常等级", { levelKey: "unknown", text: "未知级 · UNKNOWN" }, "当前状态", { statusKey: "quarantined", text: "● 隔离中 QUARANTINED" }],
+        ["生还率", <span className="survival-rate-red">—</span>, "信息价值", "极高（未知级现象，信息极度匮乏，任何样本价值不可估量）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "全封闭隔离 · 禁止任何接触"],
+      ],
+      discovery: [
+        "安珀历元年「大裂隙」事件结束后，多国勘测队在极北冰原的某处坐标附近发现一片「什么都没有」的区域——范围内重力、电磁、时间读数全部失效，进入该区域的一切物质均失去信号。最早的两份勘察记录因设备失灵仅保留残缺片段。",
+        "此后该区域由 IMAC 直辖封闭隔离。所有关于空白地带的直接观测记录均已归档为最高机密，公开档案中仅保留本条目与极少数间接信息。",
+      ],
+      features: [
+        "空白地带是目前唯一被评定为「未知级」的异常。其本质、范围、边界运动规律均未被确认——已知信息仅来自两次勘察的残缺记录与外围间接观测，信息总量低于任何已归档的深渊级异常。",
+        "外围观测确认：空白地带边界内不存在任何可探测的物理信号；接触边界的物质会「消失」，消失方向未知。唯一返回的勘察人员出现了完全的记忆空白。",
+      ],
+      speculatedRules: [
+        "空白地带内物理法则完全失效：重力、电磁、时间均无可测读数",
+        "接触空白地带的物质会「消失」——消失方向未知，无返回记录",
+        "空白地带边界疑似在缓慢扩张（两次勘测的外围标记间距存在微小差异，但精度不足以确认）",
+        "唯一返回者的记忆空白暗示认知层面同样被「抹除」",
+      ],
+      entryRecords: [
+        { term: "首次接触", year: "安珀历元年 · 大裂隙后", count: 0, org: "IMAC 直属勘察队", result: "人数未知 · 全员失踪，无返回记录", status: "death" },
+        { term: "第二次勘察", year: "安珀历4年", count: 3, org: "IMAC 直属", result: "2人失踪 · 1人返回后记忆空白", status: "death" },
+      ],
+      phenomena: [
+        "<strong>「消失的物质」：</strong>外围投放的测试物（金属块、信标、记录器）接触边界后信号消失，无任何残留，无返回记录。",
+        "<strong>记忆空白：</strong>唯一返回者在返回后无法回忆起勘察期间的任何内容，且其随身记录设备内数据完全为空。",
+      ],
+      imacNote: "空白地带是 IMAC 档案中信息最有限的异常条目。鉴于其完全未知的性质与「物质消失」特性，IMAC 协调办公室已将其列为最高隔离等级（全封闭 · 禁止接触）。任何关于空白地带的调查申请均须提交理事会单独审批。未经授权的一切接近行为将被视为最高等级违规。",
+      suggestedActions: [
+        "维持现有全封闭隔离，不主动接触或投放测试物（历年投放均无有效数据返回）",
+        "以外围遥感手段持续记录边界变化，积累长期监测数据",
+        "评估「大裂隙」事件档案的关联性——空白地带是否为大裂隙的残留影响",
+      ],
+      internalNode: (
+        <Restricted level="topsecret" label="绝密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【IMAC 协调办公室评估 · 异常信息管理委员会】<br/><br/>
+              对未知级异常的信息管理原则：在无法确认性质前，不推测、不公开、不接触。
+              空白地带的所有已知信息已封存，其存在本身即为最高机密。<br/><br/>
+              本档案内容将在获得新的有效观测数据后更新——但目前没有任何已知手段能够获得该数据。
+              维持现状，就是目前最稳妥的行动。
+            </p>
+            <div className="internal-note-signature">— IMAC 理事会 · 异常信息管理委员会</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={voidData} />;
   }
 
   return (
@@ -1011,7 +1076,7 @@ function AnomalyDetailPage() {
                 </tr>
                 <tr>
                   <th>当前批次</th>
-                  <td style={{ color: "var(--accent-red-bright)" }} colSpan={3}>第十一届 · 进行中 · IMAC联合行动（衔尾蛇+BRI联合派遣 · 6人 · 全员失联）</td>
+                  <td style={{ color: "var(--accent-red-bright)" }} colSpan={3}>第十一届 · 进行中 · IMAC联合行动（BRI/衔尾蛇联合派遣 · 6人 · 全员失联）</td>
                 </tr>
               </tbody>
             </table>
