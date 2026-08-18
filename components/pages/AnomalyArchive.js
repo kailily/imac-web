@@ -134,6 +134,20 @@ function AnomalyArchivePage({
     survival: "—",
     firstRecord: "安珀历元年",
     featured: false
+  }, {
+    id: "PHA-0182",
+    name: "洛林裂隙",
+    nameEn: "Lorraine Rift",
+    level: "doomed",
+    levelText: "厄运级",
+    category: "PH",
+    categoryName: "物理类",
+    org: "BRI/晨星团联合",
+    status: "active",
+    statusText: "活跃",
+    survival: "38%",
+    firstRecord: "安珀历9年",
+    featured: false
   },
   // 以下为已处置异常（个人中心任务历史提及，纳入归档，详情待补）
   {

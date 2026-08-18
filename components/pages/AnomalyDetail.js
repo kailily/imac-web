@@ -20,6 +20,7 @@ function AnomalyDetailPage() {
   const isOutpost = anomalyId === "TMB-0117";
   const isVoid = anomalyId === "PHA-0001";
   const isLoop = anomalyId === "SPA-0421";
+  const isRift = anomalyId === "PHA-0182";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -238,7 +239,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -470,7 +471,7 @@ function AnomalyDetailPage() {
         className: "internal-note"
       }, /*#__PURE__*/React.createElement("p", {
         className: "internal-note-text"
-      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u884C\u52A8\u6863\u6848\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E00\u3001\u6001\u52BF\uFF1A\u7070\u6E2F\u5F02\u5E38\u5904\u4E8E\u6D3B\u8DC3\u671F\uFF0C\u65E0\u6269\u5F20\u3001\u65E0\u8870\u7AED\u8FF9\u8C61\u3002\u7D2F\u8BA1\u8FDB\u51655\u6B21\u300132\u4EBA\u6B21\uFF0C\u751F\u8FD88\u4EBA\u3001\u6B7B\u4EA124\u4EBA\uFF0C\u751F\u8FD8\u7387\u7EA625%\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E8C\u3001\u786E\u8BA4\u4E8B\u9879\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u8BB0\u5FC6\u7279\u6027\u5C5E\u5B9E\u3002\u4E09\u540D\u4E8C\u6B21\u8FDB\u5165\u8005\u7684\u62A5\u544A\u76F8\u4E92\u5370\u8BC1\uFF1A\u518D\u6B21\u8FDB\u5165\u65F6\u8D70\u5ECA\u706F\u5149\u81EA\u4EAE\u3001\u95E8\u81EA\u542F\uFF0C\u5F02\u5E38\u80FD\u8BC6\u522B\u6765\u8005\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u94C1\u95E8\u7B26\u53F7\u65E0\u6CD5\u62D3\u5370\u3001\u65E0\u6CD5\u6444\u5F55\u3001\u65E0\u6CD5\u8F6C\u8FF0\u2014\u2014\u5224\u5B9A\u4E3A\u5F02\u5E38\u81EA\u6211\u4FDD\u62A4\u673A\u5236\uFF0C\u5217\u4E3A\u957F\u671F\u89C2\u6D4B\u9879\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E09\u3001\u5904\u7F6E\u51B3\u5B9A\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u7EF4\u6301\u7070\u6E2F\u9057\u5740\u5C01\u95ED\u7BA1\u7406\u3002\u672A\u7ECF IMAC \u5BA1\u6279\uFF0C\u4EFB\u4F55\u7EC4\u7EC7\u4E0D\u5F97\u8FDB\u5165\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u4E8C\u6B21\u8FDB\u5165\u8005\u4E00\u5F8B\u767B\u8BB0\u5907\u6848\uFF0C\u8FDB\u5165\u524D\u540E\u5F3A\u5236\u63A5\u53D7\u5FC3\u7406\u8BC4\u4F30\u3002", /*#__PURE__*/React.createElement("br", null), "3. \u4FDD\u6301\u6700\u4F4E\u9650\u5EA6\u63A5\u89E6\uFF0C\u4EE5\u8FDC\u8DDD\u76D1\u6D4B\u4E0E\u76EE\u51FB\u62A5\u544A\u6536\u96C6\u4E3A\u4E3B\uFF0C\u4E0D\u518D\u7EC4\u7EC7\u4E3B\u52A8\u63A2\u7D22\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u56DB\u3001\u5173\u4E8E\u300C\u8BB0\u5FC6\u4E0A\u9650\u300D\uFF1A\u6682\u4E0D\u7ACB\u9879\u3002\u5728\u786E\u8BA4\u5F02\u5E38\u8BB0\u5FC6\u8303\u56F4\u4E4B\u524D\uFF0C\u4EFB\u4F55\u8BD5\u63A2\u90FD\u610F\u5473\u7740\u518D\u4ED8\u4EBA\u547D\u3002\u5148\u5B88\u4F4F\uFF0C\u518D\u95EE\u4E3A\u4EC0\u4E48\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u9644\u8A00\uFF1A\u9996\u6279\u4E5D\u4E2A\u4EBA\uFF0C\u53EA\u6709\u6211\u6D3B\u7740\u8D70\u51FA\u6765\uFF0C\u8FD9\u6761\u547D\u662F\u7070\u6E2F\u8FD8\u6211\u7684\u3002\u4E09\u5341\u4E5D\u5E74\u4E86\uFF0C\u6211\u6BCF\u5E74\u90FD\u53BB\u94C1\u95E8\u524D\u7AD9\u4E00\u4F1A\u513F\u2014\u2014\u5B83\u4E00\u76F4\u8BB0\u5F97\u6211\uFF0C\u5C31\u50CF\u6211\u8BB0\u5F97\u90A3\u516B\u4E2A\u4EBA\u3002\u8FD9\u6761\u6863\u6848\u5F80\u540E\u65E0\u8BBA\u8C01\u63A5\u624B\uFF0C\u8BF7\u66FF\u6211\u8BB0\u4F4F\u4E00\u4EF6\u4E8B\uFF1A\u5B83\u8BB0\u5F97\u6BCF\u4E00\u4E2A\u6765\u8FC7\u7684\u4EBA\uFF0C\u8FD9\u53E5\u8BDD\u4E0D\u662F\u5A01\u80C1\uFF0C\u662F\u4E8B\u5B9E\u3002"), /*#__PURE__*/React.createElement("div", {
+      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u521B\u59CB\u4EBA\u6863\u6848 \xB7 \u9648\u9ED8\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u6E2F\u662F\u6211\u4EEC\u8FD9\u4E00\u884C\u7684\u8D77\u70B9\uFF0C\u4E5F\u662F\u4E00\u9053\u6CA1\u80FD\u6108\u5408\u7684\u4F24\u53E3\u3002\u4E94\u6B21\u8FDB\u5165\uFF0C32\u4E2A\u4EBA\u8FDB\u53BB\uFF0C24\u4E2A\u4EBA\u6CA1\u6709\u51FA\u6765\u2014\u2014\u8FD9\u4E2A\u6570\u5B57\u6211\u80CC\u4E86\u4E09\u5341\u4E5D\u5E74\uFF0C\u6BCF\u4E00\u4E2A\u540D\u5B57\u90FD\u8BB0\u5F97\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4F46\u5B83\u4E5F\u6559\u4F1A\u4E86\u6211\u4EEC\u4E00\u4EF6\u4E8B\uFF1A\u5B83\u8BB0\u5F97\u6211\u4EEC\u3002\u4E09\u540D\u4E8C\u6B21\u8FDB\u5165\u8005\u7684\u62A5\u544A\u6211\u90FD\u4EB2\u81EA\u6838\u8FC7\u2014\u2014\u8D70\u5ECA\u4F1A\u4E3A\u4ED6\u4EEC\u4EAE\u706F\uFF0C\u4E3A\u4ED6\u4EEC\u5F00\u95E8\u3002\u90A3\u4E0D\u662F\u5584\u610F\uFF0C\u662F\u4E00\u79CD\u300C\u8BA4\u5F97\u300D\u3002\u5B83\u8BA4\u5F97\u6BCF\u4E00\u4E2A\u6765\u8FC7\u7684\u4EBA\uFF0C\u5C31\u50CF\u6211\u8BB0\u5F97\u6BCF\u4E00\u4E2A\u6CA1\u8D70\u51FA\u6765\u7684\u4EBA\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u94C1\u95E8\u4E0A\u7684\u7B26\u53F7\u81F3\u4ECA\u6CA1\u6709\u4EBA\u80FD\u62D3\u4E0B\u6765\u3001\u62CD\u4E0B\u6765\u3001\u5199\u4E0B\u6765\u3002\u6211\u6000\u7591\u90A3\u4E0D\u662F\u9632\u5907\uFF0C\u800C\u662F\u5B83\u81EA\u5DF1\u4E5F\u4E0D\u613F\u610F\u7559\u4E0B\u75D5\u8FF9\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5904\u7F6E\u4E0A\uFF0C\u7EF4\u6301\u5C01\u95ED\uFF0C\u4E0D\u518D\u4E3B\u52A8\u8FDB\u5165\u3002\u4E8C\u6B21\u8FDB\u5165\u8005\u4E00\u5F8B\u5907\u6848\uFF0C\u8FDB\u51FA\u7684\u5FC3\u7406\u8BC4\u4F30\u4E0D\u80FD\u7701\u2014\u2014\u6D3B\u7740\u56DE\u6765\u7684\u4EBA\uFF0C\u5FC3\u91CC\u591A\u5C11\u90FD\u7559\u4E86\u70B9\u4E1C\u897F\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u81F3\u4E8E\u8BB0\u5FC6\u7684\u300C\u4E0A\u9650\u300D\uFF0C\u6211\u4EEC\u95EE\u4E0D\u51FA\u7B54\u6848\u3002\u5728\u786E\u8BA4\u4E4B\u524D\uFF0C\u4EFB\u4F55\u8BD5\u63A2\u90FD\u610F\u5473\u7740\u518D\u4ED8\u4EBA\u547D\u3002\u5148\u5B88\u4F4F\uFF0C\u518D\u95EE\u4E3A\u4EC0\u4E48\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6700\u540E\u8BF4\u53E5\u79C1\u4EBA\u7684\u8BDD\uFF1A\u9996\u6279\u4E5D\u4E2A\u4EBA\uFF0C\u53EA\u6709\u6211\u6D3B\u7740\u8D70\u51FA\u6765\uFF0C\u8FD9\u6761\u547D\u662F\u7070\u6E2F\u8FD8\u6211\u7684\u3002\u4E09\u5341\u4E5D\u5E74\u4E86\uFF0C\u6211\u6BCF\u5E74\u90FD\u53BB\u94C1\u95E8\u524D\u7AD9\u4E00\u4F1A\u513F\u2014\u2014\u5B83\u4E00\u76F4\u8BB0\u5F97\u6211\uFF0C\u5C31\u50CF\u6211\u8BB0\u5F97\u90A3\u516B\u4E2A\u4EBA\u3002\u8FD9\u6761\u6863\u6848\u5F80\u540E\u65E0\u8BBA\u8C01\u63A5\u624B\uFF0C\u8BF7\u66FF\u6211\u8BB0\u4F4F\u4E00\u4EF6\u4E8B\uFF1A\u5B83\u8BB0\u5F97\u6BCF\u4E00\u4E2A\u6765\u8FC7\u7684\u4EBA\uFF0C\u8FD9\u53E5\u8BDD\u4E0D\u662F\u5A01\u80C1\uFF0C\u662F\u4E8B\u5B9E\u3002"), /*#__PURE__*/React.createElement("div", {
         className: "internal-note-signature"
       }, "\u2014 \u9648\u9ED8 \xB7 \u8854\u5C3E\u86C7\u4E8B\u52A1\u6240 \xB7 \u7B2C\u4E00\u4EFB\u6240\u957F")))
     };
@@ -1097,7 +1098,7 @@ function AnomalyDetailPage() {
         className: "internal-note"
       }, /*#__PURE__*/React.createElement("p", {
         className: "internal-note-text"
-      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u884C\u52A8\u6863\u6848 \xB7 \u51BB\u571F\u63A2\u7D22\u8425\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E00\u3001\u6001\u52BF\uFF1A\u51B0\u5C01\u54E8\u7AD9\uFF0C\u65F6\u95F4\u505C\u6EDE\u578B\u5F02\u5E38\uFF0C\u5B89\u73C0\u538621\u5E74\u7B2C\u56DB\u6279\u884C\u52A8\u6210\u529F\u574D\u7F29\uFF0C\u5DF2\u89E3\u51B3\u3002 \u56DB\u6279\u7D2F\u8BA155\u4EBA\u8FDB\u5165\uFF0C\u751F\u8FD817\u4EBA\u3001\u6B7B\u4EA138\u4EBA\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E8C\u3001\u786E\u8BA4\u4E8B\u9879\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u6838\u5FC3\u951A\u70B9\u53EF\u88AB\u5E72\u9884\uFF1A\u62E8\u52A8\u5730\u4E0B\u5BA4\u673A\u68B0\u949F\u6446\uFF08\u505C\u6446\u4E8E23:47\uFF09\u540E\u5F02\u5E38\u6574\u4F53\u574D\u7F29\u2014\u2014\u300C\u951A\u70B9-\u89E3\u51BB\u300D\u673A\u5236\u6210\u7ACB\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u51BB\u7ED3\u73AF\u5883\u4E0B\u4FDD\u6301\u6E05\u9192\u51B3\u7B56\u7684\u4EBA\uFF0C\u662F\u5904\u7F6E\u6210\u529F\u7684\u5173\u952E\uFF1B\u88C5\u5907\u4E0E\u706B\u529B\u65E0\u6CD5\u66FF\u4EE3\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E09\u3001\u5904\u7F6E\u51B3\u5B9A\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u300C\u51B0\u5C01\u54E8\u7AD9\u5904\u7F6E\u6D41\u7A0B\u300D\u7EB3\u5165\u5317\u5883\u5B88\u671B\u8BAD\u7EC3\u6559\u6750\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u767D\u677E\u57CE\u5468\u8FB9\u5EFA\u7ACB\u5E38\u9A7B\u76D1\u6D4B\u54E8\uFF0C\u9488\u5BF9\u300C\u949F\u8868\u96C6\u4F53\u505C\u8D70\u300D\u524D\u5146\u5B9E\u884C24\u5C0F\u65F6\u503C\u73ED\u3002", /*#__PURE__*/React.createElement("br", null), "3. \u540C\u7C7B\u524D\u5146\u518D\u6B21\u51FA\u73B0\u65F6\uFF0C\u54CD\u5E94\u65F6\u95F4\u76EE\u6807\uFF1A24\u5C0F\u65F6\u5185\u5B8C\u6210\u96C6\u7ED3\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u9644\u8A00\uFF1A\u89C4\u7A0B\u53EF\u4EE5\u5199\u6210\u6761\u76EE\uFF0C\u4F46\u9053\u7406\u662F\u51BB\u571F\u533A\u6559\u7ED9\u6211\u4EEC\u7684\u2014\u2014\u62E8\u52A8\u949F\u6446\u7684\u529B\u6C14\u8C01\u90FD\u6709\uFF0C\u96BE\u7684\u662F\u5728\u96F6\u4E0B\u56DB\u5341\u5EA6\u7684\u51BB\u7ED3\u73AF\u5883\u91CC\u8FD8\u80FD\u6E05\u9192\u5730\u505A\u51B3\u5B9A\u3002\u88C5\u5907\u4F1A\u5931\u6548\uFF0C\u4EBA\u4E0D\u4F1A\uFF0C\u53EA\u8981\u4ED6\u8FD8\u8BB0\u5F97\u81EA\u5DF1\u4E3A\u4EC0\u4E48\u7AD9\u5728\u90A3\u513F\u3002"), /*#__PURE__*/React.createElement("div", {
+      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u51BB\u571F\u63A2\u7D22\u8425\u961F\u957F \u97E9\u51DB\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u51B0\u5C01\u54E8\u7AD9\u8FD9\u4E00\u4ED7\uFF0C\u6211\u4EEC\u6253\u5F97\u4E0D\u6F02\u4EAE\uFF0C\u4F46\u6253\u660E\u767D\u4E86\u2014\u2014\u56DB\u6279\uFF0C55\u4E2A\u4EBA\u8FDB\u53BB\uFF0C38\u4E2A\u4EBA\u6CA1\u80FD\u51FA\u6765\uFF0C\u4EE3\u4EF7\u592A\u91CD\u4E86\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4F46\u7B2C\u56DB\u6279\u884C\u52A8\u8BC1\u660E\u4E86\u4E00\u4EF6\u4E8B\uFF1A\u65F6\u95F4\u505C\u6EDE\u578B\u5F02\u5E38\u7684\u6838\u5FC3\u951A\u70B9\u662F\u53EF\u4EE5\u88AB\u300C\u8BF4\u670D\u300D\u7684\u3002\u62E8\u52A8\u949F\u6446\u7684\u529B\u6C14\u8C01\u90FD\u6709\uFF0C\u96BE\u7684\u662F\u5728\u96F6\u4E0B\u56DB\u5341\u5EA6\u7684\u51BB\u7ED3\u73AF\u5883\u91CC\u8FD8\u80FD\u4FDD\u6301\u6E05\u9192\u3001\u505A\u51FA\u51B3\u5B9A\u3002\u8FD9\u662F\u51BB\u571F\u533A\u6559\u7ED9\u6211\u4EEC\u7684\u9053\u7406\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5904\u7F6E\u4E0A\uFF0C\u6D41\u7A0B\u5DF2\u7ECF\u5199\u8FDB\u6559\u6750\uFF0C\u767D\u677E\u57CE\u5468\u8FB9\u7684\u5E38\u9A7B\u76D1\u6D4B\u54E8\u4E5F\u7ACB\u8D77\u6765\u4E86\u2014\u2014\u300C\u949F\u8868\u96C6\u4F53\u505C\u8D70\u300D\u7684\u524D\u5146\u6211\u4EEC\u76EF\u5F97\u6BD4\u8C01\u90FD\u7D27\u3002\u4E0B\u4E00\u6B21\u518D\u51FA\u73B0\uFF0C\u6211\u4EEC\u8981\u6BD4\u8FD9\u6B21\u66F4\u5FEB\uFF0C38\u6761\u547D\u4E0D\u80FD\u767D\u642D\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6700\u540E\u8BF4\u53E5\u638F\u5FC3\u7A9D\u7684\u8BDD\uFF1A\u88C5\u5907\u4F1A\u5931\u6548\uFF0C\u706B\u529B\u4F1A\u8017\u5C3D\uFF0C\u4F46\u4EBA\u53EA\u8981\u8FD8\u8BB0\u5F97\u81EA\u5DF1\u4E3A\u4EC0\u4E48\u7AD9\u5728\u90A3\u513F\uFF0C\u5C31\u8FD8\u80FD\u628A\u949F\u6446\u62E8\u56DE\u53BB\u3002\u8FD9\u662F\u6211\u5728\u8FD9\u7247\u51BB\u571F\u4E0A\u5B66\u5230\u7684\u6700\u786C\u7684\u4E00\u6761\u3002"), /*#__PURE__*/React.createElement("div", {
         className: "internal-note-signature"
       }, "\u2014 \u97E9\u51DB \xB7 \u5317\u5883\u5B88\u671B\u51BB\u571F\u63A2\u7D22\u8425\u961F\u957F")))
     };
@@ -1352,12 +1353,201 @@ function AnomalyDetailPage() {
         className: "internal-note"
       }, /*#__PURE__*/React.createElement("p", {
         className: "internal-note-text"
-      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u884C\u52A8\u6863\u6848 \xB7 \u7070\u677E\u5CAD\u884C\u52A8\u961F\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E00\u3001\u6001\u52BF\uFF1A\u7070\u677E\u5CAD\u5FAA\u73AF\u8DEF\u6BB5\uFF0C\u7A7A\u95F4\u5FAA\u73AF\u578B\u5F02\u5E38\uFF08\u5E38\u89C4\u7EA7\uFF09\uFF0C\u5B89\u73C0\u538638\u5E74\u51AC\u53D1\u73B0\uFF0C72\u5C0F\u65F6\u5185\u574D\u7F29\uFF0C\u5DF2\u89E3\u51B3\u3002 \u88AB\u56F0\u8F66\u8F862\u8F663\u4EBA\u3001\u5904\u7F6E\u961F\u54584\u4EBA\uFF0C\u5168\u5458\u5B89\u5168\uFF0C\u65E0\u4EBA\u5458\u4F24\u4EA1\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E8C\u3001\u884C\u52A8\u590D\u76D8\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u5FEB\u901F\u5904\u7F6E\u6210\u7ACB\u7684\u5173\u952E\u662F\u53CA\u65F6\u4E0A\u62A5\uFF1A\u53D1\u73B0\u8005\u672A\u9760\u8FD1\u3001\u672A\u62CD\u6444\u4F20\u64AD\uFF0C\u8BB0\u4E0B\u4F4D\u7F6E\u3001\u9000\u51FA\u8DEF\u6BB5\u3001\u62E8\u625399\u2014\u2014\u5E73\u6C11\u5904\u7F6E\u6D41\u7A0B\u6B63\u786E\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u5F02\u5E38\u7B49\u7EA7\u4E0D\u7B49\u4E8E\u5371\u9669\u7A0B\u5EA6\uFF1A\u672C\u6B21\u4EC5\u9020\u6210\u8F66\u8F86\u5FAA\u73AF\u3001\u672A\u76F4\u63A5\u4F24\u4EBA\uFF0C\u4F46\u540C\u578B\u5F02\u5E38\u5347\u7EA7\u98CE\u9669\u4E0D\u53EF\u6392\u9664\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E09\u3001\u5904\u7F6E\u51B3\u5B9A\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u300C\u7070\u677E\u5CAD\u5904\u7F6E\u6D41\u7A0B\u300D\u7EB3\u5165\u5317\u5883\u5B88\u671B\u5FEB\u901F\u54CD\u5E94\u8BAD\u7EC3\u6848\u4F8B\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u7EF4\u6301\u5468\u8FB9\u77ED\u671F\u76D1\u6D4B\u81F3\u89C2\u6D4B\u671F\u7ED3\u675F\uFF0C\u786E\u8BA4\u65E0\u590D\u53D1\u540E\u64A4\u9664\u4E34\u65F6\u8B66\u793A\u3002", /*#__PURE__*/React.createElement("br", null), "3. \u7EE7\u7EED\u5411\u516C\u4F17\u666E\u53CA\u300C\u53D1\u73B0-\u9000\u51FA-\u4E0A\u62A5\u300D\u4E09\u6B65\u9AA4\u2014\u2014\u672C\u6B21\u884C\u52A8\u7684\u5173\u952E\u5728\u4E8E\u5E73\u6C11\u7684\u6B63\u786E\u5E94\u5BF9\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u9644\u8A00\uFF1A\u8FD9\u6B21\u7684\u529F\u81E3\u662F\u90A3\u4F4D\u4F10\u6728\u5DE5\u4EBA\u3002\u4ED6\u6CA1\u597D\u5947\u51D1\u8FD1\uFF0C\u6CA1\u62CD\u89C6\u9891\u53D1\u4E0A\u7F51\uFF0C\u8BB0\u4E0B\u4F4D\u7F6E\u3001\u9000\u51FA\u8DEF\u6BB5\u3001\u62E8\u4E8699\u2014\u2014\u4E09\u4EF6\u4E8B\uFF0C\u6559\u79D1\u4E66\u91CC\u6559\u7684\uFF0C\u4ED6\u5168\u505A\u5230\u4E86\u3002\u6211\u5E72\u4E86\u5341\u4E94\u5E74\u5317\u5883\uFF0C\u89C1\u8FC7\u592A\u591A\u806A\u660E\u4EBA\u6B7B\u5728\u300C\u518D\u9760\u8FD1\u4E00\u6B65\u300D\u4E0A\u3002\u6BCF\u4E2A\u516C\u6C11\u90FD\u8BE5\u4F1A\u8FD9\u4E09\u4EF6\u4E8B\u3002"), /*#__PURE__*/React.createElement("div", {
+      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u7070\u677E\u5CAD\u884C\u52A8\u961F\u961F\u957F \u971C\u96BC\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u677E\u5CAD\u662F\u4E00\u6B21\u6559\u79D1\u4E66\u5F0F\u7684\u5FEB\u901F\u5904\u7F6E\uFF1A\u4ECE\u63A5\u5230\u4E0A\u62A5\u5230\u574D\u7F29\uFF0C\u4E03\u5341\u4E8C\u5C0F\u65F6\uFF0C\u96F6\u4F24\u4EA1\u3002\u5F02\u5E38\u5E76\u4E0D\u603B\u662F\u5371\u9669\u2014\u2014\u8FD9\u4E00\u6B21\uFF0C\u5B83\u53EA\u662F\u8BA9\u4E00\u8F86\u8F66\u5728\u4E24\u767E\u7C73\u7684\u8DEF\u6BB5\u4E0A\u591A\u8F6C\u4E86\u51E0\u5708\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4F46\u6211\u5FC5\u987B\u8BF4\uFF0C\u8FD9\u573A\u884C\u52A8\u7684\u771F\u6B63\u529F\u81E3\u4E0D\u662F\u6211\u4EEC\uFF0C\u662F\u90A3\u4F4D\u4F10\u6728\u5DE5\u4EBA\u3002\u4ED6\u6CA1\u6709\u597D\u5947\u9760\u8FD1\uFF0C\u6CA1\u6709\u62CD\u89C6\u9891\u53D1\u5230\u7F51\u4E0A\uFF0C\u800C\u662F\u8BB0\u4E0B\u4F4D\u7F6E\u3001\u9000\u51FA\u8DEF\u6BB5\u3001\u62E8\u4E8699\u2014\u2014\u4E09\u4EF6\u4E8B\uFF0C\u6559\u79D1\u4E66\u91CC\u6559\u7684\uFF0C\u4ED6\u5168\u505A\u5230\u4E86\u3002\u6211\u5E72\u4E86\u5341\u4E94\u5E74\u5317\u5883\uFF0C\u89C1\u8FC7\u592A\u591A\u806A\u660E\u4EBA\u6B7B\u5728\u300C\u518D\u9760\u8FD1\u4E00\u6B65\u300D\u4E0A\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5904\u7F6E\u4E0A\uFF0C\u6D41\u7A0B\u5DF2\u7ECF\u5F52\u6863\u8FDB\u5FEB\u901F\u54CD\u5E94\u8BAD\u7EC3\u6848\u4F8B\uFF0C\u5468\u8FB9\u77ED\u671F\u76D1\u6D4B\u7ED3\u675F\u540E\u64A4\u9664\u4E34\u65F6\u8B66\u793A\u3002\u5411\u516C\u4F17\u666E\u53CA\u8FD9\u4E09\u4EF6\u4E8B\uFF0C\u6BD4\u6211\u4EEC\u591A\u8DD1\u5341\u6B21\u4EFB\u52A1\u90FD\u503C\u2014\u2014\u6BCF\u4E2A\u516C\u6C11\u90FD\u8BE5\u5B66\u4F1A\u5B83\u4EEC\u3002"), /*#__PURE__*/React.createElement("div", {
         className: "internal-note-signature"
       }, "\u2014 \u4F0A\u4E07\xB7\u6C83\u5C14\u79D1\u592B\uFF08\u971C\u96BC\uFF09\xB7 \u5317\u5883\u5B88\u671B\u8D44\u6DF1\u6EAF\u754C\u8005")))
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: loopData
+    });
+  }
+  if (isRift) {
+    const riftMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "130",
+      x2: "320",
+      y2: "130",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M170 15 L160 40 L172 65 L158 90 L170 115 L162 135 L178 135 L170 115 L182 90 L168 65 L180 40 L170 15 Z",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(196,40,40,0.8)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "140",
+      y: "10",
+      fill: "rgba(196,40,40,0.85)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u6D1B\u6797\u88C2\u9699"), [18, 34, 50].map((r, i) => /*#__PURE__*/React.createElement("ellipse", {
+      key: i,
+      cx: "170",
+      cy: "130",
+      rx: r,
+      ry: r * 0.45,
+      fill: "none",
+      stroke: "rgba(196,154,44,0.45)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    })), /*#__PURE__*/React.createElement("text", {
+      x: "228",
+      y: "52",
+      fill: "rgba(196,154,44,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u62C9\u626F\u611F"), /*#__PURE__*/React.createElement("text", {
+      x: "228",
+      y: "63",
+      fill: "rgba(196,154,44,0.55)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "5m \u8303\u56F4"), [128, 140, 152, 188, 200, 212].map((x, i) => /*#__PURE__*/React.createElement("g", {
+      key: i
+    }, /*#__PURE__*/React.createElement("line", {
+      x1: x,
+      y1: "130",
+      x2: x,
+      y2: "125",
+      stroke: "rgba(74,154,44,0.9)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: x,
+      cy: "124",
+      r: "1.6",
+      fill: "rgba(74,154,44,0.9)"
+    }))), /*#__PURE__*/React.createElement("text", {
+      x: "118",
+      y: "146",
+      fill: "rgba(74,154,44,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u4FE1\u6807\u9635\u5217 MK-III"), /*#__PURE__*/React.createElement("rect", {
+      x: "40",
+      y: "105",
+      width: "34",
+      height: "24",
+      fill: "rgba(20,20,24,0.85)",
+      stroke: "rgba(138,180,212,0.6)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "30",
+      y: "144",
+      fill: "rgba(138,180,212,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6D1B\u6797\u524D\u54E8\u7AD9"), /*#__PURE__*/React.createElement("text", {
+      x: "286",
+      y: "70",
+      fill: "rgba(168,168,180,0.6)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u76EE\u89C6\u533A")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u7AD6\u7ACB\u5730\u8868\u7684\u7A7A\u95F4\u88C2\u9699 \xB7 5\u7C73\u5185\u4EA7\u751F\u62C9\u626F\u611F \xB7 \u4FE1\u6807\u9635\u5217\u6301\u7EED\u76D1\u6D4B\u8FB9\u754C"));
+    const riftData = {
+      id: "PHA-0182",
+      name: "洛林裂隙",
+      nameEn: "LORRAINE RIFT",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "39.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "PHA-0182"), "名称", "洛林裂隙 · Lorraine Rift"], ["所属管辖", "边界研究院/晨星团联合 · BRI & Morningstar", "首次记录", "安珀历9年 · 秋"], ["异常等级", {
+        levelKey: "doomed",
+        text: "厄运级 · DOOMED"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 38%"), "（21人进入，13人死亡）"], "信息价值", "高（与无尽楼梯 SPA-0021 疑似共享同一空间结构源）"], ["档案更新", "安珀历39年 · 春", "处置状态", "联合边界测绘 · 三级响应 · 进行中"]],
+      discovery: ["安珀历9年秋，洛林自由市边境的一处废弃旧矿场附近，巡逻队发现一道「竖立在地表的裂缝」：约两人高的漆黑裂隙，边缘不规则，从侧面看几乎不可见，但从正面直视时会产生强烈的眩晕与「被注视」感。附近三名矿工家属先后失踪，最后一次目击均指向裂隙方向。", "IMAC 协调 BRI 与晨星团联合接管调查。初期勘查确认裂隙并非「入口」，而是一处持续存在的空间破损点——接近者会感到明显的拉扯感，但裂隙本身并不「吸入」物体，只对生命体与部分仪器产生定向吸引。"],
+      features: ["洛林裂隙是一处<strong>持续存在的空间破损点</strong>：竖立于地表约两米高，正面可见、侧面近乎不可见。裂隙边缘不规则，始终处于缓慢的「呼吸」起伏中，无固定周期可测。", "裂隙对生命体产生定向吸引：5米内出现拉扯感，越近越强，1米内几乎无法抗拒；非生命体（金属、石块）不受影响，但部分精密仪器在裂隙附近出现读数漂移。", "裂隙疑似与无尽楼梯（SPA-0021）共享同一空间结构源——两者均在洛林自由市及周边出现，BRI 将其列为「空间结构同源假说」的关键样本。"],
+      mapNode: riftMap,
+      mapTag: "现场布局 · LAYOUT",
+      verifiedRules: [{
+        num: "一",
+        title: "定向吸引",
+        desc: "裂隙对生命体产生定向拉扯：5米内可感知，1米内几乎无法抗拒；非生命体不受影响，但精密仪器读数会出现漂移。"
+      }, {
+        num: "二",
+        title: "正面可见",
+        desc: "裂隙正面可见（漆黑、边缘不规则），侧面近乎不可见；直视裂隙会产生眩晕与「被注视」感，撤离后缓解。"
+      }, {
+        num: "三",
+        title: "不吸入",
+        desc: "裂隙并非入口——物体不会被吞入，但持续靠近者会被拉扯至裂隙边缘，此后发生的事没有任何记录。"
+      }],
+      speculatedRules: ["裂隙可能是一处「空间破损」而非「入口」——其拉扯力疑似来自破损边缘的空间张力，而非裂隙内部", "与无尽楼梯（SPA-0021）疑似共享同一空间结构源，可能与洛林自由市的地理位置存在关联", "裂隙边缘的「呼吸」起伏或与地下矿脉结构有关，但证据不足，无法确认"],
+      entryRecords: [{
+        term: "初期勘查",
+        year: "安珀历9年·秋",
+        count: 6,
+        org: "BRI/晨星团联合",
+        result: "2人生还，4人死亡",
+        status: "death"
+      }, {
+        term: "第二次",
+        year: "安珀历12年·夏",
+        count: 5,
+        org: "晨星团",
+        result: "3人生还，2人死亡",
+        status: "death"
+      }, {
+        term: "第三次",
+        year: "安珀历15年·春",
+        count: 4,
+        org: "边界研究院",
+        result: "2人生还，2人死亡",
+        status: "death"
+      }, {
+        term: "第四次",
+        year: "安珀历22年·冬",
+        count: 6,
+        org: "BRI/晨星团联合",
+        result: "1人生还，5人死亡",
+        status: "death"
+      }],
+      phenomena: ["<strong>「被注视」感：</strong>直视裂隙的观察者普遍报告眩晕与「被注视」感，且视线无法主动移开，需旁人协助才可转移注意力——该现象在初期勘查中被误判为心理暗示，后确认具有一致性。", "<strong>读数漂移：</strong>裂隙附近精密仪器出现系统性读数漂移，方向始终指向裂隙；漂移幅度与距离负相关，疑似空间张力对仪器的影响，尚未有明确解释。", "<strong>同源呼应：</strong>裂隙边缘的「呼吸」起伏频率，与无尽楼梯（SPA-0021）折叠点的位移周期存在约 0.3% 的偏差率——BRI 认为这是「同源假说」最有价值的观测数据。"],
+      imacNote: "洛林裂隙是「空间结构同源假说」的核心样本，其与无尽楼梯（SPA-0021）的关联研究由 BRI 主导。鉴于裂隙位于洛林自由市边境、且对生命体存在致命吸引，IMAC 协调办公室已将其列为「优先级-贝塔」观察对象，由 BRI/晨星团联合执行边界测绘（三级响应）。任何组织在采取行动前必须提交完整方案并获得 IMAC 审批。未经授权的私自进入将被视为严重违规。",
+      suggestedActions: ["完成联合边界测绘，建立裂隙边缘的长期监测信标阵列，记录「呼吸」起伏数据", "由 BRI 牵头比对裂隙呼吸频率与无尽楼梯折叠点位移数据，验证「同源假说」", "研究裂隙拉扯力的衰减规律，评估能否通过物理屏蔽降低接近风险"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u8FB9\u754C\u7814\u7A76\u9662\u5185\u90E8\u8BC4\u4F30 \xB7 \u7A7A\u95F4\u5F02\u5E38\u7814\u7A76\u6240\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6D1B\u6797\u88C2\u9699\u662F\u6211\u6700\u60F3\u5F04\u61C2\u3001\u53C8\u6700\u6015\u5F04\u61C2\u7684\u5F02\u5E38\u2014\u2014\u5B83\u5C31\u5728\u5730\u8868\u4E0A\u7ACB\u7740\uFF0C\u770B\u5F97\u89C1\u6478\u5F97\u7740\uFF0C\u53EF\u5B83\u5230\u5E95\u662F\u4EC0\u4E48\uFF0C\u6211\u4EEC\u8FDE\u8FB9\u90FD\u6CA1\u6478\u5230\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6700\u521D\u63A5\u624B\u65F6\u6211\u4EE5\u4E3A\u5B83\u662F\u4E00\u9053\u300C\u95E8\u300D\uFF0C\u540E\u6765\u53D1\u73B0\u5B83\u8FDE\u95E8\u90FD\u7B97\u4E0D\u4E0A\u2014\u2014\u5B83\u4E0D\u5438\u5165\u4EFB\u4F55\u4E1C\u897F\uFF0C\u53EA\u662F\u62C9\u626F\uFF0C\u53EA\u662F\u8BA9\u9760\u8FD1\u7684\u4EBA\u6D88\u5931\u3002\u8FD9\u79CD\u300C\u53EA\u5BF9\u751F\u547D\u4F53\u8D77\u4F5C\u7528\u7684\u62C9\u626F\u300D\u5728\u7269\u7406\u4E0A\u5F88\u96BE\u89E3\u91CA\uFF0C\u9664\u975E\u6211\u4EEC\u627F\u8BA4\uFF1A\u88C2\u9699\u672C\u8EAB\u5C31\u6709\u300C\u610F\u56FE\u300D\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E0E\u65E0\u5C3D\u697C\u68AF\u7684\u540C\u6B65\u6570\u636E\u662F\u8FD9\u51E0\u5E74\u6700\u8BA9\u6211\u5174\u594B\u7684\u53D1\u73B0\u30020.3% \u7684\u504F\u5DEE\u7387\u5728\u4EEA\u5668\u8BEF\u5DEE\u8303\u56F4\u5185\uFF0C\u4F46\u4E24\u5904\u5F02\u5E38\u76F8\u8DDD\u4E0D\u8FC7\u767E\u4F59\u516C\u91CC\uFF0C\u5468\u671F\u5374\u5982\u6B64\u63A5\u8FD1\u2014\u2014\u6211\u503E\u5411\u4E8E\u76F8\u4FE1\u5B83\u4EEC\u6765\u81EA\u540C\u4E00\u4E2A\u6E90\u5934\u3002\u5982\u679C\u8FD9\u4E2A\u5047\u8BF4\u6210\u7ACB\uFF0C\u6D1B\u6797\u88C2\u9699\u5C31\u4E0D\u518D\u662F\u5B64\u4F8B\uFF0C\u800C\u662F\u4E00\u6574\u4E2A\u300C\u7A7A\u95F4\u7ED3\u6784\u6E90\u300D\u5728\u5730\u8868\u7684\u4E24\u4E2A\u7834\u53E3\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5904\u7F6E\u4E0A\uFF0C\u6211\u8D5E\u6210\u7EF4\u6301\u8FB9\u754C\u6D4B\u7ED8\u4E0E\u8FDC\u8DDD\u76D1\u6D4B\uFF0C\u4E0D\u9F13\u52B1\u63A5\u8FD1\u88C2\u9699\u8FB9\u7F18\u2014\u2014\u6211\u4EEC\u635F\u5931\u7684\u4EBA\u5DF2\u7ECF\u591F\u591A\u4E86\uFF0C\u800C\u6BCF\u4E00\u6B21\u635F\u5931\uFF0C\u88C2\u9699\u8FB9\u7F18\u90FD\u6CA1\u6709\u7559\u4E0B\u4EFB\u4F55\u75D5\u8FF9\uFF0C\u597D\u50CF\u90A3\u4E9B\u4EBA\u4ECE\u672A\u5B58\u5728\u8FC7\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u8FD9\u8BA9\u6211\u4E0D\u5B89\u3002\u6BD4\u8D77\u770B\u4E0D\u89C1\u7684\u654C\u4EBA\uFF0C\u6211\u66F4\u6015\u8FD9\u79CD\u300C\u4EFF\u4F5B\u4EC0\u4E48\u90FD\u6CA1\u53D1\u751F\u300D\u7684\u6D88\u5931\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u987E\u8FDC\u821F \xB7 \u8FB9\u754C\u7814\u7A76\u9662\u9662\u957F \xB7 \u7A7A\u95F4\u5F02\u5E38\u7814\u7A76\u6240")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: riftData
     });
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
@@ -2088,7 +2278,7 @@ function AnomalyDetailPage() {
     compact: true
   }, /*#__PURE__*/React.createElement("p", {
     className: "internal-note-text"
-  }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u884C\u52A8\u6863\u6848 \xB7 \u9996\u5E2D\u6EAF\u754C\u8005 \u9646\u6C89\u821F\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E00\u3001\u6001\u52BF\uFF1A\u8D64\u6708\u5B66\u9662\uFF0C\u5341\u4E00\u5C4A\u8FDB\u5165\uFF0C\u7D2F\u8BA1116\u4EBA\u3002\u65E0\u4E00\u4EBA\u7531\u89C4\u5219\u76F4\u63A5\u81F4\u6B7B\u2014\u2014\u5931\u8E2A\u3001\u300C\u5267\u60C5\u5931\u8D25\u300D\u6D88\u5931\u3001\u540C\u5316\u3002 \u4F24\u4EA1\u6A21\u5F0F\u4E0E\u5E38\u89C4\u6DF1\u6E0A\u7EA7\u5F02\u5E38\u4E0D\u7B26\uFF1A\u8BE5\u5F02\u5E38\u4E0D\u4E3B\u52A8\u6740\u4EBA\uFF0C\u7591\u4F3C\u5177\u5907\u9009\u62E9\u6027\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E8C\u3001\u7814\u5224\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u7591\u4F3C\u300C\u7B5B\u9009\u300D\u673A\u5236\u3002\u63A5\u8FD1\u6838\u5FC3\u533A\u57DF\uFF08\u767D\u73AB\u7470\u82B1\u56ED\uFF09\u7684\u8FDB\u5165\u8005\uFF0C\u5373\u4F7F\u8FD4\u56DE\uFF0C\u72B6\u6001\u5747\u53D1\u751F\u6539\u53D8\u2014\u2014\u503E\u5411\u5224\u5B9A\u4E3A\u9488\u5BF9\u6027\u884C\u4E3A\uFF0C\u800C\u975E\u968F\u673A\u6740\u4F24\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u5173\u952E\u533A\u57DF\uFF1A\u767D\u73AB\u7470\u82B1\u56ED\u3002\u751F\u8FD8\u8005\u72B6\u6001\u53D8\u5316\u4E0E\u82B1\u56ED\u66B4\u9732\u7A0B\u5EA6\u5448\u6B63\u76F8\u5173\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4E09\u3001\u5904\u7F6E\uFF1A", /*#__PURE__*/React.createElement("br", null), "1. \u7EF4\u6301\u5916\u56F4\u76D1\u6D4B\uFF0C\u4E0D\u7EC4\u7EC7\u5927\u89C4\u6A21\u8FDB\u5165\u3002", /*#__PURE__*/React.createElement("br", null), "2. \u91CD\u70B9\u8DDF\u8E2A\u7B2C\u5341\u4E00\u5C4A\u5185\u90E8\u5B58\u6D3B\u8005\u4FE1\u6807\u72B6\u6001\u2014\u2014\u6062\u590D\u6B63\u5E38\u6216\u5B8C\u5168\u6D88\u5931\uFF0C\u5747\u6784\u6210\u5173\u952E\u5224\u636E\u3002", /*#__PURE__*/React.createElement("br", null), "3. \u5F85\u4FE1\u6807\u6570\u636E\u660E\u6717\u540E\uFF0C\u7531\u672C\u6240\u62DF\u8BA2\u4ECB\u5165\u65B9\u6848\uFF0C\u62A5 IMAC \u5BA1\u6279\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u56DB\u3001\u7ED3\u8BBA\uFF1A\u8BE5\u5F02\u5E38\u5728\u7B49\u5F85\u67D0\u4E00\u6761\u4EF6\u6EE1\u8DB3\u3002\u6761\u4EF6\u786E\u8BA4\u524D\uFF0C\u4EFB\u4F55\u4E3B\u52A8\u63A5\u8FD1\u5747\u6309\u9AD8\u98CE\u9669\u884C\u52A8\u5904\u7406\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u9644\u8A00\uFF1A\u6863\u6848\u8981\u5199\u5F97\u51B7\u9759\uFF0C\u53EF\u6211\u5FC3\u91CC\u4E00\u76F4\u6709\u4E2A\u58F0\u97F3\u2014\u2014\u5B83\u4E0D\u662F\u300C\u9677\u9631\u300D\uFF0C\u662F\u300C\u8C1C\u9898\u300D\u3002\u5341\u4E00\u5C4A\uFF0C\u4E00\u767E\u4E00\u5341\u516D\u4EBA\uFF0C\u6CA1\u6709\u4E00\u4E2A\u662F\u88AB\u89C4\u5219\u76F4\u63A5\u6740\u6B7B\u7684\uFF0C\u5B83\u66F4\u50CF\u5728\u7B5B\u9009\u4EC0\u4E48\u3002\u767D\u73AB\u7470\u82B1\u56ED\u7B49\u7684\u662F\u4E00\u4E2A\u4F1A\u300C\u6BD5\u4E1A\u300D\u7684\u4EBA\u3002\u8FD9\u662F\u6211\u7684\u76F4\u89C9\uFF0C\u4E5F\u662F\u6211\u552F\u4E00\u4E0D\u6562\u5199\u8FDB\u6761\u76EE\u7684\u5224\u65AD\uFF1A\u6211\u6015\u5B83\u662F\u5BF9\u7684\u3002"), /*#__PURE__*/React.createElement("div", {
+  }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u9996\u5E2D\u6EAF\u754C\u8005 \u9646\u6C89\u821F\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u8D64\u6708\u5B66\u9662\u662F\u6211\u804C\u4E1A\u751F\u6DAF\u91CC\u6700\u8BA9\u6211\u4E0D\u5B89\u7684\u4E00\u4E2A\u5F02\u5E38\u2014\u2014\u56E0\u4E3A\u5B83\u4E0D\u50CF\u5F02\u5E38\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5341\u4E00\u5C4A\uFF0C\u4E00\u767E\u4E00\u5341\u516D\u4EBA\uFF0C\u6CA1\u6709\u4E00\u4E2A\u4EBA\u662F\u88AB\u89C4\u5219\u76F4\u63A5\u6740\u6B7B\u7684\uFF1A\u4ED6\u4EEC\u8981\u4E48\u5931\u8E2A\uFF0C\u8981\u4E48\u300C\u5267\u60C5\u5931\u8D25\u300D\u540E\u6D88\u5931\uFF0C\u8981\u4E48\u540C\u5316\u3002 \u5E38\u89C4\u6DF1\u6E0A\u7EA7\u5F02\u5E38\u662F\u300C\u4E3B\u52A8\u6740\u4EBA\u300D\u7684\uFF0C\u8D64\u6708\u5B66\u9662\u4E0D\u50CF\u3002\u5B83\u66F4\u50CF\u662F\u5728\u300C\u7B5B\u9009\u300D\u4EC0\u4E48\u2014\u2014\u6211\u8BF4\u4E0D\u6E05\u5B83\u5728\u7B5B\u9009\u4EC0\u4E48\uFF0C\u4F46\u90A3\u79CD\u611F\u89C9\u6325\u4E4B\u4E0D\u53BB\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u767D\u73AB\u7470\u82B1\u56ED\u662F\u8FD9\u4E00\u5207\u7684\u94A5\u5319\u3002\u6240\u6709\u63A5\u8FD1\u8FC7\u6838\u5FC3\u533A\u57DF\u7684\u4EBA\uFF0C\u5373\u4F7F\u56DE\u6765\u4E86\uFF0C\u4E5F\u90FD\u53D8\u4E86\u3002\u6211\u89C1\u8FC7\u4ED6\u4EEC\u7684\u773C\u775B\uFF0C\u90A3\u4E0D\u662F\u88AB\u5413\u51FA\u6765\u7684\uFF0C\u662F\u88AB\u300C\u770B\u8FC7\u300D\u4E4B\u540E\u7559\u4E0B\u7684\u4E1C\u897F\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5904\u7F6E\u4E0A\u6211\u5EFA\u8BAE\u7EF4\u6301\u5916\u56F4\u76D1\u6D4B\uFF0C\u6682\u4E0D\u7EC4\u7EC7\u5927\u89C4\u6A21\u8FDB\u5165\uFF1B\u7B2C\u5341\u4E00\u5C4A\u5185\u90E8\u5B58\u6D3B\u8005\u7684\u4FE1\u6807\u5FC5\u987B\u76EF\u4F4F\u2014\u2014\u65E0\u8BBA\u5B83\u6062\u590D\u6B63\u5E38\u8FD8\u662F\u5F7B\u5E95\u6D88\u5931\uFF0C\u90FD\u4F1A\u544A\u8BC9\u6211\u4EEC\u7B54\u6848\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u81F3\u4E8E\u76F4\u89C9\u7684\u90E8\u5206\uFF0C\u6863\u6848\u672C\u4E0D\u8BE5\u5199\uFF0C\u4F46\u6211\u8FD8\u662F\u60F3\u5199\uFF1A\u6211\u603B\u89C9\u5F97\uFF0C\u8FD9\u5EA7\u5B66\u9662\u5728\u7B49\u5F85\u67D0\u4E2A\u4EBA\uFF0C\u6216\u8005\u8BF4\uFF0C\u5728\u7B49\u67D0\u4E2A\u300C\u5B66\u751F\u300D\u6BD5\u4E1A\u3002\u7B49\u5B83\u771F\u6B63\u300C\u6BD5\u4E1A\u300D\u7684\u90A3\u5929\uFF0C\u6211\u4EEC\u6700\u597D\u5DF2\u7ECF\u51C6\u5907\u597D\u4E86\u3002"), /*#__PURE__*/React.createElement("div", {
     className: "internal-note-signature"
   }, "\u2014 \u9646\u6C89\u821F \xB7 \u9996\u5E2D\u6EAF\u754C\u8005 \xB7 \u754C\u6807")))), /*#__PURE__*/React.createElement("div", {
     className: "file-footer"
