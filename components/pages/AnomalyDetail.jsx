@@ -569,6 +569,23 @@ function AnomalyDetailPage() {
           font-family: var(--font-mono); font-size: 11px;
           color: var(--text-muted); letter-spacing: 0.1em;
         }
+        .file-archive-notice {
+          margin-top: 18px;
+          padding: 14px 18px;
+          border: 1px solid rgba(196, 40, 40, 0.25);
+          background: rgba(196, 40, 40, 0.04);
+          font-size: 12px;
+          color: var(--text-tertiary);
+          line-height: 1.7;
+        }
+        .file-archive-signature {
+          margin-top: 6px;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          color: var(--accent-red-bright);
+          text-align: right;
+          letter-spacing: 0.05em;
+        }
         @media (max-width: 1024px) {
           .file-section-text, .buildings-grid, .rules-list,
           .speculated-list, .phenomena-list, .note-box, .internal-note {
@@ -848,6 +865,11 @@ function AnomalyDetailPage() {
             <div className="file-footer">
               <div className="file-meta">FILE ID: LOA-0073 / VER: 39.2 / CLASSIFICATION: EYES ONLY</div>
               <div className="file-meta">LAST UPDATED: 安珀历39年·春</div>
+            </div>
+
+            <div className="file-archive-notice">
+              本档案已纳入 IMAC 全球异常信息总库，未经 IMAC 联合行动指挥中心授权，不得擅自复制或传播。
+              <div className="file-archive-signature">—— IMAC 异常信息总库 · 安珀历39年春</div>
             </div>
           </div>
         </div>

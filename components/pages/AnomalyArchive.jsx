@@ -527,9 +527,6 @@ function AnomalyArchivePage({ routeQuery }) {
               <span>已认证 · 访问级别：标准 / ACCESS LEVEL: STANDARD</span>
             </div>
             <div className="archive-auth-actions">
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-muted)", letterSpacing: "0.1em" }}>
-                W-0847 · 陆沉舟
-              </span>
               <span className="archive-logout" onClick={() => navigate("/")}>退出认证</span>
             </div>
           </div>

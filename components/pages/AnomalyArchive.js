@@ -561,13 +561,6 @@ function AnomalyArchivePage({
   }), /*#__PURE__*/React.createElement("span", null, "\u5DF2\u8BA4\u8BC1 \xB7 \u8BBF\u95EE\u7EA7\u522B\uFF1A\u6807\u51C6 / ACCESS LEVEL: STANDARD")), /*#__PURE__*/React.createElement("div", {
     className: "archive-auth-actions"
   }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: "var(--font-mono)",
-      fontSize: "11px",
-      color: "var(--text-muted)",
-      letterSpacing: "0.1em"
-    }
-  }, "W-0847 \xB7 \u9646\u6C89\u821F"), /*#__PURE__*/React.createElement("span", {
     className: "archive-logout",
     onClick: () => navigate("/")
   }, "\u9000\u51FA\u8BA4\u8BC1")))), /*#__PURE__*/React.createElement("div", {

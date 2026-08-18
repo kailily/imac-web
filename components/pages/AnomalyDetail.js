@@ -670,6 +670,23 @@ function AnomalyDetailPage() {
           font-family: var(--font-mono); font-size: 11px;
           color: var(--text-muted); letter-spacing: 0.1em;
         }
+        .file-archive-notice {
+          margin-top: 18px;
+          padding: 14px 18px;
+          border: 1px solid rgba(196, 40, 40, 0.25);
+          background: rgba(196, 40, 40, 0.04);
+          font-size: 12px;
+          color: var(--text-tertiary);
+          line-height: 1.7;
+        }
+        .file-archive-signature {
+          margin-top: 6px;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          color: var(--accent-red-bright);
+          text-align: right;
+          letter-spacing: 0.05em;
+        }
         @media (max-width: 1024px) {
           .file-section-text, .buildings-grid, .rules-list,
           .speculated-list, .phenomena-list, .note-box, .internal-note {
@@ -911,6 +928,10 @@ function AnomalyDetailPage() {
     className: "file-meta"
   }, "FILE ID: LOA-0073 / VER: 39.2 / CLASSIFICATION: EYES ONLY"), /*#__PURE__*/React.createElement("div", {
     className: "file-meta"
-  }, "LAST UPDATED: \u5B89\u73C0\u538639\u5E74\xB7\u6625"))))));
+  }, "LAST UPDATED: \u5B89\u73C0\u538639\u5E74\xB7\u6625")), /*#__PURE__*/React.createElement("div", {
+    className: "file-archive-notice"
+  }, "\u672C\u6863\u6848\u5DF2\u7EB3\u5165 IMAC \u5168\u7403\u5F02\u5E38\u4FE1\u606F\u603B\u5E93\uFF0C\u672A\u7ECF IMAC \u8054\u5408\u884C\u52A8\u6307\u6325\u4E2D\u5FC3\u6388\u6743\uFF0C\u4E0D\u5F97\u64C5\u81EA\u590D\u5236\u6216\u4F20\u64AD\u3002", /*#__PURE__*/React.createElement("div", {
+    className: "file-archive-signature"
+  }, "\u2014\u2014 IMAC \u5F02\u5E38\u4FE1\u606F\u603B\u5E93 \xB7 \u5B89\u73C0\u538639\u5E74\u6625"))))));
 }
 window.AnomalyDetailPage = AnomalyDetailPage;
