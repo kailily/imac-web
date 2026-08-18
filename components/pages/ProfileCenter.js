@@ -239,51 +239,46 @@ function ProfileCenterPage() {
   const [opAppList, setOpAppList] = React.useState([{
     opCode: "LOA-1045",
     opName: "失物公寓异常处置",
-    type: "联合行动参与申请",
+    type: "异常行动参与申请",
     submitDate: "安珀历39年夏·15",
     status: "已批准",
-    role: "行动队长"
+    role: "行动指挥"
   }, {
     opCode: "SPB-0890",
     opName: "镜像走廊勘探任务",
-    type: "联合行动参与申请",
+    type: "异常行动参与申请",
     submitDate: "安珀历39年夏·02",
     status: "已批准",
     role: "副队长"
   }, {
     opCode: "CGA-0502",
     opName: "无声剧场调查",
-    type: "联合行动参与申请",
+    type: "异常行动参与申请",
     submitDate: "安珀历39年春·18",
     status: "已驳回",
     role: "—",
     reason: "同期已有其他任务安排"
   }]);
 
-  // 招人中的行动：待命（联合行动参与）/ 进行中+待命（救援队、后勤保障）
+  // 招人中的行动：待命（异常行动参与）/ 进行中+待命（救援队、后勤保障）
   const standbyOps = [{
     code: "SPA-1120",
-    name: "回声走廊空间偏移",
-    status: "待命"
+    name: "回声走廊空间偏移"
   }];
   const supportOps = [{
     code: "LOA-0073",
-    name: "赤月学院异常介入行动",
-    status: "进行中"
+    name: "赤月学院异常介入行动"
   }, {
     code: "PHA-0182",
-    name: "洛林自由市边境裂隙",
-    status: "进行中"
+    name: "洛林自由市边境裂隙"
   }, {
     code: "TMB-0089",
-    name: "白松城冻土层时间停滞",
-    status: "进行中"
+    name: "白松城冻土层时间停滞"
   }, {
     code: "SPA-1120",
-    name: "回声走廊空间偏移",
-    status: "待命"
+    name: "回声走廊空间偏移"
   }];
-  // 独立行动许可：可自行选择想要调查的异常
+  // 异常行动许可：可调查未解决的异常（活跃/休眠均可，坍缩与安全类不开放）
   const anomalyTargets = [{
     code: "LOA-0001",
     name: "灰港仓库"
@@ -294,50 +289,44 @@ function ProfileCenterPage() {
     code: "SPA-0021",
     name: "无尽楼梯"
   }, {
-    code: "SPA-0421",
-    name: "灰松岭循环路段"
-  }, {
     code: "SPB-0089",
     name: "镜像医院"
   }, {
     code: "TMA-0045",
     name: "雾中列车"
   }, {
-    code: "TMB-0117",
-    name: "冰封哨站"
-  }, {
     code: "PHA-0182",
     name: "洛林裂隙"
-  }, {
-    code: "CGA-0003",
-    name: "回音巷"
   }];
-  // 装备/资源支援：可自行选择需要的装备/资源
-  const gearTargets = ["MK-III 型信标阵列", "同化抑制剂（应急剂量）", "异常通讯器（加密）", "锚定物套装", "急救与止血装备", "极地生存装备", "测绘/记录设备", "移动电源与照明", "越野/雪地载具"];
+  // 角色：异常行动参与（无行动队长）；救援/后勤为详细分工
+  const joinRoles = ["副队长", "队员", "技术支援"];
+  const supportRoles = ["通讯技术支援", "装备技术支援", "测绘技术支援", "前线救援员", "医疗急救员", "搜救侦察员", "伤员转运员", "物资管理", "交通调度", "装备维护", "营地保障"];
   const [opForm, setOpForm] = React.useState({
-    opType: "联合行动参与申请",
+    opType: "异常行动参与申请",
     opCode: "SPA-1120",
     people: "2",
-    gear: "MK-III 型信标阵列",
+    gear: "",
+    role: "队员",
     reason: "",
     availability: "夏·31 起可待命"
   });
   const [opSubmitted, setOpSubmitted] = React.useState(false);
   const [showOpForm, setShowOpForm] = React.useState(false);
   const opNameOf = (type, code) => {
-    if (type === "独立行动许可申请") {
+    if (type === "异常行动许可申请") {
       const t = anomalyTargets.find(a => a.code === code);
       return (t ? t.name : code) + " · 独立调查";
     }
-    if (type === "装备/资源支援申请") return opForm.gear + " · 装备支援";
+    if (type === "装备/资源支援申请") return (opForm.gear.trim() || "装备/资源") + " · 装备支援";
     const pool = type === "救援队申请" || type === "后勤保障申请" ? supportOps : standbyOps;
     const t = pool.find(o => o.code === code);
     return t ? t.name : code;
   };
   const submitOp = () => {
     if (!opForm.reason.trim()) return;
+    if (opForm.opType === "装备/资源支援申请" && !opForm.gear.trim()) return;
     let role = "待分配";
-    if (opForm.opType === "救援队申请") role = "救援队员";else if (opForm.opType === "后勤保障申请") role = "后勤队员";else if (opForm.opType === "独立行动许可申请") role = "独立行动负责人";else if (opForm.opType === "装备/资源支援申请") role = "装备/后勤支援";
+    if (opForm.opType === "异常行动许可申请") role = "独立行动负责人";else if (opForm.opType === "装备/资源支援申请") role = "装备/后勤支援";else role = opForm.role;
     const entry = {
       opCode: opForm.opType === "装备/资源支援申请" ? "GEAR" : opForm.opCode,
       opName: opNameOf(opForm.opType, opForm.opCode),
@@ -346,7 +335,7 @@ function ProfileCenterPage() {
       status: "审核中",
       role
     };
-    if (opForm.opType === "独立行动许可申请") entry.detail = `申请人数：${opForm.people} 人`;
+    if (opForm.opType === "异常行动许可申请") entry.detail = `申请人数：${opForm.people} 人`;
     setOpAppList([entry, ...opAppList]);
     setOpSubmitted(true);
     setShowOpForm(false);
@@ -1301,7 +1290,7 @@ function ProfileCenterPage() {
       fontSize: "12px",
       color: "var(--text-secondary)"
     }
-  }, "\u76EE\u524D\u4EC5\u5F85\u547D\u72B6\u6001\u884C\u52A8\u5F00\u653E\u62DB\u4EBA \xB7 \u7533\u8BF7\u52A0\u5165\u884C\u52A8 / \u72EC\u7ACB\u884C\u52A8\u8BB8\u53EF / \u6551\u63F4\u961F / \u540E\u52E4\u4FDD\u969C"), /*#__PURE__*/React.createElement("button", {
+  }, "\u5F02\u5E38\u884C\u52A8\u53C2\u4E0E\u9650\u5F85\u547D\u884C\u52A8 \xB7 \u5F02\u5E38\u884C\u52A8\u8BB8\u53EF\u53EF\u8C03\u67E5\u672A\u89E3\u51B3\u5F02\u5E38\uFF08\u6D3B\u8DC3/\u4F11\u7720\uFF09 \xB7 \u6551\u63F4\u961F/\u540E\u52E4\u4FDD\u969C\u53EF\u53C2\u4E0E\u8FDB\u884C\u4E2D\u884C\u52A8"), /*#__PURE__*/React.createElement("button", {
     className: "apply-btn",
     onClick: () => {
       setShowOpForm(!showOpForm);
@@ -1324,7 +1313,7 @@ function ProfileCenterPage() {
       ...opForm,
       opType: e.target.value
     })
-  }, /*#__PURE__*/React.createElement("option", null, "\u8054\u5408\u884C\u52A8\u53C2\u4E0E\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u72EC\u7ACB\u884C\u52A8\u8BB8\u53EF\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u88C5\u5907/\u8D44\u6E90\u652F\u63F4\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u6551\u63F4\u961F\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u540E\u52E4\u4FDD\u969C\u7533\u8BF7"))), opForm.opType === "独立行动许可申请" ? /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("option", null, "\u5F02\u5E38\u884C\u52A8\u53C2\u4E0E\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u5F02\u5E38\u884C\u52A8\u8BB8\u53EF\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u88C5\u5907/\u8D44\u6E90\u652F\u63F4\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u6551\u63F4\u961F\u7533\u8BF7"), /*#__PURE__*/React.createElement("option", null, "\u540E\u52E4\u4FDD\u969C\u7533\u8BF7"))), opForm.opType === "异常行动许可申请" ? /*#__PURE__*/React.createElement("div", {
     className: "form-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
@@ -1342,17 +1331,15 @@ function ProfileCenterPage() {
     className: "form-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
-  }, "\u9009\u62E9\u88C5\u5907/\u8D44\u6E90"), /*#__PURE__*/React.createElement("select", {
-    className: "form-select",
+  }, "\u6240\u9700\u88C5\u5907/\u8D44\u6E90"), /*#__PURE__*/React.createElement("input", {
+    className: "form-input",
     value: opForm.gear,
     onChange: e => setOpForm({
       ...opForm,
       gear: e.target.value
-    })
-  }, gearTargets.map(g => /*#__PURE__*/React.createElement("option", {
-    key: g,
-    value: g
-  }, g)))) : /*#__PURE__*/React.createElement("div", {
+    }),
+    placeholder: "\u586B\u5199\u6240\u9700\u88C5\u5907\u6216\u8D44\u6E90\uFF0C\u5982\uFF1AMK-III \u4FE1\u6807\u9635\u5217 \xD72\u3001\u540C\u5316\u6291\u5236\u5242 \xD710\u3001\u8D8A\u91CE\u8F7D\u5177 \xD71..."
+  })) : /*#__PURE__*/React.createElement("div", {
     className: "form-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
@@ -1366,20 +1353,20 @@ function ProfileCenterPage() {
   }, (opForm.opType === "救援队申请" || opForm.opType === "后勤保障申请" ? supportOps : standbyOps).map(o => /*#__PURE__*/React.createElement("option", {
     key: o.code,
     value: o.code
-  }, o.code, " ", o.name, "\uFF08", o.status, "\uFF09"))))), /*#__PURE__*/React.createElement("div", {
+  }, o.code, " ", o.name))))), opForm.opType !== "装备/资源支援申请" && /*#__PURE__*/React.createElement("div", {
     className: "form-row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "form-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
-  }, "\u53EF\u7528\u65F6\u95F4"), /*#__PURE__*/React.createElement("input", {
+  }, "\u884C\u52A8\u65F6\u95F4"), /*#__PURE__*/React.createElement("input", {
     className: "form-input",
     value: opForm.availability,
     onChange: e => setOpForm({
       ...opForm,
       availability: e.target.value
     })
-  })), opForm.opType === "独立行动许可申请" ? /*#__PURE__*/React.createElement("div", {
+  })), opForm.opType === "异常行动许可申请" ? /*#__PURE__*/React.createElement("div", {
     className: "form-field"
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
@@ -1398,8 +1385,16 @@ function ProfileCenterPage() {
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
   }, "\u7533\u8BF7\u89D2\u8272"), /*#__PURE__*/React.createElement("select", {
-    className: "form-select"
-  }, /*#__PURE__*/React.createElement("option", null, "\u884C\u52A8\u961F\u957F"), /*#__PURE__*/React.createElement("option", null, "\u526F\u961F\u957F"), /*#__PURE__*/React.createElement("option", null, "\u961F\u5458"), /*#__PURE__*/React.createElement("option", null, "\u6280\u672F\u652F\u63F4"), /*#__PURE__*/React.createElement("option", null, "\u6551\u63F4\u961F\u5458"), /*#__PURE__*/React.createElement("option", null, "\u540E\u52E4\u961F\u5458")))), /*#__PURE__*/React.createElement("div", {
+    className: "form-select",
+    value: opForm.role,
+    onChange: e => setOpForm({
+      ...opForm,
+      role: e.target.value
+    })
+  }, (opForm.opType === "救援队申请" || opForm.opType === "后勤保障申请" ? supportRoles : joinRoles).map(r => /*#__PURE__*/React.createElement("option", {
+    key: r,
+    value: r
+  }, r))))), /*#__PURE__*/React.createElement("div", {
     className: "form-field",
     style: {
       marginBottom: "10px"
@@ -1447,7 +1442,7 @@ function ProfileCenterPage() {
     style: {
       color: "var(--text-tertiary)"
     }
-  }, o.type || "联合行动参与申请"), /*#__PURE__*/React.createElement("span", {
+  }, o.type || "异常行动参与申请"), /*#__PURE__*/React.createElement("span", {
     style: {
       color: "var(--text-secondary)"
     }
