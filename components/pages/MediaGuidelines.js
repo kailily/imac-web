@@ -254,6 +254,11 @@ function MediaGuidelinesPage() {
           .principle-num { font-size: 28px; text-align: left; }
           .strategy-box { padding: 24px 20px; }
         }
+        @media (max-width: 640px) {
+          .guidelines-auth-inner { padding: 0 16px; gap: 8px; }
+          .guidelines-auth-status { font-size: 10px; gap: 6px; flex-wrap: wrap; }
+          .guidelines-auth-bar { padding: 10px 0; }
+        }
       `), /*#__PURE__*/React.createElement("div", {
     className: "guidelines-page"
   }, /*#__PURE__*/React.createElement("div", {

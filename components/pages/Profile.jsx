@@ -314,6 +314,11 @@ function ProfilePage() {
           .stats-row { grid-template-columns: 1fr 1fr; }
           .page-title { font-size: 24px; }
         }
+        @media (max-width: 480px) {
+          .stats-row { grid-template-columns: 1fr; }
+          .info-card { padding: 18px 14px; }
+          .profile-sidebar { padding: 24px 16px; }
+        }
       `}</style>
 
       <div className="profile-page">

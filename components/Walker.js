@@ -501,6 +501,12 @@ function Walker() {
           .assimilation-stages { grid-template-columns: 1fr; }
           .assimilation-box { padding: 24px 20px; }
         }
+        @media (max-width: 480px) {
+          .equipment-grid { grid-template-columns: 1fr; }
+          .walker-quote-text { font-size: 16px; }
+          .walker-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+          .rank-card { padding: 18px 14px; }
+        }
       `), /*#__PURE__*/React.createElement("section", {
     id: "walker",
     className: "section walker-section"

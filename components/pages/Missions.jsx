@@ -338,8 +338,8 @@ function MissionsPage() {
         @media (max-width: 640px) {
           .mission-summary { grid-template-columns: 1fr 1fr; }
           .mission-item-head {
-            grid-template-columns: 1fr 80px 24px;
-            gap: 8px;
+            grid-template-columns: auto 1fr auto 24px;
+            gap: 10px;
             padding: 14px 16px;
           }
           .mission-date { display: none; }

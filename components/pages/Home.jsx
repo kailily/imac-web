@@ -1065,6 +1065,15 @@ function HomePage() {
           .hp-stat-num { font-size: 24px; }
           .hp-stat-label { font-size: 11px; }
         }
+        @media (max-width: 480px) {
+          .hp-hero-title { font-size: 30px; }
+          .levels-citizen { grid-template-columns: 1fr; }
+          .guide-quick-grid { grid-template-columns: 1fr; }
+          .hp-hero-stats-row { grid-template-columns: 1fr; gap: 10px; }
+          .hp-stat { flex-direction: row; justify-content: flex-start; text-align: left; padding: 14px; }
+          .hp-quick-card { padding: 28px 20px; }
+          .section-title-group { flex-direction: column; align-items: flex-start; gap: 6px; }
+        }
       `}</style>
 
       <section className="hp-hero">

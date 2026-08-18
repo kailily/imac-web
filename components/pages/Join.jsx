@@ -907,6 +907,15 @@ function JoinPage() {
           .join-success-card::before { margin: -40px -20px 28px; }
           .warning-box { padding: 20px; }
         }
+        @media (max-width: 640px) {
+          .assimilation-stages { grid-template-columns: 1fr; }
+          .join-rank-grid { grid-template-columns: 1fr; }
+          .join-hero-title { font-size: 26px; }
+          .join-hero-desc { font-size: 14px; }
+          .join-form-section { padding: 16px; }
+          .join-quote-text { font-size: 16px; }
+          .location-three { grid-template-columns: 1fr; }
+        }
       `}</style>
 
       <div className="join-watermark">JOIN THE ANOMALISTS</div>

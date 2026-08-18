@@ -442,6 +442,12 @@ function AcademyMap() {
         @media (max-width: 768px) {
           .building-detail-body { grid-template-columns: 1fr; }
         }
+        @media (max-width: 480px) {
+          .dorm-label-en, .public-label { display: none; }
+          .dorm-label { font-size: 15px; }
+          .academy-map-container { overflow-x: auto; }
+          .building-detail-body { padding: 16px; }
+        }
       `}</style>
       <div className="academy-map-container">
         <div className="red-moon"></div>

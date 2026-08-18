@@ -140,6 +140,14 @@ function OrganizationsMap({ compact = false, onOrgClick, selectedOrg, setSelecte
           background-color: var(--accent-red-bright);
           color: #fff;
         }
+        @media (max-width: 640px) {
+          .org-info-card { padding: 16px; }
+          .org-info-header { gap: 12px; }
+          .org-info-name { font-size: 18px; }
+          .org-info-detail-row { flex-direction: column; gap: 4px; margin-bottom: 10px; }
+          .org-info-detail-label { min-width: 0; }
+          .org-info-cta { justify-content: flex-start; }
+        }
       `}</style>
 
       <div className="orgs-map-container">

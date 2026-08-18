@@ -389,6 +389,12 @@ function MailboxPage() {
           .mail-sidebar { border-right: none; border-bottom: 1px solid var(--border-color); max-height: 300px; }
           .mail-content { max-height: none; }
         }
+        @media (max-width: 640px) {
+          .mail-content { padding: 18px 14px; }
+          .mail-content-subject { font-size: 17px; }
+          .mail-toolbar { padding: 10px 12px; }
+          .mail-title { font-size: 22px; }
+        }
       `}</style>
 
       <section className="mail-hero">

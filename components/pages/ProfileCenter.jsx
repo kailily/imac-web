@@ -668,6 +668,16 @@ function ProfileCenterPage() {
           .op-table-head, .op-table-row { grid-template-columns: 1fr 1fr; }
           .psych-overview { grid-template-columns: 1fr; }
         }
+        @media (max-width: 640px) {
+          .pc-table-head, .pc-table-row,
+          .train-table-head, .train-table-row,
+          .psych-table-head, .psych-table-row,
+          .cert-table-head, .cert-table-row,
+          .op-table-head, .op-table-row { grid-template-columns: 1fr; }
+          .pc-tab { flex: 1 1 100%; }
+          .pc-card { padding: 14px; }
+          .pc-hero-inner { padding: 30px 16px; }
+        }
       `}</style>
 
       <section className="pc-hero">

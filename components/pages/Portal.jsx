@@ -1049,6 +1049,13 @@ function PortalPage() {
           .regs-grid { grid-template-columns: 1fr; }
           .portal-title { font-size: 20px; }
         }
+        @media (max-width: 640px) {
+          .func-cards-grid { grid-template-columns: 1fr; }
+          .portal-stats-grid { grid-template-columns: 1fr; }
+          .categories-grid { grid-template-columns: 1fr; }
+          .jrp-list, .ops-list, .notice-list { padding: 12px; }
+          .portal-card-body { padding: 14px; }
+        }
       `}</style>
 
       <div className="portal-page">

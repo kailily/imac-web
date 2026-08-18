@@ -2316,6 +2316,10 @@ function AdminPage() {
           .admin-summary-row { grid-template-columns: 1fr 1fr; }
           .op-detail-grid { grid-template-columns: 1fr; }
           .log-stats-row { grid-template-columns: 1fr 1fr; }
+          .admin-panel { padding: 14px; overflow: hidden; }
+          .user-table, .db-table { display: block; overflow-x: auto; white-space: nowrap; }
+          .admin-top-bar-inner { flex-direction: column; align-items: flex-start; gap: 6px; }
+          .admin-badge span { font-size: 9px; }
         }
       `), /*#__PURE__*/React.createElement("div", {
     className: "admin-page"
