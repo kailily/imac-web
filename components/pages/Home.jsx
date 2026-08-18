@@ -1039,6 +1039,12 @@ function HomePage() {
           .about-grid { grid-template-columns: 1fr; }
           .walker-intro-grid { grid-template-columns: 1fr; gap: 36px; }
           .hotline-number { font-size: 56px; }
+          /* 小屏/平板：统计卡片纵向排列，保证文字完整显示 */
+          .hp-hero-stats-row { grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 12px; }
+          .hp-stat { flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 18px 12px; min-height: 0; }
+          .hp-stat-icon { width: 32px; height: 32px; }
+          .hp-stat-num { font-size: 26px; }
+          .hp-stat-label { font-size: 11px; }
         }
         @media (max-width: 768px) {
           .hp-section { padding: 60px 0; }
