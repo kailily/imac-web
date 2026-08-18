@@ -88,7 +88,7 @@ function AdminPage() {
     name: "顾泽鸣",
     current: "机密级",
     target: "绝密级",
-    reason: "BRI空间异常所副所长提名，等待委员会审批",
+    reason: "边界研究院空间异常所副所长提名，等待委员会审批",
     applicant: "顾远舟",
     time: "安珀历39年夏·12"
   }, {
@@ -464,7 +464,7 @@ function AdminPage() {
     org: "边界研究院",
     status: "在岗",
     access: "绝密级",
-    department: "BRI院长 · 空间异常研究所",
+    department: "边界研究院院长 · 空间异常研究所",
     ops: 156,
     hours: 1987,
     lastOp: "PHB-0815 重力偏移区",
@@ -522,7 +522,7 @@ function AdminPage() {
     lastOp: "系统运维",
     note: "IMAC技术局核心成员，XDPS协议栈主要维护者。"
   },
-  // 赤月学院 LOA-0073 行动队（衔尾蛇/BRI联合）
+  // 赤月学院 LOA-0073 行动队（衔尾蛇/边界研究院联合）
   {
     name: "沈彻",
     code: "彻",
@@ -557,11 +557,11 @@ function AdminPage() {
     org: "边界研究院",
     status: "失联",
     access: "机密级",
-    department: "空间异常研究所 · BRI队长",
+    department: "空间异常研究所 · 边界研究院队长",
     ops: 87,
     hours: 1123,
     lastOp: "LOA-0073 赤月学院",
-    note: "BRI空间异常研究所资深研究员，赤月行动BRI分队队长。夏·29 同队失联。"
+    note: "边界研究院空间异常研究所资深研究员，赤月行动边界研究院分队队长。夏·29 同队失联。"
   }, {
     name: "林薇",
     code: "薇",
@@ -574,7 +574,7 @@ function AdminPage() {
     ops: 31,
     hours: 398,
     lastOp: "LOA-0073 赤月学院",
-    note: "BRI研究员，顾泽鸣小队成员。夏·29 同队失联。"
+    note: "边界研究院研究员，顾泽鸣小队成员。夏·29 同队失联。"
   },
   // 其他活跃溯界者
   {
@@ -602,7 +602,7 @@ function AdminPage() {
     ops: 53,
     hours: 674,
     lastOp: "CGB-0427 记忆回廊",
-    note: "BRI认知异常研究组核心成员。"
+    note: "边界研究院认知异常研究组核心成员。"
   }, {
     name: "韩凛",
     code: "凛",
@@ -667,7 +667,7 @@ function AdminPage() {
     ops: 19,
     hours: 234,
     lastOp: "OBA-0311 旧钟表",
-    note: "BRI异常数据中心初级研究员。"
+    note: "边界研究院异常数据中心初级研究员。"
   }, {
     name: "许知遥",
     code: "遥",
@@ -752,7 +752,7 @@ function AdminPage() {
     name: "赤月学院异常介入行动",
     level: "深渊级",
     levelClass: "abyssal",
-    org: "衔尾蛇/BRI联合",
+    org: "衔尾蛇/边界研究院联合",
     response: "二级响应",
     status: "进行中",
     personnel: 6,
@@ -762,13 +762,13 @@ function AdminPage() {
     commander: "沈彻",
     sector: "东侧主入口 · 深入未知",
     orgs: ["衔尾蛇事务所", "边界研究院"],
-    notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（BRI）等6人。"
+    notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（边界研究院）等6人。"
   }, {
     code: "PHA-0182",
     name: "洛林自由市边境裂隙",
     level: "厄运级",
     levelClass: "doomed",
-    org: "BRI/晨星团联合",
+    org: "边界研究院/晨星团联合",
     response: "三级响应",
     status: "进行中",
     personnel: 12,
@@ -959,7 +959,7 @@ function AdminPage() {
     date: "2026-08-16",
     level: "INFO",
     module: "AUTH",
-    msg: "用户 IMAC-BRI-0231 登录，权限等级 机密级，来源 BRI 内网"
+    msg: "用户 IMAC-BRI-0231 登录，权限等级 机密级，来源 边界研究院 内网"
   }, {
     time: "08:55:58",
     date: "2026-08-16",

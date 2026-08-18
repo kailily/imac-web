@@ -26,7 +26,7 @@ function AdminPage() {
 
   const [rankAdjList, setRankAdjList] = React.useState([
     { id: 1, name: "林砚", current: "机密级", target: "绝密级", reason: "衔尾蛇外勤一队副队长职务调整，需更高数据权限", applicant: "陈默", time: "安珀历39年夏·14" },
-    { id: 2, name: "顾泽鸣", current: "机密级", target: "绝密级", reason: "BRI空间异常所副所长提名，等待委员会审批", applicant: "顾远舟", time: "安珀历39年夏·12" },
+    { id: 2, name: "顾泽鸣", current: "机密级", target: "绝密级", reason: "边界研究院空间异常所副所长提名，等待委员会审批", applicant: "顾远舟", time: "安珀历39年夏·12" },
     { id: 3, name: "韩凛", current: "秘密级", target: "机密级", reason: "北境守望冻土探索营队长晋升，权限同步升级", applicant: "伊万·彼得罗夫", time: "安珀历39年夏·10" },
     { id: 4, name: "温如言", current: "机密级", target: "绝密级", reason: "悬铃木学会认知异常组副组长接任，需升级权限", applicant: "苏悬铃", time: "安珀历39年夏·08" },
     { id: 5, name: "方叙", current: "秘密级", target: "机密级", reason: "衔尾蛇外勤二队转正考核通过", applicant: "周野", time: "安珀历39年夏·06" },
@@ -134,26 +134,26 @@ function AdminPage() {
 
     // 首席级 / 现任高层
     { name: "魏长风", code: "风", id: "IMAC-HQ-0001", rank: "行动总协调官", org: "IMAC总部", status: "在岗", access: "绝密级", department: "联合行动指挥中心", ops: 256, hours: 3124, lastOp: "—", note: "IMAC现任行动总协调官，统筹全球联合行动。" },
-    { name: "顾远舟", code: "远", id: "IMAC-BRI-0001", rank: "首席研究员", org: "边界研究院", status: "在岗", access: "绝密级", department: "BRI院长 · 空间异常研究所", ops: 156, hours: 1987, lastOp: "PHB-0815 重力偏移区", note: "边界研究院现任院长，空间异常领域权威。" },
+    { name: "顾远舟", code: "远", id: "IMAC-BRI-0001", rank: "首席研究员", org: "边界研究院", status: "在岗", access: "绝密级", department: "边界研究院院长 · 空间异常研究所", ops: 156, hours: 1987, lastOp: "PHB-0815 重力偏移区", note: "边界研究院现任院长，空间异常领域权威。" },
     { name: "陆明远", code: "明", id: "IMAC-MC-0001", rank: "首席科学家", org: "晨星团", status: "在岗", access: "绝密级", department: "晨星团首席科学家 · 物理异常组", ops: 112, hours: 1432, lastOp: "PHA-0182 洛林裂隙", note: "晨星团首席科学家，物理法则类异常研究领军者。" },
     { name: "苏悬铃", code: "铃", id: "IMAC-PS-0001", rank: "首席溯界者", org: "悬铃木学会", status: "在岗", access: "绝密级", department: "悬铃木学会会长", ops: 98, hours: 1256, lastOp: "CGA-0713 旧图书馆", note: "悬铃木学会现任会长，认知异常与记忆研究专家。" },
     { name: "薛定澜", code: "澜", id: "IMAC-4W-0001", rank: "界标级", org: "第四面墙", status: "在岗", access: "绝密级", department: "第四面墙主管", ops: 0, hours: 0, lastOp: "—", note: "第四面墙最高主管，负责跨现实边界监控与协议维护。身份信息大部分加密。" },
     { name: "江近月", code: "月", id: "IMAC-HQ-0023", rank: "高级管理员", org: "IMAC总部", status: "在岗", access: "绝密级", department: "技术局 · 系统运维", ops: 45, hours: 512, lastOp: "系统运维", note: "IMAC技术局核心成员，XDPS协议栈主要维护者。" },
 
-    // 赤月学院 LOA-0073 行动队（衔尾蛇/BRI联合）
+    // 赤月学院 LOA-0073 行动队（衔尾蛇/边界研究院联合）
     { name: "沈彻", code: "彻", id: "IMAC-OA-0047", rank: "资深溯界者", org: "衔尾蛇事务所", status: "失联", access: "机密级", department: "外勤一队 · 队长 · LOA-0073行动指挥", ops: 128, hours: 1847, lastOp: "LOA-0073 赤月学院", note: "赤月学院异常介入行动总指挥，衔尾蛇外勤一队队长。夏·29 最后通讯后失联。" },
     { name: "季明轩", code: "明", id: "IMAC-OA-0189", rank: "溯界者", org: "衔尾蛇事务所", status: "失联", access: "机密级", department: "外勤一队 · 队员", ops: 42, hours: 568, lastOp: "LOA-0073 赤月学院", note: "衔尾蛇外勤一队成员，随沈彻进入赤月学院，夏·29 同队失联。" },
-    { name: "顾泽鸣", code: "泽", id: "IMAC-BRI-0247", rank: "资深溯界者", org: "边界研究院", status: "失联", access: "机密级", department: "空间异常研究所 · BRI队长", ops: 87, hours: 1123, lastOp: "LOA-0073 赤月学院", note: "BRI空间异常研究所资深研究员，赤月行动BRI分队队长。夏·29 同队失联。" },
-    { name: "林薇", code: "薇", id: "IMAC-BRI-0356", rank: "溯界者", org: "边界研究院", status: "失联", access: "秘密级", department: "空间异常研究所 · 队员", ops: 31, hours: 398, lastOp: "LOA-0073 赤月学院", note: "BRI研究员，顾泽鸣小队成员。夏·29 同队失联。" },
+    { name: "顾泽鸣", code: "泽", id: "IMAC-BRI-0247", rank: "资深溯界者", org: "边界研究院", status: "失联", access: "机密级", department: "空间异常研究所 · 边界研究院队长", ops: 87, hours: 1123, lastOp: "LOA-0073 赤月学院", note: "边界研究院空间异常研究所资深研究员，赤月行动边界研究院分队队长。夏·29 同队失联。" },
+    { name: "林薇", code: "薇", id: "IMAC-BRI-0356", rank: "溯界者", org: "边界研究院", status: "失联", access: "秘密级", department: "空间异常研究所 · 队员", ops: 31, hours: 398, lastOp: "LOA-0073 赤月学院", note: "边界研究院研究员，顾泽鸣小队成员。夏·29 同队失联。" },
 
     // 其他活跃溯界者
     { name: "林砚", code: "砚", id: "IMAC-OA-0089", rank: "资深溯界者", org: "衔尾蛇事务所", status: "在岗", access: "机密级", department: "外勤一队 · 副队长", ops: 104, hours: 1423, lastOp: "SPA-1120 回声走廊", note: "衔尾蛇外勤一队副队长，因留守总部未参与赤月行动。" },
-    { name: "苏晚", code: "晚", id: "IMAC-BRI-0312", rank: "研究员", org: "边界研究院", status: "外勤", access: "机密级", department: "认知异常研究组", ops: 53, hours: 674, lastOp: "CGB-0427 记忆回廊", note: "BRI认知异常研究组核心成员。" },
+    { name: "苏晚", code: "晚", id: "IMAC-BRI-0312", rank: "研究员", org: "边界研究院", status: "外勤", access: "机密级", department: "认知异常研究组", ops: 53, hours: 674, lastOp: "CGB-0427 记忆回廊", note: "边界研究院认知异常研究组核心成员。" },
     { name: "韩凛", code: "凛", id: "IMAC-NW-0156", rank: "资深溯界者", org: "北境守望", status: "外勤", access: "机密级", department: "冻土探索营 · 队长 · TMB-0089指挥", ops: 97, hours: 1256, lastOp: "TMB-0089 白松冻土", note: "白松城冻土层时间停滞行动指挥，北境守望冻土探索营队长。" },
     { name: "叶知秋", code: "秋", id: "IMAC-NW-0203", rank: "溯界者", org: "北境守望", status: "休假", access: "秘密级", department: "冻土探索营 · 队员", ops: 34, hours: 412, lastOp: "PHA-0728 冰下断层", note: "北境守望冻土探索营成员，轮休中。" },
     { name: "周珩", code: "珩", id: "IMAC-MC-0145", rank: "溯界者", org: "晨星团", status: "外勤", access: "秘密级", department: "行动部 · 三组", ops: 41, hours: 528, lastOp: "PHA-0182 洛林裂隙", note: "晨星团行动部三组，参与洛林裂隙联合行动。" },
     { name: "方叙", code: "叙", id: "IMAC-OA-0167", rank: "溯界者", org: "衔尾蛇事务所", status: "在岗", access: "秘密级", department: "外勤二队 · 队员", ops: 38, hours: 487, lastOp: "LOA-1045 失物公寓", note: "衔尾蛇外勤二队成员。" },
-    { name: "陈之岸", code: "岸", id: "IMAC-BRI-0412", rank: "初级研究员", org: "边界研究院", status: "在岗", access: "秘密级", department: "异常数据中心", ops: 19, hours: 234, lastOp: "OBA-0311 旧钟表", note: "BRI异常数据中心初级研究员。" },
+    { name: "陈之岸", code: "岸", id: "IMAC-BRI-0412", rank: "初级研究员", org: "边界研究院", status: "在岗", access: "秘密级", department: "异常数据中心", ops: 19, hours: 234, lastOp: "OBA-0311 旧钟表", note: "边界研究院异常数据中心初级研究员。" },
     { name: "许知遥", code: "遥", id: "IMAC-MED-0076", rank: "主治医师", org: "医疗保障部", status: "在岗", access: "机密级", department: "心理干预中心", ops: 28, hours: 345, lastOp: "CGA-0612 静默走廊", note: "IMAC医疗保障部心理干预中心主治医师。" },
     { name: "唐夜", code: "夜", id: "IMAC-OA-0256", rank: "见习溯界者", org: "衔尾蛇事务所", status: "休假", access: "受限级", department: "见习大队", ops: 7, hours: 89, lastOp: "SPB-0890 镜像走廊", note: "衔尾蛇见习大队成员，第二轮考核待进行。" },
     { name: "黎深", code: "深", id: "IMAC-NW-0312", rank: "溯界者", org: "北境守望", status: "外勤", access: "秘密级", department: "极地探索队", ops: 62, hours: 756, lastOp: "ENA-0234 深寒巨兽", note: "北境守望极地探索队成员。" },
@@ -168,7 +168,7 @@ function AdminPage() {
       name: "赤月学院异常介入行动",
       level: "深渊级",
       levelClass: "abyssal",
-      org: "衔尾蛇/BRI联合",
+      org: "衔尾蛇/边界研究院联合",
       response: "二级响应",
       status: "进行中",
       personnel: 6,
@@ -178,14 +178,14 @@ function AdminPage() {
       commander: "沈彻",
       sector: "东侧主入口 · 深入未知",
       orgs: ["衔尾蛇事务所", "边界研究院"],
-      notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（BRI）等6人。",
+      notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（边界研究院）等6人。",
     },
     {
       code: "PHA-0182",
       name: "洛林自由市边境裂隙",
       level: "厄运级",
       levelClass: "doomed",
-      org: "BRI/晨星团联合",
+      org: "边界研究院/晨星团联合",
       response: "三级响应",
       status: "进行中",
       personnel: 12,
@@ -272,7 +272,7 @@ function AdminPage() {
     { time: "08:45:33", date: "2026-08-16", level: "INFO", module: "XDPS", msg: "加密握手重试机制测试通过，失败率 0.012%" },
     { time: "08:48:10", date: "2026-08-16", level: "WARN", module: "NODE-EAST", msg: "东境节点温度告警：机房温度 28.5°C，接近 30°C 告警线" },
     { time: "08:50:47", date: "2026-08-16", level: "INFO", module: "BACKUP", msg: "异地灾备同步完成，数据一致性校验通过" },
-    { time: "08:53:22", date: "2026-08-16", level: "INFO", module: "AUTH", msg: "用户 IMAC-BRI-0231 登录，权限等级 机密级，来源 BRI 内网" },
+    { time: "08:53:22", date: "2026-08-16", level: "INFO", module: "AUTH", msg: "用户 IMAC-BRI-0231 登录，权限等级 机密级，来源 边界研究院 内网" },
     { time: "08:55:58", date: "2026-08-16", level: "ERROR", module: "ANOMALY-API", msg: "异常查询接口 500 错误 3 次，已自动重启服务进程" },
     { time: "08:58:44", date: "2026-08-16", level: "INFO", module: "JRP", msg: "联合行动 LOA-0073 信标监测：信号微弱但稳定，位置无漂移" },
     { time: "09:01:16", date: "2026-08-16", level: "INFO", module: "SYSTEM", msg: "每日自检完成，全部节点在线，系统健康度 98.7%" },
