@@ -108,6 +108,10 @@ function AnomalyDetailPage() {
               仅作列表演示 · 完整档案请查看 LOA-0073 赤月学院
             </div>
             <span className="detail-back-link" onClick={() => navigate("/anomaly-archive")}>← 返回档案列表</span>
+            <div className="file-archive-notice" style={{ marginTop: "48px", maxWidth: "560px", textAlign: "left" }}>
+              本档案已纳入 IMAC 全球异常信息总库，未经 IMAC 联合行动指挥中心授权，不得擅自复制或传播。
+              <div className="file-archive-signature">—— IMAC 异常信息总库 · 安珀历39年春</div>
+            </div>
           </div>
         </div>
       </>

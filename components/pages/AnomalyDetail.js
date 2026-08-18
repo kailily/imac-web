@@ -215,7 +215,16 @@ function AnomalyDetailPage() {
     }, "\u4EC5\u4F5C\u5217\u8868\u6F14\u793A \xB7 \u5B8C\u6574\u6863\u6848\u8BF7\u67E5\u770B LOA-0073 \u8D64\u6708\u5B66\u9662"), /*#__PURE__*/React.createElement("span", {
       className: "detail-back-link",
       onClick: () => navigate("/anomaly-archive")
-    }, "\u2190 \u8FD4\u56DE\u6863\u6848\u5217\u8868"))));
+    }, "\u2190 \u8FD4\u56DE\u6863\u6848\u5217\u8868"), /*#__PURE__*/React.createElement("div", {
+      className: "file-archive-notice",
+      style: {
+        marginTop: "48px",
+        maxWidth: "560px",
+        textAlign: "left"
+      }
+    }, "\u672C\u6863\u6848\u5DF2\u7EB3\u5165 IMAC \u5168\u7403\u5F02\u5E38\u4FE1\u606F\u603B\u5E93\uFF0C\u672A\u7ECF IMAC \u8054\u5408\u884C\u52A8\u6307\u6325\u4E2D\u5FC3\u6388\u6743\uFF0C\u4E0D\u5F97\u64C5\u81EA\u590D\u5236\u6216\u4F20\u64AD\u3002", /*#__PURE__*/React.createElement("div", {
+      className: "file-archive-signature"
+    }, "\u2014\u2014 IMAC \u5F02\u5E38\u4FE1\u606F\u603B\u5E93 \xB7 \u5B89\u73C0\u538639\u5E74\u6625")))));
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
         .detail-page {

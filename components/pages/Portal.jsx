@@ -24,13 +24,13 @@ function PortalPage() {
   }, []);
 
   const categories = [
-    { code: "SP", name: "空间类", en: "Spatial", desc: "折叠、裂隙、循环空间、错位空间等", count: 4287, latest: "SP-0312 · 折叠楼道", example: "SP-0021 无尽楼梯", color: "#4a7cb4" },
-    { code: "TM", name: "时间类", en: "Temporal", desc: "时间循环、流速异常、时间断裂等", count: 892, latest: "TM-0147 · 钟塔停滞", example: "TM-0031 冰封哨站", color: "#7a3ab4" },
-    { code: "PH", name: "物理类", en: "Physical", desc: "物理法则扭曲、重力异常、物质状态异常", count: 1204, latest: "PH-0256 · 引力井", example: "PH-0089 镜像医院", color: "#c49a2c" },
-    { code: "CG", name: "认知类", en: "Cognitive", desc: "记忆篡改、感知扭曲、身份替换、叙事嵌入", count: 1567, latest: "CG-0199 · 回音巷", example: "CG-0003 回音巷", color: "#c4782c" },
-    { code: "EN", name: "实体类", en: "Entity", desc: "异常生物、NPC自主意识、同化体等", count: 734, latest: "EN-0082 · 画像中人", example: "EN-0045 雾中列车", color: "#c42828" },
-    { code: "LO", name: "地点类", en: "Location", desc: "凭空出现的建筑、被封锁区域", count: 2341, latest: "LO-0105 · 镜像医院", example: "LO-0073 赤月学院", color: "#d46828", featured: true },
-    { code: "OB", name: "物品类", en: "Object", desc: "异常道具、规则载体、诅咒物品等", count: 987, latest: "OB-0066 · 哭泣的怀表", example: "OB-0012 剧情书残页", color: "#6a8ca8" },
+    { code: "SP", name: "空间类", en: "Spatial", desc: "折叠、裂隙、循环空间、错位空间等", count: 4287, latest: "SPA-0312 · 折叠楼道", example: "SPA-0021 无尽楼梯", color: "#4a7cb4" },
+    { code: "TM", name: "时间类", en: "Temporal", desc: "时间循环、流速异常、时间断裂等", count: 892, latest: "TMB-0147 · 钟塔停滞", example: "TMB-0117 冰封哨站", color: "#7a3ab4" },
+    { code: "PH", name: "物理类", en: "Physical", desc: "物理法则扭曲、重力异常、物质状态异常", count: 1204, latest: "PHB-0256 · 引力井", example: "SPB-0089 镜像医院", color: "#c49a2c" },
+    { code: "CG", name: "认知类", en: "Cognitive", desc: "记忆篡改、感知扭曲、身份替换、叙事嵌入", count: 1567, latest: "CGA-0199 · 回音巷", example: "CGA-0003 回音巷", color: "#c4782c" },
+    { code: "EN", name: "实体类", en: "Entity", desc: "异常生物、NPC自主意识、同化体等", count: 734, latest: "ENA-0082 · 画像中人", example: "TMA-0045 雾中列车", color: "#c42828" },
+    { code: "LO", name: "地点类", en: "Location", desc: "凭空出现的建筑、被封锁区域", count: 2341, latest: "SPB-0089 · 镜像医院", example: "LOA-0073 赤月学院", color: "#d46828", featured: true },
+    { code: "OB", name: "物品类", en: "Object", desc: "异常道具、规则载体、诅咒物品等", count: 987, latest: "OBA-0066 · 哭泣的怀表", example: "OBA-0012 剧情书残页", color: "#6a8ca8" },
   ];
 
   const stats = [
@@ -112,8 +112,8 @@ function PortalPage() {
   ];
 
   const activeOperations = [
-    { code: "PH-0182", name: "洛林自由市边境裂隙", level: "厄运级", levelClass: "doomed", response: "三级响应", org: "BRI/晨星团联合", status: "进行中" },
-    { code: "TM-0089", name: "白松城冻土层时间停滞", level: "危险级", levelClass: "hazardous", response: "三级响应", org: "北境守望", status: "进行中" },
+    { code: "PHA-0182", name: "洛林自由市边境裂隙", level: "厄运级", levelClass: "doomed", response: "三级响应", org: "BRI/晨星团联合", status: "进行中" },
+    { code: "TMB-0089", name: "白松城冻土层时间停滞", level: "危险级", levelClass: "hazardous", response: "三级响应", org: "北境守望", status: "进行中" },
     {
       code: "LOA-0073",
       name: "赤月学院异常介入行动",

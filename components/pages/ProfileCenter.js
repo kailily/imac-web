@@ -48,7 +48,7 @@ function ProfileCenterPage() {
   // === 任务历史（赤鸦，不含赤月学院） ===
   const missionHistory = [{
     name: "失物公寓异常处置",
-    code: "LO-1045",
+    code: "LOA-1045",
     level: "危险级",
     levelClass: "hazardous",
     role: "行动队长",
@@ -56,7 +56,7 @@ function ProfileCenterPage() {
     result: "成功"
   }, {
     name: "镜像走廊勘探任务",
-    code: "SP-0890",
+    code: "SPB-0890",
     level: "厄运级",
     levelClass: "doomed",
     role: "副队长",
@@ -64,7 +64,7 @@ function ProfileCenterPage() {
     result: "成功"
   }, {
     name: "无声剧场调查",
-    code: "CG-0502",
+    code: "CGA-0502",
     level: "危险级",
     levelClass: "hazardous",
     role: "队员",
@@ -72,7 +72,7 @@ function ProfileCenterPage() {
     result: "部分成功"
   }, {
     name: "旧图书馆认知异常记录",
-    code: "CG-0713",
+    code: "CGA-0713",
     level: "危险级",
     levelClass: "hazardous",
     role: "队员",
@@ -80,7 +80,7 @@ function ProfileCenterPage() {
     result: "成功"
   }, {
     name: "重力偏移区测绘",
-    code: "PH-0815",
+    code: "PHB-0815",
     level: "厄运级",
     levelClass: "doomed",
     role: "队员",
@@ -88,7 +88,7 @@ function ProfileCenterPage() {
     result: "成功"
   }, {
     name: "冰下断层勘探",
-    code: "PH-0728",
+    code: "PHA-0728",
     level: "危险级",
     levelClass: "hazardous",
     role: "队员",
@@ -96,7 +96,7 @@ function ProfileCenterPage() {
     result: "成功"
   }, {
     name: "回声走廊空间测量",
-    code: "SP-1120",
+    code: "SPA-1120",
     level: "普通级",
     levelClass: "ordinary",
     role: "副队长",
@@ -104,7 +104,7 @@ function ProfileCenterPage() {
     result: "成功"
   }, {
     name: "记忆回廊认知干预",
-    code: "CG-0427",
+    code: "CGB-0427",
     level: "厄运级",
     levelClass: "doomed",
     role: "队员",
@@ -177,7 +177,7 @@ function ProfileCenterPage() {
     assessor: "唐敏 副主任医师",
     level: "关注",
     index: "3.4%",
-    advice: "CG-0502行动后建议增加冥想训练",
+    advice: "CGA-0502行动后建议增加冥想训练",
     status: "warn"
   }, {
     date: "安珀历38年秋·18",
@@ -237,19 +237,19 @@ function ProfileCenterPage() {
 
   // === 行动申请 ===
   const [opAppList, setOpAppList] = React.useState([{
-    opCode: "LO-1045",
+    opCode: "LOA-1045",
     opName: "失物公寓异常处置",
     submitDate: "安珀历39年夏·15",
     status: "已批准",
     role: "行动队长"
   }, {
-    opCode: "SP-0890",
+    opCode: "SPB-0890",
     opName: "镜像走廊勘探任务",
     submitDate: "安珀历39年夏·02",
     status: "已批准",
     role: "副队长"
   }, {
-    opCode: "CG-0502",
+    opCode: "CGA-0502",
     opName: "无声剧场调查",
     submitDate: "安珀历39年春·18",
     status: "已驳回",
@@ -257,7 +257,7 @@ function ProfileCenterPage() {
     reason: "同期已有其他任务安排"
   }]);
   const [opForm, setOpForm] = React.useState({
-    opCode: "PH-0182",
+    opCode: "PHA-0182",
     reason: "",
     availability: "夏·31 起可待命"
   });
@@ -266,9 +266,9 @@ function ProfileCenterPage() {
   const submitOp = () => {
     if (!opForm.reason.trim()) return;
     const opNames = {
-      "PH-0182": "洛林自由市边境裂隙",
-      "TM-0089": "白松城冻土层时间停滞",
-      "SP-1120": "回声走廊空间测量"
+      "PHA-0182": "洛林自由市边境裂隙",
+      "TMB-0089": "白松城冻土层时间停滞",
+      "SPA-1120": "回声走廊空间测量"
     };
     setOpAppList([{
       opCode: opForm.opCode,
@@ -1245,12 +1245,12 @@ function ProfileCenterPage() {
       opCode: e.target.value
     })
   }, /*#__PURE__*/React.createElement("option", {
-    value: "PH-0182"
-  }, "PH-0182 \u6D1B\u6797\u81EA\u7531\u5E02\u8FB9\u5883\u88C2\u9699"), /*#__PURE__*/React.createElement("option", {
-    value: "TM-0089"
-  }, "TM-0089 \u767D\u677E\u57CE\u51BB\u571F\u5C42\u65F6\u95F4\u505C\u6EDE"), /*#__PURE__*/React.createElement("option", {
-    value: "SP-1120"
-  }, "SP-1120 \u56DE\u58F0\u8D70\u5ECA")))), /*#__PURE__*/React.createElement("div", {
+    value: "PHA-0182"
+  }, "PHA-0182 \u6D1B\u6797\u81EA\u7531\u5E02\u8FB9\u5883\u88C2\u9699"), /*#__PURE__*/React.createElement("option", {
+    value: "TMB-0089"
+  }, "TMB-0089 \u767D\u677E\u57CE\u51BB\u571F\u5C42\u65F6\u95F4\u505C\u6EDE"), /*#__PURE__*/React.createElement("option", {
+    value: "SPA-1120"
+  }, "SPA-1120 \u56DE\u58F0\u8D70\u5ECA")))), /*#__PURE__*/React.createElement("div", {
     className: "form-row"
   }, /*#__PURE__*/React.createElement("div", {
     className: "form-field"

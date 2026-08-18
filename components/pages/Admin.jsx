@@ -47,10 +47,10 @@ function AdminPage() {
   const auditLogs = [
     { time: "09:02:17", user: "魏长风", action: "审批通过 LOA-0073 行动升级申请", module: "JRP审批" },
     { time: "08:47:33", user: "江近月", action: "修改 XDPS 协议配置参数", module: "系统配置" },
-    { time: "08:21:05", user: "顾远舟", action: "查询 SP-1120 异常档案", module: "档案访问" },
+    { time: "08:21:05", user: "顾远舟", action: "查询 SPA-1120 异常档案", module: "档案访问" },
     { time: "08:15:48", user: "陈默", action: "授权衔尾蛇外勤一队绝密级数据访问", module: "权限管理" },
-    { time: "07:58:29", user: "陆明远", action: "上传 PH-0182 物理参数样本", module: "数据上传" },
-    { time: "07:42:11", user: "苏悬铃", action: "调整 CG-0427 记忆重建方案", module: "方案编辑" },
+    { time: "07:58:29", user: "陆明远", action: "上传 PHA-0182 物理参数样本", module: "数据上传" },
+    { time: "07:42:11", user: "苏悬铃", action: "调整 CGB-0427 记忆重建方案", module: "方案编辑" },
     { time: "07:16:40", user: "白夜指挥官", action: "新增 BW-0089 哨站人员调动", module: "人事管理" },
   ];
 
@@ -134,9 +134,9 @@ function AdminPage() {
 
     // 首席级 / 现任高层
     { name: "魏长风", code: "风", id: "IMAC-HQ-0001", rank: "行动总协调官", org: "IMAC总部", status: "在岗", access: "绝密级", department: "联合行动指挥中心", ops: 256, hours: 3124, lastOp: "—", note: "IMAC现任行动总协调官，统筹全球联合行动。" },
-    { name: "顾远舟", code: "远", id: "IMAC-BRI-0001", rank: "首席研究员", org: "边界研究院BRI", status: "在岗", access: "绝密级", department: "BRI院长 · 空间异常研究所", ops: 156, hours: 1987, lastOp: "PH-0815 重力偏移区", note: "边界研究院BRI现任院长，空间异常领域权威。" },
-    { name: "陆明远", code: "明", id: "IMAC-MC-0001", rank: "首席科学家", org: "晨星团", status: "在岗", access: "绝密级", department: "晨星团首席科学家 · 物理异常组", ops: 112, hours: 1432, lastOp: "PH-0182 洛林裂隙", note: "晨星团首席科学家，物理法则类异常研究领军者。" },
-    { name: "苏悬铃", code: "铃", id: "IMAC-PS-0001", rank: "首席溯界者", org: "悬铃木学会", status: "在岗", access: "绝密级", department: "悬铃木学会会长", ops: 98, hours: 1256, lastOp: "CG-0713 旧图书馆", note: "悬铃木学会现任会长，认知异常与记忆研究专家。" },
+    { name: "顾远舟", code: "远", id: "IMAC-BRI-0001", rank: "首席研究员", org: "边界研究院BRI", status: "在岗", access: "绝密级", department: "BRI院长 · 空间异常研究所", ops: 156, hours: 1987, lastOp: "PHB-0815 重力偏移区", note: "边界研究院BRI现任院长，空间异常领域权威。" },
+    { name: "陆明远", code: "明", id: "IMAC-MC-0001", rank: "首席科学家", org: "晨星团", status: "在岗", access: "绝密级", department: "晨星团首席科学家 · 物理异常组", ops: 112, hours: 1432, lastOp: "PHA-0182 洛林裂隙", note: "晨星团首席科学家，物理法则类异常研究领军者。" },
+    { name: "苏悬铃", code: "铃", id: "IMAC-PS-0001", rank: "首席溯界者", org: "悬铃木学会", status: "在岗", access: "绝密级", department: "悬铃木学会会长", ops: 98, hours: 1256, lastOp: "CGA-0713 旧图书馆", note: "悬铃木学会现任会长，认知异常与记忆研究专家。" },
     { name: "薛定澜", code: "澜", id: "IMAC-4W-0001", rank: "界标级", org: "第四面墙", status: "在岗", access: "绝密级", department: "第四面墙主管", ops: 0, hours: 0, lastOp: "—", note: "第四面墙最高主管，负责跨现实边界监控与协议维护。身份信息大部分加密。" },
     { name: "江近月", code: "月", id: "IMAC-HQ-0023", rank: "高级管理员", org: "IMAC总部", status: "在岗", access: "绝密级", department: "技术局 · 系统运维", ops: 45, hours: 512, lastOp: "系统运维", note: "IMAC技术局核心成员，XDPS协议栈主要维护者。" },
 
@@ -147,19 +147,19 @@ function AdminPage() {
     { name: "林薇", code: "薇", id: "IMAC-BRI-0356", rank: "溯界者", org: "边界研究院BRI", status: "失联", access: "秘密级", department: "空间异常研究所 · 队员", ops: 31, hours: 398, lastOp: "LOA-0073 赤月学院", note: "BRI研究员，顾泽鸣小队成员。夏·29 同队失联。" },
 
     // 其他活跃溯界者
-    { name: "林砚", code: "砚", id: "IMAC-OA-0089", rank: "资深溯界者", org: "衔尾蛇事务所", status: "在岗", access: "机密级", department: "外勤一队 · 副队长", ops: 104, hours: 1423, lastOp: "SP-1120 回声走廊", note: "衔尾蛇外勤一队副队长，因留守总部未参与赤月行动。" },
-    { name: "苏晚", code: "晚", id: "IMAC-BRI-0312", rank: "研究员", org: "边界研究院BRI", status: "外勤", access: "机密级", department: "认知异常研究组", ops: 53, hours: 674, lastOp: "CG-0427 记忆回廊", note: "BRI认知异常研究组核心成员。" },
-    { name: "韩凛", code: "凛", id: "IMAC-NW-0156", rank: "资深溯界者", org: "北境守望", status: "外勤", access: "机密级", department: "冻土探索营 · 队长 · TM-0089指挥", ops: 97, hours: 1256, lastOp: "TM-0089 白松冻土", note: "白松城冻土层时间停滞行动指挥，北境守望冻土探索营队长。" },
-    { name: "叶知秋", code: "秋", id: "IMAC-NW-0203", rank: "溯界者", org: "北境守望", status: "休假", access: "秘密级", department: "冻土探索营 · 队员", ops: 34, hours: 412, lastOp: "PH-0728 冰下断层", note: "北境守望冻土探索营成员，轮休中。" },
-    { name: "周珩", code: "珩", id: "IMAC-MC-0145", rank: "溯界者", org: "晨星团", status: "外勤", access: "秘密级", department: "行动部 · 三组", ops: 41, hours: 528, lastOp: "PH-0182 洛林裂隙", note: "晨星团行动部三组，参与洛林裂隙联合行动。" },
-    { name: "方叙", code: "叙", id: "IMAC-OA-0167", rank: "溯界者", org: "衔尾蛇事务所", status: "在岗", access: "秘密级", department: "外勤二队 · 队员", ops: 38, hours: 487, lastOp: "LO-1045 失物公寓", note: "衔尾蛇外勤二队成员。" },
-    { name: "陈之岸", code: "岸", id: "IMAC-BRI-0412", rank: "初级研究员", org: "边界研究院BRI", status: "在岗", access: "秘密级", department: "异常数据中心", ops: 19, hours: 234, lastOp: "OB-0311 旧钟表", note: "BRI异常数据中心初级研究员。" },
-    { name: "许知遥", code: "遥", id: "IMAC-MED-0076", rank: "主治医师", org: "医疗保障部", status: "在岗", access: "机密级", department: "心理干预中心", ops: 28, hours: 345, lastOp: "CG-0612 静默走廊", note: "IMAC医疗保障部心理干预中心主治医师。" },
-    { name: "唐夜", code: "夜", id: "IMAC-OA-0256", rank: "见习溯界者", org: "衔尾蛇事务所", status: "休假", access: "受限级", department: "见习大队", ops: 7, hours: 89, lastOp: "SP-0890 镜像走廊", note: "衔尾蛇见习大队成员，第二轮考核待进行。" },
-    { name: "黎深", code: "深", id: "IMAC-NW-0312", rank: "溯界者", org: "北境守望", status: "外勤", access: "秘密级", department: "极地探索队", ops: 62, hours: 756, lastOp: "EN-0234 深寒巨兽", note: "北境守望极地探索队成员。" },
-    { name: "温如言", code: "言", id: "IMAC-PS-0023", rank: "资深溯界者", org: "悬铃木学会", status: "在岗", access: "机密级", department: "认知异常组 · 副组长", ops: 76, hours: 945, lastOp: "CG-0502 无声剧场", note: "悬铃木学会认知异常组副组长。" },
-    { name: "柳朝霜", code: "霜", id: "IMAC-WNP-0034", rank: "资深溯界者", org: "白夜哨站", status: "外勤", access: "机密级", department: "极夜行动队 · 队长", ops: 89, hours: 1102, lastOp: "SP-2041 永夜走廊", note: "白夜哨站极夜行动队队长。" },
-    { name: "桥本彻", code: "彻", id: "IMAC-LBC-0067", rank: "首席溯界者", org: "长桥会社", status: "在岗", access: "机密级", department: "长桥会社 · 现任总协调官", ops: 145, hours: 1789, lastOp: "TM-0334 桥之循环", note: "长桥会社现任总协调官。" },
+    { name: "林砚", code: "砚", id: "IMAC-OA-0089", rank: "资深溯界者", org: "衔尾蛇事务所", status: "在岗", access: "机密级", department: "外勤一队 · 副队长", ops: 104, hours: 1423, lastOp: "SPA-1120 回声走廊", note: "衔尾蛇外勤一队副队长，因留守总部未参与赤月行动。" },
+    { name: "苏晚", code: "晚", id: "IMAC-BRI-0312", rank: "研究员", org: "边界研究院BRI", status: "外勤", access: "机密级", department: "认知异常研究组", ops: 53, hours: 674, lastOp: "CGB-0427 记忆回廊", note: "BRI认知异常研究组核心成员。" },
+    { name: "韩凛", code: "凛", id: "IMAC-NW-0156", rank: "资深溯界者", org: "北境守望", status: "外勤", access: "机密级", department: "冻土探索营 · 队长 · TMB-0089指挥", ops: 97, hours: 1256, lastOp: "TMB-0089 白松冻土", note: "白松城冻土层时间停滞行动指挥，北境守望冻土探索营队长。" },
+    { name: "叶知秋", code: "秋", id: "IMAC-NW-0203", rank: "溯界者", org: "北境守望", status: "休假", access: "秘密级", department: "冻土探索营 · 队员", ops: 34, hours: 412, lastOp: "PHA-0728 冰下断层", note: "北境守望冻土探索营成员，轮休中。" },
+    { name: "周珩", code: "珩", id: "IMAC-MC-0145", rank: "溯界者", org: "晨星团", status: "外勤", access: "秘密级", department: "行动部 · 三组", ops: 41, hours: 528, lastOp: "PHA-0182 洛林裂隙", note: "晨星团行动部三组，参与洛林裂隙联合行动。" },
+    { name: "方叙", code: "叙", id: "IMAC-OA-0167", rank: "溯界者", org: "衔尾蛇事务所", status: "在岗", access: "秘密级", department: "外勤二队 · 队员", ops: 38, hours: 487, lastOp: "LOA-1045 失物公寓", note: "衔尾蛇外勤二队成员。" },
+    { name: "陈之岸", code: "岸", id: "IMAC-BRI-0412", rank: "初级研究员", org: "边界研究院BRI", status: "在岗", access: "秘密级", department: "异常数据中心", ops: 19, hours: 234, lastOp: "OBA-0311 旧钟表", note: "BRI异常数据中心初级研究员。" },
+    { name: "许知遥", code: "遥", id: "IMAC-MED-0076", rank: "主治医师", org: "医疗保障部", status: "在岗", access: "机密级", department: "心理干预中心", ops: 28, hours: 345, lastOp: "CGA-0612 静默走廊", note: "IMAC医疗保障部心理干预中心主治医师。" },
+    { name: "唐夜", code: "夜", id: "IMAC-OA-0256", rank: "见习溯界者", org: "衔尾蛇事务所", status: "休假", access: "受限级", department: "见习大队", ops: 7, hours: 89, lastOp: "SPB-0890 镜像走廊", note: "衔尾蛇见习大队成员，第二轮考核待进行。" },
+    { name: "黎深", code: "深", id: "IMAC-NW-0312", rank: "溯界者", org: "北境守望", status: "外勤", access: "秘密级", department: "极地探索队", ops: 62, hours: 756, lastOp: "ENA-0234 深寒巨兽", note: "北境守望极地探索队成员。" },
+    { name: "温如言", code: "言", id: "IMAC-PS-0023", rank: "资深溯界者", org: "悬铃木学会", status: "在岗", access: "机密级", department: "认知异常组 · 副组长", ops: 76, hours: 945, lastOp: "CGA-0502 无声剧场", note: "悬铃木学会认知异常组副组长。" },
+    { name: "柳朝霜", code: "霜", id: "IMAC-WNP-0034", rank: "资深溯界者", org: "白夜哨站", status: "外勤", access: "机密级", department: "极夜行动队 · 队长", ops: 89, hours: 1102, lastOp: "SPA-2041 永夜走廊", note: "白夜哨站极夜行动队队长。" },
+    { name: "桥本彻", code: "彻", id: "IMAC-LBC-0067", rank: "首席溯界者", org: "长桥会社", status: "在岗", access: "机密级", department: "长桥会社 · 现任总协调官", ops: 145, hours: 1789, lastOp: "TMA-0334 桥之循环", note: "长桥会社现任总协调官。" },
   ];
 
   const operations = [
@@ -181,7 +181,7 @@ function AdminPage() {
       notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（BRI）等6人。",
     },
     {
-      code: "PH-0182",
+      code: "PHA-0182",
       name: "洛林自由市边境裂隙",
       level: "厄运级",
       levelClass: "doomed",
@@ -198,7 +198,7 @@ function AdminPage() {
       notes: "裂隙范围稳定，内部规则初步建立。平民撤离已完成。边界测绘进入第3阶段。",
     },
     {
-      code: "TM-0089",
+      code: "TMB-0089",
       name: "白松城冻土层时间停滞",
       level: "危险级",
       levelClass: "hazardous",
@@ -215,7 +215,7 @@ function AdminPage() {
       notes: "时间流速异常已量化（内部约1:8.7）。采集样本分批次送出。韩凛带队深入。",
     },
     {
-      code: "SP-1120",
+      code: "SPA-1120",
       name: "回声走廊空间偏移",
       level: "危险级",
       levelClass: "hazardous",
@@ -232,7 +232,7 @@ function AdminPage() {
       notes: "异常活跃度近期上升，预备队已集结待命。林砚任待命行动指挥。",
     },
     {
-      code: "CG-0427",
+      code: "CGB-0427",
       name: "记忆回廊认知污染",
       level: "厄运级",
       levelClass: "doomed",
@@ -260,8 +260,8 @@ function AdminPage() {
     { time: "08:12:03", date: "2026-08-16", level: "INFO", module: "BACKUP", msg: "异常档案增量备份完成，新增记录 47 条，总大小 2.3 TB" },
     { time: "08:14:36", date: "2026-08-16", level: "INFO", module: "PSYCH-NET", msg: "心理监测网络数据同步完成，在测人员 1,247 人，预警 0 人" },
     { time: "08:17:21", date: "2026-08-16", level: "WARN", module: "NODE-GAMMA-12", msg: "节点 γ-12 流量告警：入站流量 87% 超过 80% 阈值" },
-    { time: "08:20:08", date: "2026-08-16", level: "INFO", module: "JRP", msg: "联合行动 PH-0182 状态同步：三级响应 · 边界测绘阶段，人员 12 人" },
-    { time: "08:22:45", date: "2026-08-16", level: "INFO", module: "DATABASE", msg: "异常 LO-0073 档案更新：新增探索记录 7 条，记录累计 284 条" },
+    { time: "08:20:08", date: "2026-08-16", level: "INFO", module: "JRP", msg: "联合行动 PHA-0182 状态同步：三级响应 · 边界测绘阶段，人员 12 人" },
+    { time: "08:22:45", date: "2026-08-16", level: "INFO", module: "DATABASE", msg: "异常 LOA-0073 档案更新：新增探索记录 7 条，记录累计 284 条" },
     { time: "08:25:13", date: "2026-08-16", level: "ERROR", module: "NODE-NORTH", msg: "节点心跳包丢失 2 次，自动重连成功，耗时 4.2s" },
     { time: "08:28:59", date: "2026-08-16", level: "INFO", module: "AI-ENGINE", msg: "AID v2.7 规则引擎加载完成，异常模式库 3,412 条" },
     { time: "08:31:27", date: "2026-08-16", level: "WARN", module: "STORAGE", msg: "归档存储池使用率 78%，预计 14 天后需扩容" },

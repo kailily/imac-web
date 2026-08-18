@@ -22,7 +22,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: true,
     },
     {
-      id: "SP-0021",
+      id: "SPA-0021",
       name: "无尽楼梯",
       nameEn: "Endless Stairwell",
       level: "hazardous",
@@ -37,7 +37,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: false,
     },
     {
-      id: "TM-0045",
+      id: "TMA-0045",
       name: "雾中列车",
       nameEn: "Fog Train",
       level: "doomed",
@@ -52,7 +52,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: false,
     },
     {
-      id: "NW-0117",
+      id: "TMB-0117",
       name: "冰封哨站",
       nameEn: "Frozen Outpost",
       level: "hazardous",
@@ -67,7 +67,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: false,
     },
     {
-      id: "MC-0089",
+      id: "SPB-0089",
       name: "镜像医院",
       nameEn: "Mirror Hospital",
       level: "doomed",
@@ -82,7 +82,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: false,
     },
     {
-      id: "PS-0003",
+      id: "CGA-0003",
       name: "回音巷",
       nameEn: "Echo Alley",
       level: "ordinary",
@@ -97,7 +97,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: false,
     },
     {
-      id: "WNP-0201",
+      id: "LOB-0201",
       name: "极光洞穴",
       nameEn: "Aurora Cave",
       level: "abyssal",
@@ -112,7 +112,7 @@ function AnomalyArchivePage({ routeQuery }) {
       featured: false,
     },
     {
-      id: "UN-0001",
+      id: "PHA-0001",
       name: "空白地带",
       nameEn: "The Void",
       level: "unknown",

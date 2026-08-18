@@ -178,7 +178,7 @@ function AdminPage() {
   }, {
     time: "08:21:05",
     user: "顾远舟",
-    action: "查询 SP-1120 异常档案",
+    action: "查询 SPA-1120 异常档案",
     module: "档案访问"
   }, {
     time: "08:15:48",
@@ -188,12 +188,12 @@ function AdminPage() {
   }, {
     time: "07:58:29",
     user: "陆明远",
-    action: "上传 PH-0182 物理参数样本",
+    action: "上传 PHA-0182 物理参数样本",
     module: "数据上传"
   }, {
     time: "07:42:11",
     user: "苏悬铃",
-    action: "调整 CG-0427 记忆重建方案",
+    action: "调整 CGB-0427 记忆重建方案",
     module: "方案编辑"
   }, {
     time: "07:16:40",
@@ -467,7 +467,7 @@ function AdminPage() {
     department: "BRI院长 · 空间异常研究所",
     ops: 156,
     hours: 1987,
-    lastOp: "PH-0815 重力偏移区",
+    lastOp: "PHB-0815 重力偏移区",
     note: "边界研究院BRI现任院长，空间异常领域权威。"
   }, {
     name: "陆明远",
@@ -480,7 +480,7 @@ function AdminPage() {
     department: "晨星团首席科学家 · 物理异常组",
     ops: 112,
     hours: 1432,
-    lastOp: "PH-0182 洛林裂隙",
+    lastOp: "PHA-0182 洛林裂隙",
     note: "晨星团首席科学家，物理法则类异常研究领军者。"
   }, {
     name: "苏悬铃",
@@ -493,7 +493,7 @@ function AdminPage() {
     department: "悬铃木学会会长",
     ops: 98,
     hours: 1256,
-    lastOp: "CG-0713 旧图书馆",
+    lastOp: "CGA-0713 旧图书馆",
     note: "悬铃木学会现任会长，认知异常与记忆研究专家。"
   }, {
     name: "薛定澜",
@@ -588,7 +588,7 @@ function AdminPage() {
     department: "外勤一队 · 副队长",
     ops: 104,
     hours: 1423,
-    lastOp: "SP-1120 回声走廊",
+    lastOp: "SPA-1120 回声走廊",
     note: "衔尾蛇外勤一队副队长，因留守总部未参与赤月行动。"
   }, {
     name: "苏晚",
@@ -601,7 +601,7 @@ function AdminPage() {
     department: "认知异常研究组",
     ops: 53,
     hours: 674,
-    lastOp: "CG-0427 记忆回廊",
+    lastOp: "CGB-0427 记忆回廊",
     note: "BRI认知异常研究组核心成员。"
   }, {
     name: "韩凛",
@@ -611,10 +611,10 @@ function AdminPage() {
     org: "北境守望",
     status: "外勤",
     access: "机密级",
-    department: "冻土探索营 · 队长 · TM-0089指挥",
+    department: "冻土探索营 · 队长 · TMB-0089指挥",
     ops: 97,
     hours: 1256,
-    lastOp: "TM-0089 白松冻土",
+    lastOp: "TMB-0089 白松冻土",
     note: "白松城冻土层时间停滞行动指挥，北境守望冻土探索营队长。"
   }, {
     name: "叶知秋",
@@ -627,7 +627,7 @@ function AdminPage() {
     department: "冻土探索营 · 队员",
     ops: 34,
     hours: 412,
-    lastOp: "PH-0728 冰下断层",
+    lastOp: "PHA-0728 冰下断层",
     note: "北境守望冻土探索营成员，轮休中。"
   }, {
     name: "周珩",
@@ -640,7 +640,7 @@ function AdminPage() {
     department: "行动部 · 三组",
     ops: 41,
     hours: 528,
-    lastOp: "PH-0182 洛林裂隙",
+    lastOp: "PHA-0182 洛林裂隙",
     note: "晨星团行动部三组，参与洛林裂隙联合行动。"
   }, {
     name: "方叙",
@@ -653,7 +653,7 @@ function AdminPage() {
     department: "外勤二队 · 队员",
     ops: 38,
     hours: 487,
-    lastOp: "LO-1045 失物公寓",
+    lastOp: "LOA-1045 失物公寓",
     note: "衔尾蛇外勤二队成员。"
   }, {
     name: "陈之岸",
@@ -666,7 +666,7 @@ function AdminPage() {
     department: "异常数据中心",
     ops: 19,
     hours: 234,
-    lastOp: "OB-0311 旧钟表",
+    lastOp: "OBA-0311 旧钟表",
     note: "BRI异常数据中心初级研究员。"
   }, {
     name: "许知遥",
@@ -679,7 +679,7 @@ function AdminPage() {
     department: "心理干预中心",
     ops: 28,
     hours: 345,
-    lastOp: "CG-0612 静默走廊",
+    lastOp: "CGA-0612 静默走廊",
     note: "IMAC医疗保障部心理干预中心主治医师。"
   }, {
     name: "唐夜",
@@ -692,7 +692,7 @@ function AdminPage() {
     department: "见习大队",
     ops: 7,
     hours: 89,
-    lastOp: "SP-0890 镜像走廊",
+    lastOp: "SPB-0890 镜像走廊",
     note: "衔尾蛇见习大队成员，第二轮考核待进行。"
   }, {
     name: "黎深",
@@ -705,7 +705,7 @@ function AdminPage() {
     department: "极地探索队",
     ops: 62,
     hours: 756,
-    lastOp: "EN-0234 深寒巨兽",
+    lastOp: "ENA-0234 深寒巨兽",
     note: "北境守望极地探索队成员。"
   }, {
     name: "温如言",
@@ -718,7 +718,7 @@ function AdminPage() {
     department: "认知异常组 · 副组长",
     ops: 76,
     hours: 945,
-    lastOp: "CG-0502 无声剧场",
+    lastOp: "CGA-0502 无声剧场",
     note: "悬铃木学会认知异常组副组长。"
   }, {
     name: "柳朝霜",
@@ -731,7 +731,7 @@ function AdminPage() {
     department: "极夜行动队 · 队长",
     ops: 89,
     hours: 1102,
-    lastOp: "SP-2041 永夜走廊",
+    lastOp: "SPA-2041 永夜走廊",
     note: "白夜哨站极夜行动队队长。"
   }, {
     name: "桥本彻",
@@ -744,7 +744,7 @@ function AdminPage() {
     department: "长桥会社 · 现任总协调官",
     ops: 145,
     hours: 1789,
-    lastOp: "TM-0334 桥之循环",
+    lastOp: "TMA-0334 桥之循环",
     note: "长桥会社现任总协调官。"
   }];
   const operations = [{
@@ -764,7 +764,7 @@ function AdminPage() {
     orgs: ["衔尾蛇事务所", "边界研究院BRI"],
     notes: "常规通讯中断，锚定信标信号微弱但稳定。按规程第3.1条，暂不启动搜救，持续监测。参与人员：沈彻、季明轩（衔尾蛇）；顾泽鸣、林薇（BRI）等6人。"
   }, {
-    code: "PH-0182",
+    code: "PHA-0182",
     name: "洛林自由市边境裂隙",
     level: "厄运级",
     levelClass: "doomed",
@@ -780,7 +780,7 @@ function AdminPage() {
     orgs: ["边界研究院BRI", "晨星团"],
     notes: "裂隙范围稳定，内部规则初步建立。平民撤离已完成。边界测绘进入第3阶段。"
   }, {
-    code: "TM-0089",
+    code: "TMB-0089",
     name: "白松城冻土层时间停滞",
     level: "危险级",
     levelClass: "hazardous",
@@ -796,7 +796,7 @@ function AdminPage() {
     orgs: ["北境守望"],
     notes: "时间流速异常已量化（内部约1:8.7）。采集样本分批次送出。韩凛带队深入。"
   }, {
-    code: "SP-1120",
+    code: "SPA-1120",
     name: "回声走廊空间偏移",
     level: "危险级",
     levelClass: "hazardous",
@@ -812,7 +812,7 @@ function AdminPage() {
     orgs: ["衔尾蛇事务所"],
     notes: "异常活跃度近期上升，预备队已集结待命。林砚任待命行动指挥。"
   }, {
-    code: "CG-0427",
+    code: "CGB-0427",
     name: "记忆回廊认知污染",
     level: "厄运级",
     levelClass: "doomed",
@@ -887,13 +887,13 @@ function AdminPage() {
     date: "2026-08-16",
     level: "INFO",
     module: "JRP",
-    msg: "联合行动 PH-0182 状态同步：三级响应 · 边界测绘阶段，人员 12 人"
+    msg: "联合行动 PHA-0182 状态同步：三级响应 · 边界测绘阶段，人员 12 人"
   }, {
     time: "08:22:45",
     date: "2026-08-16",
     level: "INFO",
     module: "DATABASE",
-    msg: "异常 LO-0073 档案更新：新增探索记录 7 条，记录累计 284 条"
+    msg: "异常 LOA-0073 档案更新：新增探索记录 7 条，记录累计 284 条"
   }, {
     time: "08:25:13",
     date: "2026-08-16",

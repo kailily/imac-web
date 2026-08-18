@@ -27,7 +27,7 @@ function MissionsPage() {
   const isTopSecret = authLevel === "topsecret";
   const missions = [{
     id: "M-3908",
-    code: "PH-0182",
+    code: "PHA-0182",
     name: "洛林自由市边境裂隙",
     type: "联合响应",
     date: "安珀历39年·秋·06",
@@ -38,7 +38,7 @@ function MissionsPage() {
     note: "多国联合三级响应，现场情况稳定，预计两周内完成封堵。"
   }, {
     id: "M-3907",
-    code: "LO-0073",
+    code: "LOA-0073",
     name: "赤月学院 · 第十一届行动",
     type: "联合响应",
     date: "安珀历39年·夏·12",
@@ -50,7 +50,7 @@ function MissionsPage() {
     featured: true
   }, {
     id: "M-3906",
-    code: "CG-0199",
+    code: "CGA-0199",
     name: "回音巷认知异常",
     type: "常规调查",
     date: "安珀历39年·夏·03",
@@ -61,7 +61,7 @@ function MissionsPage() {
     note: "成功解析叙事型规则，引导平民安全撤离，无人员伤亡。"
   }, {
     id: "M-3905",
-    code: "SP-0312",
+    code: "SPA-0312",
     name: "鸣海城地铁循环事件",
     type: "紧急支援",
     date: "安珀历38年·冬·21",
@@ -72,7 +72,7 @@ function MissionsPage() {
     note: "空间折叠型异常，指挥27人小队完成1,200名平民撤离，生存率98.7%。"
   }, {
     id: "M-3804",
-    code: "TM-0089",
+    code: "TMB-0089",
     name: "白松城冻土层时间停滞",
     type: "常规调查",
     date: "安珀历38年·秋·15",
@@ -83,7 +83,7 @@ function MissionsPage() {
     note: "时间流速异常，内部3天对应外部21天。成功建立锚点并撤出全部人员。"
   }, {
     id: "M-3803",
-    code: "EN-0067",
+    code: "ENA-0067",
     name: "雾中列车实体事件",
     type: "紧急支援",
     date: "安珀历38年·夏·08",
@@ -94,7 +94,7 @@ function MissionsPage() {
     note: "实体暂时被压制但未消灭，列车仍在固定路线行驶，平民已疏散。"
   }, {
     id: "M-3802",
-    code: "PH-0256",
+    code: "PHB-0256",
     name: "引力井物理异常",
     type: "常规调查",
     date: "安珀历38年·春·19",
@@ -105,7 +105,7 @@ function MissionsPage() {
     note: "局部重力反转，物理法则扭曲。晨星团支援提供数学模型，成功定位核心。"
   }, {
     id: "M-3701",
-    code: "SP-0021",
+    code: "SPA-0021",
     name: "无尽楼梯空间异常",
     type: "常规调查",
     date: "安珀历37年·冬·02",

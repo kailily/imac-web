@@ -28,7 +28,7 @@ function MissionsPage() {
   const missions = [
     {
       id: "M-3908",
-      code: "PH-0182",
+      code: "PHA-0182",
       name: "洛林自由市边境裂隙",
       type: "联合响应",
       date: "安珀历39年·秋·06",
@@ -40,7 +40,7 @@ function MissionsPage() {
     },
     {
       id: "M-3907",
-      code: "LO-0073",
+      code: "LOA-0073",
       name: "赤月学院 · 第十一届行动",
       type: "联合响应",
       date: "安珀历39年·夏·12",
@@ -53,7 +53,7 @@ function MissionsPage() {
     },
     {
       id: "M-3906",
-      code: "CG-0199",
+      code: "CGA-0199",
       name: "回音巷认知异常",
       type: "常规调查",
       date: "安珀历39年·夏·03",
@@ -65,7 +65,7 @@ function MissionsPage() {
     },
     {
       id: "M-3905",
-      code: "SP-0312",
+      code: "SPA-0312",
       name: "鸣海城地铁循环事件",
       type: "紧急支援",
       date: "安珀历38年·冬·21",
@@ -77,7 +77,7 @@ function MissionsPage() {
     },
     {
       id: "M-3804",
-      code: "TM-0089",
+      code: "TMB-0089",
       name: "白松城冻土层时间停滞",
       type: "常规调查",
       date: "安珀历38年·秋·15",
@@ -89,7 +89,7 @@ function MissionsPage() {
     },
     {
       id: "M-3803",
-      code: "EN-0067",
+      code: "ENA-0067",
       name: "雾中列车实体事件",
       type: "紧急支援",
       date: "安珀历38年·夏·08",
@@ -101,7 +101,7 @@ function MissionsPage() {
     },
     {
       id: "M-3802",
-      code: "PH-0256",
+      code: "PHB-0256",
       name: "引力井物理异常",
       type: "常规调查",
       date: "安珀历38年·春·19",
@@ -113,7 +113,7 @@ function MissionsPage() {
     },
     {
       id: "M-3701",
-      code: "SP-0021",
+      code: "SPA-0021",
       name: "无尽楼梯空间异常",
       type: "常规调查",
       date: "安珀历37年·冬·02",
