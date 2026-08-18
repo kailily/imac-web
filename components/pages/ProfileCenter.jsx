@@ -100,13 +100,16 @@ function ProfileCenterPage() {
     { code: "TMA-0045", name: "雾中列车" },
     { code: "PHA-0182", name: "洛林裂隙" },
   ];
-  // 角色：异常行动参与（无行动队长）；救援队/后勤保障为各自独立的详细分工
+  // 角色：异常行动参与（无行动队长）；救援队/后勤保障为各自详细分工，技术支援类两队均含
   const joinRoles = ["副队长", "队员", "技术支援"];
+  const techSupportRoles = ["通讯技术支援", "装备技术支援", "测绘技术支援"];
   const rescueRoles = [
     "前线救援员", "医疗急救员", "搜救侦察员", "伤员转运员", "破拆作业员", "绳索技术员",
+    ...techSupportRoles,
   ];
   const logisticsRoles = [
-    "物资管理", "交通调度", "装备维护", "营地保障", "通讯保障", "测绘技术支援",
+    "物资管理", "交通调度", "装备维护", "营地保障",
+    ...techSupportRoles,
   ];
 
   const [opForm, setOpForm] = React.useState({ opType: "异常行动参与申请", opCode: "SPA-1120", people: "2", gear: "", role: "队员", reason: "", availability: "夏·31 起可待命" });
