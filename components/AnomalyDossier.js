@@ -605,8 +605,11 @@ function AnomalyDossier({
   }, "\u57FA\u672C\u7279\u5F81")), /*#__PURE__*/React.createElement("div", {
     className: "file-section-text"
   }, data.features.map((p, i) => /*#__PURE__*/React.createElement("p", {
-    key: i
-  }, p)))), data.mapNode && /*#__PURE__*/React.createElement("div", {
+    key: i,
+    dangerouslySetInnerHTML: {
+      __html: p
+    }
+  })))), data.mapNode && /*#__PURE__*/React.createElement("div", {
     className: "file-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "file-section-header"
@@ -725,27 +728,47 @@ function AnomalyDossier({
     className: "note-box"
   }, /*#__PURE__*/React.createElement("p", {
     className: "note-text"
-  }, data.imacNote))), data.suggestedActions && data.suggestedActions.length > 0 && /*#__PURE__*/React.createElement("div", {
-    className: "file-section"
+  }, data.imacNote), data.suggestedActions && data.suggestedActions.length > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "14px",
+      paddingTop: "12px",
+      borderTop: "1px dashed rgba(196, 40, 40, 0.2)"
+    }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "file-section-header"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "file-section-num mono"
-  }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
-    className: "file-section-title"
-  }, "\u5EFA\u8BAE\u540E\u7EED\u884C\u52A8")), /*#__PURE__*/React.createElement("ul", {
-    className: "action-list"
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "11px",
+      color: "var(--accent-red-bright)",
+      letterSpacing: "0.15em",
+      marginBottom: "8px"
+    }
+  }, "\u5EFA\u8BAE\u540E\u7EED\u884C\u52A8"), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      margin: 0,
+      paddingLeft: "20px",
+      listStyle: "none"
+    }
   }, data.suggestedActions.map((a, i) => /*#__PURE__*/React.createElement("li", {
-    key: i
-  }, a)))), data.internalNode && /*#__PURE__*/React.createElement("div", {
-    className: "file-section"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "file-section-header"
+    key: i,
+    style: {
+      position: "relative",
+      paddingLeft: "18px",
+      fontSize: "12px",
+      color: "var(--text-secondary)",
+      lineHeight: "1.8"
+    }
   }, /*#__PURE__*/React.createElement("span", {
-    className: "file-section-num mono"
-  }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
-    className: "file-section-title"
-  }, "\u6240\u5C5E\u7EC4\u7EC7\u5185\u90E8\u8BC4\u4F30")), data.internalNode), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      left: 0,
+      color: "var(--level-hazardous)",
+      fontFamily: "var(--font-mono)"
+    }
+  }, "\u2192"), a))))), data.internalNode && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "20px"
+    }
+  }, data.internalNode)), /*#__PURE__*/React.createElement("div", {
     className: "file-footer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "file-meta"

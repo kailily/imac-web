@@ -585,7 +585,7 @@ function AnomalyDossier({ data }) {
                   <span className="file-section-title">基本特征</span>
                 </div>
                 <div className="file-section-text">
-                  {data.features.map((p, i) => <p key={i}>{p}</p>)}
+                  {data.features.map((p, i) => <p key={i} dangerouslySetInnerHTML={{ __html: p }} />)}
                 </div>
               </div>
             )}
@@ -708,29 +708,25 @@ function AnomalyDossier({ data }) {
                 </div>
                 <div className="note-box">
                   <p className="note-text">{data.imacNote}</p>
+                  {data.suggestedActions && data.suggestedActions.length > 0 && (
+                    <div style={{ marginTop: "14px", paddingTop: "12px", borderTop: "1px dashed rgba(196, 40, 40, 0.2)" }}>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-red-bright)", letterSpacing: "0.15em", marginBottom: "8px" }}>
+                        建议后续行动
+                      </div>
+                      <ul style={{ margin: 0, paddingLeft: "20px", listStyle: "none" }}>
+                        {data.suggestedActions.map((a, i) => (
+                          <li key={i} style={{ position: "relative", paddingLeft: "18px", fontSize: "12px", color: "var(--text-secondary)", lineHeight: "1.8" }}>
+                            <span style={{ position: "absolute", left: 0, color: "var(--level-hazardous)", fontFamily: "var(--font-mono)" }}>→</span>
+                            {a}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              </div>
-            )}
-
-            {data.suggestedActions && data.suggestedActions.length > 0 && (
-              <div className="file-section">
-                <div className="file-section-header">
-                  <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">建议后续行动</span>
-                </div>
-                <ul className="action-list">
-                  {data.suggestedActions.map((a, i) => <li key={i}>{a}</li>)}
-                </ul>
-              </div>
-            )}
-
-            {data.internalNode && (
-              <div className="file-section">
-                <div className="file-section-header">
-                  <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">所属组织内部评估</span>
-                </div>
-                {data.internalNode}
+                {data.internalNode && (
+                  <div style={{ marginTop: "20px" }}>{data.internalNode}</div>
+                )}
               </div>
             )}
 

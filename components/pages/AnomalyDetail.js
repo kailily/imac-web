@@ -46,28 +46,28 @@ function AnomalyDetailPage() {
     term: "第二批",
     year: "安珀历13年·春",
     count: 8,
-    org: "边界研究院 BRI",
+    org: "BRI",
     result: "3人生还，5人失踪",
     status: "mixed"
   }, {
     term: "第三批",
     year: "安珀历15年",
     count: 10,
-    org: "边界研究院 BRI",
+    org: "BRI",
     result: "2人生还，8人失踪",
     status: "death"
   }, {
     term: "第四批",
     year: "安珀历18年",
     count: 12,
-    org: "边界研究院 BRI",
+    org: "BRI",
     result: "3人生还，9人失踪",
     status: "death"
   }, {
     term: "第五批",
     year: "安珀历22年",
     count: 14,
-    org: "边界研究院 BRI",
+    org: "BRI",
     result: "3人生还，11人失踪",
     status: "death"
   }, {
@@ -81,14 +81,14 @@ function AnomalyDetailPage() {
     term: "第七批",
     year: "安珀历31年",
     count: 12,
-    org: "边界研究院 BRI",
+    org: "BRI",
     result: "2人生还，10人失踪",
     status: "death"
   }, {
     term: "第八批",
     year: "安珀历36年·冬",
     count: 11,
-    org: "边界研究院 BRI",
+    org: "BRI",
     result: "2人生还，9人失踪",
     status: "death"
   }];
@@ -206,14 +206,14 @@ function AnomalyDetailPage() {
     }, {
       name: "顾泽鸣",
       rank: "资深溯界者·执灯",
-      org: "边界研究院 BRI",
+      org: "BRI",
       role: "队长 · 学术负责",
       isLeader: true,
       orgType: "anomalist"
     }, {
       name: "林薇",
       rank: "溯界者·破界",
-      org: "边界研究院 BRI",
+      org: "BRI",
       role: "队员 · 外勤侦察",
       isLeader: false,
       orgType: "anomalist"
@@ -430,7 +430,7 @@ function AnomalyDetailPage() {
         style: {
           fontSize: "18px"
         }
-      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院 BRI · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", {
+      }, "SPA-0021"), "名称", "无尽楼梯 · Endless Stairwell"], ["所属管辖", "边界研究院（BRI）· Boundary Research Institute", "首次记录", "安珀历12年 · 秋"], ["异常等级", {
         levelKey: "hazardous",
         text: "危险级 · HAZARDOUS"
       }, "当前状态", {
