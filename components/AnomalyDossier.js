@@ -473,6 +473,18 @@ function AnomalyDossier({
       .entry-records { display: block; overflow-x: auto; white-space: nowrap; }
       .detail-auth-inner, .container { padding: 0 16px; }
       .current-members-grid { grid-template-columns: 1fr 1fr; }
+      /* 备注 / 内部评估：移动端紧凑排版，标签不溢出 */
+      .note-box, .internal-note { padding: 16px 14px; }
+      .note-box::before, .internal-note::before { left: 12px; }
+      .note-text, .internal-note-text { font-size: 13px; line-height: 1.7; }
+      .action-list { padding-left: 0; }
+      .action-list li { padding-left: 22px; font-size: 13px; line-height: 1.7; }
+      .internal-note-signature { text-align: left; margin-top: 14px; }
+    }
+    @media (max-width: 480px) {
+      .note-box, .internal-note { padding: 14px 12px; }
+      .note-box::before, .internal-note::before { top: -8px; padding: 0 8px; font-size: 9px; }
+      .note-text, .internal-note-text { font-size: 12.5px; line-height: 1.75; }
     }
   `;
 

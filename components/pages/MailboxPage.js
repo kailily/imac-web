@@ -389,6 +389,26 @@ function MailboxPage() {
           .mail-content-subject { font-size: 17px; }
           .mail-toolbar { padding: 10px 12px; }
           .mail-title { font-size: 22px; }
+          /* 移动端邮件列表：标题与摘要完整换行显示，不截断 */
+          .mail-item { padding: 12px 14px; gap: 6px; }
+          .mail-item-subject {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            line-height: 1.5;
+            font-size: 13px;
+          }
+          .mail-item-summary {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+          .mail-item-from { font-size: 11px; }
+          .mail-list { max-height: 45vh; }
         }
       `), /*#__PURE__*/React.createElement("section", {
     className: "mail-hero"
