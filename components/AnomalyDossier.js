@@ -728,7 +728,59 @@ function AnomalyDossier({
     dangerouslySetInnerHTML: {
       __html: p
     }
-  })))), /*#__PURE__*/React.createElement("div", {
+  })))), data.imacNote && (data.survivalRate ?? 0) < 50 && /*#__PURE__*/React.createElement("div", {
+    className: "file-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "file-section-header"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "file-section-num mono"
+  }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
+    className: "file-section-title"
+  }, "\u5907\u6CE8")), /*#__PURE__*/React.createElement("div", {
+    className: "note-box"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "note-text"
+  }, data.imacNote), data.suggestedActions && data.suggestedActions.length > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "14px",
+      paddingTop: "12px",
+      borderTop: "1px dashed rgba(196, 40, 40, 0.2)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "11px",
+      color: "var(--accent-red-bright)",
+      letterSpacing: "0.15em",
+      marginBottom: "8px"
+    }
+  }, "\u5EFA\u8BAE\u540E\u7EED\u884C\u52A8"), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      margin: 0,
+      paddingLeft: "20px",
+      listStyle: "none"
+    }
+  }, data.suggestedActions.map((a, i) => /*#__PURE__*/React.createElement("li", {
+    key: i,
+    style: {
+      position: "relative",
+      paddingLeft: "18px",
+      fontSize: "12px",
+      color: "var(--text-secondary)",
+      lineHeight: "1.8"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: "absolute",
+      left: 0,
+      color: "var(--level-hazardous)",
+      fontFamily: "var(--font-mono)"
+    }
+  }, "\u2192"), a))))), data.internalNode && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "20px"
+    }
+  }, data.internalNode)), /*#__PURE__*/React.createElement("div", {
     className: "file-footer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "file-meta"

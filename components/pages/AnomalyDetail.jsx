@@ -191,6 +191,7 @@ function AnomalyDetailPage() {
       ver: "39.0",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 25,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>LOA-0001</span>, "名称", "灰港仓库 · Harbor Warehouse"],
         ["所属管辖", "衔尾蛇事务所 · Ouroboros Agency", "首次记录", "安珀历元年 · 9月"],
@@ -297,6 +298,7 @@ function AnomalyDetailPage() {
       ver: "39.1",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 23,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-0021</span>, "名称", "无尽楼梯 · Endless Stairwell"],
         ["所属管辖", "边界研究院 · Boundary Research Institute", "首次记录", "安珀历12年 · 秋"],
@@ -399,6 +401,7 @@ function AnomalyDetailPage() {
       ver: "39.2",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 8,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>TMA-0045</span>, "名称", "雾中列车 · Fog Train"],
         ["所属管辖", "长桥会社 · Long Bridge Company", "首次记录", "安珀历19年 · 冬"],
@@ -511,6 +514,7 @@ function AnomalyDetailPage() {
       ver: "39.0",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 31,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>TMB-0117</span>, "名称", "冰封哨站 · Frozen Outpost"],
         ["所属管辖", "北境守望 · Northwatch", "首次记录", "安珀历15年 · 冬"],
@@ -679,6 +683,7 @@ function AnomalyDetailPage() {
       ver: "38.4",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-0421</span>, "名称", "灰松岭循环路段 · Huisong Ridge Loop"],
         ["所属管辖", "北境守望 · Northwatch", "首次记录", "安珀历38年 · 冬"],
@@ -742,6 +747,7 @@ function AnomalyDetailPage() {
       ver: "13.7",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-2088</span>, "名称", "捷径门 · Shortcut Gate"],
         ["所属管辖", "衔尾蛇事务所 · 民用异常应用处", "首次记录", "安珀历26年 · 鸣海城"],
@@ -809,6 +815,7 @@ function AnomalyDetailPage() {
       ver: "21.3",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>OBA-0148</span>, "名称", "安眠枕 · Slumber Pillow"],
         ["所属管辖", "晨星团 · 民用物品应用科", "首次记录", "安珀历24年 · 白松城"],
@@ -877,6 +884,7 @@ function AnomalyDetailPage() {
       ver: "19.8",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>OBA-0321</span>, "名称", "恒温壶 · Constant Warmth Kettle"],
         ["所属管辖", "晨星团 · 民用物品应用科", "首次记录", "安珀历19年 · 白松城"],
@@ -944,6 +952,7 @@ function AnomalyDetailPage() {
       ver: "17.2",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPA-0317</span>, "名称", "归途石 · Homeward Stone"],
         ["所属管辖", "长桥会社 · 民用社区应用部", "首次记录", "安珀历21年 · 北境冻原"],
@@ -1012,6 +1021,7 @@ function AnomalyDetailPage() {
       ver: "22.5",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>PHB-0521</span>, "名称", "静音毯 · Silent Blanket"],
         ["所属管辖", "边界研究院 · 民用技术应用部", "首次记录", "安珀历16年 · 洛林自由市"],
@@ -1113,6 +1123,7 @@ function AnomalyDetailPage() {
       ver: "39.0",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 38,
       info: [
         ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>PHA-0182</span>, "名称", "洛林裂隙 · Lorraine Rift"],
         ["所属管辖", "边界研究院/晨星团联合 · BRI & Morningstar", "首次记录", "安珀历9年 · 秋"],

@@ -396,6 +396,7 @@ function AnomalyDetailPage() {
       ver: "39.0",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 25,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -605,6 +606,7 @@ function AnomalyDetailPage() {
       ver: "39.1",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 23,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -798,6 +800,7 @@ function AnomalyDetailPage() {
       ver: "39.2",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 8,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1027,6 +1030,7 @@ function AnomalyDetailPage() {
       ver: "39.0",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 31,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1300,6 +1304,7 @@ function AnomalyDetailPage() {
       ver: "38.4",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1373,6 +1378,7 @@ function AnomalyDetailPage() {
       ver: "13.7",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1460,6 +1466,7 @@ function AnomalyDetailPage() {
       ver: "21.3",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1547,6 +1554,7 @@ function AnomalyDetailPage() {
       ver: "19.8",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1634,6 +1642,7 @@ function AnomalyDetailPage() {
       ver: "17.2",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1721,6 +1730,7 @@ function AnomalyDetailPage() {
       ver: "22.5",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 100,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {
@@ -1906,6 +1916,7 @@ function AnomalyDetailPage() {
       ver: "39.0",
       updated: "安珀历39年·春",
       archiveDate: "安珀历39年春",
+      survivalRate: 38,
       info: [["异常编号", /*#__PURE__*/React.createElement("span", {
         className: "detail-file-id",
         style: {

@@ -712,6 +712,36 @@ function AnomalyDossier({ data }) {
               </div>
             )}
 
+            {data.imacNote && (data.survivalRate ?? 0) < 50 && (
+              <div className="file-section">
+                <div className="file-section-header">
+                  <span className="file-section-num mono">§ {nextNum()}</span>
+                  <span className="file-section-title">备注</span>
+                </div>
+                <div className="note-box">
+                  <p className="note-text">{data.imacNote}</p>
+                  {data.suggestedActions && data.suggestedActions.length > 0 && (
+                    <div style={{ marginTop: "14px", paddingTop: "12px", borderTop: "1px dashed rgba(196, 40, 40, 0.2)" }}>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-red-bright)", letterSpacing: "0.15em", marginBottom: "8px" }}>
+                        建议后续行动
+                      </div>
+                      <ul style={{ margin: 0, paddingLeft: "20px", listStyle: "none" }}>
+                        {data.suggestedActions.map((a, i) => (
+                          <li key={i} style={{ position: "relative", paddingLeft: "18px", fontSize: "12px", color: "var(--text-secondary)", lineHeight: "1.8" }}>
+                            <span style={{ position: "absolute", left: 0, color: "var(--level-hazardous)", fontFamily: "var(--font-mono)" }}>→</span>
+                            {a}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                {data.internalNode && (
+                  <div style={{ marginTop: "20px" }}>{data.internalNode}</div>
+                )}
+              </div>
+            )}
+
             <div className="file-footer">
               <div className="file-meta">FILE ID: {data.id} / VER: {data.ver || "39.2"} / CLASSIFICATION: {data.classification || "CONFIDENTIAL"}</div>
               <div className="file-meta">LAST UPDATED: {data.updated}</div>
