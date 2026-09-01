@@ -7,7 +7,7 @@ function ProfileCenterPage() {
   const {
     navigate
   } = useRouter();
-  const walkerCode = identity?.codename || "赤鸦";
+  const walkerCode = identity?.codename || appProfile?.codename || "赤鸦";
   const walkerRank = identity?.rank || (authLevel === "topsecret" ? "界标" : "资深溯界者");
   const walkerOrg = identity?.organization || "衔尾蛇事务所";
   const walkerId = identity?.staffId || identity?.adminId || "IMAC-OA-0721";
@@ -354,7 +354,15 @@ function ProfileCenterPage() {
 
   // === 个人档案编辑 ===
   const [editing, setEditing] = React.useState(false);
-  const [profile, setProfile] = React.useState({
+  // 编辑后保存的个人档案数据（本地持久化，优先于默认值；未编辑过则为 null）
+  const savedProfile = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("imac_profile_data") || "null");
+    } catch (e) {
+      return null;
+    }
+  })();
+  const [profile, setProfile] = React.useState(savedProfile || {
     name: walkerName,
     code: walkerCode,
     rank: walkerRank,
@@ -965,7 +973,14 @@ function ProfileCenterPage() {
     className: "pc-badge access"
   }, profile.access))), /*#__PURE__*/React.createElement("button", {
     className: "pc-edit-btn",
-    onClick: () => setEditing(!editing)
+    onClick: () => {
+      if (editing) {
+        try {
+          localStorage.setItem("imac_profile_data", JSON.stringify(profile));
+        } catch (e) {}
+      }
+      setEditing(!editing);
+    }
   }, editing ? "保存" : "编辑资料")), /*#__PURE__*/React.createElement("div", {
     className: "pc-info-grid"
   }, [{
@@ -1020,7 +1035,7 @@ function ProfileCenterPage() {
     className: "pc-info-label"
   }, f.label), /*#__PURE__*/React.createElement("span", {
     className: "pc-info-value"
-  }, editing && ["name", "contact", "anchor", "location", "age", "specialty", "experience"].includes(f.key) ? /*#__PURE__*/React.createElement("textarea", {
+  }, editing && ["code", "name", "contact", "anchor", "location", "age", "specialty", "experience"].includes(f.key) ? /*#__PURE__*/React.createElement("textarea", {
     rows: f.key === "experience" || f.key === "specialty" ? 2 : 1,
     value: profile[f.key],
     onChange: e => setProfile({
