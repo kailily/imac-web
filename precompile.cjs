@@ -61,22 +61,28 @@ console.log(
   (check.match(/<script src="components\//g) || []).length
 );
 
-// 合并核心 JS 为 app.js（固定顺序）：仅保留首页渲染链真正依赖的组件
-// 其余公共组件（Hero/AnomalyFile/AnomalyInfo/Organizations/Walker/WorldMap/EmergencyGuide
-// 等无引用死代码）与未挂路由的页面已从核心移除，AnomalyDetail 依赖随页面文件合并
-const CORE_ORDER = [
+// 合并所有组件 JS 为 app.js（固定顺序：根组件 → 页面 → App），减少请求数
+// 注意：顺序不能从 index.html 读取（首次运行后引用已被移除），必须硬编码
+// 单 bundle 模式：全部页面合并进 app.js，路由切换即时、无按需加载等待
+const BUNDLE_ORDER = [
+  // 根级公共组件（router / auth / 公共组件 / 数据 / 子组件）
   "components/router",
   "components/auth",
   "components/Header",
   "components/Footer",
-  "components/organizationsData",
+  "components/WorldMap",
   "components/OrganizationsMap",
+  "components/organizationsData",
+  "components/AcademyMap",
+  "components/AnomalyDossier",
+  "components/AnomalyFile",
+  "components/AnomalyInfo",
+  "components/GuideNews",
+  "components/Hero",
+  "components/Organizations",
+  "components/Walker",
+  // 页面组件
   "components/pages/Home",
-  "components/App",
-];
-
-// 懒加载页面：路由到才加载（App.jsx 的 LAZY_PAGE_MAP 与之对应）
-const LAZY_PAGES = [
   "components/pages/Guide",
   "components/pages/Organizations",
   "components/pages/OrgDetail",
@@ -86,6 +92,10 @@ const LAZY_PAGES = [
   "components/pages/ProfileCenter",
   "components/pages/RegisterPage",
   "components/pages/MailboxPage",
+  "components/pages/Profile",
+  "components/pages/Missions",
+  "components/pages/Training",
+  "components/pages/PsychEval",
   "components/pages/Admin",
   "components/pages/Join",
   "components/pages/AnomalyAuth",
@@ -93,18 +103,12 @@ const LAZY_PAGES = [
   "components/pages/AnomalyDetail",
   "components/pages/MediaAuth",
   "components/pages/MediaGuidelines",
+  // 入口
+  "components/App",
 ];
 
-// 懒加载页面的额外依赖（按依赖顺序前置合并进页面文件）
-const PAGE_DEPS = {
-  "components/pages/AnomalyDetail": [
-    "components/AcademyMap",
-    "components/AnomalyDossier",
-  ],
-};
-
 let bundle = "";
-for (const f of CORE_ORDER) {
+for (const f of BUNDLE_ORDER) {
   const src = f + ".js";
   if (!fs.existsSync(src)) {
     console.error("[错误] 缺少文件: " + src);
@@ -114,7 +118,7 @@ for (const f of CORE_ORDER) {
 }
 fs.writeFileSync("app.js", bundle, "utf8");
 console.log(
-  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB（核心 " + CORE_ORDER.length + " 个文件）"
+  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB，合并 " + BUNDLE_ORDER.length + " 个文件"
 );
 
 // 用 terser 压缩 app.js（减小下载体积；失败则保留未压缩版）
@@ -127,31 +131,6 @@ try {
   );
 } catch (e) {
   console.log("压缩失败（保留未压缩版）:", e.message);
-}
-
-// 懒加载页面：单独压缩输出到 pages/ 目录（供 App.jsx 按需注入）
-try {
-  const terser = require("D:/dsh/deploy-tools/node_modules/terser");
-  fs.mkdirSync("pages", { recursive: true });
-  let totalOut = 0;
-  for (const f of LAZY_PAGES) {
-    const name = f.split("/").pop();
-    let code = fs.readFileSync(f + ".js", "utf8");
-    // 前置合并页面依赖（如 AnomalyDetail 依赖 AcademyMap / AnomalyDossier）
-    const deps = PAGE_DEPS[f] || [];
-    for (const d of deps) {
-      code = fs.readFileSync(d + ".js", "utf8") + ";\n" + code;
-    }
-    const min = terser.minify_sync(code, { compress: true, mangle: true });
-    fs.writeFileSync("pages/" + name + ".js", min.code, "utf8");
-    totalOut += min.code.length;
-  }
-  console.log(
-    "pages/ 懒加载: " + LAZY_PAGES.length + " 个页面 -> " + (totalOut / 1024).toFixed(0) + " KB"
-  );
-} catch (e) {
-  console.log("页面压缩失败:", e.message);
-  process.exit(1);
 }
 
 // index.html：确保只保留 react / react-dom（head）与 app.js（body #root 之后），幂等可重复运行
