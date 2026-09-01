@@ -311,14 +311,14 @@ function AnomalyArchivePage({ routeQuery }) {
       id: "SPA-2088",
       name: "捷径门",
       nameEn: "Shortcut Gate",
-      level: "safe",
-      levelText: "安全级",
+      level: "ordinary",
+      levelText: "常规级",
       accessLevel: "public",
       category: "SP",
       categoryName: "空间类",
       org: "衔尾蛇事务所",
-      status: "applied",
-      statusText: "应用中",
+      status: "safe",
+      statusText: "安全",
       survival: "100%",
       firstRecord: "安珀历26年",
       featured: true,
@@ -327,14 +327,14 @@ function AnomalyArchivePage({ routeQuery }) {
       id: "OBA-0148",
       name: "安眠枕",
       nameEn: "Slumber Pillow",
-      level: "safe",
-      levelText: "安全级",
+      level: "ordinary",
+      levelText: "常规级",
       accessLevel: "public",
       category: "OB",
       categoryName: "物品类",
       org: "晨星团",
-      status: "applied",
-      statusText: "应用中",
+      status: "safe",
+      statusText: "安全",
       survival: "100%",
       firstRecord: "安珀历24年",
       featured: true,
@@ -343,14 +343,14 @@ function AnomalyArchivePage({ routeQuery }) {
       id: "OBA-0321",
       name: "恒温壶",
       nameEn: "Constant Warmth Kettle",
-      level: "safe",
-      levelText: "安全级",
+      level: "ordinary",
+      levelText: "常规级",
       accessLevel: "public",
       category: "OB",
       categoryName: "物品类",
       org: "晨星团",
-      status: "applied",
-      statusText: "应用中",
+      status: "safe",
+      statusText: "安全",
       survival: "100%",
       firstRecord: "安珀历19年",
       featured: false,
@@ -359,14 +359,14 @@ function AnomalyArchivePage({ routeQuery }) {
       id: "SPA-0317",
       name: "归途石",
       nameEn: "Homeward Stone",
-      level: "safe",
-      levelText: "安全级",
+      level: "ordinary",
+      levelText: "常规级",
       accessLevel: "public",
       category: "SP",
       categoryName: "空间类",
       org: "长桥会社",
-      status: "applied",
-      statusText: "应用中",
+      status: "safe",
+      statusText: "安全",
       survival: "100%",
       firstRecord: "安珀历21年",
       featured: false,
@@ -375,14 +375,14 @@ function AnomalyArchivePage({ routeQuery }) {
       id: "PHB-0521",
       name: "静音毯",
       nameEn: "Silent Blanket",
-      level: "safe",
-      levelText: "安全级",
+      level: "ordinary",
+      levelText: "常规级",
       accessLevel: "public",
       category: "PH",
       categoryName: "物理类",
       org: "边界研究院",
-      status: "applied",
-      statusText: "应用中",
+      status: "safe",
+      statusText: "安全",
       survival: "100%",
       firstRecord: "安珀历16年",
       featured: false,
@@ -439,7 +439,6 @@ function AnomalyArchivePage({ routeQuery }) {
 
   const levelFilters = [
     { key: "all", label: "全部" },
-    { key: "safe", label: "安全级" },
     { key: "ordinary", label: "常规级" },
     { key: "hazardous", label: "危险级" },
     { key: "doomed", label: "厄运级" },
@@ -883,7 +882,7 @@ function AnomalyArchivePage({ routeQuery }) {
                 >
                     <div
                       className="archive-row"
-                      style={{ borderLeft: `3px solid ${a.level === "safe" ? "#3fb8a4" : a.level === "ordinary" ? "#4a7c59" : a.level === "hazardous" ? "#c49a2c" : a.level === "doomed" ? "#d46828" : a.level === "abyssal" ? "#c42828" : a.level === "unknown" ? "#7a3ab0" : "var(--accent-red-bright)"}` }}
+                      style={{ borderLeft: `3px solid ${a.level === "ordinary" ? "#4a7c59" : a.level === "hazardous" ? "#c49a2c" : a.level === "doomed" ? "#d46828" : a.level === "abyssal" ? "#c42828" : a.level === "unknown" ? "#7a3ab0" : "var(--accent-red-bright)"}` }}
                       onClick={() => navigate(`/anomaly/${a.id}`)}
                     >
                       <div className="archive-row-id mono">{a.id}</div>
@@ -903,12 +902,12 @@ function AnomalyArchivePage({ routeQuery }) {
                     </div>
                     <div className="archive-row-org">{a.org}</div>
                     <div className={`archive-row-status status-${a.status}`}>
-                      {a.status === "applied" && "● 应用中"}
+                      {a.status === "safe" && "● 安全"}
                       {a.status === "active" && (a.statusText === "待命" ? "● 待命" : "● 活跃")}
                       {a.status === "resolved" && "● 已解决"}
                       {a.status === "quarantined" && "● 隔离中"}
                     </div>
-                    <div className={`archive-row-survival ${parseFloat(a.survival) < 10 ? "level-text-abyssal" : parseFloat(a.survival) < 30 ? "level-text-hazardous" : "level-text-ordinary"}`} style={{"--s": a.survival}}>
+                    <div className={`archive-row-survival ${parseFloat(a.survival) < 10 ? "level-text-abyssal" : parseFloat(a.survival) < 50 ? "level-text-hazardous" : "level-text-ordinary"}`} style={{"--s": a.survival}}>
                       {a.survival}
                     </div>
                     <span className="archive-row-arrow">→</span>

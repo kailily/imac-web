@@ -498,7 +498,6 @@ function AnomalyDossier({
 
   // 等级/状态颜色映射（等级与状态按各自类型着色）
   const levelColors = {
-    safe: "#3fb8a4",
     ordinary: "#4a7c59",
     hazardous: "#c49a2c",
     doomed: "#d46828",
@@ -510,7 +509,6 @@ function AnomalyDossier({
     resolved: "#4a7c59",
     dormant: "#6a7a8c",
     safe: "#4a7c59",
-    applied: "#3fb8a4",
     quarantined: "#7a3ab0"
   };
   const renderCell = v => {
@@ -742,21 +740,17 @@ function AnomalyDossier({
     className: "note-box"
   }, /*#__PURE__*/React.createElement("p", {
     className: "note-text"
-  }, data.imacNote), data.suggestedActions && data.suggestedActions.length > 0 && /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: "14px",
-      paddingTop: "12px",
-      borderTop: "1px dashed rgba(196, 40, 40, 0.2)"
-    }
+  }, data.imacNote))), data.suggestedActions && data.suggestedActions.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: "file-section"
   }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontFamily: "var(--font-mono)",
-      fontSize: "11px",
-      color: "var(--accent-red-bright)",
-      letterSpacing: "0.15em",
-      marginBottom: "8px"
-    }
-  }, "\u5EFA\u8BAE\u540E\u7EED\u884C\u52A8"), /*#__PURE__*/React.createElement("ul", {
+    className: "file-section-header"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "file-section-num mono"
+  }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
+    className: "file-section-title"
+  }, "\u5EFA\u8BAE\u884C\u52A8")), /*#__PURE__*/React.createElement("div", {
+    className: "note-box"
+  }, /*#__PURE__*/React.createElement("ul", {
     style: {
       margin: 0,
       paddingLeft: "20px",
@@ -779,10 +773,14 @@ function AnomalyDossier({
       fontFamily: "var(--font-mono)"
     }
   }, "\u2192"), a))))), data.internalNode && /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: "20px"
-    }
-  }, data.internalNode)), /*#__PURE__*/React.createElement("div", {
+    className: "file-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "file-section-header"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "file-section-num mono"
+  }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
+    className: "file-section-title"
+  }, "\u5185\u90E8\u8BC4\u4F30")), /*#__PURE__*/React.createElement("div", null, data.internalNode)), /*#__PURE__*/React.createElement("div", {
     className: "file-footer"
   }, /*#__PURE__*/React.createElement("div", {
     className: "file-meta"

@@ -495,7 +495,6 @@ function AnomalyDossier({ data }) {
 
   // 等级/状态颜色映射（等级与状态按各自类型着色）
   const levelColors = {
-    safe: "#3fb8a4",
     ordinary: "#4a7c59",
     hazardous: "#c49a2c",
     doomed: "#d46828",
@@ -507,7 +506,6 @@ function AnomalyDossier({ data }) {
     resolved: "#4a7c59",
     dormant: "#6a7a8c",
     safe: "#4a7c59",
-    applied: "#3fb8a4",
     quarantined: "#7a3ab0",
   };
   const renderCell = (v) => {
@@ -722,25 +720,36 @@ function AnomalyDossier({ data }) {
                 </div>
                 <div className="note-box">
                   <p className="note-text">{data.imacNote}</p>
-                  {data.suggestedActions && data.suggestedActions.length > 0 && (
-                    <div style={{ marginTop: "14px", paddingTop: "12px", borderTop: "1px dashed rgba(196, 40, 40, 0.2)" }}>
-                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--accent-red-bright)", letterSpacing: "0.15em", marginBottom: "8px" }}>
-                        建议后续行动
-                      </div>
-                      <ul style={{ margin: 0, paddingLeft: "20px", listStyle: "none" }}>
-                        {data.suggestedActions.map((a, i) => (
-                          <li key={i} style={{ position: "relative", paddingLeft: "18px", fontSize: "12px", color: "var(--text-secondary)", lineHeight: "1.8" }}>
-                            <span style={{ position: "absolute", left: 0, color: "var(--level-hazardous)", fontFamily: "var(--font-mono)" }}>→</span>
-                            {a}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                 </div>
-                {data.internalNode && (
-                  <div style={{ marginTop: "20px" }}>{data.internalNode}</div>
-                )}
+              </div>
+            )}
+
+            {data.suggestedActions && data.suggestedActions.length > 0 && (
+              <div className="file-section">
+                <div className="file-section-header">
+                  <span className="file-section-num mono">§ {nextNum()}</span>
+                  <span className="file-section-title">建议行动</span>
+                </div>
+                <div className="note-box">
+                  <ul style={{ margin: 0, paddingLeft: "20px", listStyle: "none" }}>
+                    {data.suggestedActions.map((a, i) => (
+                      <li key={i} style={{ position: "relative", paddingLeft: "18px", fontSize: "12px", color: "var(--text-secondary)", lineHeight: "1.8" }}>
+                        <span style={{ position: "absolute", left: 0, color: "var(--level-hazardous)", fontFamily: "var(--font-mono)" }}>→</span>
+                        {a}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {data.internalNode && (
+              <div className="file-section">
+                <div className="file-section-header">
+                  <span className="file-section-num mono">§ {nextNum()}</span>
+                  <span className="file-section-title">内部评估</span>
+                </div>
+                <div>{data.internalNode}</div>
               </div>
             )}
 
