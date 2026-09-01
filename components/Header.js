@@ -19,6 +19,17 @@ function Header({
   const isTopSecret = authLevel === "topsecret";
   const isInternal = canAccess("internal");
 
+  // 代号/职级：登录注册身份优先，其次溯界者申请表，最后默认（纯前端本地数据）
+  const headerAppProfile = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("imac_application_profile") || "null");
+    } catch (e) {
+      return null;
+    }
+  })();
+  const headerCodename = identity?.codename || headerAppProfile?.codename || "赤鸦";
+  const headerRank = identity?.rank || (isTopSecret ? "界标" : "资深溯界者");
+
   // 系统邮箱未读数（全局，从 localStorage 同步）
   const [unreadMailCount, setUnreadMailCount] = React.useState(() => {
     try {
@@ -841,11 +852,11 @@ function Header({
     className: "user-dropdown-header"
   }, /*#__PURE__*/React.createElement("div", {
     className: "user-dropdown-avatar"
-  }, isTopSecret ? "Z" : "赤"), /*#__PURE__*/React.createElement("div", {
+  }, isTopSecret ? "Z" : headerCodename.charAt(0)), /*#__PURE__*/React.createElement("div", {
     className: "user-dropdown-info"
   }, /*#__PURE__*/React.createElement("span", {
     className: "user-dropdown-codename"
-  }, isTopSecret ? "指挥官 Z" : "赤鸦", isTopSecret && /*#__PURE__*/React.createElement("span", {
+  }, isTopSecret ? "指挥官 Z" : headerCodename, isTopSecret && /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: "10px",
       color: "#a97bd4",
@@ -853,7 +864,7 @@ function Header({
     }
   }, "\u2605 ADMIN")), /*#__PURE__*/React.createElement("span", {
     className: "user-dropdown-rank"
-  }, isTopSecret ? "界标·绝密级" : "资深溯界者·机密级", " \xB7 ", identity?.organization || "衔尾蛇事务所"), /*#__PURE__*/React.createElement("span", {
+  }, isTopSecret ? "界标·绝密级" : headerRank + "·机密级", " \xB7 ", identity?.organization || "衔尾蛇事务所"), /*#__PURE__*/React.createElement("span", {
     className: "user-dropdown-rank"
   }, identity?.staffId || identity?.adminId || "IMAC-0000"), /*#__PURE__*/React.createElement("span", {
     className: "user-dropdown-rank",

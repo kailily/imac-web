@@ -9,6 +9,13 @@ function Header({ scrolled, currentRoute }) {
   const isTopSecret = authLevel === "topsecret";
   const isInternal = canAccess("internal");
 
+  // 代号/职级：登录注册身份优先，其次溯界者申请表，最后默认（纯前端本地数据）
+  const headerAppProfile = (() => {
+    try { return JSON.parse(localStorage.getItem("imac_application_profile") || "null"); } catch (e) { return null; }
+  })();
+  const headerCodename = identity?.codename || headerAppProfile?.codename || "赤鸦";
+  const headerRank = identity?.rank || (isTopSecret ? "界标" : "资深溯界者");
+
   // 系统邮箱未读数（全局，从 localStorage 同步）
   const [unreadMailCount, setUnreadMailCount] = React.useState(() => {
     try {
@@ -656,15 +663,15 @@ function Header({ scrolled, currentRoute }) {
                   <div className="dropdown-panel">
                     <div className="user-dropdown-header">
                       <div className="user-dropdown-avatar">
-                        {isTopSecret ? "Z" : "赤"}
+                        {isTopSecret ? "Z" : headerCodename.charAt(0)}
                       </div>
                       <div className="user-dropdown-info">
                         <span className="user-dropdown-codename">
-                          {isTopSecret ? "指挥官 Z" : "赤鸦"}
+                          {isTopSecret ? "指挥官 Z" : headerCodename}
                           {isTopSecret && <span style={{ fontSize: "10px", color: "#a97bd4", marginLeft: "6px" }}>★ ADMIN</span>}
                         </span>
                         <span className="user-dropdown-rank">
-                          {isTopSecret ? "界标·绝密级" : "资深溯界者·机密级"} · {identity?.organization || "衔尾蛇事务所"}
+                          {isTopSecret ? "界标·绝密级" : (headerRank + "·机密级")} · {identity?.organization || "衔尾蛇事务所"}
                         </span>
                         <span className="user-dropdown-rank">{identity?.staffId || identity?.adminId || "IMAC-0000"}</span>
                         <span className="user-dropdown-rank" style={{ color: "var(--level-ordinary)" }}>● 在岗</span>
