@@ -1350,19 +1350,7 @@ function AnomalyDetailPage() {
         result: "全员安全返回 · 异常坍缩",
         status: "safe"
       }],
-      phenomena: ["<strong>「坍缩条件」：</strong>在循环锚点（枯树）处完成规则干预后，异常整体坍缩，路段恢复正常通行，现场无异常残留——坍缩不是「被破坏」，而是规则被满足后异常自行闭合。", "<strong>「桥与枯树」参照物：</strong>循环中车辆唯一可识别的参照物为同一座桥与同一棵枯树；坍缩后两者均无异常残留，枯树为本次处置的规则锚点。", "<strong>徒步豁免：</strong>循环仅作用于载具而不作用于行人——此类「选择性触发」在常规级空间异常中较为少见，可能与异常以「道路使用方式」为规则基础有关。"],
-      suggestedActions: ["维持周边短期监测，确认异常无复发迹象，保留临时警示标识至观测期结束", "将「灰松岭处置流程」纳入北境守望快速响应训练案例", "继续向公众普及异常识别与上报知识——本次行动的关键在于伐木工人的及时上报"],
-      internalNode: /*#__PURE__*/React.createElement(Restricted, {
-        level: "internal",
-        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
-        compact: true
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "internal-note"
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "internal-note-text"
-      }, "\u3010\u5317\u5883\u5B88\u671B\u5185\u90E8\u8BC4\u4F30 \xB7 \u7070\u677E\u5CAD\u884C\u52A8\u961F\u961F\u957F \u971C\u96BC\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u7070\u677E\u5CAD\u662F\u4E00\u6B21\u6559\u79D1\u4E66\u5F0F\u7684\u5FEB\u901F\u5904\u7F6E\uFF1A\u4ECE\u63A5\u5230\u4E0A\u62A5\u5230\u574D\u7F29\uFF0C\u4E03\u5341\u4E8C\u5C0F\u65F6\uFF0C\u96F6\u4F24\u4EA1\u3002\u5F02\u5E38\u5E76\u4E0D\u603B\u662F\u5371\u9669\u2014\u2014\u8FD9\u4E00\u6B21\uFF0C\u5B83\u53EA\u662F\u8BA9\u4E00\u8F86\u8F66\u5728\u4E24\u767E\u7C73\u7684\u8DEF\u6BB5\u4E0A\u591A\u8F6C\u4E86\u51E0\u5708\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4F46\u6211\u5FC5\u987B\u8BF4\uFF0C\u8FD9\u573A\u884C\u52A8\u7684\u771F\u6B63\u529F\u81E3\u4E0D\u662F\u6211\u4EEC\uFF0C\u662F\u90A3\u4F4D\u4F10\u6728\u5DE5\u4EBA\u3002\u4ED6\u6CA1\u6709\u597D\u5947\u9760\u8FD1\uFF0C\u6CA1\u6709\u62CD\u89C6\u9891\u53D1\u5230\u7F51\u4E0A\uFF0C\u800C\u662F\u8BB0\u4E0B\u4F4D\u7F6E\u3001\u9000\u51FA\u8DEF\u6BB5\u3001\u62E8\u4E8699\u2014\u2014\u4E09\u4EF6\u4E8B\uFF0C\u6559\u79D1\u4E66\u91CC\u6559\u7684\uFF0C\u4ED6\u5168\u505A\u5230\u4E86\u3002\u6211\u5E72\u4E86\u5341\u4E94\u5E74\u5317\u5883\uFF0C\u89C1\u8FC7\u592A\u591A\u806A\u660E\u4EBA\u6B7B\u5728\u300C\u518D\u9760\u8FD1\u4E00\u6B65\u300D\u4E0A\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5904\u7F6E\u4E0A\uFF0C\u6D41\u7A0B\u5DF2\u7ECF\u5F52\u6863\u8FDB\u5FEB\u901F\u54CD\u5E94\u8BAD\u7EC3\u6848\u4F8B\uFF0C\u5468\u8FB9\u77ED\u671F\u76D1\u6D4B\u7ED3\u675F\u540E\u64A4\u9664\u4E34\u65F6\u8B66\u793A\u3002\u5411\u516C\u4F17\u666E\u53CA\u8FD9\u4E09\u4EF6\u4E8B\uFF0C\u6BD4\u6211\u4EEC\u591A\u8DD1\u5341\u6B21\u4EFB\u52A1\u90FD\u503C\u2014\u2014\u6BCF\u4E2A\u516C\u6C11\u90FD\u8BE5\u5B66\u4F1A\u5B83\u4EEC\u3002"), /*#__PURE__*/React.createElement("div", {
-        className: "internal-note-signature"
-      }, "\u2014 \u4F0A\u4E07\xB7\u6C83\u5C14\u79D1\u592B\uFF08\u971C\u96BC\uFF09\xB7 \u5317\u5883\u5B88\u671B\u8D44\u6DF1\u6EAF\u754C\u8005")))
+      phenomena: ["<strong>「坍缩条件」：</strong>在循环锚点（枯树）处完成规则干预后，异常整体坍缩，路段恢复正常通行，现场无异常残留——坍缩不是「被破坏」，而是规则被满足后异常自行闭合。", "<strong>「桥与枯树」参照物：</strong>循环中车辆唯一可识别的参照物为同一座桥与同一棵枯树；坍缩后两者均无异常残留，枯树为本次处置的规则锚点。", "<strong>徒步豁免：</strong>循环仅作用于载具而不作用于行人——此类「选择性触发」在常规级空间异常中较为少见，可能与异常以「道路使用方式」为规则基础有关。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: loopData
@@ -1438,19 +1426,7 @@ function AnomalyDetailPage() {
         result: "零事故 · 零异常复发",
         status: "safe"
       }],
-      phenomena: ["<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。", "<strong>「双门温差」：</strong>长期监测发现，两扇门之间的温差恒定为1.7℃（南站侧恒高于会展中心侧），与季节无关，疑似为折叠通道内的能量残余。温差读数在校准期间归零。"],
-      suggestedActions: ["维持年度校准与日常监测，持续收集「灰色走廊」目击报告（目前无任何风险记录）", "评估将同一应用模型推广至其他城市的可行性（需确认异常对「地理位置」的绑定条件）", "与地铁运营方联合开展每季度一次的安全演练，确保突发情况下的有序疏散"],
-      internalNode: /*#__PURE__*/React.createElement(Restricted, {
-        level: "internal",
-        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
-        compact: true
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "internal-note"
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "internal-note-text"
-      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u5F02\u5E38\u5E94\u7528\u5904\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6377\u5F84\u95E8\u8FD0\u8425\u5341\u4E09\u5E74\uFF0C\u96F6\u4E8B\u6545\uFF0C\u662F\u6211\u4EEC\u6700\u62FF\u5F97\u51FA\u624B\u7684\u6C11\u7528\u9879\u76EE\u3002\u4F46\u5185\u90E8\u7684\u7ED3\u8BBA\u5FC5\u987B\u5199\u6E05\u695A\uFF1A\u5B83\u300C\u5B89\u5168\u300D\uFF0C\u662F\u56E0\u4E3A\u6211\u4EEC\u5B88\u4F4F\u4E86\u6BCF\u4E00\u6761\u89C4\u5219\u2014\u2014\u9650\u91CD\u3001\u95F4\u9694\u3001\u6301\u5361\u3001\u6821\u51C6\uFF0C\u4E00\u6761\u90FD\u6CA1\u677E\u8FC7\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u90A32%\u7684\u300C\u7070\u8272\u8D70\u5ECA\u300D\u62A5\u544A\u6211\u4EEC\u4E00\u76F4\u5728\u8DDF\u8FDB\u3002\u76EE\u524D\u6CA1\u6709\u4EFB\u4F55\u6570\u636E\u8868\u660E\u5B83\u4E0E\u98CE\u9669\u76F8\u5173\uFF0C\u4F46\u4E5F\u6CA1\u6709\u6570\u636E\u80FD\u89E3\u91CA\u5B83\u3002\u6309\u89C4\u77E9\uFF0C\u672A\u89E3\u6790\u7684\u73B0\u8C61\u4E0D\u4E0A\u62A5\u516C\u5F00\u6863\u6848\u2014\u2014\u8BF7\u7EE7\u7EED\u76EF\u4F4F\u5B83\uFF0C\u522B\u8BA9\u5B83\u53D8\u6210\u6863\u6848\u91CC\u90A3\u53E5\u300C\u540E\u6765\u2026\u2026\u300D\u3002"), /*#__PURE__*/React.createElement("div", {
-        className: "internal-note-signature"
-      }, "\u2014 \u8854\u5C3E\u86C7\u4E8B\u52A1\u6240 \xB7 \u6C11\u7528\u5F02\u5E38\u5E94\u7528\u5904 \xB7 \u5E94\u7528\u7EC4\u7EC4\u957F")))
+      phenomena: ["<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。", "<strong>「双门温差」：</strong>长期监测发现，两扇门之间的温差恒定为1.7℃（南站侧恒高于会展中心侧），与季节无关，疑似为折叠通道内的能量残余。温差读数在校准期间归零。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: shortcutData
@@ -1526,19 +1502,7 @@ function AnomalyDetailPage() {
         result: "无认知损伤 · 无依赖报告",
         status: "safe"
       }],
-      phenomena: ["<strong>「无梦区间」：</strong>使用者普遍报告使用期间「完全记不起梦」——既非忘记，也非无梦，而是醒来后对睡眠过程毫无记忆，仿佛时间被直接「跳过」。该现象在复刻品上同样存在，程度略轻。", "<strong>「晨间空白」：</strong>醒来后约3分钟内，使用者处于清醒但「放空」的状态，可正常行动与应答，但之后无法回忆起这3分钟内的大部分内容。随访未发现该现象对日常造成影响。"],
-      suggestedActions: ["维持处方发放与年度随访制度，持续统计「晨间空白」与长期使用数据", "推进「规则载体」复刻精度研究，缩小复刻品与原始枕头的差异", "评估将安眠枕纳入公共心理健康服务体系的可行性（需扩大禁忌症筛查范围）"],
-      internalNode: /*#__PURE__*/React.createElement(Restricted, {
-        level: "internal",
-        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
-        compact: true
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "internal-note"
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "internal-note-text"
-      }, "\u3010\u6668\u661F\u56E2\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u7269\u54C1\u5E94\u7528\u79D1\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5B89\u7720\u6795\u662F\u6668\u661F\u56E2\u6700\u5B89\u9759\u7684\u9879\u76EE\u2014\u2014\u5B83\u4E0D\u60CA\u9669\uFF0C\u4E0D\u4F20\u5947\uFF0C\u5C31\u662F\u4E00\u53EA\u6795\u5934\uFF0C\u8BA9\u56DB\u5343\u4E2A\u5931\u7720\u7684\u4EBA\u597D\u597D\u7761\u4E86\u56DB\u5343\u4E2A\u665A\u4E0A\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u7684\u7ED3\u8BBA\u5F88\u6734\u7D20\uFF1A\u5F02\u5E38\u4E0D\u4E00\u5B9A\u662F\u300C\u5371\u9669\u7684\u4E1C\u897F\u300D\u3002\u5F53\u5B83\u7684\u89C4\u5219\u88AB\u4E00\u6761\u6761\u89E3\u6790\u6E05\u695A\uFF0C\u5F53\u5B83\u7684\u8FB9\u754C\u88AB\u4E00\u6B21\u6B21\u786E\u8BA4\uFF0C\u5B83\u5C31\u53EF\u4EE5\u50CF\u4E00\u628A\u4F1E\u3001\u4E00\u76CF\u706F\u4E00\u6837\uFF0C\u6210\u4E3A\u751F\u6D3B\u7684\u4E00\u90E8\u5206\u3002\u6377\u5F84\u95E8\u8FDE\u63A5\u57CE\u5E02\uFF0C\u5B89\u7720\u6795\u5B88\u62A4\u591C\u665A\u2014\u2014\u8FD9\u5927\u6982\u5C31\u662F\u300C\u6C11\u7528\u5E94\u7528\u300D\u8FD9\u56DB\u4E2A\u5B57\u7684\u610F\u4E49\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u552F\u4E00\u9700\u8981\u6301\u7EED\u7559\u610F\u7684\uFF0C\u662F\u300C\u6668\u95F4\u7A7A\u767D\u300D\u548C\u90A32%\u7684\u590D\u523B\u5DEE\u5F02\u3002\u76EE\u524D\u6240\u6709\u6570\u636E\u90FD\u6307\u5411\u5B89\u5168\uFF0C\u4F46\u6C11\u7528\u5E94\u7528\u7684\u539F\u5219\u662F\uFF1A\u5B81\u53EF\u6162\uFF0C\u4E0D\u53EF\u677E\u3002"), /*#__PURE__*/React.createElement("div", {
-        className: "internal-note-signature"
-      }, "\u2014 \u6668\u661F\u56E2 \xB7 \u6C11\u7528\u7269\u54C1\u5E94\u7528\u79D1 \xB7 \u79D1\u957F \u7A0B\u4E00\u82C7")))
+      phenomena: ["<strong>「无梦区间」：</strong>使用者普遍报告使用期间「完全记不起梦」——既非忘记，也非无梦，而是醒来后对睡眠过程毫无记忆，仿佛时间被直接「跳过」。该现象在复刻品上同样存在，程度略轻。", "<strong>「晨间空白」：</strong>醒来后约3分钟内，使用者处于清醒但「放空」的状态，可正常行动与应答，但之后无法回忆起这3分钟内的大部分内容。随访未发现该现象对日常造成影响。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: slumberData
@@ -1614,19 +1578,7 @@ function AnomalyDetailPage() {
         result: "无失效 · 无副作用报告",
         status: "safe"
       }],
-      phenomena: ["<strong>「壶底微光」：</strong>夜间熄灯后，原始铜壶的壶底会透出极淡的暖色微光，温度越高越明显；复刻品上该现象已减弱至几乎不可见，其成因未被解析。", "<strong>「隔夜余温」：</strong>复刻壶在空置状态下，内壁仍会保持约两小时的「刚烧开过」的触感余温——这是应用中最实用的现象之一，也是使用者辨识恒温壶是否仍处于可用状态的方法。"],
-      suggestedActions: ["维持定点配发与季度巡检，记录复刻壶的长期衰减情况", "推进「壶底微光」成因研究，评估其与规则载体的关联", "评估将恒温壶纳入偏远地区医疗巡诊保温用品的可行性"],
-      internalNode: /*#__PURE__*/React.createElement(Restricted, {
-        level: "internal",
-        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
-        compact: true
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "internal-note"
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "internal-note-text"
-      }, "\u3010\u6668\u661F\u56E2\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u7269\u54C1\u5E94\u7528\u79D1\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6052\u6E29\u58F6\u662F\u6211\u4EEC\u914D\u53D1\u8303\u56F4\u6700\u5E7F\u7684\u9879\u76EE\u4E4B\u4E00\uFF0C\u4E09\u767E\u53EA\u58F6\u5728\u767D\u677E\u57CE\u8F6C\u4E86\u4E8C\u5341\u5E74\uFF0C\u6CA1\u6709\u4E00\u53EA\u51FA\u8FC7\u95EE\u9898\u3002\u8001\u767E\u59D3\u5BF9\u5B83\u7684\u8BC4\u4EF7\u5F88\u6734\u5B9E\uFF1A\u300C\u8FD9\u58F6\u61C2\u4EBA\u300D\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5185\u90E8\u53E3\u5F84\u53EA\u6709\u4E00\u53E5\uFF1A\u5B83\u7684\u300C\u61C2\u300D\uFF0C\u6765\u6E90\u4E8E\u89C4\u5219\u7684\u7A33\u5B9A\uFF0C\u800C\u89C4\u5219\u7684\u7A33\u5B9A\u6765\u6E90\u4E8E\u6211\u4EEC\u7684\u514B\u5236\u2014\u2014\u6BCF\u65E5\u4E09\u6B21\u7684\u914D\u989D\u6211\u4EEC\u4ECE\u672A\u653E\u5BBD\u8FC7\uFF0C\u54EA\u6015\u517B\u8001\u7AD9\u7684\u963F\u59E8\u4EEC\u62B1\u6028\u51AC\u5929\u6C34\u51C9\u5F97\u5FEB\u3002\u653E\u5BBD\u7684\u90A3\u5929\uFF0C\u5C31\u662F\u6863\u6848\u91CC\u5199\u4E0B\u300C\u540E\u6765\u2026\u2026\u300D\u7684\u90A3\u5929\u3002"), /*#__PURE__*/React.createElement("div", {
-        className: "internal-note-signature"
-      }, "\u2014 \u6668\u661F\u56E2 \xB7 \u6C11\u7528\u7269\u54C1\u5E94\u7528\u79D1 \xB7 \u914D\u53D1\u7EC4 \u7EC4\u957F \u5B5F\u79CB\u5B9E")))
+      phenomena: ["<strong>「壶底微光」：</strong>夜间熄灯后，原始铜壶的壶底会透出极淡的暖色微光，温度越高越明显；复刻品上该现象已减弱至几乎不可见，其成因未被解析。", "<strong>「隔夜余温」：</strong>复刻壶在空置状态下，内壁仍会保持约两小时的「刚烧开过」的触感余温——这是应用中最实用的现象之一，也是使用者辨识恒温壶是否仍处于可用状态的方法。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: kettleData
@@ -1702,19 +1654,7 @@ function AnomalyDetailPage() {
         result: "无失效 · 无副作用报告",
         status: "safe"
       }],
-      phenomena: ["<strong>「掌心微热」：</strong>佩戴期间，归途石在掌心持续保持约体温的温度；离家越远越热，方向正确时热度平稳，方向错误时热度轻微起伏——常被佩戴者称为「石头在叹气」。", "<strong>「夜路本能」：</strong>夜间或浓雾中，归途石佩戴者的步态稳定性显著提升，平衡能力接近白天水准；机理未被解析，但与「方向增益」疑似同源。"],
-      suggestedActions: ["维持定向发放与年度登记复核，确保「家」的锚定与佩戴者现住址一致", "与医疗机构合作，评估归途石在阿尔茨海默症早期干预中的应用价值", "持续收集「夜路本能」数据，探索其与方向增益的共性机理"],
-      internalNode: /*#__PURE__*/React.createElement(Restricted, {
-        level: "internal",
-        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
-        compact: true
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "internal-note"
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "internal-note-text"
-      }, "\u3010\u957F\u6865\u4F1A\u793E\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u793E\u533A\u5E94\u7528\u90E8\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5F52\u9014\u77F3\u662F\u6211\u4EEC\u7684\u62DB\u724C\u9879\u76EE\uFF0C\u4F46\u7B7E\u53D1\u653E\u534F\u8BAE\u65F6\uFF0C\u6211\u4EEC\u6BCF\u6B21\u90FD\u8981\u53CD\u590D\u53EE\u5631\u5BB6\u5C5E\u4E00\u53E5\u8BDD\uFF1A\u5B83\u662F\u300C\u6307\u8DEF\u300D\u7684\uFF0C\u4E0D\u662F\u300C\u4FDD\u547D\u300D\u7684\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6709\u4F4D\u8001\u592A\u592A\u7684\u5BB6\u5C5E\u95EE\u8FC7\u6211\u4EEC\uFF1A\u300C\u6709\u5B83\u5728\uFF0C\u6211\u5988\u662F\u4E0D\u662F\u5C31\u4E0D\u4F1A\u8D70\u4E22\u4E86\uFF1F\u300D\u6211\u4EEC\u53EA\u80FD\u8BF4\uFF1A\u5B83\u4F1A\u5E26\u5979\u56DE\u5BB6\uFF0C\u4F46\u5B83\u62E6\u4E0D\u4F4F\u5979\u8FC7\u6CB3\u3002\u65B9\u5411\u662F\u5F02\u5E38\u7684\u89C4\u5219\uFF0C\u5B89\u5168\u662F\u4EBA\u7684\u8D23\u4EFB\u2014\u2014\u8FD9\u53E5\u8BDD\uFF0C\u5E0C\u671B\u6BCF\u4E00\u4E2A\u4F69\u6234\u8005\u7684\u5BB6\u4EBA\u90FD\u80FD\u8BB0\u4F4F\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u77F3\u5934\u672C\u8EAB\u5341\u516B\u5E74\u6CA1\u6709\u51FA\u8FC7\u4EFB\u4F55\u95EE\u9898\u3002\u6709\u95EE\u9898\u7684\u662F\u6211\u4EEC\u5BF9\u300C\u8FB9\u754C\u300D\u7684\u8868\u8FF0\u2014\u2014\u8BF7\u7EE7\u7EED\u628A\u8FB9\u754C\u8BF4\u6E05\u695A\uFF0C\u8FD9\u662F\u8FD9\u4E2A\u9879\u76EE\u552F\u4E00\u7684\u5E95\u7EBF\u3002"), /*#__PURE__*/React.createElement("div", {
-        className: "internal-note-signature"
-      }, "\u2014 \u957F\u6865\u4F1A\u793E \xB7 \u6C11\u7528\u793E\u533A\u5E94\u7528\u90E8 \xB7 \u90E8\u957F \u6C88\u781A\u821F")))
+      phenomena: ["<strong>「掌心微热」：</strong>佩戴期间，归途石在掌心持续保持约体温的温度；离家越远越热，方向正确时热度平稳，方向错误时热度轻微起伏——常被佩戴者称为「石头在叹气」。", "<strong>「夜路本能」：</strong>夜间或浓雾中，归途石佩戴者的步态稳定性显著提升，平衡能力接近白天水准；机理未被解析，但与「方向增益」疑似同源。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: homewardData
@@ -1790,19 +1730,7 @@ function AnomalyDetailPage() {
         result: "无失效 · 无副作用报告",
         status: "safe"
       }],
-      phenomena: ["<strong>「毯缘风感」：</strong>站在降噪范围边缘的使用者普遍报告能感到一层「极轻的、贴着皮肤掠过的风」，跨过边界时「啪」地一下像过了一道薄膜；该风感无温度、无方向，来源未被解析。", "<strong>「无声泡泡」：</strong>毯内完全安静时，使用者偶尔会听到一声极其轻微的「啵」——像泡泡破裂，疑似为降噪边界与外部声波的相互作用，无风险记录。"],
-      suggestedActions: ["维持场馆定点配发与使用时长台账，落实「警报备份」专项检查", "继续「规则载体」纤维结构的复刻精度研究，扩大样本覆盖范围", "评估静音毯在新生儿病房与临终关怀病房的应用可行性（需经伦理审查）"],
-      internalNode: /*#__PURE__*/React.createElement(Restricted, {
-        level: "internal",
-        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
-        compact: true
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "internal-note"
-      }, /*#__PURE__*/React.createElement("p", {
-        className: "internal-note-text"
-      }, "\u3010\u8FB9\u754C\u7814\u7A76\u9662\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u6280\u672F\u5E94\u7528\u90E8\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u9759\u97F3\u6BEF\u4E8C\u5341\u4E09\u5E74\u6765\u6700\u8BA9\u6211\u8B66\u60D5\u7684\u4E0D\u662F\u6BEF\u5B50\u672C\u8EAB\uFF0C\u800C\u662F\u4F7F\u7528\u5355\u4F4D\u5BF9\u300C\u5B89\u9759\u300D\u7684\u4F9D\u8D56\u2014\u2014\u6709\u5BB6\u56FE\u4E66\u9986\u66FE\u5DEE\u70B9\u628A\u706B\u8B66\u62A5\u8B66\u5668\u4E5F\u300C\u653E\u8FDB\u300D\u6BEF\u5B50\u91CC\uFF0C\u7406\u7531\u662F\u300C\u62A5\u8B66\u58F0\u592A\u5435\u300D\u88AB\u8BFB\u8005\u6295\u8BC9\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u5F53\u65F6\u8FDE\u591C\u64A4\u4E86\u90A3\u5957\u65B9\u6848\u3002\u5B89\u9759\u662F\u8FD9\u53EA\u5F02\u5E38\u7ED9\u4E16\u754C\u7684\u793C\u7269\uFF0C\u4F46\u5B89\u5168\u662FIMAC\u7ED9\u4EBA\u7C7B\u7684\u627F\u8BFA\u2014\u2014\u4E24\u8005\u6C38\u8FDC\u4E0D\u80FD\u4E92\u6362\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6280\u672F\u4E0A\uFF0C\u7EA4\u7EF4\u73AF\u5F62\u7ED3\u6784\u7684\u590D\u523B\u7CBE\u5EA6\u6211\u4EEC\u5DF2\u7ECF\u505A\u523097%\u4EE5\u4E0A\uFF0C\u5269\u4E0B\u76843%\u5DEE\u5728\u300C\u6BEF\u7F18\u98CE\u611F\u300D\u4E0A\u3002\u4E0D\u7740\u6025\uFF0C\u89C4\u5219\u6CA1\u89E3\u6790\u5B8C\uFF0C\u5C31\u7EE7\u7EED\u5B88\u7740\u539F\u6BEF\u8FC7\u65E5\u5B50\u3002"), /*#__PURE__*/React.createElement("div", {
-        className: "internal-note-signature"
-      }, "\u2014 \u8FB9\u754C\u7814\u7A76\u9662 \xB7 \u6C11\u7528\u6280\u672F\u5E94\u7528\u90E8 \xB7 \u7814\u7A76\u5458 \u987E\u671B\u8212")))
+      phenomena: ["<strong>「毯缘风感」：</strong>站在降噪范围边缘的使用者普遍报告能感到一层「极轻的、贴着皮肤掠过的风」，跨过边界时「啪」地一下像过了一道薄膜；该风感无温度、无方向，来源未被解析。", "<strong>「无声泡泡」：</strong>毯内完全安静时，使用者偶尔会听到一声极其轻微的「啵」——像泡泡破裂，疑似为降噪边界与外部声波的相互作用，无风险记录。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: silentData
