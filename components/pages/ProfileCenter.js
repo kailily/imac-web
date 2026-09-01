@@ -1038,60 +1038,7 @@ function ProfileCenterPage() {
       borderRadius: "4px",
       resize: "vertical"
     }
-  }) : profile[f.key])))))), /*#__PURE__*/React.createElement("div", {
-    className: "pc-card",
-    style: {
-      marginTop: "16px"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pc-card-header"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pc-card-title"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "code"
-  }, "APL"), "\u7533\u8BF7\u8D44\u6599"), /*#__PURE__*/React.createElement("span", {
-    className: "pc-card-en"
-  }, "APPLICATION PROFILE")), /*#__PURE__*/React.createElement("div", {
-    className: "pc-card-body"
-  }, appProfile ? /*#__PURE__*/React.createElement("div", {
-    className: "pc-info-grid"
-  }, [{
-    k: "channel",
-    l: "申请通道",
-    v: appProfile.channel
-  }, {
-    k: "organization",
-    l: "意向组织",
-    v: appProfile.organization
-  }, {
-    k: "anomalyExp",
-    l: "异常接触经历",
-    v: appProfile.anomalyExp
-  }, {
-    k: "motivation",
-    l: "申请理由",
-    v: appProfile.motivation
-  }].map(f => /*#__PURE__*/React.createElement("div", {
-    key: f.k,
-    className: "pc-info-row"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pc-info-label"
-  }, f.l), /*#__PURE__*/React.createElement("span", {
-    className: "pc-info-value"
-  }, f.v || "—")))) : /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: "13px",
-      color: "var(--text-tertiary)",
-      lineHeight: "1.8"
-    }
-  }, "\u5C1A\u672A\u63D0\u4EA4\u6EAF\u754C\u8005\u7533\u8BF7\u3002", /*#__PURE__*/React.createElement("a", {
-    onClick: () => navigate("/join"),
-    style: {
-      color: "var(--accent-red-bright)",
-      cursor: "pointer",
-      borderBottom: "1px dotted rgba(196,40,40,0.5)"
-    }
-  }, "\u524D\u5F80\u300C\u52A0\u5165\u6211\u4EEC\u300D\u586B\u5199\u7533\u8BF7\u8868 \u2192")))), activeTab === "missions" && /*#__PURE__*/React.createElement("div", {
+  }) : profile[f.key])))))), activeTab === "missions" && /*#__PURE__*/React.createElement("div", {
     className: "pc-card"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pc-card-header"

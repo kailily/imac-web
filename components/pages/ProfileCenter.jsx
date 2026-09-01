@@ -794,41 +794,6 @@ function ProfileCenterPage() {
                 </div>
               )}
 
-              {/* === 申请资料（溯界者申请表内容） === */}
-              <div className="pc-card" style={{ marginTop: "16px" }}>
-                <div className="pc-card-header">
-                  <div className="pc-card-title">
-                    <span className="code">APL</span>
-                    申请资料
-                  </div>
-                  <span className="pc-card-en">APPLICATION PROFILE</span>
-                </div>
-                <div className="pc-card-body">
-                  {appProfile ? (
-                    <div className="pc-info-grid">
-                      {[
-                        { k: "channel", l: "申请通道", v: appProfile.channel },
-                        { k: "organization", l: "意向组织", v: appProfile.organization },
-                        { k: "anomalyExp", l: "异常接触经历", v: appProfile.anomalyExp },
-                        { k: "motivation", l: "申请理由", v: appProfile.motivation },
-                      ].map((f) => (
-                        <div key={f.k} className="pc-info-row">
-                          <span className="pc-info-label">{f.l}</span>
-                          <span className="pc-info-value">{f.v || "—"}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div style={{ fontSize: "13px", color: "var(--text-tertiary)", lineHeight: "1.8" }}>
-                      尚未提交溯界者申请。
-                      <a onClick={() => navigate("/join")} style={{ color: "var(--accent-red-bright)", cursor: "pointer", borderBottom: "1px dotted rgba(196,40,40,0.5)" }}>
-                        前往「加入我们」填写申请表 →
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-
               {/* === 任务历史 === */}
               {activeTab === "missions" && (
                 <div className="pc-card">
