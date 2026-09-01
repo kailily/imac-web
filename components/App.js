@@ -1,9 +1,115 @@
+// 懒加载页面映射：路由 → 全局组件名 → 独立脚本（按需加载，减小首屏体积）
+const LAZY_PAGE_MAP = [{
+  match: p => p === "/guide",
+  fn: "GuidePage",
+  src: "pages/Guide.js"
+}, {
+  match: p => p === "/organizations",
+  fn: "OrganizationsPage",
+  src: "pages/Organizations.js"
+}, {
+  match: p => p.startsWith("/org/"),
+  fn: "OrgDetailPage",
+  src: "pages/OrgDetail.js"
+}, {
+  match: p => p === "/news",
+  fn: "NewsPage",
+  src: "pages/News.js"
+}, {
+  match: p => p === "/auth",
+  fn: "AuthPage",
+  src: "pages/Auth.js"
+}, {
+  match: p => p === "/portal",
+  fn: "PortalPage",
+  src: "pages/Portal.js"
+}, {
+  match: p => p === "/profile-center",
+  fn: "ProfileCenterPage",
+  src: "pages/ProfileCenter.js"
+}, {
+  match: p => p === "/register",
+  fn: "RegisterPage",
+  src: "pages/RegisterPage.js"
+}, {
+  match: p => p === "/mailbox",
+  fn: "MailboxPage",
+  src: "pages/MailboxPage.js"
+}, {
+  match: p => p === "/admin",
+  fn: "AdminPage",
+  src: "pages/Admin.js"
+}, {
+  match: p => p === "/join",
+  fn: "JoinPage",
+  src: "pages/Join.js"
+}, {
+  match: p => p === "/anomaly-auth",
+  fn: "AnomalyAuthPage",
+  src: "pages/AnomalyAuth.js"
+}, {
+  match: p => p === "/database" || p === "/anomaly-archive",
+  fn: "AnomalyArchivePage",
+  src: "pages/AnomalyArchive.js"
+}, {
+  match: p => p.startsWith("/anomaly/"),
+  fn: "AnomalyDetailPage",
+  src: "pages/AnomalyDetail.js"
+}, {
+  match: p => p === "/media-auth",
+  fn: "MediaAuthPage",
+  src: "pages/MediaAuth.js"
+}, {
+  match: p => p === "/media-guidelines",
+  fn: "MediaGuidelinesPage",
+  src: "pages/MediaGuidelines.js"
+}];
+const _pageLoaded = {};
+function loadPageScript(src) {
+  return new Promise((resolve, reject) => {
+    if (_pageLoaded[src]) return resolve();
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = () => {
+      _pageLoaded[src] = true;
+      resolve();
+    };
+    s.onerror = () => {
+      reject(new Error("页面加载失败: " + src));
+    };
+    document.body.appendChild(s);
+  });
+}
+function PendingPlaceholder() {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "140px 24px",
+      textAlign: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "13px",
+      color: "var(--accent-red-bright)",
+      letterSpacing: "0.2em",
+      marginBottom: "12px"
+    }
+  }, "FILE LOADING"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "11px",
+      color: "var(--text-muted)",
+      letterSpacing: "0.08em"
+    }
+  }, "\u6863\u6848\u6570\u636E\u8F7D\u5165\u4E2D\uFF0C\u8BF7\u7A0D\u5019\u2026"));
+}
 function App() {
   const {
     route
   } = useRouter();
   const [scrolled, setScrolled] = React.useState(false);
   const [showBackTop, setShowBackTop] = React.useState(false);
+  const [lazyTick, setLazyTick] = React.useState(0);
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -23,61 +129,51 @@ function App() {
   const qIdx = route.indexOf("?");
   const routePath = qIdx >= 0 ? route.substring(0, qIdx) : route;
   const routeQuery = qIdx >= 0 ? route.substring(qIdx + 1) : "";
+
+  // 懒加载：当前路由需要但尚未加载的页面脚本
+  React.useEffect(() => {
+    const entry = LAZY_PAGE_MAP.find(e => e.match(routePath));
+    if (!entry || window[entry.fn]) return;
+    let cancelled = false;
+    loadPageScript(entry.src).then(() => {
+      if (!cancelled) setLazyTick(n => n + 1);
+    }, () => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [routePath, lazyTick]);
   let PageComponent;
   let pageKey = routePath;
   let routeProps = {};
   if (routePath === "/" || routePath === "" || routePath.startsWith("/#")) {
     PageComponent = HomePage;
     pageKey = "home";
-  } else if (routePath === "/portal") {
-    PageComponent = PortalPage;
-  } else if (routePath === "/profile-center") {
-    PageComponent = ProfileCenterPage;
-  } else if (routePath === "/register") {
-    PageComponent = RegisterPage;
-  } else if (routePath === "/mailbox") {
-    PageComponent = MailboxPage;
-  } else if (routePath === "/admin") {
-    PageComponent = AdminPage;
-  } else if (routePath === "/guide") {
-    PageComponent = GuidePage;
-  } else if (routePath === "/organizations") {
-    PageComponent = OrganizationsPage;
-  } else if (routePath.startsWith("/org/")) {
-    PageComponent = OrgDetailPage;
-    const slug = routePath.replace("/org/", "");
-    routeProps = {
-      orgSlug: slug
-    };
-    pageKey = `org-${slug}`;
-  } else if (routePath === "/news") {
-    PageComponent = NewsPage;
-  } else if (routePath === "/auth") {
-    PageComponent = AuthPage;
-  } else if (routePath === "/join") {
-    PageComponent = JoinPage;
-  } else if (routePath === "/anomaly-auth") {
-    PageComponent = AnomalyAuthPage;
-  } else if (routePath === "/database" || routePath === "/anomaly-archive") {
-    PageComponent = AnomalyArchivePage;
-    routeProps = {
-      routeQuery
-    };
-    pageKey = "database";
-  } else if (routePath.startsWith("/anomaly/")) {
-    PageComponent = AnomalyDetailPage;
-    const id = routePath.replace("/anomaly/", "");
-    routeProps = {
-      anomalyId: id
-    };
-    pageKey = `anomaly-${id}`;
-  } else if (routePath === "/media-auth") {
-    PageComponent = MediaAuthPage;
-  } else if (routePath === "/media-guidelines") {
-    PageComponent = MediaGuidelinesPage;
   } else {
-    PageComponent = HomePage;
-    pageKey = "home";
+    const entry = LAZY_PAGE_MAP.find(e => e.match(routePath));
+    if (entry) {
+      PageComponent = window[entry.fn] || PendingPlaceholder;
+      if (routePath.startsWith("/org/")) {
+        const slug = routePath.replace("/org/", "");
+        routeProps = {
+          orgSlug: slug
+        };
+        pageKey = `org-${slug}`;
+      } else if (routePath.startsWith("/anomaly/")) {
+        const id = routePath.replace("/anomaly/", "");
+        routeProps = {
+          anomalyId: id
+        };
+        pageKey = `anomaly-${id}`;
+      } else if (routePath === "/database" || routePath === "/anomaly-archive") {
+        routeProps = {
+          routeQuery
+        };
+        pageKey = "database";
+      }
+    } else {
+      PageComponent = HomePage;
+      pageKey = "home";
+    }
   }
   return /*#__PURE__*/React.createElement("div", {
     style: {

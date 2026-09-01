@@ -1,0 +1,1 @@
+function MediaAuthPage(){const{navigate:e}=useRouter();return React.useEffect(()=>{e("/auth")},[e]),React.createElement("div",{style:{padding:"120px 0",textAlign:"center",color:"var(--text-secondary)"}},"正在跳转至统一认证页...")}window.MediaAuthPage=MediaAuthPage;
