@@ -107,7 +107,19 @@ const PAGE_DEPS = {
   ],
 };
 
+// 单文件 bundle：React + ReactDOM 前置合并进 app.js，页面仅需 1 个 JS 请求
 let bundle = "";
+const libPrefix = [
+  "lib/react.production.min.js",
+  "lib/react-dom.production.min.js",
+];
+for (const lib of libPrefix) {
+  if (!fs.existsSync(lib)) {
+    console.error("[错误] 缺少文件: " + lib);
+    process.exit(1);
+  }
+  bundle += fs.readFileSync(lib, "utf8") + ";\n";
+}
 for (const f of BUNDLE_ORDER) {
   const src = f + ".js";
   if (!fs.existsSync(src)) {
@@ -118,7 +130,7 @@ for (const f of BUNDLE_ORDER) {
 }
 fs.writeFileSync("app.js", bundle, "utf8");
 console.log(
-  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB，合并 " + BUNDLE_ORDER.length + " 个文件"
+  "app.js 生成: " + (bundle.length / 1024).toFixed(0) + " KB（React 内联 + " + BUNDLE_ORDER.length + " 个组件文件）"
 );
 
 // 用 terser 压缩 app.js（减小下载体积；失败则保留未压缩版）
@@ -158,9 +170,10 @@ try {
   process.exit(1);
 }
 
-// index.html：确保只保留 react / react-dom（head）与 app.js（body #root 之后），幂等可重复运行
+// index.html：只保留 app.js（body #root 之后，React 已内联），幂等可重复运行
 let html2 = fs.readFileSync("index.html", "utf8");
 html2 = html2.replace(/\n?\s*<script src="components\/[^"]+\.js"><\/script>/g, "");
+html2 = html2.replace(/\n?\s*<script src="lib\/react[^"]*\.js"><\/script>/g, "");
 html2 = html2.replace(/\n?\s*<script src="app\.js"><\/script>/g, "");
 // app.js 必须位于 #root 之后（DOM 就绪后执行），否则 createRoot 拿不到容器
 if (!/<div id="root"><\/div>[\s\S]*<script src="app\.js">/.test(html2)) {

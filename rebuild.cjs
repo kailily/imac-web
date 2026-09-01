@@ -4,11 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
-// [1/2] 生成单文件离线版（把 lib 与 app.js、异常数据库模块内联）
+// [1/2] 生成单文件离线版（app.js 已内联 React/ReactDOM，直接内联 + 懒加载页面）
 let html = fs.readFileSync("index.html", "utf8");
-html = html.replace(/<script src="(lib\/[^"]+)"><\/script>/g, (m, src) => {
-  return "<script>" + fs.readFileSync(src, "utf8") + "</script>";
-});
 html = html.replace(/<script src="app\.js"><\/script>/g, (m) => {
   return "<script>" + fs.readFileSync("app.js", "utf8") + "</script>";
 });
@@ -19,7 +16,7 @@ html = html.replace(
     return '<script type="text/babel">' + fs.readFileSync(src, "utf8") + "</script>";
   }
 );
-// 内联异常数据库模块（预定义全局页面组件，单文件版无需动态加载）
+// 内联懒加载页面（预定义全局页面组件，单文件版无需动态加载）
 const pagesDir = path.join("pages");
 if (fs.existsSync(pagesDir)) {
   const pages = fs.readdirSync(pagesDir).filter((f) => f.endsWith(".js"));
