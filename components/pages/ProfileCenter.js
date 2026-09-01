@@ -365,7 +365,11 @@ function ProfileCenterPage() {
     joinDate: "安珀历37年春·01",
     access: authLevel === "topsecret" ? "绝密级" : "机密级",
     contact: walkerContact,
-    anchor: "制式金属锚"
+    anchor: "制式金属锚",
+    location: appProfile ? [appProfile.country, appProfile.region, appProfile.city].filter(Boolean).join(" · ") : "",
+    age: appProfile?.age || "",
+    specialty: appProfile?.specialty || "",
+    experience: appProfile?.experience || ""
   });
   return /*#__PURE__*/React.createElement("div", {
     className: "profile-center-page"
@@ -980,6 +984,18 @@ function ProfileCenterPage() {
     key: "id",
     label: "IMAC编号"
   }, {
+    key: "location",
+    label: "所在地区"
+  }, {
+    key: "age",
+    label: "年龄"
+  }, {
+    key: "specialty",
+    label: "擅长领域"
+  }, {
+    key: "experience",
+    label: "个人经历"
+  }, {
     key: "department",
     label: "部门/职务"
   }, {
@@ -1004,12 +1020,24 @@ function ProfileCenterPage() {
     className: "pc-info-label"
   }, f.label), /*#__PURE__*/React.createElement("span", {
     className: "pc-info-value"
-  }, editing && ["name", "contact", "anchor"].includes(f.key) ? /*#__PURE__*/React.createElement("input", {
+  }, editing && ["name", "contact", "anchor", "location", "age", "specialty", "experience"].includes(f.key) ? /*#__PURE__*/React.createElement("textarea", {
+    rows: f.key === "experience" || f.key === "specialty" ? 2 : 1,
     value: profile[f.key],
     onChange: e => setProfile({
       ...profile,
       [f.key]: e.target.value
-    })
+    }),
+    style: {
+      width: "100%",
+      background: "rgba(10,10,14,0.8)",
+      border: "1px solid var(--border-light)",
+      color: "var(--text-primary)",
+      fontFamily: "inherit",
+      fontSize: "13px",
+      padding: "6px 8px",
+      borderRadius: "4px",
+      resize: "vertical"
+    }
   }) : profile[f.key])))))), /*#__PURE__*/React.createElement("div", {
     className: "pc-card",
     style: {
@@ -1035,26 +1063,6 @@ function ProfileCenterPage() {
     k: "organization",
     l: "意向组织",
     v: appProfile.organization
-  }, {
-    k: "location",
-    l: "所在地",
-    v: [appProfile.country, appProfile.region, appProfile.city].filter(Boolean).join(" · ")
-  }, {
-    k: "age",
-    l: "年龄",
-    v: appProfile.age
-  }, {
-    k: "contact",
-    l: "联系方式",
-    v: appProfile.contact
-  }, {
-    k: "specialty",
-    l: "擅长领域",
-    v: appProfile.specialty
-  }, {
-    k: "experience",
-    l: "相关经历",
-    v: appProfile.experience
   }, {
     k: "anomalyExp",
     l: "异常接触经历",
