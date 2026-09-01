@@ -25,6 +25,7 @@ function AnomalyDetailPage() {
   const isKettle = anomalyId === "OBA-0321";
   const isHomeward = anomalyId === "SPA-0317";
   const isSilent = anomalyId === "PHB-0521";
+  const isUmbrella = anomalyId === "OBA-0371";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -94,7 +95,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella) {
     return (
       <>
         <style>{`
@@ -1076,6 +1077,71 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={silentData} />;
+  }
+
+  if (isUmbrella) {
+    const umbrellaData = {
+      id: "OBA-0371",
+      name: "不湿伞",
+      nameEn: "DRY UMBRELLA · SAFE",
+      stamp: "公开 · PUBLIC",
+      classification: "PUBLIC",
+      ver: "8.6",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 100,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>OBA-0371</span>, "名称", "不湿伞 · Dry Umbrella"],
+        ["所属管辖", "晨星团 · 民用物品应用科", "首次记录", "安珀历30年 · 白松城"],
+        ["异常等级", { levelKey: "ordinary", text: "常规级 · ORDINARY" }, "当前状态", { statusKey: "safe", text: "● 安全 · 待投用 SAFE" }],
+        ["生还率", [<span key="s" style={{ color: "var(--level-ordinary)" }}>100%</span>, "（无进入记录 · 零事故）"], "信息价值", "民用应用候选样本"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用评估通过 · 尚未投入使用"],
+      ],
+      discovery: [
+        "安珀历30年春，白松城旧车站拆除改造时，工人在站长休息室的储物柜深处翻出一把黑色长柄伞。当天恰逢暴雨，工人撑伞穿过站前广场时惊讶地发现：以他为中心、约三米范围内的雨水全部「绕开」了，地面干爽，仿佛头顶有一道看不见的伞沿。",
+        "晨星团接到上报后派员核查，确认该伞为异常物品，并对其进行了长达两年的规则解析。安珀历32年，IMAC 民用异常应用委员会完成安全评估，正式将其列为「民用应用候选样本」——但受复刻工艺与投放审批进度所限，截至本档案更新，尚未投入使用。",
+      ],
+      features: [
+        "不湿伞是一把<strong>降雨规避型异常物品</strong>（常规级）：伞面撑开后，以撑伞者为圆心、半径三米内的雨水自动绕开，落在该范围边缘的雨滴会沿一条看不见的弧线滑落，仿佛撑了一把「比实际大三倍」的伞。",
+        "异常依附于伞面织物与伞骨的金属结构，规则已被完全解析并评定为安全。目前晨星团已掌握复刻工艺，正等待 IMAC 民用应用委员会的统一投放审批——因此它仍是「档案里的伞」，尚未进入任何人的生活。",
+      ],
+      mapNode: (
+        <div className="rules-list">
+          <div className="rule-item verified">
+            <div className="rule-num">一</div>
+            <div className="rule-content"><div className="rule-title">结构组成</div><p className="rule-desc">黑色长柄伞整体——异常依附于伞面织物与伞骨金属结构，二者缺一不可。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">二</div>
+            <div className="rule-content"><div className="rule-title">规则载体</div><p className="rule-desc">载体可整体复刻，复刻品效果与原品一致；伞面磨损超三成后效果减弱，但不会失效。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">三</div>
+            <div className="rule-content"><div className="rule-title">作用形态</div><p className="rule-desc">仅降雨时生效 · 撑开即触发 · 收起即失效 · 以撑伞者为圆心半径三米。</p></div>
+          </div>
+        </div>
+      ),
+      mapTitle: "结构说明",
+      mapTag: "文字说明 · NOTES",
+      verifiedRules: [
+        { num: "一", title: "撑开生效", desc: "伞面完全撑开后效果触发：以撑伞者为圆心、半径三米内的雨水自动绕开；收起伞面后效果立即消失。" },
+        { num: "二", title: "降雨触发", desc: "仅在降雨（或降雪）时生效；晴天撑伞无任何异常表现，与普通雨伞无异。" },
+        { num: "三", title: "仅限一人", desc: "效果以「撑伞者」为圆心，同行者须处于三米范围内才能避雨；不可折叠转交，一人持伞时效果只保护当前撑伞者。" },
+        { num: "四", title: "避水不避风", desc: "雨水被规避，但风、冰雹与坠落物不受影响——伞面遮不到的侧面强风依然会打湿衣物。" },
+      ],
+      recordsTitle: "应用记录",
+      entryRecords: [
+        { term: "首次接触", year: "安珀历30年·春", count: "-", org: "白松城旧车站", result: "翻修发现 · 上报异常", status: "safe" },
+        { term: "结构解析", year: "安珀历32年", count: "-", org: "晨星团", result: "规则完全解析 · 评定安全", status: "safe" },
+        { term: "投用审批", year: "安珀历39年", count: "-", org: "IMAC民用应用委员会", result: "评估通过 · 尚未投入使用", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「伞沿弧线」：</strong>落在三米范围边缘的雨滴会沿一条看不见的弧线滑落，轨迹稳定可预测；晨星团据此认为该异常的本质是「重新规划了雨滴的落点」，而非「挡开雨水」。",
+        "<strong>「伞面微光」：</strong>暴雨中长时间撑持时，伞面会透出极淡的暖色微光（与恒温壶 OBA-0321 的「壶底微光」类似），雨后即消失；两者是否同源尚未确认。",
+      ],
+    };
+
+    return <AnomalyDossier data={umbrellaData} />;
   }
 
   if (isRift) {

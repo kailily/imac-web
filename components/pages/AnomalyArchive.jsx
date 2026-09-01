@@ -387,6 +387,22 @@ function AnomalyArchivePage({ routeQuery }) {
       firstRecord: "安珀历16年",
       featured: false,
     },
+    {
+      id: "OBA-0371",
+      name: "不湿伞",
+      nameEn: "Dry Umbrella",
+      level: "ordinary",
+      levelText: "常规级",
+      accessLevel: "public",
+      category: "OB",
+      categoryName: "物品类",
+      org: "晨星团",
+      status: "safe",
+      statusText: "安全 · 待投用",
+      survival: "100%",
+      firstRecord: "安珀历30年",
+      featured: false,
+    },
   ];
 
   const getInitialCat = () => {
