@@ -793,8 +793,8 @@ function AnomalyDetailPage() {
       recordsTitle: "应用记录",
       recordsCountLabel: "人次",
       entryRecords: [
-        { term: "首次接触", year: "安珀历26年·春", count: "-", org: "鸣海城地铁施工队", result: "施工误入 · 全员安全返回", status: "safe" },
-        { term: "结构研究", year: "安珀历26年·夏", count: "-", org: "衔尾蛇事务所", result: "规则完全解析 · 评定安全", status: "safe" },
+        { term: "首次接触", year: "安珀历26年·春", count: 3, org: "鸣海城地铁施工队", result: "施工误入 · 全员安全返回", status: "safe" },
+        { term: "结构研究", year: "安珀历26年·夏", count: 6, org: "衔尾蛇事务所", result: "规则完全解析 · 评定安全", status: "safe" },
         { term: "民用应用", year: "安珀历27年·至今", count: "-", org: "鸣海城交通局/衔尾蛇", result: "已转入民用应用 · 持续运营（详见基本特征）", status: "safe" },
       ],
       phenomena: [
@@ -860,8 +860,8 @@ function AnomalyDetailPage() {
       recordsTitle: "应用记录",
       recordsCountLabel: "人次",
       entryRecords: [
-        { term: "首次接触", year: "安珀历24年·秋", count: "-", org: "白松城·社区咨询点", result: "使用者上门求助 · 确认异常物品", status: "safe" },
-        { term: "结构解析", year: "安珀历24年·冬", count: "-", org: "晨星团", result: "确认依附材质结构 · 评定安全", status: "safe" },
+        { term: "首次接触", year: "安珀历24年·秋", count: 1, org: "白松城·社区咨询点", result: "使用者上门求助 · 确认异常物品", status: "safe" },
+        { term: "结构解析", year: "安珀历24年·冬", count: 4, org: "晨星团", result: "确认依附材质结构 · 评定安全", status: "safe" },
         { term: "民用应用", year: "安珀历25年·至今", count: "-", org: "晨星团/白松城医院", result: "已转入民用应用 · 处方限量发放（详见基本特征）", status: "safe" },
       ],
       phenomena: [
@@ -926,8 +926,8 @@ function AnomalyDetailPage() {
       recordsTitle: "应用记录",
       recordsCountLabel: "人次",
       entryRecords: [
-        { term: "首次接触", year: "安珀历19年·冬", count: "-", org: "白松城·社区热线", result: "茶馆老板上报 · 确认异常物品", status: "safe" },
-        { term: "结构解析", year: "安珀历19年·冬", count: "-", org: "晨星团", result: "逐层复刻验证 · 评定安全", status: "safe" },
+        { term: "首次接触", year: "安珀历19年·冬", count: 1, org: "白松城·社区热线", result: "茶馆老板上报 · 确认异常物品", status: "safe" },
+        { term: "结构解析", year: "安珀历19年·冬", count: 4, org: "晨星团", result: "逐层复刻验证 · 评定安全", status: "safe" },
         { term: "民用应用", year: "安珀历20年·至今", count: "-", org: "晨星团/白松城民政", result: "已转入民用应用 · 定点配发（详见基本特征）", status: "safe" },
       ],
       phenomena: [
@@ -1005,8 +1005,8 @@ function AnomalyDetailPage() {
       recordsTitle: "应用记录",
       recordsCountLabel: "人次",
       entryRecords: [
-        { term: "首次接触", year: "安珀历21年·冬", count: "-", org: "北境冻原", result: "猎人迷失获救 · 上报异常", status: "safe" },
-        { term: "结构解析", year: "安珀历21年·冬", count: "-", org: "长桥会社/北境守望", result: "确认方向锚定规则 · 评定安全", status: "safe" },
+        { term: "首次接触", year: "安珀历21年·冬", count: 1, org: "北境冻原", result: "猎人迷失获救 · 上报异常", status: "safe" },
+        { term: "结构解析", year: "安珀历21年·冬", count: 5, org: "长桥会社/北境守望", result: "确认方向锚定规则 · 评定安全", status: "safe" },
         { term: "民用应用", year: "安珀历22年·至今", count: "-", org: "长桥会社", result: "已转入民用应用 · 定向发放（详见基本特征）", status: "safe" },
       ],
       phenomena: [
@@ -1071,8 +1071,8 @@ function AnomalyDetailPage() {
       recordsTitle: "应用记录",
       recordsCountLabel: "人次",
       entryRecords: [
-        { term: "首次接触", year: "安珀历16年·夏", count: "-", org: "洛林自由市旧剧院", result: "翻修发现 · 上报异常", status: "safe" },
-        { term: "结构解析", year: "安珀历17年", count: "-", org: "边界研究院", result: "复刻验证 · 评定安全", status: "safe" },
+        { term: "首次接触", year: "安珀历16年·夏", count: 1, org: "洛林自由市旧剧院", result: "翻修发现 · 上报异常", status: "safe" },
+        { term: "结构解析", year: "安珀历17年", count: 5, org: "边界研究院", result: "复刻验证 · 评定安全", status: "safe" },
         { term: "民用应用", year: "安珀历18年·至今", count: "-", org: "BRI/洛林市立图书馆", result: "已转入民用应用 · 场馆配发（详见基本特征）", status: "safe" },
       ],
       phenomena: [
@@ -1137,9 +1137,9 @@ function AnomalyDetailPage() {
       recordsTitle: "应用记录",
       recordsCountLabel: "人次",
       entryRecords: [
-        { term: "首次接触", year: "安珀历30年·春", count: "-", org: "白松城旧车站", result: "翻修发现 · 上报异常", status: "safe" },
-        { term: "结构解析", year: "安珀历32年", count: "-", org: "晨星团", result: "规则完全解析 · 评定安全", status: "safe" },
-        { term: "投用审批", year: "安珀历39年", count: "-", org: "IMAC民用应用委员会", result: "评估通过 · 尚未投入使用", status: "safe" },
+        { term: "首次接触", year: "安珀历30年·春", count: 1, org: "白松城旧车站", result: "翻修发现 · 上报异常", status: "safe" },
+        { term: "结构解析", year: "安珀历32年", count: 5, org: "晨星团", result: "规则完全解析 · 评定安全", status: "safe" },
+        { term: "投用审批", year: "安珀历39年", count: 3, org: "IMAC民用应用委员会", result: "评估通过 · 尚未投入使用", status: "safe" },
       ],
       phenomena: [
         "<strong>「伞沿弧线」：</strong>落在三米范围边缘的雨滴会沿一条看不见的弧线滑落，轨迹稳定可预测；晨星团据此认为该异常的本质是「重新规划了雨滴的落点」，而非「挡开雨水」。",

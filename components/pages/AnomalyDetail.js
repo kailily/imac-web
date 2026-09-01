@@ -1545,14 +1545,14 @@ function AnomalyDetailPage() {
       entryRecords: [{
         term: "首次接触",
         year: "安珀历26年·春",
-        count: "-",
+        count: 3,
         org: "鸣海城地铁施工队",
         result: "施工误入 · 全员安全返回",
         status: "safe"
       }, {
         term: "结构研究",
         year: "安珀历26年·夏",
-        count: "-",
+        count: 6,
         org: "衔尾蛇事务所",
         result: "规则完全解析 · 评定安全",
         status: "safe"
@@ -1657,14 +1657,14 @@ function AnomalyDetailPage() {
       entryRecords: [{
         term: "首次接触",
         year: "安珀历24年·秋",
-        count: "-",
+        count: 1,
         org: "白松城·社区咨询点",
         result: "使用者上门求助 · 确认异常物品",
         status: "safe"
       }, {
         term: "结构解析",
         year: "安珀历24年·冬",
-        count: "-",
+        count: 4,
         org: "晨星团",
         result: "确认依附材质结构 · 评定安全",
         status: "safe"
@@ -1769,14 +1769,14 @@ function AnomalyDetailPage() {
       entryRecords: [{
         term: "首次接触",
         year: "安珀历19年·冬",
-        count: "-",
+        count: 1,
         org: "白松城·社区热线",
         result: "茶馆老板上报 · 确认异常物品",
         status: "safe"
       }, {
         term: "结构解析",
         year: "安珀历19年·冬",
-        count: "-",
+        count: 4,
         org: "晨星团",
         result: "逐层复刻验证 · 评定安全",
         status: "safe"
@@ -1939,14 +1939,14 @@ function AnomalyDetailPage() {
       entryRecords: [{
         term: "首次接触",
         year: "安珀历21年·冬",
-        count: "-",
+        count: 1,
         org: "北境冻原",
         result: "猎人迷失获救 · 上报异常",
         status: "safe"
       }, {
         term: "结构解析",
         year: "安珀历21年·冬",
-        count: "-",
+        count: 5,
         org: "长桥会社/北境守望",
         result: "确认方向锚定规则 · 评定安全",
         status: "safe"
@@ -2051,14 +2051,14 @@ function AnomalyDetailPage() {
       entryRecords: [{
         term: "首次接触",
         year: "安珀历16年·夏",
-        count: "-",
+        count: 1,
         org: "洛林自由市旧剧院",
         result: "翻修发现 · 上报异常",
         status: "safe"
       }, {
         term: "结构解析",
         year: "安珀历17年",
-        count: "-",
+        count: 5,
         org: "边界研究院",
         result: "复刻验证 · 评定安全",
         status: "safe"
@@ -2163,21 +2163,21 @@ function AnomalyDetailPage() {
       entryRecords: [{
         term: "首次接触",
         year: "安珀历30年·春",
-        count: "-",
+        count: 1,
         org: "白松城旧车站",
         result: "翻修发现 · 上报异常",
         status: "safe"
       }, {
         term: "结构解析",
         year: "安珀历32年",
-        count: "-",
+        count: 5,
         org: "晨星团",
         result: "规则完全解析 · 评定安全",
         status: "safe"
       }, {
         term: "投用审批",
         year: "安珀历39年",
-        count: "-",
+        count: 3,
         org: "IMAC民用应用委员会",
         result: "评估通过 · 尚未投入使用",
         status: "safe"
