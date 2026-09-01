@@ -659,7 +659,7 @@ function AnomalyDossier({ data }) {
                 <table className="entry-records">
                   <thead>
                     <tr>
-                      <th>批次</th><th>年份</th><th>进入人数</th><th>主导组织</th><th>结果</th>
+                      <th>批次</th><th>年份</th><th>{data.recordsCountLabel || "进入人数"}</th><th>主导组织</th><th>结果</th>
                     </tr>
                   </thead>
                   <tbody>

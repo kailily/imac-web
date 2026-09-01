@@ -791,6 +791,7 @@ function AnomalyDetailPage() {
         { num: "四", title: "年度校准", desc: "每年秋分日停运十二小时进行规则校准。校准期间两扇门失去连接，任何穿行尝试均无效。" },
       ],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [
         { term: "首次接触", year: "安珀历26年·春", count: "-", org: "鸣海城地铁施工队", result: "施工误入 · 全员安全返回", status: "safe" },
         { term: "结构研究", year: "安珀历26年·夏", count: "-", org: "衔尾蛇事务所", result: "规则完全解析 · 评定安全", status: "safe" },
@@ -857,6 +858,7 @@ function AnomalyDetailPage() {
         { num: "四", title: "禁忌症", desc: "严重心血管疾病、睡眠呼吸暂停患者及孕妇禁用。使用者须通过晨星团健康评估并持处方领取，禁止私下交易。" },
       ],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [
         { term: "首次接触", year: "安珀历24年·秋", count: "-", org: "白松城·社区咨询点", result: "使用者上门求助 · 确认异常物品", status: "safe" },
         { term: "结构解析", year: "安珀历24年·冬", count: "-", org: "晨星团", result: "确认依附材质结构 · 评定安全", status: "safe" },
@@ -922,6 +924,7 @@ function AnomalyDetailPage() {
         { num: "四", title: "使用禁忌", desc: "禁止用于冲调婴幼儿饮品与需低温保存的药物——恒定的60℃会破坏部分成分。配发点均有醒目标识。" },
       ],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [
         { term: "首次接触", year: "安珀历19年·冬", count: "-", org: "白松城·社区热线", result: "茶馆老板上报 · 确认异常物品", status: "safe" },
         { term: "结构解析", year: "安珀历19年·冬", count: "-", org: "晨星团", result: "逐层复刻验证 · 评定安全", status: "safe" },
@@ -1000,6 +1003,7 @@ function AnomalyDetailPage() {
         { num: "四", title: "不保路况", desc: "归途石只保证「方向正确」，不保证路径安全——洪水、断桥、塌方路段同样会被指向。佩戴者仍需自行判断路况。" },
       ],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [
         { term: "首次接触", year: "安珀历21年·冬", count: "-", org: "北境冻原", result: "猎人迷失获救 · 上报异常", status: "safe" },
         { term: "结构解析", year: "安珀历21年·冬", count: "-", org: "长桥会社/北境守望", result: "确认方向锚定规则 · 评定安全", status: "safe" },
@@ -1065,6 +1069,7 @@ function AnomalyDetailPage() {
         { num: "四", title: "使用禁忌", desc: "禁止用于覆盖逃生通道、火警警报等安全设施——降噪包含警报声，使用场所必须设有毯外监控与报警备份。" },
       ],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [
         { term: "首次接触", year: "安珀历16年·夏", count: "-", org: "洛林自由市旧剧院", result: "翻修发现 · 上报异常", status: "safe" },
         { term: "结构解析", year: "安珀历17年", count: "-", org: "边界研究院", result: "复刻验证 · 评定安全", status: "safe" },
@@ -1130,6 +1135,7 @@ function AnomalyDetailPage() {
         { num: "四", title: "避水不避风", desc: "雨水被规避，但风、冰雹与坠落物不受影响——伞面遮不到的侧面强风依然会打湿衣物。" },
       ],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [
         { term: "首次接触", year: "安珀历30年·春", count: "-", org: "白松城旧车站", result: "翻修发现 · 上报异常", status: "safe" },
         { term: "结构解析", year: "安珀历32年", count: "-", org: "晨星团", result: "规则完全解析 · 评定安全", status: "safe" },

@@ -1541,6 +1541,7 @@ function AnomalyDetailPage() {
         desc: "每年秋分日停运十二小时进行规则校准。校准期间两扇门失去连接，任何穿行尝试均无效。"
       }],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [{
         term: "首次接触",
         year: "安珀历26年·春",
@@ -1652,6 +1653,7 @@ function AnomalyDetailPage() {
         desc: "严重心血管疾病、睡眠呼吸暂停患者及孕妇禁用。使用者须通过晨星团健康评估并持处方领取，禁止私下交易。"
       }],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [{
         term: "首次接触",
         year: "安珀历24年·秋",
@@ -1763,6 +1765,7 @@ function AnomalyDetailPage() {
         desc: "禁止用于冲调婴幼儿饮品与需低温保存的药物——恒定的60℃会破坏部分成分。配发点均有醒目标识。"
       }],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [{
         term: "首次接触",
         year: "安珀历19年·冬",
@@ -1932,6 +1935,7 @@ function AnomalyDetailPage() {
         desc: "归途石只保证「方向正确」，不保证路径安全——洪水、断桥、塌方路段同样会被指向。佩戴者仍需自行判断路况。"
       }],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [{
         term: "首次接触",
         year: "安珀历21年·冬",
@@ -2043,6 +2047,7 @@ function AnomalyDetailPage() {
         desc: "禁止用于覆盖逃生通道、火警警报等安全设施——降噪包含警报声，使用场所必须设有毯外监控与报警备份。"
       }],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [{
         term: "首次接触",
         year: "安珀历16年·夏",
@@ -2154,6 +2159,7 @@ function AnomalyDetailPage() {
         desc: "雨水被规避，但风、冰雹与坠落物不受影响——伞面遮不到的侧面强风依然会打湿衣物。"
       }],
       recordsTitle: "应用记录",
+      recordsCountLabel: "人次",
       entryRecords: [{
         term: "首次接触",
         year: "安珀历30年·春",

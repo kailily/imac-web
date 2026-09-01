@@ -61,33 +61,17 @@ console.log(
   (check.match(/<script src="components\//g) || []).length
 );
 
-// 合并所有组件 JS 为 app.js（固定顺序：根组件 → 页面 → App），减少请求数
-// 注意：顺序不能从 index.html 读取（首次运行后引用已被移除），必须硬编码
-// 懒加载优化：仅核心组件 + 首页 + App 合并进 app.js；其余页面拆为独立文件按需加载
+// 合并核心 JS 为 app.js（固定顺序）：仅保留首页渲染链真正依赖的组件
+// 其余公共组件（Hero/AnomalyFile/AnomalyInfo/Organizations/Walker/WorldMap/EmergencyGuide
+// 等无引用死代码）与未挂路由的页面已从核心移除，AnomalyDetail 依赖随页面文件合并
 const CORE_ORDER = [
-  // 根级公共组件（router / auth / 公共组件 / 数据 / 子组件）
   "components/router",
   "components/auth",
   "components/Header",
   "components/Footer",
-  "components/WorldMap",
-  "components/OrganizationsMap",
   "components/organizationsData",
-  "components/AcademyMap",
-  "components/AnomalyDossier",
-  "components/AnomalyFile",
-  "components/AnomalyInfo",
-  "components/GuideNews",
-  "components/Hero",
-  "components/Organizations",
-  "components/Walker",
-  // 首页 + 未挂路由的页面组件（保持在核心，避免不可达）
+  "components/OrganizationsMap",
   "components/pages/Home",
-  "components/pages/Profile",
-  "components/pages/Missions",
-  "components/pages/Training",
-  "components/pages/PsychEval",
-  // 入口
   "components/App",
 ];
 
@@ -110,6 +94,14 @@ const LAZY_PAGES = [
   "components/pages/MediaAuth",
   "components/pages/MediaGuidelines",
 ];
+
+// 懒加载页面的额外依赖（按依赖顺序前置合并进页面文件）
+const PAGE_DEPS = {
+  "components/pages/AnomalyDetail": [
+    "components/AcademyMap",
+    "components/AnomalyDossier",
+  ],
+};
 
 let bundle = "";
 for (const f of CORE_ORDER) {
@@ -144,7 +136,12 @@ try {
   let totalOut = 0;
   for (const f of LAZY_PAGES) {
     const name = f.split("/").pop();
-    const code = fs.readFileSync(f + ".js", "utf8");
+    let code = fs.readFileSync(f + ".js", "utf8");
+    // 前置合并页面依赖（如 AnomalyDetail 依赖 AcademyMap / AnomalyDossier）
+    const deps = PAGE_DEPS[f] || [];
+    for (const d of deps) {
+      code = fs.readFileSync(d + ".js", "utf8") + ";\n" + code;
+    }
     const min = terser.minify_sync(code, { compress: true, mangle: true });
     fs.writeFileSync("pages/" + name + ".js", min.code, "utf8");
     totalOut += min.code.length;
