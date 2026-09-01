@@ -117,14 +117,47 @@ function AuthPage() {
       setError("管理员密钥错误。提示：测试密钥为 TOPSECRET");
       return;
     }
-    const identity = {
-      tier: currentTier.key,
-      name: currentTier.label,
-      ...formData
-    };
+
+    // 匹配本地注册信息（纯前端演示：注册数据仅存于本机 localStorage）
+    let identity;
+    if (currentTier.level === "internal") {
+      let registered = null;
+      try {
+        registered = JSON.parse(localStorage.getItem("imac_registered_profile") || "null");
+      } catch (err) {}
+      if (registered && registered.imacId) {
+        const sid = (formData.staffId || "").trim().toUpperCase();
+        const rid = String(registered.imacId).toUpperCase();
+        if (sid === rid && formData.password === registered.password) {
+          identity = {
+            tier: "internal",
+            name: registered.realName || currentTier.label,
+            codename: registered.codename || "",
+            staffId: registered.imacId,
+            organization: registered.organization || "",
+            rank: registered.rank || "见习",
+            contact: registered.contact || ""
+          };
+        } else if (sid === rid) {
+          setError("密码错误，请使用注册时设置的密码");
+          return;
+        }
+      }
+    }
+    if (!identity) {
+      identity = {
+        tier: currentTier.key,
+        name: currentTier.label,
+        ...formData
+      };
+    }
     setAuth(currentTier.level, identity);
     const levelLabel = levels[currentTier.level.toUpperCase()]?.label || currentLevelInfo.label;
-    setSuccess(`认证成功，已获得${levelLabel}权限`);
+    if (identity.name && identity.name !== currentTier.label) {
+      setSuccess(`认证成功，欢迎回来，${identity.name}`);
+    } else {
+      setSuccess(`认证成功，已获得${levelLabel}权限`);
+    }
     setTimeout(() => {
       if (currentTier.level === "internal" || currentTier.level === "topsecret") {
         navigate("/portal");

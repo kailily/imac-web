@@ -2,11 +2,12 @@ function ProfileCenterPage() {
   const { canAccess, authLevel, identity } = useAuth();
   const { navigate } = useRouter();
 
-  const walkerCode = "赤鸦";
-  const walkerRank = authLevel === "topsecret" ? "界标" : "资深溯界者";
+  const walkerCode = identity?.codename || "赤鸦";
+  const walkerRank = identity?.rank || (authLevel === "topsecret" ? "界标" : "资深溯界者");
   const walkerOrg = identity?.organization || "衔尾蛇事务所";
   const walkerId = identity?.staffId || identity?.adminId || "IMAC-OA-0721";
   const walkerName = identity?.name || "陈夜";
+  const walkerContact = identity?.contact || "内部通讯 #7241";
 
   const [activeTab, setActiveTab] = React.useState("profile");
 
@@ -160,7 +161,7 @@ function ProfileCenterPage() {
     status: "在岗",
     joinDate: "安珀历37年春·01",
     access: authLevel === "topsecret" ? "绝密级" : "机密级",
-    contact: "内部通讯 #7241",
+    contact: walkerContact,
     anchor: "制式金属锚",
   });
 

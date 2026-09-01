@@ -1,9 +1,59 @@
+// 部分懒加载：仅异常数据库模块（列表 + 档案详情）按需加载，其余页面在主 bundle 内即时切换
+const LAZY_PAGE_MAP = [{
+  match: p => p === "/database" || p === "/anomaly-archive",
+  fn: "AnomalyArchivePage",
+  src: "pages/AnomalyArchive.js"
+}, {
+  match: p => p.startsWith("/anomaly/"),
+  fn: "AnomalyDetailPage",
+  src: "pages/AnomalyDetail.js"
+}];
+const _pageLoaded = {};
+function loadPageScript(src) {
+  return new Promise((resolve, reject) => {
+    if (_pageLoaded[src]) return resolve();
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = () => {
+      _pageLoaded[src] = true;
+      resolve();
+    };
+    s.onerror = () => {
+      reject(new Error("页面加载失败: " + src));
+    };
+    document.body.appendChild(s);
+  });
+}
+function PendingPlaceholder() {
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "140px 24px",
+      textAlign: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "13px",
+      color: "var(--accent-red-bright)",
+      letterSpacing: "0.2em",
+      marginBottom: "12px"
+    }
+  }, "FILE LOADING"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "11px",
+      color: "var(--text-muted)",
+      letterSpacing: "0.08em"
+    }
+  }, "\u6863\u6848\u6570\u636E\u8F7D\u5165\u4E2D\uFF0C\u8BF7\u7A0D\u5019\u2026"));
+}
 function App() {
   const {
     route
   } = useRouter();
   const [scrolled, setScrolled] = React.useState(false);
   const [showBackTop, setShowBackTop] = React.useState(false);
+  const [lazyTick, setLazyTick] = React.useState(0);
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -23,6 +73,19 @@ function App() {
   const qIdx = route.indexOf("?");
   const routePath = qIdx >= 0 ? route.substring(0, qIdx) : route;
   const routeQuery = qIdx >= 0 ? route.substring(qIdx + 1) : "";
+
+  // 懒加载：当前路由需要但尚未加载的异常数据库页面脚本
+  React.useEffect(() => {
+    const entry = LAZY_PAGE_MAP.find(e => e.match(routePath));
+    if (!entry || window[entry.fn]) return;
+    let cancelled = false;
+    loadPageScript(entry.src).then(() => {
+      if (!cancelled) setLazyTick(n => n + 1);
+    }, () => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [routePath, lazyTick]);
   let PageComponent;
   let pageKey = routePath;
   let routeProps = {};
@@ -59,13 +122,13 @@ function App() {
   } else if (routePath === "/anomaly-auth") {
     PageComponent = AnomalyAuthPage;
   } else if (routePath === "/database" || routePath === "/anomaly-archive") {
-    PageComponent = AnomalyArchivePage;
+    PageComponent = window.AnomalyArchivePage || PendingPlaceholder;
     routeProps = {
       routeQuery
     };
     pageKey = "database";
   } else if (routePath.startsWith("/anomaly/")) {
-    PageComponent = AnomalyDetailPage;
+    PageComponent = window.AnomalyDetailPage || PendingPlaceholder;
     const id = routePath.replace("/anomaly/", "");
     routeProps = {
       anomalyId: id

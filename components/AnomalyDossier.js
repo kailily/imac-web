@@ -45,14 +45,14 @@ function AnomalyDossier({
     .detail-back-btn {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(196, 40, 40, 0.1);
       border: 1px solid var(--accent-red-bright);
       color: var(--accent-red-bright);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: 0.08em;
-      padding: 6px 14px;
+      padding: 9px 18px;
       cursor: pointer;
       border-radius: 4px;
       transition: all 0.2s ease;
@@ -602,8 +602,8 @@ function AnomalyDossier({
     className: "detail-back-btn",
     onClick: () => navigate("/database")
   }, /*#__PURE__*/React.createElement("svg", {
-    width: "12",
-    height: "12",
+    width: "15",
+    height: "15",
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",

@@ -42,14 +42,14 @@ function AnomalyDossier({ data }) {
     .detail-back-btn {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(196, 40, 40, 0.1);
       border: 1px solid var(--accent-red-bright);
       color: var(--accent-red-bright);
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 14px;
       letter-spacing: 0.08em;
-      padding: 6px 14px;
+      padding: 9px 18px;
       cursor: pointer;
       border-radius: 4px;
       transition: all 0.2s ease;
@@ -577,7 +577,7 @@ function AnomalyDossier({ data }) {
           </div>
           <div className="detail-back-row">
             <button className="detail-back-btn" onClick={() => navigate("/database")}>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <polyline points="15 18 9 12 15 6"/>
               </svg>
               返回异常信息数据库

@@ -82,6 +82,18 @@ function RegisterPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
+      // 保存注册信息到本地（纯前端演示：信息仅保留在本机浏览器 localStorage，不上传任何服务器）
+      try {
+        localStorage.setItem("imac_registered_profile", JSON.stringify({
+          realName: formData.realName.trim(),
+          codename: formData.codename.trim(),
+          imacId: formData.imacId.trim().toUpperCase(),
+          organization: formData.organization,
+          rank: formData.rank,
+          contact: formData.contact.trim(),
+          password: formData.password,
+        }));
+      } catch (err) {}
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
