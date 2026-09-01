@@ -307,6 +307,38 @@ function AnomalyArchivePage({ routeQuery }) {
       firstRecord: "安珀历38年",
       featured: false,
     },
+    {
+      id: "SPA-2088",
+      name: "捷径门",
+      nameEn: "Shortcut Gate",
+      level: "safe",
+      levelText: "安全级",
+      accessLevel: "public",
+      category: "SP",
+      categoryName: "空间类",
+      org: "衔尾蛇事务所",
+      status: "applied",
+      statusText: "应用中",
+      survival: "100%",
+      firstRecord: "安珀历26年",
+      featured: true,
+    },
+    {
+      id: "OBA-0148",
+      name: "安眠枕",
+      nameEn: "Slumber Pillow",
+      level: "safe",
+      levelText: "安全级",
+      accessLevel: "public",
+      category: "OB",
+      categoryName: "物品类",
+      org: "晨星团",
+      status: "applied",
+      statusText: "应用中",
+      survival: "100%",
+      firstRecord: "安珀历24年",
+      featured: true,
+    },
   ];
 
   const getInitialCat = () => {
@@ -359,6 +391,7 @@ function AnomalyArchivePage({ routeQuery }) {
 
   const levelFilters = [
     { key: "all", label: "全部" },
+    { key: "safe", label: "安全级" },
     { key: "ordinary", label: "常规级" },
     { key: "hazardous", label: "危险级" },
     { key: "doomed", label: "厄运级" },
@@ -802,7 +835,7 @@ function AnomalyArchivePage({ routeQuery }) {
                 >
                     <div
                       className="archive-row"
-                      style={{ borderLeft: `3px solid ${a.level === "ordinary" ? "#4a7c59" : a.level === "hazardous" ? "#c49a2c" : a.level === "doomed" ? "#d46828" : a.level === "abyssal" ? "#c42828" : a.level === "unknown" ? "#7a3ab0" : "var(--accent-red-bright)"}` }}
+                      style={{ borderLeft: `3px solid ${a.level === "safe" ? "#3fb8a4" : a.level === "ordinary" ? "#4a7c59" : a.level === "hazardous" ? "#c49a2c" : a.level === "doomed" ? "#d46828" : a.level === "abyssal" ? "#c42828" : a.level === "unknown" ? "#7a3ab0" : "var(--accent-red-bright)"}` }}
                       onClick={() => navigate(`/anomaly/${a.id}`)}
                     >
                       <div className="archive-row-id mono">{a.id}</div>
@@ -822,6 +855,7 @@ function AnomalyArchivePage({ routeQuery }) {
                     </div>
                     <div className="archive-row-org">{a.org}</div>
                     <div className={`archive-row-status status-${a.status}`}>
+                      {a.status === "applied" && "● 应用中"}
                       {a.status === "active" && (a.statusText === "待命" ? "● 待命" : "● 活跃")}
                       {a.status === "resolved" && "● 已解决"}
                       {a.status === "quarantined" && "● 隔离中"}

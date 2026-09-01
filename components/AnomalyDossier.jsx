@@ -495,6 +495,7 @@ function AnomalyDossier({ data }) {
 
   // 等级/状态颜色映射（等级与状态按各自类型着色）
   const levelColors = {
+    safe: "#3fb8a4",
     ordinary: "#4a7c59",
     hazardous: "#c49a2c",
     doomed: "#d46828",
@@ -506,6 +507,7 @@ function AnomalyDossier({ data }) {
     resolved: "#4a7c59",
     dormant: "#6a7a8c",
     safe: "#4a7c59",
+    applied: "#3fb8a4",
     quarantined: "#7a3ab0",
   };
   const renderCell = (v) => {

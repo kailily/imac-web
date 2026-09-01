@@ -21,6 +21,8 @@ function AnomalyDetailPage() {
   const isVoid = anomalyId === "PHA-0001";
   const isLoop = anomalyId === "SPA-0421";
   const isRift = anomalyId === "PHA-0182";
+  const isShortcut = anomalyId === "SPA-2088";
+  const isSlumber = anomalyId === "OBA-0148";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -1359,6 +1361,182 @@ function AnomalyDetailPage() {
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: loopData
+    });
+  }
+  if (isShortcut) {
+    const shortcutData = {
+      id: "SPA-2088",
+      name: "捷径门",
+      nameEn: "SHORTCUT GATE · SAFE",
+      stamp: "公开 · PUBLIC",
+      classification: "PUBLIC",
+      ver: "13.7",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "SPA-2088"), "名称", "捷径门 · Shortcut Gate"], ["所属管辖", "衔尾蛇事务所 · 民用异常应用处", "首次记录", "安珀历26年 · 鸣海城"], ["异常等级", {
+        levelKey: "safe",
+        text: "安全级 · SAFE"
+      }, "当前状态", {
+        statusKey: "applied",
+        text: "● 应用中 APPLIED"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        key: "s",
+        style: {
+          color: "var(--level-safe)"
+        }
+      }, "100%"), "（应用13年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 持续运营中"]],
+      discovery: ["安珀历26年春，鸣海城地铁三号线「南站—会展中心」区间施工时，盾构机在地下一处废弃管道内掘出一对「对门」：两扇相距二十八公里、造型相同的旧式铁门，分别嵌在管道两侧的岩壁里。工人推开其中一扇，竟从另一扇门里走了出来——施工日志记录了这一过程，全程不到三秒。", "衔尾蛇事务所在接到异常热线上报后接管现场，对两扇门进行了为期六个月的结构性研究，确认这是一处规则稳定、可重复触发的空间折叠型异常。经 IMAC 民用异常应用委员会评估，于安珀历27年正式立项为「捷径门」民用应用项目。"],
+      features: ["捷径门是一对<strong>规则稳定的空间折叠通道</strong>（安全级）：两扇门之间以空间折叠连接，通过者从一扇门进入、另一扇门走出，实际位移二十八公里，全程缩短为约三秒的「穿行」。", "经过十余年持续运营，捷径门已被纳入鸣海城公共交通体系，由衔尾蛇事务所民用异常应用处管理，与地铁运营系统联动调度，每年秋分日停运十二小时进行规则校准。"],
+      verifiedRules: [{
+        num: "一",
+        title: "双向唯一",
+        desc: "两扇门严格一一对应：进入任意一扇，只能从另一扇走出，不存在第三出口。穿行方向不限。"
+      }, {
+        num: "二",
+        title: "单人限重",
+        desc: "每次仅允许一人穿行，随身物品总重不得超过20公斤；两批乘客之间须保持至少30秒间隔，避免穿行重叠。"
+      }, {
+        num: "三",
+        title: "凭证通行",
+        desc: "仅限持「通勤卡」的登记乘客使用，卡片与本人绑定、不可转借；未持卡者接近门体不会触发穿行，只会被引导离开。"
+      }, {
+        num: "四",
+        title: "年度校准",
+        desc: "每年秋分日停运十二小时进行规则校准。校准期间两扇门失去连接，任何穿行尝试均无效。"
+      }],
+      speculatedRules: ["两扇门之间的「穿行」疑似并非瞬移，而是将二十八公里路径压缩为折叠通道——通过者身体在通道内实际「走」过了这段距离，只是感知不到", "门的连接强度与季节有关：秋季校准期间连接最弱，疑似与「秋分」这一时间节点存在未被完全解析的关联", "地下管道中「恰好」成对出现的岩壁结构暗示，这对门可能不是自然形成的，而是某种更大尺度异常的一部分"],
+      entryRecords: [{
+        term: "试点运营",
+        year: "安珀历27年·春",
+        count: 1200,
+        org: "鸣海城交通局",
+        result: "日通行千余人 · 零事故",
+        status: "safe"
+      }, {
+        term: "年度校准",
+        year: "每年·秋分",
+        count: 12,
+        org: "衔尾蛇事务所",
+        result: "历次校准均顺利完成",
+        status: "safe"
+      }, {
+        term: "运营至今",
+        year: "安珀历39年",
+        count: 0,
+        org: "衔尾蛇事务所",
+        result: "零事故 · 零异常复发",
+        status: "safe"
+      }],
+      phenomena: ["<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。", "<strong>「双门温差」：</strong>长期监测发现，两扇门之间的温差恒定为1.7℃（南站侧恒高于会展中心侧），与季节无关，疑似为折叠通道内的能量残余。温差读数在校准期间归零。"],
+      imacNote: "捷径门是 IMAC 民用异常应用计划中最早、也是最成功的落地项目之一：把一个空间折叠型异常，变成了一条让市民每天少花九十分钟的通勤通道。安全级的前提，是规则被完全解析、应用被严格监管。请市民朋友放心使用，也请记住：任何异常的应用都必须以「规则绝对」为前提——请遵守现场引导，持卡一人一次。",
+      suggestedActions: ["维持年度校准与日常监测，持续收集「灰色走廊」目击报告（目前无任何风险记录）", "评估将同一应用模型推广至其他城市的可行性（需确认异常对「地理位置」的绑定条件）", "与地铁运营方联合开展每季度一次的安全演练，确保突发情况下的有序疏散"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u8854\u5C3E\u86C7\u4E8B\u52A1\u6240\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u5F02\u5E38\u5E94\u7528\u5904\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6377\u5F84\u95E8\u8FD0\u8425\u5341\u4E09\u5E74\uFF0C\u96F6\u4E8B\u6545\uFF0C\u662F\u6211\u4EEC\u6700\u62FF\u5F97\u51FA\u624B\u7684\u6C11\u7528\u9879\u76EE\u3002\u4F46\u5185\u90E8\u7684\u7ED3\u8BBA\u5FC5\u987B\u5199\u6E05\u695A\uFF1A\u5B83\u300C\u5B89\u5168\u300D\uFF0C\u662F\u56E0\u4E3A\u6211\u4EEC\u5B88\u4F4F\u4E86\u6BCF\u4E00\u6761\u89C4\u5219\u2014\u2014\u9650\u91CD\u3001\u95F4\u9694\u3001\u6301\u5361\u3001\u6821\u51C6\uFF0C\u4E00\u6761\u90FD\u6CA1\u677E\u8FC7\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u90A32%\u7684\u300C\u7070\u8272\u8D70\u5ECA\u300D\u62A5\u544A\u6211\u4EEC\u4E00\u76F4\u5728\u8DDF\u8FDB\u3002\u76EE\u524D\u6CA1\u6709\u4EFB\u4F55\u6570\u636E\u8868\u660E\u5B83\u4E0E\u98CE\u9669\u76F8\u5173\uFF0C\u4F46\u4E5F\u6CA1\u6709\u6570\u636E\u80FD\u89E3\u91CA\u5B83\u3002\u6309\u89C4\u77E9\uFF0C\u672A\u89E3\u6790\u7684\u73B0\u8C61\u4E0D\u4E0A\u62A5\u516C\u5F00\u6863\u6848\u2014\u2014\u8BF7\u7EE7\u7EED\u76EF\u4F4F\u5B83\uFF0C\u522B\u8BA9\u5B83\u53D8\u6210\u6863\u6848\u91CC\u90A3\u53E5\u300C\u540E\u6765\u2026\u2026\u300D\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u8854\u5C3E\u86C7\u4E8B\u52A1\u6240 \xB7 \u6C11\u7528\u5F02\u5E38\u5E94\u7528\u5904 \xB7 \u5E94\u7528\u7EC4\u7EC4\u957F")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: shortcutData
+    });
+  }
+  if (isSlumber) {
+    const slumberData = {
+      id: "OBA-0148",
+      name: "安眠枕",
+      nameEn: "SLUMBER PILLOW · SAFE",
+      stamp: "公开 · PUBLIC",
+      classification: "PUBLIC",
+      ver: "21.3",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "OBA-0148"), "名称", "安眠枕 · Slumber Pillow"], ["所属管辖", "晨星团 · 民用物品应用科", "首次记录", "安珀历24年 · 白松城"], ["异常等级", {
+        levelKey: "safe",
+        text: "安全级 · SAFE"
+      }, "当前状态", {
+        statusKey: "applied",
+        text: "● 应用中 APPLIED"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        key: "s",
+        style: {
+          color: "var(--level-safe)"
+        }
+      }, "100%"), "（应用15年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 处方限量发放"]],
+      discovery: ["安珀历24年秋，白松城一名长期失眠的纺织厂女工向晨星团设立的社区异常咨询点求助：她家中一只旧枕头发现在特定睡姿下，能让她在数分钟内陷入「从未有过」的深度睡眠，醒来后精神焕发，且「完全记不起梦」。晨星团派员上门核实，确认该枕头为异常物品。", "经结构解析，异常被确认依附于枕头的材质与内部结构，而非使用者。晨星团在取得原主同意后，通过逐层复刻「规则载体」的方式实现了可控复制，经 IMAC 民用异常应用委员会评估后立项为「安眠枕」项目，于安珀历25年以处方形式向社会发放。"],
+      features: ["安眠枕是一只<strong>可复制的睡眠辅助型异常物品</strong>（安全级）：在绑定使用者的正确睡姿下，可使其在约3分钟内进入最深度的无梦睡眠，并于约90分钟后自然苏醒，醒来即精神饱满、无需再补觉。", "「安眠枕」项目由晨星团民用物品应用科管理，通过医疗机构处方限量发放，目前已服务约四千名经评估确认的慢性失眠患者，应用十五年零事故。"],
+      verifiedRules: [{
+        num: "一",
+        title: "绑定使用者",
+        desc: "枕头会「记住」第一位长期使用者的气味并与之绑定：同一枕头仅供一人使用，转借他人后效果消失，回归普通枕头。"
+      }, {
+        num: "二",
+        title: "每日一次",
+        desc: "效果每日仅触发一次，且两次使用间隔不得少于8小时；连续使用会导致次日晨间嗜睡，属正常现象，非异常失效。"
+      }, {
+        num: "三",
+        title: "九十唤醒",
+        desc: "入睡后约90分钟自然苏醒，醒来即处于清醒状态、无法再次入睡——该周期与一个完整深睡周期吻合，为评估时认定的「安全唤醒窗口」。"
+      }, {
+        num: "四",
+        title: "禁忌症",
+        desc: "严重心血管疾病、睡眠呼吸暂停患者及孕妇禁用。使用者须通过晨星团健康评估并持处方领取，禁止私下交易。"
+      }],
+      speculatedRules: ["「90分钟唤醒」疑似不是异常自设的规则，而是它与人体生理节律的「共振点」——异常选择在深睡周期结束时唤醒使用者，而非其自身有固定周期", "复刻品与原始枕头的效果存在细微差异（复刻品入睡时间略长），暗示「规则载体」中仍有未被完全复刻的成分", "「晨间空白」现象与记忆整理阶段的交互机制尚未完全解析，但十五年数据未显示任何认知损伤"],
+      entryRecords: [{
+        term: "试点发放",
+        year: "安珀历25年·春",
+        count: 120,
+        org: "晨星团",
+        result: "120人 · 全部正常使用",
+        status: "safe"
+      }, {
+        term: "正式应用",
+        year: "安珀历27年",
+        count: 4000,
+        org: "晨星团/白松城医院",
+        result: "累计约四千人 · 零事故",
+        status: "safe"
+      }, {
+        term: "随访至今",
+        year: "安珀历39年",
+        count: 0,
+        org: "晨星团",
+        result: "无认知损伤 · 无依赖报告",
+        status: "safe"
+      }],
+      phenomena: ["<strong>「无梦区间」：</strong>使用者普遍报告使用期间「完全记不起梦」——既非忘记，也非无梦，而是醒来后对睡眠过程毫无记忆，仿佛时间被直接「跳过」。该现象在复刻品上同样存在，程度略轻。", "<strong>「晨间空白」：</strong>醒来后约3分钟内，使用者处于清醒但「放空」的状态，可正常行动与应答，但之后无法回忆起这3分钟内的大部分内容。随访未发现该现象对日常造成影响。"],
+      imacNote: "安眠枕是 IMAC 民用异常应用计划中「把异常变成生活用品」的代表项目：一只让失眠者好好睡一觉的枕头。它再次印证了那条铁律——异常遵循一套绝对的行为准则，而被完整解析的规则，可以成为服务人类生活的一部分。请使用者严格按处方使用：每日一次、独自使用、定期随访。安全，从来不是理所当然。",
+      suggestedActions: ["维持处方发放与年度随访制度，持续统计「晨间空白」与长期使用数据", "推进「规则载体」复刻精度研究，缩小复刻品与原始枕头的差异", "评估将安眠枕纳入公共心理健康服务体系的可行性（需扩大禁忌症筛查范围）"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u6668\u661F\u56E2\u5185\u90E8\u8BC4\u4F30 \xB7 \u6C11\u7528\u7269\u54C1\u5E94\u7528\u79D1\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5B89\u7720\u6795\u662F\u6668\u661F\u56E2\u6700\u5B89\u9759\u7684\u9879\u76EE\u2014\u2014\u5B83\u4E0D\u60CA\u9669\uFF0C\u4E0D\u4F20\u5947\uFF0C\u5C31\u662F\u4E00\u53EA\u6795\u5934\uFF0C\u8BA9\u56DB\u5343\u4E2A\u5931\u7720\u7684\u4EBA\u597D\u597D\u7761\u4E86\u56DB\u5343\u4E2A\u665A\u4E0A\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u7684\u7ED3\u8BBA\u5F88\u6734\u7D20\uFF1A\u5F02\u5E38\u4E0D\u4E00\u5B9A\u662F\u300C\u5371\u9669\u7684\u4E1C\u897F\u300D\u3002\u5F53\u5B83\u7684\u89C4\u5219\u88AB\u4E00\u6761\u6761\u89E3\u6790\u6E05\u695A\uFF0C\u5F53\u5B83\u7684\u8FB9\u754C\u88AB\u4E00\u6B21\u6B21\u786E\u8BA4\uFF0C\u5B83\u5C31\u53EF\u4EE5\u50CF\u4E00\u628A\u4F1E\u3001\u4E00\u76CF\u706F\u4E00\u6837\uFF0C\u6210\u4E3A\u751F\u6D3B\u7684\u4E00\u90E8\u5206\u3002\u6377\u5F84\u95E8\u8FDE\u63A5\u57CE\u5E02\uFF0C\u5B89\u7720\u6795\u5B88\u62A4\u591C\u665A\u2014\u2014\u8FD9\u5927\u6982\u5C31\u662F\u300C\u6C11\u7528\u5E94\u7528\u300D\u8FD9\u56DB\u4E2A\u5B57\u7684\u610F\u4E49\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u552F\u4E00\u9700\u8981\u6301\u7EED\u7559\u610F\u7684\uFF0C\u662F\u300C\u6668\u95F4\u7A7A\u767D\u300D\u548C\u90A32%\u7684\u590D\u523B\u5DEE\u5F02\u3002\u76EE\u524D\u6240\u6709\u6570\u636E\u90FD\u6307\u5411\u5B89\u5168\uFF0C\u4F46\u6C11\u7528\u5E94\u7528\u7684\u539F\u5219\u662F\uFF1A\u5B81\u53EF\u6162\uFF0C\u4E0D\u53EF\u677E\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u6668\u661F\u56E2 \xB7 \u6C11\u7528\u7269\u54C1\u5E94\u7528\u79D1 \xB7 \u79D1\u957F \u7A0B\u4E00\u82C7")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: slumberData
     });
   }
   if (isRift) {

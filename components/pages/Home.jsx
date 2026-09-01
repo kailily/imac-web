@@ -6,7 +6,7 @@ function HomePage() {
     {
       icon: "M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7L12 2z M12 22V12 M2 7l10 5 10-5",
       title: "规则是绝对的",
-      desc: "进入异常后必须遵守它的规则，违反就会触发惩罚。没有例外，也没有「主角光环」。",
+      desc: "每一个异常都遵循一套绝对的行为准则：从出现、运作到解除，恒定不变、可观测、可归纳。没有随机，没有例外——这正是它们可以被理解、被驯服的原因。",
     },
     {
       icon: "M9 18l6-6-6-6",
@@ -26,6 +26,11 @@ function HomePage() {
   ];
 
   const levels = [
+    {
+      key: "safe", cn: "安全级", en: "SAFE",
+      publicDesc: "规则完全可控、经评估无威胁。部分安全级异常已被纳入日常生活——它们是便利，不是危险。",
+      color: "var(--level-safe)",
+    },
     {
       key: "ordinary", cn: "常规级", en: "ORDINARY",
       publicDesc: "规则简单明确，存活率高。普通人如果冷静应对，通常可以自行撤离。",
@@ -1284,7 +1289,7 @@ function HomePage() {
               <h2 className="hp-section-title">异常有多危险？</h2>
             </div>
             <p className="hp-section-subtitle">
-              IMAC将异常分为五个危险等级。对普通人来说，了解等级意味着知道应该远离到什么程度。
+              IMAC将异常分为六个危险等级。对普通人来说，了解等级意味着知道应该远离到什么程度。
             </p>
           </div>
 

@@ -6,7 +6,7 @@ function HomePage() {
   const introFeatures = [{
     icon: "M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7L12 2z M12 22V12 M2 7l10 5 10-5",
     title: "规则是绝对的",
-    desc: "进入异常后必须遵守它的规则，违反就会触发惩罚。没有例外，也没有「主角光环」。"
+    desc: "每一个异常都遵循一套绝对的行为准则：从出现、运作到解除，恒定不变、可观测、可归纳。没有随机，没有例外——这正是它们可以被理解、被驯服的原因。"
   }, {
     icon: "M9 18l6-6-6-6",
     title: "规则是可以读懂的",
@@ -21,6 +21,12 @@ function HomePage() {
     desc: "全球有8个认证组织、1200余名专业溯界者在专门应对异常。遇到异常交给他们就好。"
   }];
   const levels = [{
+    key: "safe",
+    cn: "安全级",
+    en: "SAFE",
+    publicDesc: "规则完全可控、经评估无威胁。部分安全级异常已被纳入日常生活——它们是便利，不是危险。",
+    color: "var(--level-safe)"
+  }, {
     key: "ordinary",
     cn: "常规级",
     en: "ORDINARY",
@@ -1370,7 +1376,7 @@ function HomePage() {
     className: "hp-section-title"
   }, "\u5F02\u5E38\u6709\u591A\u5371\u9669\uFF1F")), /*#__PURE__*/React.createElement("p", {
     className: "hp-section-subtitle"
-  }, "IMAC\u5C06\u5F02\u5E38\u5206\u4E3A\u4E94\u4E2A\u5371\u9669\u7B49\u7EA7\u3002\u5BF9\u666E\u901A\u4EBA\u6765\u8BF4\uFF0C\u4E86\u89E3\u7B49\u7EA7\u610F\u5473\u7740\u77E5\u9053\u5E94\u8BE5\u8FDC\u79BB\u5230\u4EC0\u4E48\u7A0B\u5EA6\u3002")), /*#__PURE__*/React.createElement("div", {
+  }, "IMAC\u5C06\u5F02\u5E38\u5206\u4E3A\u516D\u4E2A\u5371\u9669\u7B49\u7EA7\u3002\u5BF9\u666E\u901A\u4EBA\u6765\u8BF4\uFF0C\u4E86\u89E3\u7B49\u7EA7\u610F\u5473\u7740\u77E5\u9053\u5E94\u8BE5\u8FDC\u79BB\u5230\u4EC0\u4E48\u7A0B\u5EA6\u3002")), /*#__PURE__*/React.createElement("div", {
     className: "levels-citizen"
   }, levels.map(lv => /*#__PURE__*/React.createElement("div", {
     key: lv.key,
