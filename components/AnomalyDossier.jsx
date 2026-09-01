@@ -39,6 +39,26 @@ function AnomalyDossier({ data }) {
       border-radius: 50%;
       background-color: var(--level-ordinary);
     }
+    .detail-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(196, 40, 40, 0.1);
+      border: 1px solid var(--accent-red-bright);
+      color: var(--accent-red-bright);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .detail-back-btn:hover {
+      background: var(--accent-red-bright);
+      color: #fff;
+    }
     .detail-breadcrumbs {
       padding: 24px 0;
       border-bottom: 1px solid var(--border-color);
@@ -532,9 +552,17 @@ function AnomalyDossier({ data }) {
       <div className="detail-page">
         <div className="detail-auth-bar">
           <div className="detail-auth-inner">
-            <div className="detail-auth-status">
-              <div className="dot"></div>
-              <span>已认证 · 访问级别：标准 / ACCESS LEVEL: STANDARD</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              <button className="detail-back-btn" onClick={() => navigate("/database")}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                返回异常信息数据库
+              </button>
+              <div className="detail-auth-status">
+                <div className="dot"></div>
+                <span>已认证 · 访问级别：标准 / ACCESS LEVEL: STANDARD</span>
+              </div>
             </div>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-muted)", cursor: "pointer", letterSpacing: "0.1em" }} onClick={() => navigate("/")}>
               退出认证

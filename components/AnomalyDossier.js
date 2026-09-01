@@ -42,6 +42,26 @@ function AnomalyDossier({
       border-radius: 50%;
       background-color: var(--level-ordinary);
     }
+    .detail-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(196, 40, 40, 0.1);
+      border: 1px solid var(--accent-red-bright);
+      color: var(--accent-red-bright);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .detail-back-btn:hover {
+      background: var(--accent-red-bright);
+      color: #fff;
+    }
     .detail-breadcrumbs {
       padding: 24px 0;
       border-bottom: 1px solid var(--border-color);
@@ -543,10 +563,28 @@ function AnomalyDossier({
   }, /*#__PURE__*/React.createElement("div", {
     className: "detail-auth-inner"
   }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: "16px"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "detail-back-btn",
+    onClick: () => navigate("/database")
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "12",
+    height: "12",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.5"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "15 18 9 12 15 6"
+  })), "\u8FD4\u56DE\u5F02\u5E38\u4FE1\u606F\u6570\u636E\u5E93"), /*#__PURE__*/React.createElement("div", {
     className: "detail-auth-status"
   }, /*#__PURE__*/React.createElement("div", {
     className: "dot"
-  }), /*#__PURE__*/React.createElement("span", null, "\u5DF2\u8BA4\u8BC1 \xB7 \u8BBF\u95EE\u7EA7\u522B\uFF1A\u6807\u51C6 / ACCESS LEVEL: STANDARD")), /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("span", null, "\u5DF2\u8BA4\u8BC1 \xB7 \u8BBF\u95EE\u7EA7\u522B\uFF1A\u6807\u51C6 / ACCESS LEVEL: STANDARD"))), /*#__PURE__*/React.createElement("span", {
     style: {
       fontFamily: "var(--font-mono)",
       fontSize: "11px",
