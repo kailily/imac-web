@@ -63,7 +63,7 @@ function AnomalyDossier({
       color: #fff;
     }
     .detail-back-row {
-      padding-top: 24px;
+      padding: 14px 0 22px;
       display: flex;
       align-items: center;
     }
@@ -583,20 +583,6 @@ function AnomalyDossier({
   }, "\u9000\u51FA\u8BA4\u8BC1"))), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "detail-back-row"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: "detail-back-btn",
-    onClick: () => navigate("/database")
-  }, /*#__PURE__*/React.createElement("svg", {
-    width: "12",
-    height: "12",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2.5"
-  }, /*#__PURE__*/React.createElement("polyline", {
-    points: "15 18 9 12 15 6"
-  })), "\u8FD4\u56DE\u5F02\u5E38\u4FE1\u606F\u6570\u636E\u5E93")), /*#__PURE__*/React.createElement("div", {
     className: "detail-breadcrumbs"
   }, /*#__PURE__*/React.createElement("span", {
     className: "detail-crumb",
@@ -611,6 +597,20 @@ function AnomalyDossier({
   }, "/"), /*#__PURE__*/React.createElement("span", {
     className: "detail-crumb current"
   }, data.id, " ", data.name)), /*#__PURE__*/React.createElement("div", {
+    className: "detail-back-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "detail-back-btn",
+    onClick: () => navigate("/database")
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "12",
+    height: "12",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.5"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "15 18 9 12 15 6"
+  })), "\u8FD4\u56DE\u5F02\u5E38\u4FE1\u606F\u6570\u636E\u5E93")), /*#__PURE__*/React.createElement("div", {
     className: "detail-body"
   }, /*#__PURE__*/React.createElement("div", {
     className: "detail-file-header"

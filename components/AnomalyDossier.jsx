@@ -60,7 +60,7 @@ function AnomalyDossier({ data }) {
       color: #fff;
     }
     .detail-back-row {
-      padding-top: 24px;
+      padding: 14px 0 22px;
       display: flex;
       align-items: center;
     }
@@ -568,6 +568,13 @@ function AnomalyDossier({ data }) {
         </div>
 
         <div className="container">
+          <div className="detail-breadcrumbs">
+            <span className="detail-crumb" onClick={() => navigate("/")}>首页</span>
+            <span className="detail-crumb-sep">/</span>
+            <span className="detail-crumb" onClick={() => navigate("/database")}>异常信息数据库</span>
+            <span className="detail-crumb-sep">/</span>
+            <span className="detail-crumb current">{data.id} {data.name}</span>
+          </div>
           <div className="detail-back-row">
             <button className="detail-back-btn" onClick={() => navigate("/database")}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -575,13 +582,6 @@ function AnomalyDossier({ data }) {
               </svg>
               返回异常信息数据库
             </button>
-          </div>
-          <div className="detail-breadcrumbs">
-            <span className="detail-crumb" onClick={() => navigate("/")}>首页</span>
-            <span className="detail-crumb-sep">/</span>
-            <span className="detail-crumb" onClick={() => navigate("/database")}>异常信息数据库</span>
-            <span className="detail-crumb-sep">/</span>
-            <span className="detail-crumb current">{data.id} {data.name}</span>
           </div>
 
           <div className="detail-body">
