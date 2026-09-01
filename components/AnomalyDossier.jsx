@@ -654,7 +654,7 @@ function AnomalyDossier({ data }) {
               <div className="file-section">
                 <div className="file-section-header">
                   <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">进入记录</span>
+                  <span className="file-section-title">{data.recordsTitle || "进入记录"}</span>
                 </div>
                 <table className="entry-records">
                   <thead>

@@ -789,10 +789,11 @@ function AnomalyDetailPage() {
         { num: "三", title: "凭证通行", desc: "仅限持「通勤卡」的登记乘客使用，卡片与本人绑定、不可转借；未持卡者接近门体不会触发穿行，只会被引导离开。" },
         { num: "四", title: "年度校准", desc: "每年秋分日停运十二小时进行规则校准。校准期间两扇门失去连接，任何穿行尝试均无效。" },
       ],
+      recordsTitle: "应用记录",
       entryRecords: [
-        { term: "首次接触", year: "安珀历26年·春", count: 3, org: "鸣海城地铁施工队", result: "施工误入 · 全员安全返回", status: "safe" },
-        { term: "结构研究", year: "安珀历26年·夏", count: 6, org: "衔尾蛇事务所", result: "规则完全解析 · 评定安全", status: "safe" },
-        { term: "民用应用", year: "安珀历27年·至今", count: 0, org: "鸣海城交通局/衔尾蛇", result: "已转入民用应用 · 持续运营（详见基本特征）", status: "safe" },
+        { term: "首次接触", year: "安珀历26年·春", count: "-", org: "鸣海城地铁施工队", result: "施工误入 · 全员安全返回", status: "safe" },
+        { term: "结构研究", year: "安珀历26年·夏", count: "-", org: "衔尾蛇事务所", result: "规则完全解析 · 评定安全", status: "safe" },
+        { term: "民用应用", year: "安珀历27年·至今", count: "-", org: "鸣海城交通局/衔尾蛇", result: "已转入民用应用 · 持续运营（详见基本特征）", status: "safe" },
       ],
       phenomena: [
         "<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。",
@@ -805,30 +806,6 @@ function AnomalyDetailPage() {
   }
 
   if (isSlumber) {
-    const slumberMap = (
-      <div className="stair-map">
-        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
-          {/* 枕头轮廓 */}
-          <path d="M55 92 Q 85 58, 170 58 Q 255 58, 285 92 Q 290 112, 262 120 L 78 120 Q 50 112, 55 92 Z"
-            fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
-          {/* 填充层分界线 */}
-          <path d="M80 108 Q 170 78, 260 108" fill="none" stroke="rgba(168,168,180,0.35)" strokeWidth="1" strokeDasharray="4 3"/>
-          {/* 规则载体层（夹层） */}
-          <rect x="148" y="94" width="44" height="8" rx="2" fill="rgba(196,164,44,0.35)" stroke="rgba(196,164,44,0.85)" strokeWidth="1"/>
-          <text x="198" y="102" fill="rgba(196,164,44,0.9)" fontSize="8" fontFamily="monospace">规则载体</text>
-          {/* 层标注 */}
-          <text x="88" y="84" fill="rgba(63,184,164,0.9)" fontSize="8" fontFamily="monospace">面料层</text>
-          <text x="88" y="68" fill="rgba(168,168,180,0.6)" fontSize="8" fontFamily="monospace">填充层</text>
-          {/* 底部标注 */}
-          <text x="52" y="144" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">绑定气味 · 90分钟自然醒</text>
-          <text x="208" y="144" fill="rgba(196,154,44,0.8)" fontSize="8" fontFamily="monospace">每日一次 · 处方发放</text>
-        </svg>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
-          剖面示意 · 异常依附于枕芯夹层的「规则载体」织物结构
-        </div>
-      </div>
-    );
-
     const slumberData = {
       id: "OBA-0148",
       name: "安眠枕",
@@ -854,19 +831,35 @@ function AnomalyDetailPage() {
         "安眠枕是一只<strong>可复制的睡眠辅助型异常物品</strong>（常规级）：在绑定使用者的正确睡姿下，可使其在约3分钟内进入最深度的无梦睡眠，并于约90分钟后自然苏醒，醒来即精神饱满、无需再补觉。",
         "「安眠枕」项目由晨星团民用物品应用科管理，通过医疗机构处方限量发放，目前已服务约四千名经评估确认的慢性失眠患者，应用十五年零事故。",
       ],
-      mapNode: slumberMap,
-      mapTitle: "结构示意 · 剖面",
-      mapTag: "剖面示意 · SECTION",
+      mapNode: (
+        <div className="rules-list">
+          <div className="rule-item verified">
+            <div className="rule-num">一</div>
+            <div className="rule-content"><div className="rule-title">结构组成</div><p className="rule-desc">面料层 / 填充层 / 枕芯夹层——异常依附于夹层的织物结构。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">二</div>
+            <div className="rule-content"><div className="rule-title">规则载体</div><p className="rule-desc">载体为枕芯夹层织物，可整体复刻，复刻品效果与原品一致。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">三</div>
+            <div className="rule-content"><div className="rule-title">使用形态</div><p className="rule-desc">绑定者气味生效 · 每日一次 · 90分钟自然醒。</p></div>
+          </div>
+        </div>
+      ),
+      mapTitle: "结构说明",
+      mapTag: "文字说明 · NOTES",
       verifiedRules: [
         { num: "一", title: "绑定使用者", desc: "枕头会「记住」第一位长期使用者的气味并与之绑定：同一枕头仅供一人使用，转借他人后效果消失，回归普通枕头。" },
         { num: "二", title: "每日一次", desc: "效果每日仅触发一次，且两次使用间隔不得少于8小时；连续使用会导致次日晨间嗜睡，属正常现象，非异常失效。" },
         { num: "三", title: "九十唤醒", desc: "入睡后约90分钟自然苏醒，醒来即处于清醒状态、无法再次入睡——该周期与一个完整深睡周期吻合，为评估时认定的「安全唤醒窗口」。" },
         { num: "四", title: "禁忌症", desc: "严重心血管疾病、睡眠呼吸暂停患者及孕妇禁用。使用者须通过晨星团健康评估并持处方领取，禁止私下交易。" },
       ],
+      recordsTitle: "应用记录",
       entryRecords: [
-        { term: "首次接触", year: "安珀历24年·秋", count: 1, org: "白松城·社区咨询点", result: "使用者上门求助 · 确认异常物品", status: "safe" },
-        { term: "结构解析", year: "安珀历24年·冬", count: 4, org: "晨星团", result: "确认依附材质结构 · 评定安全", status: "safe" },
-        { term: "民用应用", year: "安珀历25年·至今", count: 0, org: "晨星团/白松城医院", result: "已转入民用应用 · 处方限量发放（详见基本特征）", status: "safe" },
+        { term: "首次接触", year: "安珀历24年·秋", count: "-", org: "白松城·社区咨询点", result: "使用者上门求助 · 确认异常物品", status: "safe" },
+        { term: "结构解析", year: "安珀历24年·冬", count: "-", org: "晨星团", result: "确认依附材质结构 · 评定安全", status: "safe" },
+        { term: "民用应用", year: "安珀历25年·至今", count: "-", org: "晨星团/白松城医院", result: "已转入民用应用 · 处方限量发放（详见基本特征）", status: "safe" },
       ],
       phenomena: [
         "<strong>「无梦区间」：</strong>使用者普遍报告使用期间「完全记不起梦」——既非忘记，也非无梦，而是醒来后对睡眠过程毫无记忆，仿佛时间被直接「跳过」。该现象在复刻品上同样存在，程度略轻。",
@@ -878,31 +871,6 @@ function AnomalyDetailPage() {
   }
 
   if (isKettle) {
-    const kettleMap = (
-      <div className="stair-map">
-        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
-          {/* 壶盖 */}
-          <path d="M150 62 Q 170 52, 190 62 L 186 70 L 154 70 Z" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.3"/>
-          {/* 壶身 */}
-          <path d="M150 72 Q 138 95, 142 120 Q 146 136, 170 138 Q 194 136, 198 120 Q 202 95, 190 72 Z"
-            fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
-          {/* 把手 */}
-          <path d="M198 84 Q 226 78, 226 102 Q 226 128, 196 126" fill="none" stroke="rgba(63,184,164,0.8)" strokeWidth="2.2"/>
-          {/* 壶嘴 */}
-          <path d="M142 96 L 118 108 L 116 102 L 140 92 Z" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.8)" strokeWidth="1.2"/>
-          {/* 温度标注 */}
-          <text x="100" y="64" fill="rgba(196,164,44,0.95)" fontSize="10" fontFamily="monospace">60℃ 恒定</text>
-          <text x="206" y="100" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">壶身完整</text>
-          {/* 底部标注 */}
-          <text x="88" y="158" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">温度锚定 · 壶盖/壶身/把手不可分离</text>
-          <text x="216" y="158" fill="rgba(196,154,44,0.8)" fontSize="8" fontFamily="monospace">每日三次</text>
-        </svg>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
-          结构示意 · 异常依附于壶身铜质与内部结构，三者缺一不可
-        </div>
-      </div>
-    );
-
     const kettleData = {
       id: "OBA-0321",
       name: "恒温壶",
@@ -928,19 +896,35 @@ function AnomalyDetailPage() {
         "恒温壶是一只<strong>温度锚定型异常物品</strong>（常规级）：任何液体倒入后约10分钟，温度即恒定为60℃±0.5℃，此后无论放置多久（实测最长72小时）温度不再变化，恰为「刚好能喝」的温度。",
         "「恒温壶」项目由晨星团民用物品应用科管理，目前以定点配发方式服务于白松城及周边十余个社区的养老服务站与医院保温餐，应用二十年零事故。",
       ],
-      mapNode: kettleMap,
-      mapTitle: "结构示意 · 器物",
-      mapTag: "器物结构 · OBJECT",
+      mapNode: (
+        <div className="rules-list">
+          <div className="rule-item verified">
+            <div className="rule-num">一</div>
+            <div className="rule-content"><div className="rule-title">结构组成</div><p className="rule-desc">铜壶整体：壶盖 / 壶身 / 把手 / 壶嘴——异常依附于壶身铜质与内部结构。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">二</div>
+            <div className="rule-content"><div className="rule-title">完整性要求</div><p className="rule-desc">壶盖、壶身、把手三者缺一不可，任一部分分离即失效。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">三</div>
+            <div className="rule-content"><div className="rule-title">作用形态</div><p className="rule-desc">温度锚定于60℃±0.5℃ · 每日三次 · 壶底夜间透淡微光。</p></div>
+          </div>
+        </div>
+      ),
+      mapTitle: "结构说明",
+      mapTag: "文字说明 · NOTES",
       verifiedRules: [
         { num: "一", title: "温度锚定", desc: "倒入任何液体约10分钟后，温度恒定为60℃±0.5℃，此后不再变化；壶空置时无任何异常。" },
         { num: "二", title: "每日三次", desc: "恒温效果每日最多触发三次；第四次起壶回归普通铜壶，次日恢复。此规则为复刻品与原始壶共有的唯一限制。" },
         { num: "三", title: "壶身完整", desc: "壶盖、壶身、把手三者须保持完整；任一部分分离，恒温效果立即消失，重新组合后恢复。" },
         { num: "四", title: "使用禁忌", desc: "禁止用于冲调婴幼儿饮品与需低温保存的药物——恒定的60℃会破坏部分成分。配发点均有醒目标识。" },
       ],
+      recordsTitle: "应用记录",
       entryRecords: [
-        { term: "首次接触", year: "安珀历19年·冬", count: 1, org: "白松城·社区热线", result: "茶馆老板上报 · 确认异常物品", status: "safe" },
-        { term: "结构解析", year: "安珀历19年·冬", count: 4, org: "晨星团", result: "逐层复刻验证 · 评定安全", status: "safe" },
-        { term: "民用应用", year: "安珀历20年·至今", count: 0, org: "晨星团/白松城民政", result: "已转入民用应用 · 定点配发（详见基本特征）", status: "safe" },
+        { term: "首次接触", year: "安珀历19年·冬", count: "-", org: "白松城·社区热线", result: "茶馆老板上报 · 确认异常物品", status: "safe" },
+        { term: "结构解析", year: "安珀历19年·冬", count: "-", org: "晨星团", result: "逐层复刻验证 · 评定安全", status: "safe" },
+        { term: "民用应用", year: "安珀历20年·至今", count: "-", org: "晨星团/白松城民政", result: "已转入民用应用 · 定点配发（详见基本特征）", status: "safe" },
       ],
       phenomena: [
         "<strong>「壶底微光」：</strong>夜间熄灯后，原始铜壶的壶底会透出极淡的暖色微光，温度越高越明显；复刻品上该现象已减弱至几乎不可见，其成因未被解析。",
@@ -1014,10 +998,11 @@ function AnomalyDetailPage() {
         { num: "三", title: "每日一次", desc: "方向提示每日仅连续生效一次，失效后需次日重新激活；佩戴者次日触碰石头即可再次生效。" },
         { num: "四", title: "不保路况", desc: "归途石只保证「方向正确」，不保证路径安全——洪水、断桥、塌方路段同样会被指向。佩戴者仍需自行判断路况。" },
       ],
+      recordsTitle: "应用记录",
       entryRecords: [
-        { term: "首次接触", year: "安珀历21年·冬", count: 1, org: "北境冻原", result: "猎人迷失获救 · 上报异常", status: "safe" },
-        { term: "结构解析", year: "安珀历21年·冬", count: 5, org: "长桥会社/北境守望", result: "确认方向锚定规则 · 评定安全", status: "safe" },
-        { term: "民用应用", year: "安珀历22年·至今", count: 0, org: "长桥会社", result: "已转入民用应用 · 定向发放（详见基本特征）", status: "safe" },
+        { term: "首次接触", year: "安珀历21年·冬", count: "-", org: "北境冻原", result: "猎人迷失获救 · 上报异常", status: "safe" },
+        { term: "结构解析", year: "安珀历21年·冬", count: "-", org: "长桥会社/北境守望", result: "确认方向锚定规则 · 评定安全", status: "safe" },
+        { term: "民用应用", year: "安珀历22年·至今", count: "-", org: "长桥会社", result: "已转入民用应用 · 定向发放（详见基本特征）", status: "safe" },
       ],
       phenomena: [
         "<strong>「掌心微热」：</strong>佩戴期间，归途石在掌心持续保持约体温的温度；离家越远越热，方向正确时热度平稳，方向错误时热度轻微起伏——常被佩戴者称为「石头在叹气」。",
@@ -1029,31 +1014,6 @@ function AnomalyDetailPage() {
   }
 
   if (isSilent) {
-    const silentMap = (
-      <div className="stair-map">
-        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
-          {/* 毛毯本体 */}
-          <rect x="70" y="60" width="200" height="70" rx="6" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
-          {/* 纤维纹路 */}
-          {[78, 94, 110].map((y, i) => (
-            <path key={i} d={"M78 " + y + " Q 170 " + (y - 8) + ", 262 " + y} fill="none" stroke="rgba(168,168,180,0.3)" strokeWidth="1"/>
-          ))}
-          <text x="150" y="100" fill="rgba(63,184,164,0.95)" fontSize="9" fontFamily="monospace">静音毯</text>
-          {/* 覆盖范围 */}
-          <circle cx="170" cy="95" r="58" fill="none" stroke="rgba(196,154,44,0.5)" strokeWidth="1.2" strokeDasharray="5 4"/>
-          <text x="226" y="52" fill="rgba(196,154,44,0.9)" fontSize="8" fontFamily="monospace">半径 2m · 约18分贝</text>
-          {/* 边缘风感标注 */}
-          <text x="24" y="66" fill="rgba(168,168,180,0.65)" fontSize="8" fontFamily="monospace">毯缘风感</text>
-          {/* 底部标注 */}
-          <text x="86" y="152" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">展开生效 · 每日≤8小时</text>
-          <text x="196" y="152" fill="rgba(196,154,44,0.8)" fontSize="8" fontFamily="monospace">警报备份 · 不可覆盖安全设施</text>
-        </svg>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
-          结构示意 · 展开铺平后以毯中心为圆心，半径两米内降噪至约18分贝
-        </div>
-      </div>
-    );
-
     const silentData = {
       id: "PHB-0521",
       name: "静音毯",
@@ -1079,19 +1039,35 @@ function AnomalyDetailPage() {
         "静音毯是一块<strong>降噪型异常织物</strong>（常规级）：展开铺平后，以毯中心为圆心、半径两米内的环境噪音被抑制至约18分贝（相当于安静图书馆的耳语水平），毯内人声清晰可辨，毯外几乎听不见。",
         "「静音毯」项目由边界研究院民用技术应用部管理，目前配发于洛林自由市的公共图书馆静音区、心理诊所咨询室与考试中心，应用二十三年零事故。",
       ],
-      mapNode: silentMap,
-      mapTitle: "结构示意 · 织物",
-      mapTag: "织物结构 · FABRIC",
+      mapNode: (
+        <div className="rules-list">
+          <div className="rule-item verified">
+            <div className="rule-num">一</div>
+            <div className="rule-content"><div className="rule-title">结构组成</div><p className="rule-desc">深灰色毛毯织物（约1.5m×2m）——异常依附于织物结构与纤维排布。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">二</div>
+            <div className="rule-content"><div className="rule-title">纤维形态</div><p className="rule-desc">纤维在显微镜下呈规律性环形排布，即「规则载体」的物理形态；复刻工艺仍依赖原毯采样。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">三</div>
+            <div className="rule-content"><div className="rule-title">作用形态</div><p className="rule-desc">展开铺平后以毯中心为圆心降噪 · 半径两米 · 每日不超过8小时。</p></div>
+          </div>
+        </div>
+      ),
+      mapTitle: "结构说明",
+      mapTag: "文字说明 · NOTES",
       verifiedRules: [
         { num: "一", title: "展开生效", desc: "毯子必须完全展开铺平才生效；折叠、卷起或部分覆盖时无效。收起后效果即时消失。" },
         { num: "二", title: "覆盖范围", desc: "以毯中心为圆心、半径两米内降噪生效；范围内噪音降至约18分贝，人声等有意声音不受影响。" },
         { num: "三", title: "时长限制", desc: "每日连续使用不得超过8小时；超时后毯子自动失效，次日恢复。使用场所须记录开闭时间。" },
         { num: "四", title: "使用禁忌", desc: "禁止用于覆盖逃生通道、火警警报等安全设施——降噪包含警报声，使用场所必须设有毯外监控与报警备份。" },
       ],
+      recordsTitle: "应用记录",
       entryRecords: [
-        { term: "首次接触", year: "安珀历16年·夏", count: 1, org: "洛林自由市旧剧院", result: "翻修发现 · 上报异常", status: "safe" },
-        { term: "结构解析", year: "安珀历17年", count: 5, org: "边界研究院", result: "复刻验证 · 评定安全", status: "safe" },
-        { term: "民用应用", year: "安珀历18年·至今", count: 0, org: "BRI/洛林市立图书馆", result: "已转入民用应用 · 场馆配发（详见基本特征）", status: "safe" },
+        { term: "首次接触", year: "安珀历16年·夏", count: "-", org: "洛林自由市旧剧院", result: "翻修发现 · 上报异常", status: "safe" },
+        { term: "结构解析", year: "安珀历17年", count: "-", org: "边界研究院", result: "复刻验证 · 评定安全", status: "safe" },
+        { term: "民用应用", year: "安珀历18年·至今", count: "-", org: "BRI/洛林市立图书馆", result: "已转入民用应用 · 场馆配发（详见基本特征）", status: "safe" },
       ],
       phenomena: [
         "<strong>「毯缘风感」：</strong>站在降噪范围边缘的使用者普遍报告能感到一层「极轻的、贴着皮肤掠过的风」，跨过边界时「啪」地一下像过了一道薄膜；该风感无温度、无方向，来源未被解析。",
