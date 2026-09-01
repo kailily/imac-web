@@ -805,6 +805,30 @@ function AnomalyDetailPage() {
   }
 
   if (isSlumber) {
+    const slumberMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 枕头轮廓 */}
+          <path d="M55 92 Q 85 58, 170 58 Q 255 58, 285 92 Q 290 112, 262 120 L 78 120 Q 50 112, 55 92 Z"
+            fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
+          {/* 填充层分界线 */}
+          <path d="M80 108 Q 170 78, 260 108" fill="none" stroke="rgba(168,168,180,0.35)" strokeWidth="1" strokeDasharray="4 3"/>
+          {/* 规则载体层（夹层） */}
+          <rect x="148" y="94" width="44" height="8" rx="2" fill="rgba(196,164,44,0.35)" stroke="rgba(196,164,44,0.85)" strokeWidth="1"/>
+          <text x="198" y="102" fill="rgba(196,164,44,0.9)" fontSize="8" fontFamily="monospace">规则载体</text>
+          {/* 层标注 */}
+          <text x="88" y="84" fill="rgba(63,184,164,0.9)" fontSize="8" fontFamily="monospace">面料层</text>
+          <text x="88" y="68" fill="rgba(168,168,180,0.6)" fontSize="8" fontFamily="monospace">填充层</text>
+          {/* 底部标注 */}
+          <text x="52" y="144" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">绑定气味 · 90分钟自然醒</text>
+          <text x="208" y="144" fill="rgba(196,154,44,0.8)" fontSize="8" fontFamily="monospace">每日一次 · 处方发放</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          剖面示意 · 异常依附于枕芯夹层的「规则载体」织物结构
+        </div>
+      </div>
+    );
+
     const slumberData = {
       id: "OBA-0148",
       name: "安眠枕",
@@ -830,6 +854,9 @@ function AnomalyDetailPage() {
         "安眠枕是一只<strong>可复制的睡眠辅助型异常物品</strong>（常规级）：在绑定使用者的正确睡姿下，可使其在约3分钟内进入最深度的无梦睡眠，并于约90分钟后自然苏醒，醒来即精神饱满、无需再补觉。",
         "「安眠枕」项目由晨星团民用物品应用科管理，通过医疗机构处方限量发放，目前已服务约四千名经评估确认的慢性失眠患者，应用十五年零事故。",
       ],
+      mapNode: slumberMap,
+      mapTitle: "结构示意 · 剖面",
+      mapTag: "剖面示意 · SECTION",
       verifiedRules: [
         { num: "一", title: "绑定使用者", desc: "枕头会「记住」第一位长期使用者的气味并与之绑定：同一枕头仅供一人使用，转借他人后效果消失，回归普通枕头。" },
         { num: "二", title: "每日一次", desc: "效果每日仅触发一次，且两次使用间隔不得少于8小时；连续使用会导致次日晨间嗜睡，属正常现象，非异常失效。" },
@@ -851,6 +878,31 @@ function AnomalyDetailPage() {
   }
 
   if (isKettle) {
+    const kettleMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 壶盖 */}
+          <path d="M150 62 Q 170 52, 190 62 L 186 70 L 154 70 Z" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.3"/>
+          {/* 壶身 */}
+          <path d="M150 72 Q 138 95, 142 120 Q 146 136, 170 138 Q 194 136, 198 120 Q 202 95, 190 72 Z"
+            fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
+          {/* 把手 */}
+          <path d="M198 84 Q 226 78, 226 102 Q 226 128, 196 126" fill="none" stroke="rgba(63,184,164,0.8)" strokeWidth="2.2"/>
+          {/* 壶嘴 */}
+          <path d="M142 96 L 118 108 L 116 102 L 140 92 Z" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.8)" strokeWidth="1.2"/>
+          {/* 温度标注 */}
+          <text x="100" y="64" fill="rgba(196,164,44,0.95)" fontSize="10" fontFamily="monospace">60℃ 恒定</text>
+          <text x="206" y="100" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">壶身完整</text>
+          {/* 底部标注 */}
+          <text x="88" y="158" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">温度锚定 · 壶盖/壶身/把手不可分离</text>
+          <text x="216" y="158" fill="rgba(196,154,44,0.8)" fontSize="8" fontFamily="monospace">每日三次</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          结构示意 · 异常依附于壶身铜质与内部结构，三者缺一不可
+        </div>
+      </div>
+    );
+
     const kettleData = {
       id: "OBA-0321",
       name: "恒温壶",
@@ -876,6 +928,9 @@ function AnomalyDetailPage() {
         "恒温壶是一只<strong>温度锚定型异常物品</strong>（常规级）：任何液体倒入后约10分钟，温度即恒定为60℃±0.5℃，此后无论放置多久（实测最长72小时）温度不再变化，恰为「刚好能喝」的温度。",
         "「恒温壶」项目由晨星团民用物品应用科管理，目前以定点配发方式服务于白松城及周边十余个社区的养老服务站与医院保温餐，应用二十年零事故。",
       ],
+      mapNode: kettleMap,
+      mapTitle: "结构示意 · 器物",
+      mapTag: "器物结构 · OBJECT",
       verifiedRules: [
         { num: "一", title: "温度锚定", desc: "倒入任何液体约10分钟后，温度恒定为60℃±0.5℃，此后不再变化；壶空置时无任何异常。" },
         { num: "二", title: "每日三次", desc: "恒温效果每日最多触发三次；第四次起壶回归普通铜壶，次日恢复。此规则为复刻品与原始壶共有的唯一限制。" },
@@ -897,6 +952,34 @@ function AnomalyDetailPage() {
   }
 
   if (isHomeward) {
+    const homewardMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 卵石本体 */}
+          <ellipse cx="170" cy="105" rx="46" ry="30" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
+          <path d="M140 98 Q 170 88, 200 98" fill="none" stroke="rgba(168,168,180,0.3)" strokeWidth="1"/>
+          <text x="152" y="110" fill="rgba(63,184,164,1)" fontSize="9" fontFamily="monospace">归途石</text>
+          {/* 佩戴标注 */}
+          <text x="96" y="120" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">贴身佩戴 · 24h绑定</text>
+          {/* 锚定范围 */}
+          <ellipse cx="170" cy="105" rx="120" ry="62" fill="none" stroke="rgba(196,154,44,0.4)" strokeWidth="1" strokeDasharray="5 4"/>
+          <text x="252" y="60" fill="rgba(196,154,44,0.85)" fontSize="8" fontFamily="monospace">锚定范围 5km</text>
+          {/* 家的方向 */}
+          <path d="M170 105 L 236 62" stroke="rgba(196,154,44,0.85)" strokeWidth="1.4"/>
+          <circle cx="242" cy="57" r="4" fill="rgba(196,154,44,0.9)"/>
+          <text x="226" y="50" fill="rgba(196,154,44,0.95)" fontSize="8" fontFamily="monospace">「家」</text>
+          {/* 方向箭头 */}
+          <path d="M300 138 L 240 96" stroke="rgba(63,184,164,0.5)" strokeWidth="1" strokeDasharray="3 3"/>
+          <text x="268" y="142" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">方向直觉</text>
+          {/* 底部标注 */}
+          <text x="60" y="162" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">每日一次 · 只指方向不保路况</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          结构示意 · 以佩戴者登记的「家」为锚点，五公里内持续提示正确方向
+        </div>
+      </div>
+    );
+
     const homewardData = {
       id: "SPA-0317",
       name: "归途石",
@@ -922,6 +1005,9 @@ function AnomalyDetailPage() {
         "归途石是一枚<strong>方向锚定型异常物品</strong>（常规级）：佩戴者在陌生环境中会持续产生「朝某方向走」的清晰直觉，该方向始终指向佩戴者登记在案的「家」——实测在半径五公里内准确无误。",
         "「归途石」项目由长桥会社民用社区应用部管理，目前主要定向发放给阿尔茨海默症早期患者、极地作业人员与野外勘探队，应用十八年零事故。",
       ],
+      mapNode: homewardMap,
+      mapTitle: "结构示意 · 锚定",
+      mapTag: "锚定示意 · ANCHOR",
       verifiedRules: [
         { num: "一", title: "绑定佩戴", desc: "接触皮肤连续24小时后完成绑定；绑定后仅对佩戴者生效，转赠他人前须由管理站解绑。" },
         { num: "二", title: "指向归途", desc: "以佩戴者登记的「家」为锚点，持续提示正确方向，有效半径五公里；超出范围后提示失效，回到范围内自动恢复。" },
@@ -943,6 +1029,31 @@ function AnomalyDetailPage() {
   }
 
   if (isSilent) {
+    const silentMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 毛毯本体 */}
+          <rect x="70" y="60" width="200" height="70" rx="6" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.85)" strokeWidth="1.5"/>
+          {/* 纤维纹路 */}
+          {[78, 94, 110].map((y, i) => (
+            <path key={i} d={"M78 " + y + " Q 170 " + (y - 8) + ", 262 " + y} fill="none" stroke="rgba(168,168,180,0.3)" strokeWidth="1"/>
+          ))}
+          <text x="150" y="100" fill="rgba(63,184,164,0.95)" fontSize="9" fontFamily="monospace">静音毯</text>
+          {/* 覆盖范围 */}
+          <circle cx="170" cy="95" r="58" fill="none" stroke="rgba(196,154,44,0.5)" strokeWidth="1.2" strokeDasharray="5 4"/>
+          <text x="226" y="52" fill="rgba(196,154,44,0.9)" fontSize="8" fontFamily="monospace">半径 2m · 约18分贝</text>
+          {/* 边缘风感标注 */}
+          <text x="24" y="66" fill="rgba(168,168,180,0.65)" fontSize="8" fontFamily="monospace">毯缘风感</text>
+          {/* 底部标注 */}
+          <text x="86" y="152" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">展开生效 · 每日≤8小时</text>
+          <text x="196" y="152" fill="rgba(196,154,44,0.8)" fontSize="8" fontFamily="monospace">警报备份 · 不可覆盖安全设施</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          结构示意 · 展开铺平后以毯中心为圆心，半径两米内降噪至约18分贝
+        </div>
+      </div>
+    );
+
     const silentData = {
       id: "PHB-0521",
       name: "静音毯",
@@ -968,6 +1079,9 @@ function AnomalyDetailPage() {
         "静音毯是一块<strong>降噪型异常织物</strong>（常规级）：展开铺平后，以毯中心为圆心、半径两米内的环境噪音被抑制至约18分贝（相当于安静图书馆的耳语水平），毯内人声清晰可辨，毯外几乎听不见。",
         "「静音毯」项目由边界研究院民用技术应用部管理，目前配发于洛林自由市的公共图书馆静音区、心理诊所咨询室与考试中心，应用二十三年零事故。",
       ],
+      mapNode: silentMap,
+      mapTitle: "结构示意 · 织物",
+      mapTag: "织物结构 · FABRIC",
       verifiedRules: [
         { num: "一", title: "展开生效", desc: "毯子必须完全展开铺平才生效；折叠、卷起或部分覆盖时无效。收起后效果即时消失。" },
         { num: "二", title: "覆盖范围", desc: "以毯中心为圆心、半径两米内降噪生效；范围内噪音降至约18分贝，人声等有意声音不受影响。" },

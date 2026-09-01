@@ -629,7 +629,7 @@ function AnomalyDossier({
     className: "file-section-num mono"
   }, "\xA7 ", nextNum()), /*#__PURE__*/React.createElement("span", {
     className: "file-section-title"
-  }, "\u5185\u90E8\u73AF\u5883 \xB7 \u7ED3\u6784\u793A\u610F\u56FE"), data.mapTag && /*#__PURE__*/React.createElement("span", {
+  }, data.mapTitle || "内部环境 · 结构示意图"), data.mapTag && /*#__PURE__*/React.createElement("span", {
     className: "tag danger"
   }, data.mapTag)), data.mapNode), data.verifiedRules && data.verifiedRules.length > 0 && /*#__PURE__*/React.createElement("div", {
     className: "file-section"

@@ -606,7 +606,7 @@ function AnomalyDossier({ data }) {
               <div className="file-section">
                 <div className="file-section-header">
                   <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">内部环境 · 结构示意图</span>
+                  <span className="file-section-title">{data.mapTitle || "内部环境 · 结构示意图"}</span>
                   {data.mapTag && <span className="tag danger">{data.mapTag}</span>}
                 </div>
                 {data.mapNode}

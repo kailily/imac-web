@@ -1568,6 +1568,74 @@ function AnomalyDetailPage() {
     });
   }
   if (isSlumber) {
+    const slumberMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M55 92 Q 85 58, 170 58 Q 255 58, 285 92 Q 290 112, 262 120 L 78 120 Q 50 112, 55 92 Z",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.85)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M80 108 Q 170 78, 260 108",
+      fill: "none",
+      stroke: "rgba(168,168,180,0.35)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "148",
+      y: "94",
+      width: "44",
+      height: "8",
+      rx: "2",
+      fill: "rgba(196,164,44,0.35)",
+      stroke: "rgba(196,164,44,0.85)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "198",
+      y: "102",
+      fill: "rgba(196,164,44,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u89C4\u5219\u8F7D\u4F53"), /*#__PURE__*/React.createElement("text", {
+      x: "88",
+      y: "84",
+      fill: "rgba(63,184,164,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u9762\u6599\u5C42"), /*#__PURE__*/React.createElement("text", {
+      x: "88",
+      y: "68",
+      fill: "rgba(168,168,180,0.6)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u586B\u5145\u5C42"), /*#__PURE__*/React.createElement("text", {
+      x: "52",
+      y: "144",
+      fill: "rgba(168,168,180,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u7ED1\u5B9A\u6C14\u5473 \xB7 90\u5206\u949F\u81EA\u7136\u9192"), /*#__PURE__*/React.createElement("text", {
+      x: "208",
+      y: "144",
+      fill: "rgba(196,154,44,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6BCF\u65E5\u4E00\u6B21 \xB7 \u5904\u65B9\u53D1\u653E")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u5256\u9762\u793A\u610F \xB7 \u5F02\u5E38\u4F9D\u9644\u4E8E\u6795\u82AF\u5939\u5C42\u7684\u300C\u89C4\u5219\u8F7D\u4F53\u300D\u7EC7\u7269\u7ED3\u6784"));
     const slumberData = {
       id: "OBA-0148",
       name: "安眠枕",
@@ -1597,6 +1665,9 @@ function AnomalyDetailPage() {
       }, "100%"), "（应用15年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 处方限量发放"]],
       discovery: ["安珀历24年秋，白松城一名长期失眠的纺织厂女工向晨星团设立的社区异常咨询点求助：她家中一只旧枕头发现在特定睡姿下，能让她在数分钟内陷入「从未有过」的深度睡眠，醒来后精神焕发，且「完全记不起梦」。晨星团派员上门核实，确认该枕头为异常物品。", "经结构解析，异常被确认依附于枕头的材质与内部结构，而非使用者。晨星团在取得原主同意后，通过逐层复刻「规则载体」的方式实现了可控复制，经 IMAC 民用异常应用委员会评估后立项为「安眠枕」项目，于安珀历25年以处方形式向社会发放。"],
       features: ["安眠枕是一只<strong>可复制的睡眠辅助型异常物品</strong>（常规级）：在绑定使用者的正确睡姿下，可使其在约3分钟内进入最深度的无梦睡眠，并于约90分钟后自然苏醒，醒来即精神饱满、无需再补觉。", "「安眠枕」项目由晨星团民用物品应用科管理，通过医疗机构处方限量发放，目前已服务约四千名经评估确认的慢性失眠患者，应用十五年零事故。"],
+      mapNode: slumberMap,
+      mapTitle: "结构示意 · 剖面",
+      mapTag: "剖面示意 · SECTION",
       verifiedRules: [{
         num: "一",
         title: "绑定使用者",
@@ -1643,6 +1714,68 @@ function AnomalyDetailPage() {
     });
   }
   if (isKettle) {
+    const kettleMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("path", {
+      d: "M150 62 Q 170 52, 190 62 L 186 70 L 154 70 Z",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.85)",
+      strokeWidth: "1.3"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M150 72 Q 138 95, 142 120 Q 146 136, 170 138 Q 194 136, 198 120 Q 202 95, 190 72 Z",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.85)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M198 84 Q 226 78, 226 102 Q 226 128, 196 126",
+      fill: "none",
+      stroke: "rgba(63,184,164,0.8)",
+      strokeWidth: "2.2"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M142 96 L 118 108 L 116 102 L 140 92 Z",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.8)",
+      strokeWidth: "1.2"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "100",
+      y: "64",
+      fill: "rgba(196,164,44,0.95)",
+      fontSize: "10",
+      fontFamily: "monospace"
+    }, "60\u2103 \u6052\u5B9A"), /*#__PURE__*/React.createElement("text", {
+      x: "206",
+      y: "100",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u58F6\u8EAB\u5B8C\u6574"), /*#__PURE__*/React.createElement("text", {
+      x: "88",
+      y: "158",
+      fill: "rgba(168,168,180,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6E29\u5EA6\u951A\u5B9A \xB7 \u58F6\u76D6/\u58F6\u8EAB/\u628A\u624B\u4E0D\u53EF\u5206\u79BB"), /*#__PURE__*/React.createElement("text", {
+      x: "216",
+      y: "158",
+      fill: "rgba(196,154,44,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6BCF\u65E5\u4E09\u6B21")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u7ED3\u6784\u793A\u610F \xB7 \u5F02\u5E38\u4F9D\u9644\u4E8E\u58F6\u8EAB\u94DC\u8D28\u4E0E\u5185\u90E8\u7ED3\u6784\uFF0C\u4E09\u8005\u7F3A\u4E00\u4E0D\u53EF"));
     const kettleData = {
       id: "OBA-0321",
       name: "恒温壶",
@@ -1672,6 +1805,9 @@ function AnomalyDetailPage() {
       }, "100%"), "（应用20年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 定点配发"]],
       discovery: ["安珀历19年冬，白松城一家老茶馆的老板发现，店里的旧铜壶永远保持着「刚好能喝」的温度——无论倒入什么、放置多久，揭开壶盖时总冒着恰到好处的热气。冬天客人多，老板起初以为是巧合，直到一位常客指出「这壶三年没烧过水了」才惊觉异常，遂通过社区热线上报。", "晨星团派员调查后确认该壶为异常物品，其规则载体依附于壶身铜质与内部结构。经逐层复刻实现可控复制后，由 IMAC 民用异常应用委员会立项为「恒温壶」项目，定点配发给社区养老服务站与医院保温餐使用。"],
       features: ["恒温壶是一只<strong>温度锚定型异常物品</strong>（常规级）：任何液体倒入后约10分钟，温度即恒定为60℃±0.5℃，此后无论放置多久（实测最长72小时）温度不再变化，恰为「刚好能喝」的温度。", "「恒温壶」项目由晨星团民用物品应用科管理，目前以定点配发方式服务于白松城及周边十余个社区的养老服务站与医院保温餐，应用二十年零事故。"],
+      mapNode: kettleMap,
+      mapTitle: "结构示意 · 器物",
+      mapTag: "器物结构 · OBJECT",
       verifiedRules: [{
         num: "一",
         title: "温度锚定",
@@ -1718,6 +1854,96 @@ function AnomalyDetailPage() {
     });
   }
   if (isHomeward) {
+    const homewardMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("ellipse", {
+      cx: "170",
+      cy: "105",
+      rx: "46",
+      ry: "30",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.85)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M140 98 Q 170 88, 200 98",
+      fill: "none",
+      stroke: "rgba(168,168,180,0.3)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "152",
+      y: "110",
+      fill: "rgba(63,184,164,1)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u5F52\u9014\u77F3"), /*#__PURE__*/React.createElement("text", {
+      x: "96",
+      y: "120",
+      fill: "rgba(168,168,180,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u8D34\u8EAB\u4F69\u6234 \xB7 24h\u7ED1\u5B9A"), /*#__PURE__*/React.createElement("ellipse", {
+      cx: "170",
+      cy: "105",
+      rx: "120",
+      ry: "62",
+      fill: "none",
+      stroke: "rgba(196,154,44,0.4)",
+      strokeWidth: "1",
+      strokeDasharray: "5 4"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "252",
+      y: "60",
+      fill: "rgba(196,154,44,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u951A\u5B9A\u8303\u56F4 5km"), /*#__PURE__*/React.createElement("path", {
+      d: "M170 105 L 236 62",
+      stroke: "rgba(196,154,44,0.85)",
+      strokeWidth: "1.4"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "242",
+      cy: "57",
+      r: "4",
+      fill: "rgba(196,154,44,0.9)"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "226",
+      y: "50",
+      fill: "rgba(196,154,44,0.95)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u300C\u5BB6\u300D"), /*#__PURE__*/React.createElement("path", {
+      d: "M300 138 L 240 96",
+      stroke: "rgba(63,184,164,0.5)",
+      strokeWidth: "1",
+      strokeDasharray: "3 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "268",
+      y: "142",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u65B9\u5411\u76F4\u89C9"), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "162",
+      fill: "rgba(168,168,180,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6BCF\u65E5\u4E00\u6B21 \xB7 \u53EA\u6307\u65B9\u5411\u4E0D\u4FDD\u8DEF\u51B5")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u7ED3\u6784\u793A\u610F \xB7 \u4EE5\u4F69\u6234\u8005\u767B\u8BB0\u7684\u300C\u5BB6\u300D\u4E3A\u951A\u70B9\uFF0C\u4E94\u516C\u91CC\u5185\u6301\u7EED\u63D0\u793A\u6B63\u786E\u65B9\u5411"));
     const homewardData = {
       id: "SPA-0317",
       name: "归途石",
@@ -1747,6 +1973,9 @@ function AnomalyDetailPage() {
       }, "100%"), "（应用18年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 定向发放"]],
       discovery: ["安珀历21年冬，北境冻原一名猎人在暴风雪中迷失方向，凭借口袋里一枚捡来的灰色卵石「一路被牵着」走回了营地——事后他坚称「石头在带路」。长桥会社调查组循此线索在冻原冰层下找到一块与卵石同源的岩层，确认卵石为异常物品。", "经解析，异常依附于卵石的矿物结构，具有「以佩戴者为锚、指向归途」的稳定规则。长桥会社在取得完整数据后，与北境守望合作启动了「归途石」定向发放项目，最初用于极地作业人员的防迷路保障。"],
       features: ["归途石是一枚<strong>方向锚定型异常物品</strong>（常规级）：佩戴者在陌生环境中会持续产生「朝某方向走」的清晰直觉，该方向始终指向佩戴者登记在案的「家」——实测在半径五公里内准确无误。", "「归途石」项目由长桥会社民用社区应用部管理，目前主要定向发放给阿尔茨海默症早期患者、极地作业人员与野外勘探队，应用十八年零事故。"],
+      mapNode: homewardMap,
+      mapTitle: "结构示意 · 锚定",
+      mapTag: "锚定示意 · ANCHOR",
       verifiedRules: [{
         num: "一",
         title: "绑定佩戴",
@@ -1793,6 +2022,77 @@ function AnomalyDetailPage() {
     });
   }
   if (isSilent) {
+    const silentMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "70",
+      y: "60",
+      width: "200",
+      height: "70",
+      rx: "6",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.85)",
+      strokeWidth: "1.5"
+    }), [78, 94, 110].map((y, i) => /*#__PURE__*/React.createElement("path", {
+      key: i,
+      d: "M78 " + y + " Q 170 " + (y - 8) + ", 262 " + y,
+      fill: "none",
+      stroke: "rgba(168,168,180,0.3)",
+      strokeWidth: "1"
+    })), /*#__PURE__*/React.createElement("text", {
+      x: "150",
+      y: "100",
+      fill: "rgba(63,184,164,0.95)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u9759\u97F3\u6BEF"), /*#__PURE__*/React.createElement("circle", {
+      cx: "170",
+      cy: "95",
+      r: "58",
+      fill: "none",
+      stroke: "rgba(196,154,44,0.5)",
+      strokeWidth: "1.2",
+      strokeDasharray: "5 4"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "226",
+      y: "52",
+      fill: "rgba(196,154,44,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u534A\u5F84 2m \xB7 \u7EA618\u5206\u8D1D"), /*#__PURE__*/React.createElement("text", {
+      x: "24",
+      y: "66",
+      fill: "rgba(168,168,180,0.65)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6BEF\u7F18\u98CE\u611F"), /*#__PURE__*/React.createElement("text", {
+      x: "86",
+      y: "152",
+      fill: "rgba(168,168,180,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u5C55\u5F00\u751F\u6548 \xB7 \u6BCF\u65E5\u22648\u5C0F\u65F6"), /*#__PURE__*/React.createElement("text", {
+      x: "196",
+      y: "152",
+      fill: "rgba(196,154,44,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u8B66\u62A5\u5907\u4EFD \xB7 \u4E0D\u53EF\u8986\u76D6\u5B89\u5168\u8BBE\u65BD")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u7ED3\u6784\u793A\u610F \xB7 \u5C55\u5F00\u94FA\u5E73\u540E\u4EE5\u6BEF\u4E2D\u5FC3\u4E3A\u5706\u5FC3\uFF0C\u534A\u5F84\u4E24\u7C73\u5185\u964D\u566A\u81F3\u7EA618\u5206\u8D1D"));
     const silentData = {
       id: "PHB-0521",
       name: "静音毯",
@@ -1822,6 +2122,9 @@ function AnomalyDetailPage() {
       }, "100%"), "（应用23年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 场馆配发"]],
       discovery: ["安珀历16年夏，洛林自由市旧剧院翻修时，工人在后台储物间发现一块深灰色毛毯，展开铺平后整个房间的噪音「消失了」——说话声在毯内清晰，毯外几乎听不见。剧院经理起初以为是隔音改造的效果，直到工程师告诉他「这堵墙根本不可能隔音」才上报。", "边界研究院（BRI）接手调查，确认毛毯为异常物品，其规则载体依附于织物结构与纤维排布。经复刻验证后，由 IMAC 民用异常应用委员会立项为「静音毯」项目，按场馆定点配发。"],
       features: ["静音毯是一块<strong>降噪型异常织物</strong>（常规级）：展开铺平后，以毯中心为圆心、半径两米内的环境噪音被抑制至约18分贝（相当于安静图书馆的耳语水平），毯内人声清晰可辨，毯外几乎听不见。", "「静音毯」项目由边界研究院民用技术应用部管理，目前配发于洛林自由市的公共图书馆静音区、心理诊所咨询室与考试中心，应用二十三年零事故。"],
+      mapNode: silentMap,
+      mapTitle: "结构示意 · 织物",
+      mapTag: "织物结构 · FABRIC",
       verifiedRules: [{
         num: "一",
         title: "展开生效",
