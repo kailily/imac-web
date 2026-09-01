@@ -244,7 +244,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;

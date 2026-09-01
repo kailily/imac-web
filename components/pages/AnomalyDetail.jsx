@@ -94,7 +94,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent) {
     return (
       <>
         <style>{`
