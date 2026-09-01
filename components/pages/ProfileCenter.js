@@ -13,6 +13,14 @@ function ProfileCenterPage() {
   const walkerId = identity?.staffId || identity?.adminId || "IMAC-OA-0721";
   const walkerName = identity?.name || "陈夜";
   const walkerContact = identity?.contact || "内部通讯 #7241";
+  // 溯界者申请表内容（Join 页提交后保存在本地）
+  const appProfile = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("imac_application_profile") || "null");
+    } catch (e) {
+      return null;
+    }
+  })();
   const [activeTab, setActiveTab] = React.useState("profile");
   const tabs = [{
     key: "profile",
@@ -1002,7 +1010,80 @@ function ProfileCenterPage() {
       ...profile,
       [f.key]: e.target.value
     })
-  }) : profile[f.key])))))), activeTab === "missions" && /*#__PURE__*/React.createElement("div", {
+  }) : profile[f.key])))))), /*#__PURE__*/React.createElement("div", {
+    className: "pc-card",
+    style: {
+      marginTop: "16px"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pc-card-header"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pc-card-title"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "code"
+  }, "APL"), "\u7533\u8BF7\u8D44\u6599"), /*#__PURE__*/React.createElement("span", {
+    className: "pc-card-en"
+  }, "APPLICATION PROFILE")), /*#__PURE__*/React.createElement("div", {
+    className: "pc-card-body"
+  }, appProfile ? /*#__PURE__*/React.createElement("div", {
+    className: "pc-info-grid"
+  }, [{
+    k: "channel",
+    l: "申请通道",
+    v: appProfile.channel
+  }, {
+    k: "organization",
+    l: "意向组织",
+    v: appProfile.organization
+  }, {
+    k: "location",
+    l: "所在地",
+    v: [appProfile.country, appProfile.region, appProfile.city].filter(Boolean).join(" · ")
+  }, {
+    k: "age",
+    l: "年龄",
+    v: appProfile.age
+  }, {
+    k: "contact",
+    l: "联系方式",
+    v: appProfile.contact
+  }, {
+    k: "specialty",
+    l: "擅长领域",
+    v: appProfile.specialty
+  }, {
+    k: "experience",
+    l: "相关经历",
+    v: appProfile.experience
+  }, {
+    k: "anomalyExp",
+    l: "异常接触经历",
+    v: appProfile.anomalyExp
+  }, {
+    k: "motivation",
+    l: "申请理由",
+    v: appProfile.motivation
+  }].map(f => /*#__PURE__*/React.createElement("div", {
+    key: f.k,
+    className: "pc-info-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pc-info-label"
+  }, f.l), /*#__PURE__*/React.createElement("span", {
+    className: "pc-info-value"
+  }, f.v || "—")))) : /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: "13px",
+      color: "var(--text-tertiary)",
+      lineHeight: "1.8"
+    }
+  }, "\u5C1A\u672A\u63D0\u4EA4\u6EAF\u754C\u8005\u7533\u8BF7\u3002", /*#__PURE__*/React.createElement("a", {
+    onClick: () => navigate("/join"),
+    style: {
+      color: "var(--accent-red-bright)",
+      cursor: "pointer",
+      borderBottom: "1px dotted rgba(196,40,40,0.5)"
+    }
+  }, "\u524D\u5F80\u300C\u52A0\u5165\u6211\u4EEC\u300D\u586B\u5199\u7533\u8BF7\u8868 \u2192")))), activeTab === "missions" && /*#__PURE__*/React.createElement("div", {
     className: "pc-card"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pc-card-header"

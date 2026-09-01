@@ -177,6 +177,26 @@ function JoinPage() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     if (validate()) {
+      // 保存申请表到本地（纯前端演示：信息仅保留在本机浏览器 localStorage）
+      try {
+        const channelName = channels.find((c) => c.key === formData.channel)?.name || formData.channel;
+        localStorage.setItem("imac_application_profile", JSON.stringify({
+          realName: formData.realName.trim(),
+          codename: formData.codename.trim(),
+          channel: channelName,
+          referral: formData.referral.trim(),
+          organization: formData.organization,
+          country: formData.country,
+          region: formData.region,
+          city: formData.city,
+          age: formData.age.trim(),
+          contact: formData.contact.trim(),
+          specialty: formData.specialty.trim(),
+          experience: formData.experience.trim(),
+          anomalyExp: formData.anomalyExp.trim(),
+          motivation: formData.motivation.trim(),
+        }));
+      } catch (err) {}
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
