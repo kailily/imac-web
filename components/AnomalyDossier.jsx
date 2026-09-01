@@ -59,6 +59,11 @@ function AnomalyDossier({ data }) {
       background: var(--accent-red-bright);
       color: #fff;
     }
+    .detail-back-row {
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+    }
     .detail-breadcrumbs {
       padding: 24px 0;
       border-bottom: 1px solid var(--border-color);
@@ -552,17 +557,9 @@ function AnomalyDossier({ data }) {
       <div className="detail-page">
         <div className="detail-auth-bar">
           <div className="detail-auth-inner">
-            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-              <button className="detail-back-btn" onClick={() => navigate("/database")}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <polyline points="15 18 9 12 15 6"/>
-                </svg>
-                返回异常信息数据库
-              </button>
-              <div className="detail-auth-status">
-                <div className="dot"></div>
-                <span>已认证 · 访问级别：标准 / ACCESS LEVEL: STANDARD</span>
-              </div>
+            <div className="detail-auth-status">
+              <div className="dot"></div>
+              <span>已认证 · 访问级别：标准 / ACCESS LEVEL: STANDARD</span>
             </div>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-muted)", cursor: "pointer", letterSpacing: "0.1em" }} onClick={() => navigate("/")}>
               退出认证
@@ -571,6 +568,14 @@ function AnomalyDossier({ data }) {
         </div>
 
         <div className="container">
+          <div className="detail-back-row">
+            <button className="detail-back-btn" onClick={() => navigate("/database")}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+              返回异常信息数据库
+            </button>
+          </div>
           <div className="detail-breadcrumbs">
             <span className="detail-crumb" onClick={() => navigate("/")}>首页</span>
             <span className="detail-crumb-sep">/</span>

@@ -62,6 +62,11 @@ function AnomalyDossier({
       background: var(--accent-red-bright);
       color: #fff;
     }
+    .detail-back-row {
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+    }
     .detail-breadcrumbs {
       padding: 24px 0;
       border-bottom: 1px solid var(--border-color);
@@ -563,11 +568,22 @@ function AnomalyDossier({
   }, /*#__PURE__*/React.createElement("div", {
     className: "detail-auth-inner"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "detail-auth-status"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dot"
+  }), /*#__PURE__*/React.createElement("span", null, "\u5DF2\u8BA4\u8BC1 \xB7 \u8BBF\u95EE\u7EA7\u522B\uFF1A\u6807\u51C6 / ACCESS LEVEL: STANDARD")), /*#__PURE__*/React.createElement("span", {
     style: {
-      display: "flex",
-      alignItems: "center",
-      gap: "16px"
-    }
+      fontFamily: "var(--font-mono)",
+      fontSize: "11px",
+      color: "var(--text-muted)",
+      cursor: "pointer",
+      letterSpacing: "0.1em"
+    },
+    onClick: () => navigate("/")
+  }, "\u9000\u51FA\u8BA4\u8BC1"))), /*#__PURE__*/React.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "detail-back-row"
   }, /*#__PURE__*/React.createElement("button", {
     className: "detail-back-btn",
     onClick: () => navigate("/database")
@@ -580,22 +596,7 @@ function AnomalyDossier({
     strokeWidth: "2.5"
   }, /*#__PURE__*/React.createElement("polyline", {
     points: "15 18 9 12 15 6"
-  })), "\u8FD4\u56DE\u5F02\u5E38\u4FE1\u606F\u6570\u636E\u5E93"), /*#__PURE__*/React.createElement("div", {
-    className: "detail-auth-status"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "dot"
-  }), /*#__PURE__*/React.createElement("span", null, "\u5DF2\u8BA4\u8BC1 \xB7 \u8BBF\u95EE\u7EA7\u522B\uFF1A\u6807\u51C6 / ACCESS LEVEL: STANDARD"))), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontFamily: "var(--font-mono)",
-      fontSize: "11px",
-      color: "var(--text-muted)",
-      cursor: "pointer",
-      letterSpacing: "0.1em"
-    },
-    onClick: () => navigate("/")
-  }, "\u9000\u51FA\u8BA4\u8BC1"))), /*#__PURE__*/React.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/React.createElement("div", {
+  })), "\u8FD4\u56DE\u5F02\u5E38\u4FE1\u606F\u6570\u636E\u5E93")), /*#__PURE__*/React.createElement("div", {
     className: "detail-breadcrumbs"
   }, /*#__PURE__*/React.createElement("span", {
     className: "detail-crumb",

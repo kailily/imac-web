@@ -63,24 +63,19 @@ console.log(
 
 // 合并所有组件 JS 为 app.js（固定顺序：根组件 → 页面 → App），减少请求数
 // 注意：顺序不能从 index.html 读取（首次运行后引用已被移除），必须硬编码
-// 单 bundle 模式：全部页面合并进 app.js，路由切换即时、无按需加载等待
+// 单 bundle 模式：全部页面合并，路由切换即时；已移除从未被引用的死代码组件
+// （Hero/AnomalyFile/AnomalyInfo/Organizations/Walker/WorldMap/EmergencyGuide
+//  及未挂路由的 Profile/Missions/Training/PsychEval）以减小体积
 const BUNDLE_ORDER = [
   // 根级公共组件（router / auth / 公共组件 / 数据 / 子组件）
   "components/router",
   "components/auth",
   "components/Header",
   "components/Footer",
-  "components/WorldMap",
   "components/OrganizationsMap",
   "components/organizationsData",
   "components/AcademyMap",
   "components/AnomalyDossier",
-  "components/AnomalyFile",
-  "components/AnomalyInfo",
-  "components/GuideNews",
-  "components/Hero",
-  "components/Organizations",
-  "components/Walker",
   // 页面组件
   "components/pages/Home",
   "components/pages/Guide",
@@ -92,10 +87,6 @@ const BUNDLE_ORDER = [
   "components/pages/ProfileCenter",
   "components/pages/RegisterPage",
   "components/pages/MailboxPage",
-  "components/pages/Profile",
-  "components/pages/Missions",
-  "components/pages/Training",
-  "components/pages/PsychEval",
   "components/pages/Admin",
   "components/pages/Join",
   "components/pages/AnomalyAuth",
