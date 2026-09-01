@@ -1357,6 +1357,140 @@ function AnomalyDetailPage() {
     });
   }
   if (isShortcut) {
+    const shortcutMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "138",
+      x2: "320",
+      y2: "138",
+      stroke: "rgba(74,88,104,0.45)",
+      strokeWidth: "3"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "135",
+      x2: "320",
+      y2: "135",
+      stroke: "rgba(196,40,40,0.35)",
+      strokeWidth: "0.8",
+      strokeDasharray: "6 4"
+    }), /*#__PURE__*/React.createElement("rect", {
+      x: "28",
+      y: "94",
+      width: "52",
+      height: "44",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.9)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "38",
+      y: "112",
+      fill: "rgba(63,184,164,1)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u5357\u7AD9\u95E8"), /*#__PURE__*/React.createElement("text", {
+      x: "44",
+      y: "126",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u5165\u53E3"), /*#__PURE__*/React.createElement("rect", {
+      x: "260",
+      y: "94",
+      width: "52",
+      height: "44",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(63,184,164,0.9)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "262",
+      y: "112",
+      fill: "rgba(63,184,164,1)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u4F1A\u5C55\u4E2D\u5FC3\u95E8"), /*#__PURE__*/React.createElement("text", {
+      x: "272",
+      y: "126",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u51FA\u53E3"), /*#__PURE__*/React.createElement("path", {
+      d: "M84 116 Q 170 26 256 116",
+      fill: "none",
+      stroke: "rgba(63,184,164,0.5)",
+      strokeWidth: "1.2",
+      strokeDasharray: "5 3"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M84 130 Q 170 40 256 130",
+      fill: "none",
+      stroke: "rgba(63,184,164,0.7)",
+      strokeWidth: "1.4",
+      strokeDasharray: "5 3"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M84 144 Q 170 54 256 144",
+      fill: "none",
+      stroke: "rgba(63,184,164,0.5)",
+      strokeWidth: "1.2",
+      strokeDasharray: "5 3"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "170",
+      cy: "130",
+      r: "3.5",
+      fill: "rgba(63,184,164,0.9)"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "128",
+      y: "76",
+      fill: "rgba(63,184,164,0.85)",
+      fontSize: "9",
+      fontFamily: "monospace"
+    }, "\u7A7A\u95F4\u6298\u53E0 \xB7 28\u516C\u91CC"), /*#__PURE__*/React.createElement("text", {
+      x: "142",
+      y: "88",
+      fill: "rgba(168,168,180,0.65)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u7A7F\u884C\u7EA63\u79D2"), /*#__PURE__*/React.createElement("rect", {
+      x: "148",
+      y: "106",
+      width: "44",
+      height: "12",
+      fill: "rgba(74,88,104,0.25)",
+      stroke: "rgba(138,180,212,0.6)",
+      strokeWidth: "0.8"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "152",
+      y: "115",
+      fill: "rgba(138,180,212,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u901A\u52E4\u5361"), /*#__PURE__*/React.createElement("text", {
+      x: "66",
+      y: "160",
+      fill: "rgba(138,180,212,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "30\u79D2\u95F4\u9694"), /*#__PURE__*/React.createElement("text", {
+      x: "224",
+      y: "160",
+      fill: "rgba(196,154,44,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6BCF\u5E74\u79CB\u5206 \xB7 \u505C\u8FD0\u6821\u51C6")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u53CC\u95E8\u4E00\u4E00\u5BF9\u5E94 \xB7 \u7A7A\u95F4\u6298\u53E0\u8FDE\u63A5 \xB7 \u51ED\u901A\u52E4\u5361\u7A7F\u884C \xB7 \u6BCF\u5E74\u79CB\u5206\u505C\u8FD0\u6821\u51C6"));
     const shortcutData = {
       id: "SPA-2088",
       name: "捷径门",
@@ -1385,7 +1519,9 @@ function AnomalyDetailPage() {
         }
       }, "100%"), "（应用13年 · 零事故）"], "信息价值", "民用应用示范样本"], ["档案更新", "安珀历39年 · 春", "处置状态", "民用应用 · 持续运营中"]],
       discovery: ["安珀历26年春，鸣海城地铁三号线「南站—会展中心」区间施工时，盾构机在地下一处废弃管道内掘出一对「对门」：两扇相距二十八公里、造型相同的旧式铁门，分别嵌在管道两侧的岩壁里。工人推开其中一扇，竟从另一扇门里走了出来——施工日志记录了这一过程，全程不到三秒。", "衔尾蛇事务所在接到异常热线上报后接管现场，对两扇门进行了为期六个月的结构性研究，确认这是一处规则稳定、可重复触发的空间折叠型异常。经 IMAC 民用异常应用委员会评估，于安珀历27年正式立项为「捷径门」民用应用项目。"],
-      features: ["捷径门是一对<strong>规则稳定的空间折叠通道</strong>（常规级）：两扇门之间以空间折叠连接，通过者从一扇门进入、另一扇门走出，实际位移二十八公里，全程缩短为约三秒的「穿行」。", "经过十余年持续运营，捷径门已被纳入鸣海城公共交通体系，由衔尾蛇事务所民用异常应用处管理，与地铁运营系统联动调度，每年秋分日停运十二小时进行规则校准。"],
+      features: ["捷径门是一对<strong>规则稳定的空间折叠通道</strong>（常规级）：两扇门之间以空间折叠连接，通过者从一扇门进入、另一扇门走出，实际位移二十八公里，全程缩短为约三秒的「穿行」。", "经过十余年持续运营，捷径门已被纳入鸣海城公共交通体系，由衔尾蛇事务所民用异常应用处管理，与地铁运营系统联动调度，每年秋分日停运十二小时进行规则校准。", "运营采用「刷卡单行」模式：乘客在入口侧闸机刷「通勤卡」后依次穿行，出口侧自动放行；门体前后均设有引导员与紧急制动开关，突发情况下可一键切断穿行连接（该功能从未被实际触发）。"],
+      mapNode: shortcutMap,
+      mapTag: "结构示意 · DIAGRAM",
       verifiedRules: [{
         num: "一",
         title: "双向唯一",
@@ -1409,24 +1545,31 @@ function AnomalyDetailPage() {
         year: "安珀历27年·春",
         count: 1200,
         org: "鸣海城交通局",
-        result: "日通行千余人 · 零事故",
+        result: "首批1200名持卡人 · 零事故",
+        status: "safe"
+      }, {
+        term: "接入公交系统",
+        year: "安珀历29年",
+        count: 50000,
+        org: "鸣海城交通局/衔尾蛇",
+        result: "纳入通勤票价体系 · 日均通行5万人次",
         status: "safe"
       }, {
         term: "年度校准",
         year: "每年·秋分",
         count: 12,
         org: "衔尾蛇事务所",
-        result: "历次校准均顺利完成",
+        result: "12次校准均顺利完成",
         status: "safe"
       }, {
         term: "运营至今",
         year: "安珀历39年",
         count: 0,
         org: "衔尾蛇事务所",
-        result: "零事故 · 零异常复发",
+        result: "累计通行超亿人次 · 零事故",
         status: "safe"
       }],
-      phenomena: ["<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。", "<strong>「双门温差」：</strong>长期监测发现，两扇门之间的温差恒定为1.7℃（南站侧恒高于会展中心侧），与季节无关，疑似为折叠通道内的能量残余。温差读数在校准期间归零。"]
+      phenomena: ["<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。", "<strong>「双门温差」：</strong>长期监测发现，两扇门之间的温差恒定为1.7℃（南站侧恒高于会展中心侧），与季节无关，疑似为折叠通道内的能量残余。温差读数在校准期间归零。", "<strong>「秋分鸣响」：</strong>每年校准开始与结束时，两扇门会同步发出一声极低频的「嗡鸣」（约55Hz，持续三秒）。校准期间门体失去连接，嗡鸣之后连接恢复如初——该现象被运营人员称为「门在翻身」；其机制未被解析，但历年校准均无异常记录。"]
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: shortcutData

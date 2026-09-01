@@ -720,6 +720,41 @@ function AnomalyDetailPage() {
   }
 
   if (isShortcut) {
+    const shortcutMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 地铁线路 */}
+          <line x1="20" y1="138" x2="320" y2="138" stroke="rgba(74,88,104,0.45)" strokeWidth="3"/>
+          <line x1="20" y1="135" x2="320" y2="135" stroke="rgba(196,40,40,0.35)" strokeWidth="0.8" strokeDasharray="6 4"/>
+          {/* 南站门（入口） */}
+          <rect x="28" y="94" width="52" height="44" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.9)" strokeWidth="1.5"/>
+          <text x="38" y="112" fill="rgba(63,184,164,1)" fontSize="9" fontFamily="monospace">南站门</text>
+          <text x="44" y="126" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">入口</text>
+          {/* 会展中心门（出口） */}
+          <rect x="260" y="94" width="52" height="44" fill="rgba(20,20,24,0.9)" stroke="rgba(63,184,164,0.9)" strokeWidth="1.5"/>
+          <text x="262" y="112" fill="rgba(63,184,164,1)" fontSize="9" fontFamily="monospace">会展中心门</text>
+          <text x="272" y="126" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">出口</text>
+          {/* 折叠通道（三条平行弧线） */}
+          <path d="M84 116 Q 170 26 256 116" fill="none" stroke="rgba(63,184,164,0.5)" strokeWidth="1.2" strokeDasharray="5 3"/>
+          <path d="M84 130 Q 170 40 256 130" fill="none" stroke="rgba(63,184,164,0.7)" strokeWidth="1.4" strokeDasharray="5 3"/>
+          <path d="M84 144 Q 170 54 256 144" fill="none" stroke="rgba(63,184,164,0.5)" strokeWidth="1.2" strokeDasharray="5 3"/>
+          {/* 折叠点标注 */}
+          <circle cx="170" cy="130" r="3.5" fill="rgba(63,184,164,0.9)"/>
+          <text x="128" y="76" fill="rgba(63,184,164,0.85)" fontSize="9" fontFamily="monospace">空间折叠 · 28公里</text>
+          <text x="142" y="88" fill="rgba(168,168,180,0.65)" fontSize="8" fontFamily="monospace">穿行约3秒</text>
+          {/* 刷卡点 */}
+          <rect x="148" y="106" width="44" height="12" fill="rgba(74,88,104,0.25)" stroke="rgba(138,180,212,0.6)" strokeWidth="0.8"/>
+          <text x="152" y="115" fill="rgba(138,180,212,0.85)" fontSize="8" fontFamily="monospace">通勤卡</text>
+          {/* 底部说明 */}
+          <text x="66" y="160" fill="rgba(138,180,212,0.75)" fontSize="8" fontFamily="monospace">30秒间隔</text>
+          <text x="224" y="160" fill="rgba(196,154,44,0.75)" fontSize="8" fontFamily="monospace">每年秋分 · 停运校准</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          双门一一对应 · 空间折叠连接 · 凭通勤卡穿行 · 每年秋分停运校准
+        </div>
+      </div>
+    );
+
     const shortcutData = {
       id: "SPA-2088",
       name: "捷径门",
@@ -744,7 +779,10 @@ function AnomalyDetailPage() {
       features: [
         "捷径门是一对<strong>规则稳定的空间折叠通道</strong>（常规级）：两扇门之间以空间折叠连接，通过者从一扇门进入、另一扇门走出，实际位移二十八公里，全程缩短为约三秒的「穿行」。",
         "经过十余年持续运营，捷径门已被纳入鸣海城公共交通体系，由衔尾蛇事务所民用异常应用处管理，与地铁运营系统联动调度，每年秋分日停运十二小时进行规则校准。",
+        "运营采用「刷卡单行」模式：乘客在入口侧闸机刷「通勤卡」后依次穿行，出口侧自动放行；门体前后均设有引导员与紧急制动开关，突发情况下可一键切断穿行连接（该功能从未被实际触发）。",
       ],
+      mapNode: shortcutMap,
+      mapTag: "结构示意 · DIAGRAM",
       verifiedRules: [
         { num: "一", title: "双向唯一", desc: "两扇门严格一一对应：进入任意一扇，只能从另一扇走出，不存在第三出口。穿行方向不限。" },
         { num: "二", title: "单人限重", desc: "每次仅允许一人穿行，随身物品总重不得超过20公斤；两批乘客之间须保持至少30秒间隔，避免穿行重叠。" },
@@ -757,13 +795,15 @@ function AnomalyDetailPage() {
         "地下管道中「恰好」成对出现的岩壁结构暗示，这对门可能不是自然形成的，而是某种更大尺度异常的一部分",
       ],
       entryRecords: [
-        { term: "试点运营", year: "安珀历27年·春", count: 1200, org: "鸣海城交通局", result: "日通行千余人 · 零事故", status: "safe" },
-        { term: "年度校准", year: "每年·秋分", count: 12, org: "衔尾蛇事务所", result: "历次校准均顺利完成", status: "safe" },
-        { term: "运营至今", year: "安珀历39年", count: 0, org: "衔尾蛇事务所", result: "零事故 · 零异常复发", status: "safe" },
+        { term: "试点运营", year: "安珀历27年·春", count: 1200, org: "鸣海城交通局", result: "首批1200名持卡人 · 零事故", status: "safe" },
+        { term: "接入公交系统", year: "安珀历29年", count: 50000, org: "鸣海城交通局/衔尾蛇", result: "纳入通勤票价体系 · 日均通行5万人次", status: "safe" },
+        { term: "年度校准", year: "每年·秋分", count: 12, org: "衔尾蛇事务所", result: "12次校准均顺利完成", status: "safe" },
+        { term: "运营至今", year: "安珀历39年", count: 0, org: "衔尾蛇事务所", result: "累计通行超亿人次 · 零事故", status: "safe" },
       ],
       phenomena: [
         "<strong>「穿行感知」：</strong>绝大多数通过者报告穿行全程「几乎没有任何感觉」，仅有一瞬被轻轻「拉了一下」的体感，随后已站在另一扇门前。少数人（约2%）报告在穿行瞬间看到一闪而过的灰色走廊，方向与行走方向相反。",
         "<strong>「双门温差」：</strong>长期监测发现，两扇门之间的温差恒定为1.7℃（南站侧恒高于会展中心侧），与季节无关，疑似为折叠通道内的能量残余。温差读数在校准期间归零。",
+        "<strong>「秋分鸣响」：</strong>每年校准开始与结束时，两扇门会同步发出一声极低频的「嗡鸣」（约55Hz，持续三秒）。校准期间门体失去连接，嗡鸣之后连接恢复如初——该现象被运营人员称为「门在翻身」；其机制未被解析，但历年校准均无异常记录。",
       ],
     };
 
