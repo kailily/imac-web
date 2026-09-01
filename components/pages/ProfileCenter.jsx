@@ -1,6 +1,51 @@
+// 上传区：点击/拖拽选择文件，显示文件名与大小，可移除（纯前端，仅记录元信息）
+function UploadZone({ files, onChange, max = 3 }) {
+  const inputRef = React.useRef(null);
+  const handleFiles = (list) => {
+    const arr = [];
+    for (const f of list) {
+      if (files.length + arr.length >= max) break;
+      arr.push({ name: f.name, size: f.size });
+    }
+    if (arr.length) onChange([...files, ...arr]);
+  };
+  return (
+    <div>
+      <div
+        onClick={() => inputRef.current && inputRef.current.click()}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); }}
+        style={{ border: "1px dashed var(--border-light)", padding: "14px", textAlign: "center", cursor: "pointer", borderRadius: "6px", background: "rgba(10,10,14,0.5)", transition: "border-color 0.2s, background 0.2s" }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--accent-red-bright)"; e.currentTarget.style.background = "rgba(196,40,40,0.06)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-light)"; e.currentTarget.style.background = "rgba(10,10,14,0.5)"; }}
+      >
+        <input ref={inputRef} type="file" multiple style={{ display: "none" }} onChange={(e) => handleFiles(e.target.files)} />
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--accent-red-bright)", letterSpacing: "0.1em" }}>↥ 上传证明材料</div>
+        <div style={{ fontSize: "11px", color: "var(--text-tertiary)", marginTop: "4px" }}>点击选择或拖拽文件 · PDF/JPG/PNG · 最多 {max} 个</div>
+      </div>
+      {files.length > 0 && (
+        <div style={{ marginTop: "8px", display: "grid", gap: "6px" }}>
+          {files.map((f, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "6px 10px", border: "1px solid var(--border-color)", borderRadius: "4px", background: "var(--bg-card)" }}>
+              <span style={{ fontSize: "12px", color: "var(--text-primary)", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>📎 {f.name}</span>
+              <span style={{ fontSize: "11px", color: "var(--text-tertiary)", fontFamily: "var(--font-mono)" }}>{(f.size / 1024).toFixed(1)}KB</span>
+              <span style={{ cursor: "pointer", color: "var(--accent-red-bright)", fontSize: "13px", padding: "0 2px" }} onClick={() => onChange(files.filter((_, j) => j !== i))}>✕</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ProfileCenterPage() {
   const { canAccess, authLevel, identity } = useAuth();
   const { navigate } = useRouter();
+
+  // 溯界者申请表内容（Join 页提交后保存在本地）
+  const appProfile = (() => {
+    try { return JSON.parse(localStorage.getItem("imac_application_profile") || "null"); } catch (e) { return null; }
+  })();
 
   const walkerCode = identity?.codename || appProfile?.codename || "赤鸦";
   const walkerRank = identity?.rank || (authLevel === "topsecret" ? "界标" : "资深溯界者");
@@ -8,10 +53,6 @@ function ProfileCenterPage() {
   const walkerId = identity?.staffId || identity?.adminId || "IMAC-OA-0721";
   const walkerName = identity?.name || "陈夜";
   const walkerContact = identity?.contact || "内部通讯 #7241";
-  // 溯界者申请表内容（Join 页提交后保存在本地）
-  const appProfile = (() => {
-    try { return JSON.parse(localStorage.getItem("imac_application_profile") || "null"); } catch (e) { return null; }
-  })();
 
   const [activeTab, setActiveTab] = React.useState("profile");
 
@@ -62,21 +103,28 @@ function ProfileCenterPage() {
     { target: "深渊级行动资质", type: "特殊资质", submitDate: "安珀历39年春·18", status: "已通过", reviewer: "IMAC资质认证中心" },
     { target: "谈判专家认证", type: "特殊资质", submitDate: "安珀历38年冬·12", status: "已驳回", reviewer: "认知异常专业委员会", reason: "认知类异常参与经验不足，建议积累后重新申请" },
   ]);
-  const [certForm, setCertForm] = React.useState({ target: "首席溯界者", reason: "" });
+  const [certForm, setCertForm] = React.useState({ target: "首席溯界者", reason: "", files: [] });
   const [certSubmitted, setCertSubmitted] = React.useState(false);
+  const [certSubmitting, setCertSubmitting] = React.useState(false);
   const [showCertForm, setShowCertForm] = React.useState(false);
 
   const submitCert = () => {
     if (!certForm.reason.trim()) return;
-    setCertAppList([{
-      target: certForm.target,
-      type: certForm.target.includes("资质") || certForm.target.includes("认证") ? "特殊资质" : "职级晋升",
-      submitDate: "安珀历39年夏·30",
-      status: "审核中",
-      reviewer: "待分配审核人",
-    }, ...certAppList]);
-    setCertSubmitted(true);
-    setShowCertForm(false);
+    setCertSubmitting(true);
+    setTimeout(() => {
+      setCertAppList([{
+        target: certForm.target,
+        type: certForm.target.includes("资质") || certForm.target.includes("认证") ? "特殊资质" : "职级晋升",
+        submitDate: "安珀历39年夏·30",
+        status: "审核中",
+        reviewer: "待分配审核人",
+        files: certForm.files,
+      }, ...certAppList]);
+      setCertSubmitted(true);
+      setCertSubmitting(false);
+      setShowCertForm(false);
+      setCertForm({ target: "首席溯界者", reason: "", files: [] });
+    }, 900);
   };
 
   // === 行动申请 ===
@@ -117,8 +165,9 @@ function ProfileCenterPage() {
     ...techSupportRoles,
   ];
 
-  const [opForm, setOpForm] = React.useState({ opType: "异常行动参与申请", opCode: "SPA-1120", people: "2", gear: "", role: "队员", reason: "", availability: "夏·31 起可待命" });
+  const [opForm, setOpForm] = React.useState({ opType: "异常行动参与申请", opCode: "SPA-1120", people: "2", gear: "", role: "队员", reason: "", availability: "夏·31 起可待命", files: [] });
   const [opSubmitted, setOpSubmitted] = React.useState(false);
+  const [opSubmitting, setOpSubmitting] = React.useState(false);
   const [showOpForm, setShowOpForm] = React.useState(false);
 
   const opNameOf = (type, code) => {
@@ -146,11 +195,17 @@ function ProfileCenterPage() {
       submitDate: "安珀历39年夏·30",
       status: "审核中",
       role,
+      files: opForm.files,
     };
     if (opForm.opType === "异常行动许可申请") entry.detail = `申请人数：${opForm.people} 人`;
-    setOpAppList([entry, ...opAppList]);
-    setOpSubmitted(true);
-    setShowOpForm(false);
+    setOpSubmitting(true);
+    setTimeout(() => {
+      setOpAppList([entry, ...opAppList]);
+      setOpSubmitted(true);
+      setOpSubmitting(false);
+      setShowOpForm(false);
+      setOpForm({ opType: "异常行动参与申请", opCode: "SPA-1120", people: "2", gear: "", role: "队员", reason: "", availability: "夏·31 起可待命", files: [] });
+    }, 900);
   };
 
   // === 个人档案编辑 ===
@@ -986,13 +1041,16 @@ function ProfileCenterPage() {
                           />
                         </div>
                         <div className="form-field" style={{ marginBottom: "10px" }}>
-                          <label className="form-label">证明材料（模拟上传）</label>
-                          <div style={{ fontSize: "11px", color: "var(--text-tertiary)", padding: "8px", border: "1px dashed var(--border-color)", textAlign: "center" }}>
-                            [ 点击上传相关证明材料 · 支持 PDF/JPG · 单文件 ≤10MB ]
-                          </div>
+                          <label className="form-label">证明材料</label>
+                          <UploadZone
+                            files={certForm.files}
+                            onChange={(files) => setCertForm({ ...certForm, files })}
+                          />
                         </div>
                         <div className="form-actions">
-                          <button className="form-submit" onClick={submitCert}>提交申请</button>
+                          <button className="form-submit" onClick={submitCert} disabled={certSubmitting}>
+                            {certSubmitting ? "提交中…" : "提交申请"}
+                          </button>
                           <button className="form-cancel" onClick={() => setShowCertForm(false)}>取消</button>
                         </div>
                       </div>
@@ -1006,6 +1064,7 @@ function ProfileCenterPage() {
                         <span>提交日期</span>
                         <span>状态</span>
                         <span>审核人</span>
+                        <span>附件</span>
                       </div>
                       {certAppList.map((c, i) => (
                         <div
@@ -1019,6 +1078,7 @@ function ProfileCenterPage() {
                           <span style={{ color: "var(--text-secondary)" }}>{c.submitDate}</span>
                           <span className="cert-status">{c.status}</span>
                           <span style={{ color: "var(--text-tertiary)", fontSize: "11px" }}>{c.reviewer}</span>
+                          <span style={{ color: "var(--text-tertiary)", fontSize: "11px" }}>{c.files && c.files.length ? `📎 ${c.files.length}` : "—"}</span>
                         </div>
                       ))}
                     </div>
@@ -1157,8 +1217,17 @@ function ProfileCenterPage() {
                             placeholder="请简述申请理由、相关经验与预期贡献..."
                           />
                         </div>
+                        <div className="form-field" style={{ marginBottom: "10px" }}>
+                          <label className="form-label">相关材料（选填）</label>
+                          <UploadZone
+                            files={opForm.files}
+                            onChange={(files) => setOpForm({ ...opForm, files })}
+                          />
+                        </div>
                         <div className="form-actions">
-                          <button className="form-submit" onClick={submitOp}>提交申请</button>
+                          <button className="form-submit" onClick={submitOp} disabled={opSubmitting}>
+                            {opSubmitting ? "提交中…" : "提交申请"}
+                          </button>
                           <button className="form-cancel" onClick={() => setShowOpForm(false)}>取消</button>
                         </div>
                       </div>
@@ -1173,6 +1242,7 @@ function ProfileCenterPage() {
                         <span>申请时间</span>
                         <span>状态</span>
                         <span>分配角色</span>
+                        <span>附件</span>
                       </div>
                       {opAppList.map((o, i) => (
                         <div
@@ -1191,6 +1261,7 @@ function ProfileCenterPage() {
                             {o.status === "已驳回" && <span className="result-fail">{o.status}</span>}
                           </span>
                           <span style={{ color: "var(--text-tertiary)" }}>{o.role}</span>
+                          <span style={{ color: "var(--text-tertiary)", fontSize: "11px" }}>{o.files && o.files.length ? `📎 ${o.files.length}` : "—"}</span>
                           {o.detail && (
                             <span style={{ color: "var(--text-tertiary)", fontSize: "11px" }}>{o.detail}</span>
                           )}

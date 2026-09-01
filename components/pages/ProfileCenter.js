@@ -1,3 +1,108 @@
+// 上传区：点击/拖拽选择文件，显示文件名与大小，可移除（纯前端，仅记录元信息）
+function UploadZone({
+  files,
+  onChange,
+  max = 3
+}) {
+  const inputRef = React.useRef(null);
+  const handleFiles = list => {
+    const arr = [];
+    for (const f of list) {
+      if (files.length + arr.length >= max) break;
+      arr.push({
+        name: f.name,
+        size: f.size
+      });
+    }
+    if (arr.length) onChange([...files, ...arr]);
+  };
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    onClick: () => inputRef.current && inputRef.current.click(),
+    onDragOver: e => e.preventDefault(),
+    onDrop: e => {
+      e.preventDefault();
+      handleFiles(e.dataTransfer.files);
+    },
+    style: {
+      border: "1px dashed var(--border-light)",
+      padding: "14px",
+      textAlign: "center",
+      cursor: "pointer",
+      borderRadius: "6px",
+      background: "rgba(10,10,14,0.5)",
+      transition: "border-color 0.2s, background 0.2s"
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.borderColor = "var(--accent-red-bright)";
+      e.currentTarget.style.background = "rgba(196,40,40,0.06)";
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.borderColor = "var(--border-light)";
+      e.currentTarget.style.background = "rgba(10,10,14,0.5)";
+    }
+  }, /*#__PURE__*/React.createElement("input", {
+    ref: inputRef,
+    type: "file",
+    multiple: true,
+    style: {
+      display: "none"
+    },
+    onChange: e => handleFiles(e.target.files)
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "12px",
+      color: "var(--accent-red-bright)",
+      letterSpacing: "0.1em"
+    }
+  }, "\u21A5 \u4E0A\u4F20\u8BC1\u660E\u6750\u6599"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: "11px",
+      color: "var(--text-tertiary)",
+      marginTop: "4px"
+    }
+  }, "\u70B9\u51FB\u9009\u62E9\u6216\u62D6\u62FD\u6587\u4EF6 \xB7 PDF/JPG/PNG \xB7 \u6700\u591A ", max, " \u4E2A")), files.length > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "8px",
+      display: "grid",
+      gap: "6px"
+    }
+  }, files.map((f, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      padding: "6px 10px",
+      border: "1px solid var(--border-color)",
+      borderRadius: "4px",
+      background: "var(--bg-card)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: "12px",
+      color: "var(--text-primary)",
+      flex: 1,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    }
+  }, "\uD83D\uDCCE ", f.name), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: "11px",
+      color: "var(--text-tertiary)",
+      fontFamily: "var(--font-mono)"
+    }
+  }, (f.size / 1024).toFixed(1), "KB"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      cursor: "pointer",
+      color: "var(--accent-red-bright)",
+      fontSize: "13px",
+      padding: "0 2px"
+    },
+    onClick: () => onChange(files.filter((_, j) => j !== i))
+  }, "\u2715")))));
+}
 function ProfileCenterPage() {
   const {
     canAccess,
@@ -7,12 +112,7 @@ function ProfileCenterPage() {
   const {
     navigate
   } = useRouter();
-  const walkerCode = identity?.codename || appProfile?.codename || "赤鸦";
-  const walkerRank = identity?.rank || (authLevel === "topsecret" ? "界标" : "资深溯界者");
-  const walkerOrg = identity?.organization || "衔尾蛇事务所";
-  const walkerId = identity?.staffId || identity?.adminId || "IMAC-OA-0721";
-  const walkerName = identity?.name || "陈夜";
-  const walkerContact = identity?.contact || "内部通讯 #7241";
+
   // 溯界者申请表内容（Join 页提交后保存在本地）
   const appProfile = (() => {
     try {
@@ -21,6 +121,12 @@ function ProfileCenterPage() {
       return null;
     }
   })();
+  const walkerCode = identity?.codename || appProfile?.codename || "赤鸦";
+  const walkerRank = identity?.rank || (authLevel === "topsecret" ? "界标" : "资深溯界者");
+  const walkerOrg = identity?.organization || "衔尾蛇事务所";
+  const walkerId = identity?.staffId || identity?.adminId || "IMAC-OA-0721";
+  const walkerName = identity?.name || "陈夜";
+  const walkerContact = identity?.contact || "内部通讯 #7241";
   const [activeTab, setActiveTab] = React.useState("profile");
   const tabs = [{
     key: "profile",
@@ -227,21 +333,33 @@ function ProfileCenterPage() {
   }]);
   const [certForm, setCertForm] = React.useState({
     target: "首席溯界者",
-    reason: ""
+    reason: "",
+    files: []
   });
   const [certSubmitted, setCertSubmitted] = React.useState(false);
+  const [certSubmitting, setCertSubmitting] = React.useState(false);
   const [showCertForm, setShowCertForm] = React.useState(false);
   const submitCert = () => {
     if (!certForm.reason.trim()) return;
-    setCertAppList([{
-      target: certForm.target,
-      type: certForm.target.includes("资质") || certForm.target.includes("认证") ? "特殊资质" : "职级晋升",
-      submitDate: "安珀历39年夏·30",
-      status: "审核中",
-      reviewer: "待分配审核人"
-    }, ...certAppList]);
-    setCertSubmitted(true);
-    setShowCertForm(false);
+    setCertSubmitting(true);
+    setTimeout(() => {
+      setCertAppList([{
+        target: certForm.target,
+        type: certForm.target.includes("资质") || certForm.target.includes("认证") ? "特殊资质" : "职级晋升",
+        submitDate: "安珀历39年夏·30",
+        status: "审核中",
+        reviewer: "待分配审核人",
+        files: certForm.files
+      }, ...certAppList]);
+      setCertSubmitted(true);
+      setCertSubmitting(false);
+      setShowCertForm(false);
+      setCertForm({
+        target: "首席溯界者",
+        reason: "",
+        files: []
+      });
+    }, 900);
   };
 
   // === 行动申请 ===
@@ -319,9 +437,11 @@ function ProfileCenterPage() {
     gear: "",
     role: "队员",
     reason: "",
-    availability: "夏·31 起可待命"
+    availability: "夏·31 起可待命",
+    files: []
   });
   const [opSubmitted, setOpSubmitted] = React.useState(false);
+  const [opSubmitting, setOpSubmitting] = React.useState(false);
   const [showOpForm, setShowOpForm] = React.useState(false);
   const opNameOf = (type, code) => {
     if (type === "异常行动许可申请") {
@@ -344,12 +464,27 @@ function ProfileCenterPage() {
       type: opForm.opType,
       submitDate: "安珀历39年夏·30",
       status: "审核中",
-      role
+      role,
+      files: opForm.files
     };
     if (opForm.opType === "异常行动许可申请") entry.detail = `申请人数：${opForm.people} 人`;
-    setOpAppList([entry, ...opAppList]);
-    setOpSubmitted(true);
-    setShowOpForm(false);
+    setOpSubmitting(true);
+    setTimeout(() => {
+      setOpAppList([entry, ...opAppList]);
+      setOpSubmitted(true);
+      setOpSubmitting(false);
+      setShowOpForm(false);
+      setOpForm({
+        opType: "异常行动参与申请",
+        opCode: "SPA-1120",
+        people: "2",
+        gear: "",
+        role: "队员",
+        reason: "",
+        availability: "夏·31 起可待命",
+        files: []
+      });
+    }, 900);
   };
 
   // === 个人档案编辑 ===
@@ -1285,20 +1420,19 @@ function ProfileCenterPage() {
     }
   }, /*#__PURE__*/React.createElement("label", {
     className: "form-label"
-  }, "\u8BC1\u660E\u6750\u6599\uFF08\u6A21\u62DF\u4E0A\u4F20\uFF09"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: "11px",
-      color: "var(--text-tertiary)",
-      padding: "8px",
-      border: "1px dashed var(--border-color)",
-      textAlign: "center"
-    }
-  }, "[ \u70B9\u51FB\u4E0A\u4F20\u76F8\u5173\u8BC1\u660E\u6750\u6599 \xB7 \u652F\u6301 PDF/JPG \xB7 \u5355\u6587\u4EF6 \u226410MB ]")), /*#__PURE__*/React.createElement("div", {
+  }, "\u8BC1\u660E\u6750\u6599"), /*#__PURE__*/React.createElement(UploadZone, {
+    files: certForm.files,
+    onChange: files => setCertForm({
+      ...certForm,
+      files
+    })
+  })), /*#__PURE__*/React.createElement("div", {
     className: "form-actions"
   }, /*#__PURE__*/React.createElement("button", {
     className: "form-submit",
-    onClick: submitCert
-  }, "\u63D0\u4EA4\u7533\u8BF7"), /*#__PURE__*/React.createElement("button", {
+    onClick: submitCert,
+    disabled: certSubmitting
+  }, certSubmitting ? "提交中…" : "提交申请"), /*#__PURE__*/React.createElement("button", {
     className: "form-cancel",
     onClick: () => setShowCertForm(false)
   }, "\u53D6\u6D88"))), /*#__PURE__*/React.createElement("div", {
@@ -1313,7 +1447,7 @@ function ProfileCenterPage() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "cert-table-head"
-  }, /*#__PURE__*/React.createElement("span", null, "\u76EE\u6807\u8BA4\u8BC1"), /*#__PURE__*/React.createElement("span", null, "\u7C7B\u578B"), /*#__PURE__*/React.createElement("span", null, "\u63D0\u4EA4\u65E5\u671F"), /*#__PURE__*/React.createElement("span", null, "\u72B6\u6001"), /*#__PURE__*/React.createElement("span", null, "\u5BA1\u6838\u4EBA")), certAppList.map((c, i) => /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, "\u76EE\u6807\u8BA4\u8BC1"), /*#__PURE__*/React.createElement("span", null, "\u7C7B\u578B"), /*#__PURE__*/React.createElement("span", null, "\u63D0\u4EA4\u65E5\u671F"), /*#__PURE__*/React.createElement("span", null, "\u72B6\u6001"), /*#__PURE__*/React.createElement("span", null, "\u5BA1\u6838\u4EBA"), /*#__PURE__*/React.createElement("span", null, "\u9644\u4EF6")), certAppList.map((c, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: `cert-table-row ${c.status === "已通过" ? "approved" : c.status === "审核中" ? "pending" : "rejected"}`
   }, /*#__PURE__*/React.createElement("span", {
@@ -1335,7 +1469,12 @@ function ProfileCenterPage() {
       color: "var(--text-tertiary)",
       fontSize: "11px"
     }
-  }, c.reviewer)))))), activeTab === "opapp" && /*#__PURE__*/React.createElement("div", {
+  }, c.reviewer), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "var(--text-tertiary)",
+      fontSize: "11px"
+    }
+  }, c.files && c.files.length ? `📎 ${c.files.length}` : "—")))))), activeTab === "opapp" && /*#__PURE__*/React.createElement("div", {
     className: "pc-card"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pc-card-header"
@@ -1479,11 +1618,25 @@ function ProfileCenterPage() {
     }),
     placeholder: "\u8BF7\u7B80\u8FF0\u7533\u8BF7\u7406\u7531\u3001\u76F8\u5173\u7ECF\u9A8C\u4E0E\u9884\u671F\u8D21\u732E..."
   })), /*#__PURE__*/React.createElement("div", {
+    className: "form-field",
+    style: {
+      marginBottom: "10px"
+    }
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "form-label"
+  }, "\u76F8\u5173\u6750\u6599\uFF08\u9009\u586B\uFF09"), /*#__PURE__*/React.createElement(UploadZone, {
+    files: opForm.files,
+    onChange: files => setOpForm({
+      ...opForm,
+      files
+    })
+  })), /*#__PURE__*/React.createElement("div", {
     className: "form-actions"
   }, /*#__PURE__*/React.createElement("button", {
     className: "form-submit",
-    onClick: submitOp
-  }, "\u63D0\u4EA4\u7533\u8BF7"), /*#__PURE__*/React.createElement("button", {
+    onClick: submitOp,
+    disabled: opSubmitting
+  }, opSubmitting ? "提交中…" : "提交申请"), /*#__PURE__*/React.createElement("button", {
     className: "form-cancel",
     onClick: () => setShowOpForm(false)
   }, "\u53D6\u6D88"))), /*#__PURE__*/React.createElement("div", {
@@ -1498,7 +1651,7 @@ function ProfileCenterPage() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "op-table-head"
-  }, /*#__PURE__*/React.createElement("span", null, "\u884C\u52A8\u7F16\u53F7"), /*#__PURE__*/React.createElement("span", null, "\u884C\u52A8\u540D\u79F0"), /*#__PURE__*/React.createElement("span", null, "\u7533\u8BF7\u7C7B\u578B"), /*#__PURE__*/React.createElement("span", null, "\u7533\u8BF7\u65F6\u95F4"), /*#__PURE__*/React.createElement("span", null, "\u72B6\u6001"), /*#__PURE__*/React.createElement("span", null, "\u5206\u914D\u89D2\u8272")), opAppList.map((o, i) => /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", null, "\u884C\u52A8\u7F16\u53F7"), /*#__PURE__*/React.createElement("span", null, "\u884C\u52A8\u540D\u79F0"), /*#__PURE__*/React.createElement("span", null, "\u7533\u8BF7\u7C7B\u578B"), /*#__PURE__*/React.createElement("span", null, "\u7533\u8BF7\u65F6\u95F4"), /*#__PURE__*/React.createElement("span", null, "\u72B6\u6001"), /*#__PURE__*/React.createElement("span", null, "\u5206\u914D\u89D2\u8272"), /*#__PURE__*/React.createElement("span", null, "\u9644\u4EF6")), opAppList.map((o, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: `op-table-row ${o.status === "已批准" ? "approved" : o.status === "审核中" ? "pending" : "rejected"}`
   }, /*#__PURE__*/React.createElement("span", {
@@ -1527,7 +1680,12 @@ function ProfileCenterPage() {
     style: {
       color: "var(--text-tertiary)"
     }
-  }, o.role), o.detail && /*#__PURE__*/React.createElement("span", {
+  }, o.role), /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "var(--text-tertiary)",
+      fontSize: "11px"
+    }
+  }, o.files && o.files.length ? `📎 ${o.files.length}` : "—"), o.detail && /*#__PURE__*/React.createElement("span", {
     style: {
       color: "var(--text-tertiary)",
       fontSize: "11px"
