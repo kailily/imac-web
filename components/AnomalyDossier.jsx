@@ -712,47 +712,6 @@ function AnomalyDossier({ data }) {
               </div>
             )}
 
-            {data.imacNote && (
-              <div className="file-section">
-                <div className="file-section-header">
-                  <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">备注</span>
-                </div>
-                <div className="note-box">
-                  <p className="note-text">{data.imacNote}</p>
-                </div>
-              </div>
-            )}
-
-            {data.suggestedActions && data.suggestedActions.length > 0 && (
-              <div className="file-section">
-                <div className="file-section-header">
-                  <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">建议行动</span>
-                </div>
-                <div className="note-box">
-                  <ul style={{ margin: 0, paddingLeft: "20px", listStyle: "none" }}>
-                    {data.suggestedActions.map((a, i) => (
-                      <li key={i} style={{ position: "relative", paddingLeft: "18px", fontSize: "12px", color: "var(--text-secondary)", lineHeight: "1.8" }}>
-                        <span style={{ position: "absolute", left: 0, color: "var(--level-hazardous)", fontFamily: "var(--font-mono)" }}>→</span>
-                        {a}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-
-            {data.internalNode && (
-              <div className="file-section">
-                <div className="file-section-header">
-                  <span className="file-section-num mono">§ {nextNum()}</span>
-                  <span className="file-section-title">内部评估</span>
-                </div>
-                <div>{data.internalNode}</div>
-              </div>
-            )}
-
             <div className="file-footer">
               <div className="file-meta">FILE ID: {data.id} / VER: {data.ver || "39.2"} / CLASSIFICATION: {data.classification || "CONFIDENTIAL"}</div>
               <div className="file-meta">LAST UPDATED: {data.updated}</div>
