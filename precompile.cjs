@@ -63,8 +63,8 @@ console.log(
 
 // 合并所有组件 JS 为 app.js（固定顺序：根组件 → 页面 → App），减少请求数
 // 注意：顺序不能从 index.html 读取（首次运行后引用已被移除），必须硬编码
-// 部分懒加载：主包体保留全部页面（首页/其余页面即时切换），仅异常数据库模块
-// （AnomalyArchive / AnomalyDetail 及依赖 AnomalyDossier / AcademyMap）拆出按需加载
+// 部分懒加载：主包体保留首页链 + 常用页面（即时切换）；
+// 大页面（后台/门户/个人中心/邮箱/注册）与异常数据库模块按需加载，保证首屏快速进入
 const BUNDLE_ORDER = [
   // 根级公共组件（router / auth / 公共组件 / 数据 / 子组件）
   "components/router",
@@ -73,18 +73,13 @@ const BUNDLE_ORDER = [
   "components/Footer",
   "components/OrganizationsMap",
   "components/organizationsData",
-  // 页面组件
+  // 首页 + 常用页面
   "components/pages/Home",
   "components/pages/Guide",
   "components/pages/Organizations",
   "components/pages/OrgDetail",
   "components/pages/News",
   "components/pages/Auth",
-  "components/pages/Portal",
-  "components/pages/ProfileCenter",
-  "components/pages/RegisterPage",
-  "components/pages/MailboxPage",
-  "components/pages/Admin",
   "components/pages/Join",
   "components/pages/AnomalyAuth",
   "components/pages/MediaAuth",
@@ -93,8 +88,13 @@ const BUNDLE_ORDER = [
   "components/App",
 ];
 
-// 异常数据库模块：路由到才加载（App.jsx 的 LAZY_PAGE_MAP 与之对应）
+// 按需加载页面：路由到才加载（App.jsx 的 LAZY_PAGE_MAP 与之对应）
 const LAZY_PAGES = [
+  "components/pages/Admin",
+  "components/pages/Portal",
+  "components/pages/ProfileCenter",
+  "components/pages/MailboxPage",
+  "components/pages/RegisterPage",
   "components/pages/AnomalyArchive",
   "components/pages/AnomalyDetail",
 ];

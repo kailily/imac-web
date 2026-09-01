@@ -1,5 +1,26 @@
-// 部分懒加载：仅异常数据库模块（列表 + 档案详情）按需加载，其余页面在主 bundle 内即时切换
+// 部分懒加载：首页链 + 常用页面在主 bundle 内即时切换；
+// 大页面（后台/门户/个人中心/邮箱/注册）与异常数据库模块按需加载，保证首屏快速进入
 const LAZY_PAGE_MAP = [{
+  match: p => p === "/admin",
+  fn: "AdminPage",
+  src: "pages/Admin.js"
+}, {
+  match: p => p === "/portal",
+  fn: "PortalPage",
+  src: "pages/Portal.js"
+}, {
+  match: p => p === "/profile-center",
+  fn: "ProfileCenterPage",
+  src: "pages/ProfileCenter.js"
+}, {
+  match: p => p === "/mailbox",
+  fn: "MailboxPage",
+  src: "pages/MailboxPage.js"
+}, {
+  match: p => p === "/register",
+  fn: "RegisterPage",
+  src: "pages/RegisterPage.js"
+}, {
   match: p => p === "/database" || p === "/anomaly-archive",
   fn: "AnomalyArchivePage",
   src: "pages/AnomalyArchive.js"
@@ -92,16 +113,6 @@ function App() {
   if (routePath === "/" || routePath === "" || routePath.startsWith("/#")) {
     PageComponent = HomePage;
     pageKey = "home";
-  } else if (routePath === "/portal") {
-    PageComponent = PortalPage;
-  } else if (routePath === "/profile-center") {
-    PageComponent = ProfileCenterPage;
-  } else if (routePath === "/register") {
-    PageComponent = RegisterPage;
-  } else if (routePath === "/mailbox") {
-    PageComponent = MailboxPage;
-  } else if (routePath === "/admin") {
-    PageComponent = AdminPage;
   } else if (routePath === "/guide") {
     PageComponent = GuidePage;
   } else if (routePath === "/organizations") {
@@ -121,6 +132,20 @@ function App() {
     PageComponent = JoinPage;
   } else if (routePath === "/anomaly-auth") {
     PageComponent = AnomalyAuthPage;
+  } else if (routePath === "/media-auth") {
+    PageComponent = MediaAuthPage;
+  } else if (routePath === "/media-guidelines") {
+    PageComponent = MediaGuidelinesPage;
+  } else if (routePath === "/admin") {
+    PageComponent = window.AdminPage || PendingPlaceholder;
+  } else if (routePath === "/portal") {
+    PageComponent = window.PortalPage || PendingPlaceholder;
+  } else if (routePath === "/profile-center") {
+    PageComponent = window.ProfileCenterPage || PendingPlaceholder;
+  } else if (routePath === "/mailbox") {
+    PageComponent = window.MailboxPage || PendingPlaceholder;
+  } else if (routePath === "/register") {
+    PageComponent = window.RegisterPage || PendingPlaceholder;
   } else if (routePath === "/database" || routePath === "/anomaly-archive") {
     PageComponent = window.AnomalyArchivePage || PendingPlaceholder;
     routeProps = {
@@ -134,10 +159,6 @@ function App() {
       anomalyId: id
     };
     pageKey = `anomaly-${id}`;
-  } else if (routePath === "/media-auth") {
-    PageComponent = MediaAuthPage;
-  } else if (routePath === "/media-guidelines") {
-    PageComponent = MediaGuidelinesPage;
   } else {
     PageComponent = HomePage;
     pageKey = "home";
