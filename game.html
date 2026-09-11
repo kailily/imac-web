@@ -464,6 +464,42 @@ function attrOf(optText) {
 
 var state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0 };
 var attrs = loadAttrs();
+
+/* 八大成员组织（缩写与 IMAC 官网一致，用于工牌编号前缀 IMAC-缩写-编号） */
+var ORGS = [
+  { abbr: 'OA', name: '衔尾蛇事务所' },
+  { abbr: 'NW', name: '北境守望' },
+  { abbr: 'BRI', name: '边界研究院' },
+  { abbr: 'MC', name: '晨星团' },
+  { abbr: '4W', name: '第四面墙' },
+  { abbr: 'PS', name: '悬铃木学会' },
+  { abbr: 'WNP', name: '白夜哨站' },
+  { abbr: 'LBC', name: '长桥会社' }
+];
+function orgAbbr(name) {
+  for (var i = 0; i < ORGS.length; i++) if (ORGS[i].name === name) return ORGS[i].abbr;
+  return 'OA';
+}
+function isMemberOrg(name) {
+  return ORGS.some(function (o) { return o.name === name; });
+}
+function makeImacId(abbr) {
+  return 'IMAC-' + abbr + '-' + String(1000 + Math.floor(Math.random() * 9000));
+}
+
+/* 自由填写用的关键词表（命中关键动作 +4 / 含危险动作 −6） */
+var CALL_KEYS = {
+  'OBA-0148': { keys: ['正常使用', '按处方', '每日一次', '不转借', '继续用', '放心'], bads: ['销毁', '烧掉', '扔掉', '封存', '远离'] },
+  'SPA-2088': { keys: ['一人一卡', '一人一次', '刷卡', '间隔', '不要一起', '分开'], bads: ['一起过', '挤一挤', '两个人', '带他'] },
+  'SPA-0421': { keys: ['徒步', '撤离', '离开', '上报', '封锁', '步行', '警示'], bads: ['回到车上', '继续开', '再试', '开车进去', '原地等'] },
+  'SPA-0317': { keys: ['陪同', '继续佩戴', '放心', '注意路况', '家人', '照看'], bads: ['取下', '摘掉', '控制', '完全放心', '独自'] },
+  'SPB-0089': { keys: ['封锁', '清空', '撤离', '不要进入', '别进去', '上报', '等待专业'], bads: ['进去找', '进去看', '自己搜', '组织人员进入', '检查设备'] },
+  'PHA-0001': { keys: ['制止', '不要下车', '撤离', '后退', '掉头', '远离', '上报', '原路'], bads: ['下车', '走两步', '靠近', '试探', '投物', '停留'] },
+  'TMA-0045': { keys: ['不要下车', '留在车厢', '保持清醒', '别睡', '等待救援', '原位'], bads: ['下车', '跟着下', '随大流', '睡觉', '睡一觉', '找出口'] },
+  'LOA-0073': { keys: ['上报', '封存', '不要动', '保护现场', '等待专业', '原地', '不要自行'], bads: ['自己找', '召集亲友', '到处找', '翻房间', '等等看'] },
+  'NONE-0001': { keys: ['听觉', '光影', '老鼠', '管道', '装修', '正常', '无需', '登记', '安抚'], bads: ['封锁', '最高等级', '立即撤离', '派队', '挂断', '批评'] },
+  'NONE-0002': { keys: ['不交钱', '诈骗', '报警', '举报', '不要给钱', '挂断', '核实', '免费'], bads: ['交钱', '先交', '给钱', '消灾', '相信', '自己想办法'] }
+};
 var best = 0, plays = 0, collected = {};
 try {
   best = parseInt(localStorage.getItem('imac_hotline_best2') || '0', 10) || 0;
@@ -511,16 +547,62 @@ function renderCall() {
   $('callerText').textContent = c.text;
   $('verdictBox').innerHTML = '';
   $('nextBox').innerHTML = '';
-  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？· <b>' + c.asks.length + '</b> 个问题（线索可提高成功率）</div><div class="ask-btns" id="askBtns">';
+  var kw = CALL_KEYS[c.id] || { keys: [], bads: [] };
+  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？· <b>' + c.asks.length + '</b> 个固定问题（不掷骰，直接得线索）</div><div class="ask-btns" id="askBtns">';
   c.asks.forEach(function (a, i) { html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(a.q) + '</button>'; });
-  html += '</div><div id="askAns"></div></div>';
+  html += '</div><div id="askAns"></div>' +
+    '<div style="margin-top:11px;border-top:1px dashed var(--border-light);padding-top:10px">' +
+      '<div class="ask-hd" style="margin-bottom:7px">✎ 自己写一个问题（需掷骰 · 沟通力＋运气 vs DC 10）</div>' +
+      '<textarea class="free-in" id="askFreeIn" style="min-height:54px" placeholder="例如：你确定那扇门一直是开着的吗？附近还有别人看到吗？"></textarea>' +
+      '<button class="free-send" style="margin-top:7px" onclick="askFree()">提 问 · 掷 骰</button>' +
+    '</div></div>';
   $('askWrap').innerHTML = html;
-  html = '<div class="opts" id="opts">';
+  html = '<div class="act">' +
+    '<div class="act-tabs">' +
+      '<div class="act-tab on" id="tabOpt" onclick="setMode(\'opt\')">选 择 处 置 建 议</div>' +
+      '<div class="act-tab" id="tabFree" onclick="setMode(\'free\')">✎ 自 己 写 处 置 方 案</div>' +
+    '</div>' +
+    '<div id="optBox"><div class="opts" id="opts">';
   c.opts.forEach(function (o, i) {
     html += '<div class="opt" onclick="choose(' + i + ')"><span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t + '</div>';
   });
-  html += '</div>';
+  html += '</div></div>' +
+    '<div class="free-box" id="freeBox">' +
+      '<div class="free-hint">写下你的处置指令——<b>提交后需掷骰检定</b>。写清关键动作会提高加值（+4），写出危险动作会被扣分（−6）。</div>' +
+      '<textarea class="free-in" id="freeIn" placeholder="例如：让他立刻徒步离开该路段，不要再次驾车进入，并在安全距离外封锁警示、上报 IMAC。"></textarea>' +
+      '<button class="free-send" onclick="submitFree()">提 交 指 令 · 掷 骰 检 定</button>' +
+      '<div class="free-tags">关键词提示：' + kw.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
+    '</div>' +
+  '</div>';
   $('actWrap').innerHTML = html;
+}
+function setMode(m) {
+  if (state.answered || state.rolling) return;
+  $('tabOpt').classList.toggle('on', m === 'opt');
+  $('tabFree').classList.toggle('on', m === 'free');
+  $('optBox').style.display = m === 'opt' ? 'block' : 'none';
+  $('freeBox').classList.toggle('on', m === 'free');
+}
+function fillFree(k) {
+  var t = $('freeIn');
+  t.value = (t.value ? t.value.replace(/[，,。\s]*$/, '') + '，' : '') + k;
+  if (t.focus) { try { t.focus(); } catch (e) {} }
+}
+/* 自己写方案 → 按关键词质量换算检定加值 → 掷骰 */
+function submitFree() {
+  if (state.answered || state.rolling) return;
+  var txt = ($('freeIn').value || '').trim();
+  if (!txt) { alert('请先写下你的处置指令'); return; }
+  var c = CALLS[state.idx];
+  var kw = CALL_KEYS[c.id] || { keys: [], bads: [] };
+  var hitKeys = kw.keys.filter(function (k) { return txt.indexOf(k) >= 0; });
+  var hitBads = kw.bads.filter(function (k) { return txt.indexOf(k) >= 0; });
+  var mod = hitBads.length ? -6 : (hitKeys.length ? 4 : 0);
+  state.freeMode = true;
+  state.freeText = txt;
+  state.freeKeys = hitKeys;
+  state.freeBads = hitBads;
+  openRollSetup(mod, txt, true);
 }
 function ask(i) {
   if (state.answered || state.asked[i]) return;
@@ -536,28 +618,105 @@ function ask(i) {
   if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
 }
 
-/* 选策略 → 打开检定设定（显示属性/策略/线索加值，确认后掷骰） */
+/* 自己写问题 → 掷骰（沟通力＋运气 vs DC 10）→ 问出线索 / 问不出来 */
+function askFree() {
+  if (state.answered || state.rolling) return;
+  var q = ($('askFreeIn').value || '').trim();
+  if (!q) { alert('请先写下你的问题'); return; }
+  var c = CALLS[state.idx];
+  var pending = -1;
+  c.asks.forEach(function (a, i) { if (a.key && !state.asked[i] && pending < 0) pending = i; });
+  var roll = 1 + Math.floor(Math.random() * 20);
+  var speech = attrs.speech || 0, luck = attrs.luck || 0;
+  var total = roll + speech + luck;
+  var dc = 10, ok = total >= dc;
+  state.rolling = true;
+  var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
+  fl.classList.add('show');
+  big.className = 'dice-big'; big.textContent = roll;
+  lab.innerHTML = '沟通检定中…';
+  var ticks = 0;
+  var timer = setInterval(function () {
+    big.textContent = 1 + Math.floor(Math.random() * 20);
+    if (++ticks > 10) {
+      clearInterval(timer);
+      big.textContent = roll;
+      if (roll === 20) big.className = 'dice-big crit';
+      else if (roll === 1) big.className = 'dice-big fumb';
+      lab.innerHTML = 'D20 <b style="color:var(--tp)">' + roll + '</b> ＋ 沟通力 ' + speech + ' ＋ 运气 ' + luck +
+        '<br>合计 <b style="color:' + (ok ? 'var(--lv-ordinary)' : 'var(--red)') + '">' + total + '</b> / DC ' + dc;
+      setTimeout(function () {
+        fl.classList.remove('show');
+        state.rolling = false;
+        var box = $('askAns'), div = document.createElement('div');
+        if (ok) {
+          var a = pending >= 0 ? c.asks[pending] : null;
+          if (pending >= 0) state.asked[pending] = true;
+          if (a && a.key) { state.clues++; $('progClue').textContent = state.clues; }
+          div.className = 'ask-ans clue';
+          div.innerHTML = '<span class="q">◆ 问到了关键线索　「' + esc(q.slice(0, 24)) + '」</span>' +
+            (a ? esc(a.a) : '市民把自己知道的都说了出来——没有再超出档案记载，但语气里的恐惧是真的。');
+          if (pending >= 0) {
+            var btn = document.querySelector('#askBtns .ask-btn[data-i="' + pending + '"]');
+            if (btn) { btn.classList.add('done'); btn.textContent = '✓ ' + c.asks[pending].q; }
+          }
+        } else {
+          div.className = 'ask-ans';
+          div.innerHTML = '<span class="q">○ 没问出来　「' + esc(q.slice(0, 24)) + '」</span>' +
+            '电话那头沉默了几秒：「这个……我说不好。」（这个问题没有得到有效信息）';
+        }
+        box.appendChild(div);
+        $('askFreeIn').value = '';
+        if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
+      }, 850);
+    }
+  }, 80);
+}
+
+/* 选择处置建议 → 按规程直接判定（不掷骰） */
 function choose(i) {
   if (state.answered || state.rolling) return;
   var c = CALLS[state.idx], opt = c.opts[i];
   state.pick = i;
-  var attrKey = attrOf(opt.t);
+  state.freeMode = false;
+  var clueBonus = 0;
+  c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
+  // 策略质量直接决定结局：佳 +4 以上 → 顺利；中庸 → 勉强；负值 → 出事；线索充足可把「勉强」提升为「顺利」
+  var kind = opt.mod >= 4 ? 'good' : opt.mod >= 0 ? 'mid' : 'bad';
+  if (kind === 'mid' && clueBonus >= 4) kind = 'good';
+  resolve(kind, 0, 0, c);
+}
+
+/* 检定设定面板：显示属性 / 运气 / 策略 / 线索加值，确认后掷骰 */
+function openRollSetup(mod, label, isFree) {
+  var c = CALLS[state.idx];
+  state.currentMod = mod;
+  state.currentLabel = label;
+  state.currentFree = !!isFree;
+  var attrKey = attrOf(label);
   var attrVal = attrs[attrKey] || 0;
   var luckVal = attrs.luck || 0;
   var clueBonus = 0;
   c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
-  var totalBonus = opt.mod + clueBonus + attrVal + luckVal;
+  var totalBonus = mod + clueBonus + attrVal + luckVal;
   var need = c.dc - totalBonus;
+  var quality = '';
+  if (isFree) {
+    if (state.freeBads && state.freeBads.length) quality = '<div class="rs-dc" style="color:var(--red)">⚠ 指令含危险动作「' + state.freeBads.join('、') + '」 → 策略加值 −6</div>';
+    else if (state.freeKeys && state.freeKeys.length) quality = '<div class="rs-dc" style="color:var(--lv-ordinary)">✓ 命中关键动作「' + state.freeKeys.slice(0, 4).join('、') + '」 → 策略加值 +4</div>';
+    else quality = '<div class="rs-dc" style="color:var(--lv-hazardous)">△ 未识别到关键动作 → 策略加值 0</div>';
+  }
   var box = document.createElement('div');
   box.className = 'roll-setup';
   box.id = 'rollSetup';
   box.innerHTML =
-    '<div class="rs-t">检定设定 · 你选了「' + esc(opt.t.slice(0, 18)) + (opt.t.length > 18 ? '…' : '') + '」</div>' +
+    '<div class="rs-t">检定设定 · ' + (isFree ? '自写方案' : '选择处置') + '「' + esc(String(label).slice(0, 20)) + (String(label).length > 20 ? '…' : '') + '」</div>' +
+    quality +
     '<div class="rs-dc">主属性 <b style="color:var(--tp)">' + ATTR_CN[attrKey] + ' +' + attrVal + '</b>' +
       '　运气 +' + luckVal +
-      '　策略 ' + (opt.mod > 0 ? '+' : '') + opt.mod +
+      '　策略 ' + (mod > 0 ? '+' : '') + mod +
       (clueBonus ? '　线索 +' + clueBonus : '') +
-      '<br>合计加值 <b style="color:var(--tp)">+' + totalBonus + '</b> · 需要 D20 ≥ <b style="color:' + (need <= 0 ? 'var(--lv-ordinary)' : need > 15 ? 'var(--red)' : 'var(--tp)') + '">' + Math.max(1, need) + '</b></div>' +
+      '<br>合计加值 <b style="color:var(--tp)">' + (totalBonus >= 0 ? '+' : '') + totalBonus + '</b> · 需要 D20 ≥ <b style="color:' + (need <= 0 ? 'var(--lv-ordinary)' : need > 15 ? 'var(--red)' : 'var(--tp)') + '">' + Math.max(1, need) + '</b></div>' +
     '<div class="rs-row"><button class="rs-go" onclick="doRoll()">掷 骰 检 定</button></div>' +
     '<div class="rs-note">想改加值？去「<b>能力设定</b>」重新分配属性点（判断力／应变力／沟通力／运气）。</div>';
   var old = $('rollSetup');
@@ -565,18 +724,26 @@ function choose(i) {
   $('actWrap').appendChild(box);
   var opts = $('opts');
   if (opts) Array.prototype.forEach.call(opts.children, function (n) { n.style.opacity = '.45'; n.onclick = null; });
+  if (isFree) {
+    var fi = $('freeIn');
+    if (fi) fi.disabled = true;
+    var fs = document.querySelector('.free-send');
+    if (fs) { fs.disabled = true; fs.style.opacity = '.5'; }
+  }
 }
 
 function doRoll() {
   if (state.answered || state.rolling) return;
-  var c = CALLS[state.idx], opt = c.opts[state.pick];
-  var attrKey = attrOf(opt.t);
+  var c = CALLS[state.idx];
+  var mod = state.currentMod || 0;
+  var label = state.currentLabel || '';
+  var attrKey = attrOf(label);
   var attrVal = attrs[attrKey] || 0;
   var luckVal = attrs.luck || 0;
   var roll = 1 + Math.floor(Math.random() * 20);
   var clueBonus = 0;
   c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
-  var bonus = opt.mod + clueBonus + attrVal + luckVal;
+  var bonus = mod + clueBonus + attrVal + luckVal;
   var total = roll + bonus;
   var setup = $('rollSetup');
   if (setup) setup.parentNode.removeChild(setup);
@@ -585,7 +752,7 @@ function doRoll() {
   var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
   fl.classList.add('show');
   big.className = 'dice-big'; big.textContent = roll;
-  lab.innerHTML = 'D20 掷骰中…';
+  lab.innerHTML = (state.currentFree ? '自写方案 · ' : '') + 'D20 掷骰中…';
   var ticks = 0;
   var timer = setInterval(function () {
     big.textContent = 1 + Math.floor(Math.random() * 20);
@@ -598,7 +765,7 @@ function doRoll() {
       lab.innerHTML = 'D20 <b style="color:var(--tp)">' + roll + '</b>' +
         '　' + ATTR_CN[attrKey] + ' +' + attrVal +
         (luckVal ? '　运气 +' + luckVal : '') +
-        (opt.mod ? '　策略 ' + (opt.mod > 0 ? '+' : '') + opt.mod : '') +
+        (mod ? '　策略 ' + (mod > 0 ? '+' : '') + mod : '') +
         (clueBonus ? '　线索 +' + clueBonus : '') +
         '<br>合计 <b style="color:' + (kind === 'good' ? 'var(--lv-ordinary)' : kind === 'mid' ? 'var(--lv-hazardous)' : 'var(--red)') + '">' + total + '</b> / DC ' + c.dc;
       setTimeout(function () { fl.classList.remove('show'); resolve(kind, roll, total, c); }, 900);
@@ -628,7 +795,9 @@ function resolve(kind, roll, total, c) {
   v.innerHTML =
     '<div class="result ' + kind + '">' +
       '<div class="rt">' + label + '　业绩 +' + gain + (clueBonus ? '（线索 +' + clueBonus + '）' : '') + (isNew ? '　· 新结局已收集' : '') + '</div>' +
-      '<div class="roll">' + c.code + ' · ' + c.lv + '　|　D20 ' + roll + ' ＋ 合计 ' + total + ' / DC ' + c.dc + '</div>' +
+      '<div class="roll">' + c.code + ' · ' + c.lv + '　|　' +
+        (roll > 0 ? 'D20 ' + roll + ' ＋ 合计 ' + total + ' / DC ' + c.dc : '标准处置 · 未掷骰（按规程执行）') +
+      '</div>' +
       '<p>' + esc(text) + '</p>' +
       '<a class="arch" href="' + SITE + '" target="_blank" rel="noopener">' +
         (c.id.indexOf('NONE') === 0 ? '→ 前往 IMAC 官网 · 了解异常处置规范' : '→ 前往 IMAC 官网 · 查看 ' + c.id + ' 完整档案') +
@@ -742,20 +911,26 @@ function badgeData() {
   var own = readLS('imac_badge_profile');
   var reg = readLS('imac_registered_profile');
   var app = readLS('imac_application_profile');
-  // 编号：与 IMAC 网站一致（注册信息优先，其次申请表，最后本地固定生成）
-  var id = (reg && reg.imacId) || (app && app.imacId);
-  if (!id) {
-    id = readLS('imac_badge_id');
-    if (!id) {
-      id = 'IMAC-99-' + String(1000 + Math.floor(Math.random() * 9000));
-      writeLS('imac_badge_id', id);
-    }
-  }
+  // 所属组织：工牌自选 > 网站注册/申请 > 随机分配一个成员组织
+  var orgName = (own && own.org) || (reg && reg.organization) || (app && app.organization);
+  if (!orgName || !isMemberOrg(orgName)) orgName = ORGS[Math.floor(Math.random() * ORGS.length)].name;
+  // 编号：与 IMAC 官网一致（IMAC-组织缩写-四位数字）
+  var id = (reg && reg.imacId) || (own && own.id) || readLS('imac_badge_id');
+  if (!id || !/^IMAC-[A-Za-z0-9]+-\d+$/.test(id)) id = makeImacId(orgAbbr(orgName));
+  writeLS('imac_badge_id', id);
   var name = (own && own.name) || (reg && reg.realName) || (app && app.realName) || '未登记姓名';
   var codename = (own && own.codename) || (reg && reg.codename) || (app && app.codename) || '夜莺';
   var rank = (own && own.rank) || (reg && reg.rank) || '见习';
-  // 工牌由联盟签发：组织统一显示国际异常管理联盟
-  return { name: name, codename: codename, id: id, org: '国际异常管理联盟', rank: rank };
+  return { name: name, codename: codename, id: id, org: orgName, rank: rank };
+}
+/* 切换组织 → 同步编号前缀 */
+function syncIdPrefix() {
+  var sel = $('efOrg'), inp = $('efId');
+  if (!sel || !inp) return;
+  var abbr = orgAbbr(sel.value);
+  var m = /^IMAC-[A-Za-z0-9]+-(\d+)$/.exec((inp.value || '').trim());
+  var num = m ? m[1] : String(1000 + Math.floor(Math.random() * 9000));
+  inp.value = 'IMAC-' + abbr + '-' + num;
 }
 
 function showBadge() {
@@ -805,22 +980,29 @@ function toggleBadgeEdit() {
     '<div class="edit-form">' +
       '<div class="ef"><label>姓名</label><input id="efName" value="' + esc(b.name) + '"></div>' +
       '<div class="ef"><label>代号</label><input id="efCode" value="' + esc(b.codename) + '"></div>' +
-      '<div class="ef"><label>编号</label><input id="efId" value="' + esc(b.id) + '"></div>' +
-      '<div class="ef"><label>组织</label><input id="efOrg" value="' + esc(b.org) + '"></div>' +
+      '<div class="ef"><label>组织</label><select id="efOrg" onchange="syncIdPrefix()" style="flex:1;background:rgba(10,10,14,.85);border:1px solid var(--border-light);color:var(--tp);font-family:inherit;font-size:13px;padding:8px 10px;border-radius:5px">' +
+        ORGS.map(function (o) { return '<option value="' + o.name + '"' + (b.org === o.name ? ' selected' : '') + '>' + o.name + '（' + o.abbr + '）</option>'; }).join('') +
+      '</select></div>' +
+      '<div class="ef"><label>编号</label><input id="efId" value="' + esc(b.id) + '" placeholder="IMAC-OA-0312"></div>' +
       '<div class="ef"><label>职级</label><input id="efRank" value="' + esc(b.rank) + '"></div>' +
+      '<div style="font-size:11px;color:var(--tm);line-height:1.7;margin-bottom:9px">编号格式与 IMAC 官网一致：<b style="color:var(--ts)">IMAC-组织缩写-四位数字</b>；切换组织会自动替换前缀。</div>' +
       '<button class="btn-main" onclick="saveBadgeForm()">保 存 工 牌</button>' +
     '</div>';
 }
 
 function saveBadgeForm() {
+  var orgVal = ($('efOrg') || {}).value || ORGS[0].name;
+  var idVal = (($('efId') || {}).value || '').trim();
+  if (!/^IMAC-[A-Za-z0-9]+-\d+$/.test(idVal)) idVal = makeImacId(orgAbbr(orgVal));
   var b = {
     name: ($('efName').value || '').trim() || '未登记姓名',
     codename: ($('efCode').value || '').trim() || '夜莺',
-    id: ($('efId').value || '').trim() || 'IMAC-99-0000',
-    org: ($('efOrg').value || '').trim() || 'IMAC 异常热线中心',
+    id: idVal,
+    org: orgVal,
     rank: ($('efRank').value || '').trim() || '见习'
   };
   writeLS('imac_badge_profile', b);
+  writeLS('imac_badge_id', idVal);
   $('badgeEdit').innerHTML = '';
   renderBadge();
 }
