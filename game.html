@@ -673,7 +673,7 @@ function askFree() {
   var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
   fl.classList.add('show');
   big.className = 'dice-big'; big.textContent = roll;
-  lab.innerHTML = '沟通检定中…';
+  lab.innerHTML = '';
   var ticks = 0;
   var timer = setInterval(function () {
     big.textContent = 1 + Math.floor(Math.random() * 20);
@@ -682,8 +682,7 @@ function askFree() {
       big.textContent = roll;
       if (roll === 20) big.className = 'dice-big crit';
       else if (roll === 1) big.className = 'dice-big fumb';
-      lab.innerHTML = 'D20 <b style="color:var(--tp)">' + roll + '</b> ＋ 沟通力 ' + speech + ' ＋ 运气 ' + luck +
-        '<br>合计 <b style="color:' + (ok ? 'var(--lv-ordinary)' : 'var(--red)') + '">' + total + '</b> / DC ' + dc;
+      lab.innerHTML = '';
       setTimeout(function () {
         fl.classList.remove('show');
         state.rolling = false;
@@ -791,7 +790,7 @@ function doRoll() {
   var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
   fl.classList.add('show');
   big.className = 'dice-big'; big.textContent = roll;
-  lab.innerHTML = '判定中…';
+  lab.innerHTML = '';
   var ticks = 0;
   var timer = setInterval(function () {
     big.textContent = 1 + Math.floor(Math.random() * 20);
@@ -801,12 +800,7 @@ function doRoll() {
       var kind = (roll === 20 || total >= c.dc + 5) ? 'good' : (roll === 1 || total < c.dc) ? 'bad' : 'mid';
       if (roll === 20) big.className = 'dice-big crit';
       else if (roll === 1) big.className = 'dice-big fumb';
-      lab.innerHTML = 'D20 <b style="color:var(--tp)">' + roll + '</b>' +
-        '　' + ATTR_CN[attrKey] + ' +' + attrVal +
-        (luckVal ? '　运气 +' + luckVal : '') +
-        (mod ? '　策略 ' + (mod > 0 ? '+' : '') + mod : '') +
-        (clueBonus ? '　线索 +' + clueBonus : '') +
-        '<br>合计 <b style="color:' + (kind === 'good' ? 'var(--lv-ordinary)' : kind === 'mid' ? 'var(--lv-hazardous)' : 'var(--red)') + '">' + total + '</b> / DC ' + c.dc;
+      lab.innerHTML = '';
       setTimeout(function () { fl.classList.remove('show'); resolve(kind, roll, total, c); }, 900);
     }
   }, 80);
@@ -834,9 +828,7 @@ function resolve(kind, roll, total, c) {
   v.innerHTML =
     '<div class="result ' + kind + '">' +
       '<div class="rt">' + label + '　业绩 +' + gain + (clueBonus ? '（线索 +' + clueBonus + '）' : '') + (isNew ? '　· 新结局已收集' : '') + '</div>' +
-      '<div class="roll">' + c.code + ' · ' + c.lv + '　|　' +
-        (roll > 0 ? 'D20 ' + roll + ' ＋ 合计 ' + total + ' / DC ' + c.dc : '按规程处置') +
-      '</div>' +
+      '<div class="roll">' + c.code + ' · ' + c.lv + '</div>' +
       (state.currentFree && state.freeText ? '<p style="color:var(--tm);font-size:11.5px;font-style:italic;margin-bottom:9px">你的话：「' + esc(state.freeText.slice(0, 44)) + (state.freeText.length > 44 ? '…' : '') + '」</p>' : '') +
       '<p>' + esc(text) + '</p>' +
       '<a class="arch" href="' + SITE + '" target="_blank" rel="noopener">' +
