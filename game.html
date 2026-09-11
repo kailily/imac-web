@@ -103,6 +103,46 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .coll span.g{border-color:var(--lv-ordinary);color:var(--lv-ordinary);}
 .coll span.b{border-color:var(--red);color:var(--red);}
 .share-img{width:100%;border:1px solid var(--border);margin-top:12px;display:none;}
+/* 检定设定（可自填点数） */
+.roll-setup{margin-top:13px;border:1px solid var(--blue);background:rgba(122,150,173,.08);padding:12px;animation:fade .3s;}
+.roll-setup .rs-t{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:.12em;margin-bottom:8px;}
+.roll-setup .rs-t b{color:var(--tp);}
+.roll-setup .rs-row{display:flex;gap:8px;align-items:center;}
+.roll-setup input{width:74px;background:rgba(10,10,14,.85);border:1px solid var(--border-light);color:var(--tp);
+  font-family:var(--mono);font-size:16px;text-align:center;padding:9px 6px;border-radius:5px;}
+.roll-setup input:focus{outline:none;border-color:var(--red);}
+.roll-setup .rs-go{flex:1;border:1px solid var(--red);background:rgba(196,40,40,.14);color:var(--red);font-family:var(--mono);
+  font-size:12px;letter-spacing:.1em;padding:10px;cursor:pointer;}
+.roll-setup .rs-go:hover{background:var(--red);color:#fff;}
+.roll-setup .rs-note{font-size:11px;color:var(--tm);margin-top:8px;line-height:1.7;}
+.roll-setup .rs-dc{font-family:var(--mono);font-size:10.5px;color:var(--ts);margin-top:6px;letter-spacing:.06em;}
+/* 工牌 */
+.badge-wrap{padding:4px 0 0;}
+.idcard{position:relative;border:1px solid var(--border-light);background:linear-gradient(160deg,#16161c,#0e0e12);padding:15px;overflow:hidden;}
+.idcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--blue));}
+.idcard::after{content:'IMAC';position:absolute;right:-8px;bottom:-14px;font-family:var(--serif);font-size:64px;color:rgba(196,40,40,.06);letter-spacing:.06em;}
+.id-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-soft);padding-bottom:10px;margin-bottom:12px;}
+.id-head .l{font-family:var(--serif);font-size:15px;letter-spacing:.06em;}
+.id-head .l b{color:var(--red);}
+.id-head .r{font-family:var(--mono);font-size:8px;color:var(--tm);letter-spacing:.14em;text-align:right;line-height:1.6;}
+.id-body{display:flex;gap:13px;}
+.id-photo{flex-shrink:0;width:72px;height:88px;border:1px solid var(--border-light);background:var(--bg-3);
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:34px;color:var(--red);}
+.id-fields{flex:1;min-width:0;}
+.id-row{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:3px 0;border-bottom:1px dashed rgba(38,38,46,.7);}
+.id-row .k{color:var(--tm);font-family:var(--mono);font-size:10px;letter-spacing:.06em;flex-shrink:0;}
+.id-row .v{color:var(--tp);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.id-stats{margin-top:13px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.id-stats div{border:1px solid var(--border);background:rgba(10,10,14,.5);padding:7px 4px;text-align:center;}
+.id-stats .n{font-family:var(--serif);font-size:15px;}
+.id-stats .t{font-family:var(--mono);font-size:8px;color:var(--tm);letter-spacing:.08em;margin-top:2px;}
+.id-foot{margin-top:11px;border-top:1px solid var(--border-soft);padding-top:9px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:var(--tf);letter-spacing:.08em;}
+.edit-form{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;}
+.edit-form .ef{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.edit-form .ef label{font-family:var(--mono);font-size:10px;color:var(--tm);width:52px;flex-shrink:0;letter-spacing:.06em;}
+.edit-form input{flex:1;background:rgba(10,10,14,.85);border:1px solid var(--border-light);color:var(--tp);
+  font-family:inherit;font-size:13px;padding:8px 10px;border-radius:5px;}
+.edit-form input:focus{outline:none;border-color:var(--red);}
 .tips{font-family:var(--mono);font-size:9px;color:var(--tf);letter-spacing:.08em;margin-top:10px;line-height:1.7;}
 </style>
 </head>
@@ -137,8 +177,33 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     </div>
 
     <button class="btn-main" style="margin-top:14px" onclick="startShift()">▶ 接 通 热 线</button>
+    <button class="btn-ghost" onclick="showAttrs()">⚙ 能 力 设 定（影响掷骰加值）</button>
+    <button class="btn-ghost" onclick="showBadge()">▣ 我 的 工 牌</button>
     <a class="btn-ghost" href="https://kailily.github.io/imac-web/#/database" target="_blank" rel="noopener">⊟ 查阅异常信息数据库</a>
-    <div class="tips">10 通来电 · 追问线索可提高处置成功率 · 每个案子有 3 种结局</div>
+    <div class="tips">10 通来电 · 可追问线索 · 处置时按能力属性掷骰 · 每个案子 3 种结局</div>
+  </div>
+
+  <div class="page" id="pageAttrs">
+    <div class="brand" style="font-size:18px">能 力 设 定</div>
+    <div class="brand-sub" style="margin-bottom:12px">TRACER ATTRIBUTES · 分配到总上限 20 点</div>
+    <div class="ask-wrap" style="border-style:solid;background:rgba(196,40,40,.05)">
+      <div class="ask-hd">你的能力会加进每一次掷骰——<b>判断力</b>用于分析类指令，<b>应变力</b>用于撤离封锁类，<b>沟通力</b>用于解释安抚类，<b>运气</b>永远有效。</div>
+    </div>
+    <div id="attrForm"></div>
+    <button class="btn-main" style="margin-top:12px" onclick="saveAttrsForm()">保 存 能 力 设 定</button>
+    <button class="btn-ghost" onclick="resetAttrs()">↺ 恢复默认（各 2 点）</button>
+    <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
+  </div>
+
+  <div class="page" id="pageBadge">
+    <div class="brand" style="font-size:18px">溯 界 者 工 牌</div>
+    <div class="brand-sub" style="margin-bottom:12px">TRACER ID CARD · IMAC ISSUED</div>
+    <div class="badge-wrap" id="badgeWrap"></div>
+    <div id="badgeEdit"></div>
+    <button class="btn-main" style="margin-top:12px" onclick="saveBadgeCard()">⤓ 保存工牌图片 · 分享</button>
+    <button class="btn-ghost" onclick="toggleBadgeEdit()">✎ 编辑工牌信息</button>
+    <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
+    <div class="tips">工牌信息优先取你在 IMAC 网站填写的注册／申请资料；也可在此自行填写。</div>
   </div>
 
   <div class="page" id="pageCall">
@@ -170,8 +235,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <div class="end-body" id="endBody"></div>
       <div class="coll" id="endColl"></div>
     </div>
-    <canvas class="share-img" id="shareCanvas" width="720" height="1000"></canvas>
+    <canvas class="share-img" id="badgeCanvas" width="720" height="1040"></canvas>
     <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存值班记录 · 分享给朋友</button>
+    <button class="btn-ghost" onclick="showBadge()">▣ 查看我的工牌</button>
     <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前往 IMAC 异常信息数据库</a>
     <button class="btn-ghost" onclick="startShift()">↻ 再来一班</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
@@ -368,7 +434,31 @@ var CALLS = [
 ];
 
 var ENDINGS = CALLS.length * 3;
-var state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false };
+/* ===== 能力属性（玩家开局自行分配，影响掷骰加值） =====
+   insight 判断力 / agility 应变力 / speech 沟通力 / luck 运气
+   每项 0–8，总点数上限 20（默认各 2 点） */
+var ATTR_KEYS = ['insight', 'agility', 'speech', 'luck'];
+var ATTR_CN = { insight: '判断力', agility: '应变力', speech: '沟通力', luck: '运气' };
+var ATTR_MAX_EACH = 8, ATTR_TOTAL = 20;
+function defaultAttrs() { return { insight: 2, agility: 2, speech: 2, luck: 2 }; }
+function loadAttrs() {
+  var a = (function () { try { return JSON.parse(localStorage.getItem('imac_hotline_attrs') || 'null'); } catch (e) { return null; } })();
+  if (!a) return defaultAttrs();
+  var out = defaultAttrs();
+  ATTR_KEYS.forEach(function (k) { if (typeof a[k] === 'number') out[k] = Math.max(0, Math.min(ATTR_MAX_EACH, a[k])); });
+  return out;
+}
+function saveAttrs(a) { try { localStorage.setItem('imac_hotline_attrs', JSON.stringify(a)); } catch (e) {} }
+function attrTotal(a) { return ATTR_KEYS.reduce(function (s, k) { return s + (a[k] || 0); }, 0); }
+/* 选项对应的主属性：按语义自动判定（沟通 / 应变 / 判断） */
+function attrOf(optText) {
+  if (/解释|安抚|说明|告知|交涉|沟通|劝|警告|如实|耐心|挂断并/.test(optText)) return 'speech';
+  if (/撤离|封锁|带|转移|清空|关闭|通知|报警|拉警|制止|喝止|上报|登记|复述/.test(optText)) return 'agility';
+  return 'insight';
+}
+
+var state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0 };
+var attrs = loadAttrs();
 var best = 0, plays = 0, collected = {};
 try {
   best = parseInt(localStorage.getItem('imac_hotline_best2') || '0', 10) || 0;
@@ -380,7 +470,7 @@ function collCount() { var n = 0; for (var k in collected) if (collected[k]) n++
 function $(id) { return document.getElementById(id); }
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 function show(p) {
-  ['pageHome', 'pageCall', 'pageEnd'].forEach(function (x) { $(x).classList.toggle('on', x === p); });
+  ['pageHome', 'pageCall', 'pageEnd', 'pageBadge', 'pageAttrs'].forEach(function (x) { $(x).classList.toggle('on', x === p); });
   $('navBack').style.visibility = p === 'pageHome' ? 'hidden' : 'visible';
 }
 function goHome() {
@@ -391,7 +481,7 @@ function goHome() {
   show('pageHome');
 }
 function startShift() {
-  state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false };
+  state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0 };
   $('navTitle').textContent = '值班中';
   show('pageCall');
   renderCall();
@@ -441,20 +531,56 @@ function ask(i) {
   if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
 }
 
-/* 掷骰 → 判定 → 结局 */
+/* 选策略 → 打开检定设定（显示属性/策略/线索加值，确认后掷骰） */
 function choose(i) {
   if (state.answered || state.rolling) return;
-  state.rolling = true;
   var c = CALLS[state.idx], opt = c.opts[i];
+  state.pick = i;
+  var attrKey = attrOf(opt.t);
+  var attrVal = attrs[attrKey] || 0;
+  var luckVal = attrs.luck || 0;
   var clueBonus = 0;
   c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
-  var roll = 1 + Math.floor(Math.random() * 20);
-  var total = roll + opt.mod + clueBonus;
+  var totalBonus = opt.mod + clueBonus + attrVal + luckVal;
+  var need = c.dc - totalBonus;
+  var box = document.createElement('div');
+  box.className = 'roll-setup';
+  box.id = 'rollSetup';
+  box.innerHTML =
+    '<div class="rs-t">检定设定 · 你选了「' + esc(opt.t.slice(0, 18)) + (opt.t.length > 18 ? '…' : '') + '」</div>' +
+    '<div class="rs-dc">主属性 <b style="color:var(--tp)">' + ATTR_CN[attrKey] + ' +' + attrVal + '</b>' +
+      '　运气 +' + luckVal +
+      '　策略 ' + (opt.mod > 0 ? '+' : '') + opt.mod +
+      (clueBonus ? '　线索 +' + clueBonus : '') +
+      '<br>合计加值 <b style="color:var(--tp)">+' + totalBonus + '</b> · 需要 D20 ≥ <b style="color:' + (need <= 0 ? 'var(--lv-ordinary)' : need > 15 ? 'var(--red)' : 'var(--tp)') + '">' + Math.max(1, need) + '</b></div>' +
+    '<div class="rs-row"><button class="rs-go" onclick="doRoll()">掷 骰 检 定</button></div>' +
+    '<div class="rs-note">想改加值？去「<b>能力设定</b>」重新分配属性点（判断力／应变力／沟通力／运气）。</div>';
+  var old = $('rollSetup');
+  if (old) old.parentNode.removeChild(old);
+  $('actWrap').appendChild(box);
+  var opts = $('opts');
+  if (opts) Array.prototype.forEach.call(opts.children, function (n) { n.style.opacity = '.45'; n.onclick = null; });
+}
 
+function doRoll() {
+  if (state.answered || state.rolling) return;
+  var c = CALLS[state.idx], opt = c.opts[state.pick];
+  var attrKey = attrOf(opt.t);
+  var attrVal = attrs[attrKey] || 0;
+  var luckVal = attrs.luck || 0;
+  var roll = 1 + Math.floor(Math.random() * 20);
+  var clueBonus = 0;
+  c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
+  var bonus = opt.mod + clueBonus + attrVal + luckVal;
+  var total = roll + bonus;
+  var setup = $('rollSetup');
+  if (setup) setup.parentNode.removeChild(setup);
+
+  state.rolling = true;
   var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
   fl.classList.add('show');
   big.className = 'dice-big'; big.textContent = roll;
-  lab.innerHTML = 'D20 检定中…';
+  lab.innerHTML = 'D20 掷骰中…';
   var ticks = 0;
   var timer = setInterval(function () {
     big.textContent = 1 + Math.floor(Math.random() * 20);
@@ -464,10 +590,12 @@ function choose(i) {
       var kind = (roll === 20 || total >= c.dc + 5) ? 'good' : (roll === 1 || total < c.dc) ? 'bad' : 'mid';
       if (roll === 20) big.className = 'dice-big crit';
       else if (roll === 1) big.className = 'dice-big fumb';
-      lab.innerHTML = 'D20 掷出 <b style="color:var(--tp)">' + roll + '</b>' +
-        (opt.mod ? ' · 策略 ' + (opt.mod > 0 ? '+' : '') + opt.mod : '') +
-        (clueBonus ? ' · 线索 +' + clueBonus : '') +
-        ' → <b style="color:' + (kind === 'good' ? 'var(--lv-ordinary)' : kind === 'mid' ? 'var(--lv-hazardous)' : 'var(--red)') + '">' + total + '</b> / DC ' + c.dc;
+      lab.innerHTML = 'D20 <b style="color:var(--tp)">' + roll + '</b>' +
+        '　' + ATTR_CN[attrKey] + ' +' + attrVal +
+        (luckVal ? '　运气 +' + luckVal : '') +
+        (opt.mod ? '　策略 ' + (opt.mod > 0 ? '+' : '') + opt.mod : '') +
+        (clueBonus ? '　线索 +' + clueBonus : '') +
+        '<br>合计 <b style="color:' + (kind === 'good' ? 'var(--lv-ordinary)' : kind === 'mid' ? 'var(--lv-hazardous)' : 'var(--red)') + '">' + total + '</b> / DC ' + c.dc;
       setTimeout(function () { fl.classList.remove('show'); resolve(kind, roll, total, c); }, 900);
     }
   }, 80);
@@ -597,6 +725,203 @@ function saveCard() {
   try {
     var a = document.createElement('a');
     a.href = cv.toDataURL('image/png'); a.download = 'IMAC-异常热线-值班记录.png';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  } catch (e) { alert('保存失败，可长按图片保存'); }
+}
+
+/* ===== 工牌（联动网站注册／申请资料，也可自行填写） ===== */
+function readLS(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
+function writeLS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+function badgeData() {
+  var own = readLS('imac_badge_profile');
+  if (own) return own;
+  var reg = readLS('imac_registered_profile');
+  var app = readLS('imac_application_profile');
+  var id = readLS('imac_badge_id');
+  if (!id) {
+    id = 'IMAC-99-' + String(1000 + Math.floor(Math.random() * 9000));
+    writeLS('imac_badge_id', id);
+  }
+  return {
+    name: (reg && reg.realName) || (app && app.realName) || '未登记姓名',
+    codename: (reg && reg.codename) || (app && app.codename) || '夜莺',
+    id: (reg && reg.imacId) || id,
+    org: (reg && reg.organization) || (app && app.organization) || 'IMAC 异常热线中心',
+    rank: (reg && reg.rank) || '见习'
+  };
+}
+
+function showBadge() {
+  $('navTitle').textContent = '我的工牌';
+  renderBadge();
+  $('badgeEdit').innerHTML = '';
+  show('pageBadge');
+}
+
+function renderBadge() {
+  var b = badgeData();
+  var rank = rankOf(best);
+  var first = (b.codename || '溯').charAt(0);
+  var today = new Date();
+  var issue = today.getFullYear() + '.' + String(today.getMonth() + 1).padStart(2, '0') + '.' + String(today.getDate()).padStart(2, '0');
+  $('badgeWrap').innerHTML =
+    '<div class="idcard">' +
+      '<div class="id-head">' +
+        '<div class="l">IMAC · <b>溯界者工牌</b></div>' +
+        '<div class="r">TRACER ID CARD<br>ISSUED · ' + issue + '</div>' +
+      '</div>' +
+      '<div class="id-body">' +
+        '<div class="id-photo">' + esc(first) + '</div>' +
+        '<div class="id-fields">' +
+          '<div class="id-row"><span class="k">姓名 NAME</span><span class="v">' + esc(b.name) + '</span></div>' +
+          '<div class="id-row"><span class="k">代号 CODE</span><span class="v">' + esc(b.codename) + '</span></div>' +
+          '<div class="id-row"><span class="k">编号 ID</span><span class="v">' + esc(b.id) + '</span></div>' +
+          '<div class="id-row"><span class="k">组织 ORG</span><span class="v">' + esc(b.org) + '</span></div>' +
+          '<div class="id-row"><span class="k">职级 RANK</span><span class="v">' + esc(b.rank) + '</span></div>' +
+          '<div class="id-row"><span class="k">岗位 DUTY</span><span class="v">99 异常热线 · 接线员</span></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="id-stats">' +
+        '<div><div class="n">' + plays + '</div><div class="t">出勤次数</div></div>' +
+        '<div><div class="n">' + collCount() + '/' + ENDINGS + '</div><div class="t">结局收集</div></div>' +
+        '<div><div class="n" style="color:' + rank.c + '">' + (best ? rank.r : '—') + '</div><div class="t">最高评定</div></div>' +
+      '</div>' +
+      '<div class="id-foot"><span>属性 ' + ATTR_KEYS.map(function (k) { return ATTR_CN[k] + ' ' + (attrs[k] || 0); }).join(' · ') + '</span><span>' + (best ? 'BEST ' + best : 'NO RECORD') + '</span></div>' +
+    '</div>';
+}
+
+function toggleBadgeEdit() {
+  var box = $('badgeEdit');
+  if (box.innerHTML) { box.innerHTML = ''; return; }
+  var b = badgeData();
+  box.innerHTML =
+    '<div class="edit-form">' +
+      '<div class="ef"><label>姓名</label><input id="efName" value="' + esc(b.name) + '"></div>' +
+      '<div class="ef"><label>代号</label><input id="efCode" value="' + esc(b.codename) + '"></div>' +
+      '<div class="ef"><label>编号</label><input id="efId" value="' + esc(b.id) + '"></div>' +
+      '<div class="ef"><label>组织</label><input id="efOrg" value="' + esc(b.org) + '"></div>' +
+      '<div class="ef"><label>职级</label><input id="efRank" value="' + esc(b.rank) + '"></div>' +
+      '<button class="btn-main" onclick="saveBadgeForm()">保 存 工 牌</button>' +
+    '</div>';
+}
+
+function saveBadgeForm() {
+  var b = {
+    name: ($('efName').value || '').trim() || '未登记姓名',
+    codename: ($('efCode').value || '').trim() || '夜莺',
+    id: ($('efId').value || '').trim() || 'IMAC-99-0000',
+    org: ($('efOrg').value || '').trim() || 'IMAC 异常热线中心',
+    rank: ($('efRank').value || '').trim() || '见习'
+  };
+  writeLS('imac_badge_profile', b);
+  $('badgeEdit').innerHTML = '';
+  renderBadge();
+}
+
+/* ===== 能力设定页 ===== */
+function showAttrs() {
+  $('navTitle').textContent = '能力设定';
+  renderAttrForm();
+  show('pageAttrs');
+}
+function renderAttrForm() {
+  var used = attrTotal(attrs);
+  var rows = ATTR_KEYS.map(function (k) {
+    return '<div class="ef"><label>' + ATTR_CN[k] + '</label>' +
+      '<button class="rs-go" style="width:40px;flex:none;padding:6px" onclick="adjAttr(\'' + k + '\',-1)">−</button>' +
+      '<b style="font-family:var(--mono);font-size:17px;width:36px;text-align:center;color:var(--tp);flex:none">' + (attrs[k] || 0) + '</b>' +
+      '<button class="rs-go" style="width:40px;flex:none;padding:6px" onclick="adjAttr(\'' + k + '\',1)">+</button>' +
+      '<span style="font-size:11px;color:var(--tm);flex:1;text-align:right">' + (k === 'insight' ? '分析类指令' : k === 'agility' ? '撤离封锁类' : k === 'speech' ? '解释安抚类' : '所有检定') + '</span>' +
+      '</div>';
+  }).join('');
+  $('attrForm').innerHTML =
+    '<div class="edit-form">' + rows +
+      '<div class="rs-dc" style="margin-top:8px">已分配 <b style="color:' + (used > ATTR_TOTAL ? 'var(--red)' : 'var(--tp)') + '">' + used + '</b> / ' + ATTR_TOTAL + ' 点　（每项上限 ' + ATTR_MAX_EACH + '）</div>' +
+    '</div>';
+}
+function adjAttr(k, d) {
+  var next = (attrs[k] || 0) + d;
+  if (next < 0 || next > ATTR_MAX_EACH) return;
+  if (attrTotal(attrs) - (attrs[k] || 0) + next > ATTR_TOTAL) { alert('总点数不能超过 ' + ATTR_TOTAL + ' 点'); return; }
+  attrs[k] = next;
+  renderAttrForm();
+}
+function saveAttrsForm() {
+  saveAttrs(attrs);
+  alert('能力设定已保存：' + ATTR_KEYS.map(function (k) { return ATTR_CN[k] + ' ' + attrs[k]; }).join(' · '));
+  goHome();
+}
+function resetAttrs() {
+  attrs = defaultAttrs();
+  renderAttrForm();
+}
+
+function saveBadgeCard() {
+  var cv = $('badgeCanvas');
+  var x = (cv && cv.getContext) ? cv.getContext('2d') : null;
+  if (!x) { alert('当前环境不支持导出图片'); return; }
+  var b = badgeData(), rank = rankOf(best);
+  var cmap = { 'var(--lv-ordinary)': '#4a7c59', 'var(--blue)': '#7a96ad', 'var(--lv-hazardous)': '#c49a2c', 'var(--lv-doomed)': '#d46828', 'var(--red)': '#c42828' };
+  var W = cv.width, H = cv.height;
+  x.fillStyle = '#050506'; x.fillRect(0, 0, W, H);
+  // 工牌主体
+  x.fillStyle = '#14141a'; x.fillRect(46, 46, W - 92, H - 200);
+  x.strokeStyle = '#33333d'; x.lineWidth = 2; x.strokeRect(46, 46, W - 92, H - 200);
+  x.fillStyle = '#c42828'; x.fillRect(46, 46, W - 92, 5);
+
+  x.textAlign = 'left';
+  x.font = '600 26px "Songti SC",serif'; x.fillStyle = '#d8d4cc';
+  x.fillText('IMAC · 溯界者工牌', 78, 108);
+  x.font = '500 14px Consolas,monospace'; x.fillStyle = '#5c5952';
+  x.fillText('TRACER ID CARD · ISSUED BY IMAC', 78, 134);
+
+  // 头像框
+  x.fillStyle = '#1b1b22'; x.fillRect(78, 168, 150, 184);
+  x.strokeStyle = '#33333d'; x.strokeRect(78, 168, 150, 184);
+  x.textAlign = 'center';
+  x.font = '600 76px "Songti SC",serif'; x.fillStyle = '#c42828';
+  x.fillText((b.codename || '溯').charAt(0), 153, 282);
+
+  // 字段
+  x.textAlign = 'left';
+  var rows = [['姓名 NAME', b.name], ['代号 CODE', b.codename], ['编号 ID', b.id], ['组织 ORG', b.org], ['职级 RANK', b.rank], ['岗位 DUTY', '99 异常热线 · 接线员']];
+  rows.forEach(function (r, i) {
+    var y = 196 + i * 30;
+    x.font = '500 14px Consolas,monospace'; x.fillStyle = '#5c5952';
+    x.fillText(r[0], 252, y);
+    x.font = '500 19px "PingFang SC",sans-serif'; x.fillStyle = '#d8d4cc';
+    var v = String(r[1] || '—');
+    x.fillText(v.length > 16 ? v.slice(0, 16) + '…' : v, 252, y + 0, W - 300);
+  });
+  x.strokeStyle = '#26262e'; x.beginPath(); x.moveTo(78, 392); x.lineTo(W - 78, 392); x.stroke();
+
+  // 战绩
+  x.font = '500 15px Consolas,monospace'; x.fillStyle = '#5c5952';
+  x.fillText('SERVICE RECORD · 执勤记录', 78, 428);
+  var stats = [['出勤次数', String(plays)], ['结局收集', collCount() + '/' + ENDINGS], ['历史最佳', best ? String(best) : '—'], ['最高评定', best ? rank.r : '—']];
+  stats.forEach(function (s, i) {
+    var cx = 78 + i * ((W - 156) / 4);
+    x.font = '600 34px "Songti SC",serif'; x.fillStyle = i === 3 ? (cmap[rank.c] || '#c42828') : '#d8d4cc';
+    x.fillText(s[1], cx, 486);
+    x.font = '500 13px Consolas,monospace'; x.fillStyle = '#5c5952';
+    x.fillText(s[0], cx, 510);
+  });
+
+  // 引导区
+  x.fillStyle = '#101014'; x.fillRect(46, H - 142, W - 92, 96);
+  x.strokeStyle = '#26262e'; x.strokeRect(46, H - 142, W - 92, 96);
+  x.font = '600 18px "PingFang SC",sans-serif'; x.fillStyle = '#c42828';
+  x.fillText('这些异常都真实收录于 IMAC 档案库', 78, H - 104);
+  x.font = '600 22px Consolas,monospace'; x.fillStyle = '#7a96ad';
+  x.fillText('kailily.github.io/imac-web', 78, H - 70);
+  x.textAlign = 'center';
+  x.font = '500 13px Consolas,monospace'; x.fillStyle = '#45423c';
+  x.fillText('IMAC 99 HOTLINE · 持牌溯界者 · 工牌仅用于展示', W / 2, H - 22);
+
+  try {
+    var a = document.createElement('a');
+    a.href = cv.toDataURL('image/png'); a.download = 'IMAC-溯界者工牌-' + (b.codename || 'tracer') + '.png';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   } catch (e) { alert('保存失败，可长按图片保存'); }
 }
