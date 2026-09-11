@@ -286,8 +286,9 @@ function Header({
         }
         .header-left {
           display: flex; align-items: center; gap: 12px; cursor: pointer;
+          flex: none;
         }
-        .logo-mark { width: 36px; height: 36px; }
+        .logo-mark { width: 36px; height: 36px; flex: none; }
         .logo-text-group { display: flex; flex-direction: column; line-height: 1.2; }
         .logo-main {
           font-family: var(--font-serif);
@@ -303,14 +304,16 @@ function Header({
           letter-spacing: 0.2em;
         }
         .header-nav {
-          display: flex; align-items: center; gap: 22px;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
+          display: flex; align-items: center; gap: 14px;
+          flex: 1 1 auto;
+          justify-content: center;
+          min-width: 0;
+          margin: 0 14px;
+          overflow: hidden;
         }
         .nav-item {
           position: relative;
-          font-size: 13px;
+          font-size: 12px;
           color: var(--text-secondary);
           cursor: pointer;
           transition: color 0.2s ease;
@@ -332,6 +335,7 @@ function Header({
         .nav-item .lock-icon { width: 12px; height: 12px; color: var(--text-muted); }
         .header-right {
           display: flex; align-items: center; gap: 16px;
+          flex: none;
         }
         .hotline-mini {
           display: flex; align-items: center; gap: 8px;
@@ -695,9 +699,15 @@ function Header({
           background: linear-gradient(90deg, transparent 0%, var(--accent-red-bright) 50%, transparent 100%);
         }
 
+        @media (max-width: 1400px) {
+          .header-nav { gap: 12px; margin: 0 10px; }
+          .nav-item { font-size: 11.5px; }
+          .logo-main { font-size: 15px; }
+        }
         @media (max-width: 1200px) {
-          .header-nav { gap: 16px; }
-          .nav-item { font-size: 12px; }
+          .header-nav { gap: 10px; }
+          .nav-item { font-size: 11px; }
+          .header-right { gap: 12px; }
         }
         @media (max-width: 1080px) {
           .header-nav { display: none; }
@@ -705,6 +715,7 @@ function Header({
           .mobile-menu-btn { display: flex; }
           .header-inner { padding: 0 24px; }
           .hotline-mini-text { display: none; }
+          .logo-main { font-size: 17px; }
         }
         @media (max-width: 768px) {
           .header-inner { padding: 0 16px; height: 56px; }
