@@ -103,6 +103,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .coll span.g{border-color:var(--lv-ordinary);color:var(--lv-ordinary);}
 .coll span.b{border-color:var(--red);color:var(--red);}
 .share-img{width:100%;border:1px solid var(--border);margin-top:12px;display:none;}
+.img-fallback{position:fixed;inset:0;z-index:80;background:rgba(4,4,6,.94);overflow:auto;padding:16px;display:flex;align-items:flex-start;justify-content:center;}
+.img-fallback .if-box{max-width:420px;width:100%;text-align:center;}
+.img-fallback .if-t{font-family:var(--mono);font-size:11px;color:var(--ts);letter-spacing:.1em;line-height:1.9;margin:6px 0 10px;}
+.img-fallback img{width:100%;border:1px solid var(--border);border-radius:4px;}
+.img-fallback .btn-ghost{width:100%;margin-top:12px;}
 /* 检定设定（可自填点数） */
 .roll-setup{margin-top:13px;border:1px solid var(--blue);background:rgba(122,150,173,.08);padding:12px;animation:fade .3s;}
 .roll-setup .rs-t{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:.12em;margin-bottom:8px;}
@@ -227,6 +232,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <div class="brand-sub" style="margin-bottom:12px">TRACER ID CARD · IMAC ISSUED</div>
     <div class="badge-wrap" id="badgeWrap"></div>
     <div id="badgeEdit"></div>
+    <canvas class="share-img" id="badgeCanvas" width="720" height="1040"></canvas>
     <button class="btn-main" style="margin-top:12px" onclick="saveBadgeCard()">⤓ 保存工牌图片 · 分享</button>
     <button class="btn-ghost" onclick="toggleBadgeEdit()">✎ 编辑工牌信息</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
@@ -262,7 +268,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
       <div class="end-body" id="endBody"></div>
       <div class="coll" id="endColl"></div>
     </div>
-    <canvas class="share-img" id="badgeCanvas" width="720" height="1040"></canvas>
+    <canvas class="share-img" id="shareCanvas" width="720" height="1040"></canvas>
     <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存值班记录 · 分享给朋友</button>
     <button class="btn-ghost" onclick="showBadge()">▣ 查看我的工牌</button>
     <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前 往 IMAC 官 网 · 查看完整档案库</a>
@@ -484,7 +490,47 @@ function attrOf(optText) {
   return 'insight';
 }
 
-var state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0 };
+/* 语境分析：读玩家写下的话，判断语气 / 是否离题 / 是否敷衍 / 是否冒犯 */
+var CHITCHAT = /(天气|吃了吗|吃了没|贵姓|你叫什么|多大|年龄|结婚|工资|收入|微信|加个好友|电话多少|住哪|彩票|股票|笑话|唱歌|游戏|几号|星期几|无聊|你好呀)/;
+function kwHit(q, list) {
+  return (list || []).some(function (k) {
+    var s = String(k);
+    return q.indexOf(s) >= 0 || (s.length >= 4 && q.indexOf(s.slice(0, 2)) >= 0);
+  });
+}
+function ctxHit(q, text) {
+  var t = String(text || '').replace(/[，。、「」？…（）\s]/g, '').slice(0, 80);
+  for (var i = 0; i + 2 <= t.length; i++) {
+    if (q.indexOf(t.slice(i, i + 2)) >= 0) return true;
+  }
+  return false;
+}
+function analyzeUtterance(txt, c) {
+  var q = String(txt || '').trim();
+  var ck = CALL_KEYS[c.id] || { keys: [], bads: [] };
+  var key = kwHit(q, ck.keys);
+  var bad = kwHit(q, ck.bads);
+  var onTopic = key || ctxHit(q, c.text) || kwHit(q, c.asks.map(function (a) { return String(a.q).replace(/[「」，。？、]/g, ''); }));
+  var isAsk = /[？?]|是不是|有没有|怎么|为什么|多久|多远|几个人|谁|哪里|吗$|呢$/.test(q);
+  var gibber = (/^[\x00-\x7F]*$/.test(q) && q.length >= 4 && q.indexOf(' ') < 0) || /^(.)\1{3,}$/.test(q);
+  var chitchat = CHITCHAT.test(q);
+  return {
+    text: q,
+    len: q.length,
+    ask: isAsk,
+    key: key,
+    bad: bad,
+    soothe: /(别怕|冷静|放缓|放心|理解|明白|慢慢说|我在听|不容易|辛苦|难为|别急)/.test(q),
+    rude: /(废话|闭嘴|蠢|笨|滚|少来|别啰嗦|烦人|傻子|废物)/.test(q),
+    vague: q.length < 5 || /^(嗯|哦|好|知道了|随便|我会处理|等等看|你继续|说重点)[。！!…]?$/.test(q),
+    relevant: onTopic,
+    gibber: gibber,
+    /* 离题：胡言乱语 / 闲聊天，或者一段毫无相关内容的陈述 */
+    offtopic: gibber || chitchat || (!onTopic && !isAsk)
+  };
+}
+
+var state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0, hungUp: false, calm: 0 };
 var attrs = loadAttrs();
 
 /* 八大成员组织（缩写与 IMAC 官网一致，用于工牌编号前缀 IMAC-缩写-编号） */
@@ -544,7 +590,7 @@ function goHome() {
   show('pageHome');
 }
 function startShift() {
-  state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0 };
+  state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0, hungUp: false, calm: 0 };
   $('navTitle').textContent = '值班中';
   show('pageCall');
   renderCall();
@@ -610,10 +656,20 @@ function submitFree() {
   var hitKeys = kw.keys.filter(function (k) { return txt.indexOf(k) >= 0; });
   var hitBads = kw.bads.filter(function (k) { return txt.indexOf(k) >= 0; });
   var mod = hitBads.length ? -6 : (hitKeys.length ? 4 : 0);
+  /* 同样读一遍你写了什么：态度、是否说清楚、是否离题，都会影响对方是否照做 */
+  var u = analyzeUtterance(txt, c);
+  var penal = 0, why = '';
+  if (u.rude) { penal -= 4; why = 'rude'; }
+  else if (u.gibber) { penal -= 4; why = 'offtopic'; }
+  else if (u.vague && !hitKeys.length) { penal -= 3; why = 'vague'; }
+  else if (u.offtopic) { penal -= 4; why = 'offtopic'; }
+  else if (u.soothe) { penal += 1; why = 'soothe'; }  mod += penal;
   state.freeMode = true;
   state.freeText = txt;
   state.freeKeys = hitKeys;
   state.freeBads = hitBads;
+  state.freePenal = penal;
+  state.freeWhy = why;
   state.currentMod = mod;
   state.currentLabel = txt;
   state.currentFree = true;
@@ -623,6 +679,12 @@ function submitFree() {
 /* 按「你说了什么」+「结果如何」生成不同的后果叙述 */
 function buildOutcome(kind, c, isFree, roll) {
   var base = kind === 'good' ? c.good : kind === 'mid' ? c.mid : c.bad;
+  // 电话已被挂断：你说的话没有被听见，结果只能自己发生
+  if (state.hungUp) {
+    if (!isFree) return '这一次，你连开口的机会都没有——你只能看着档案上的号码，等着它自己发生。' + base;
+    return '你对着已经断掉的线路把话说完了，没有人听见。' + base +
+      (kind === 'bad' ? '事后你在通话记录里看到，这通电话的时长停在对方挂断的那一秒。' : '');
+  }
   if (!isFree) return base;
   var keys = state.freeKeys || [], bads = state.freeBads || [];
   var pre;
@@ -641,7 +703,12 @@ function buildOutcome(kind, c, isFree, roll) {
        '而这几秒，代价不小。') + ' ';
   }
   var tail = (kind === 'good' && roll === 20) ? '（这一夜，运气罕见地站在了你这边）' : '';
-  return pre + base + tail;
+  var tone = '';
+  if (state.freeWhy === 'rude') tone = '但你的语气让电话那头的人沉默了一下——他照做的动作，比平时慢了很多。';
+  else if (state.freeWhy === 'offtopic') tone = '可你说出口的话，跟眼下该怎么处置几乎没关系，他愣了好几秒才反应过来。';
+  else if (state.freeWhy === 'vague') tone = '只是话说得太短，他没听懂你到底要他做什么。';
+  else if (state.freeWhy === 'soothe') tone = '你先让他稳住，他才听得进你说的话。';
+  return pre + base + tone + tail;
 }
 function ask(i) {
   if (state.answered || state.asked[i]) return;
@@ -657,18 +724,52 @@ function ask(i) {
   if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
 }
 
-/* 自己写问题 → 掷骰（沟通力＋运气 vs DC 10）→ 问出线索 / 问不出来 */
+/* 自己写问题 → 先分析你说了什么（语气/离题/敷衍/冒犯），再判定后果 */
 function askFree() {
   if (state.answered || state.rolling) return;
+  if (state.hungUp) { alert('电话已经挂断了——这一通无法再追问。'); return; }
   var q = ($('askFreeIn').value || '').trim();
   if (!q) { alert('请先写下你的问题'); return; }
   var c = CALLS[state.idx];
+  var u = analyzeUtterance(q, c);
   var pending = -1;
   c.asks.forEach(function (a, i) { if (a.key && !state.asked[i] && pending < 0) pending = i; });
+
+  // 冒犯 → 直接挂断；离题 / 敷衍 → 对方不给有效回答
+  if (u.rude) {
+    return askOutcome(c, q, 'hang', '「……你这是什么意思？」电话那头的声音一下冷了下去，随即是一声轻响——');
+  }
+  if (u.gibber) {
+    return askOutcome(c, q, 'offtopic', '电话那头静了两秒：「您……刚才说什么？」他把这句话来回问了两遍，你听得出，他已经开始怀疑这通电话是不是打错了地方。');
+  }
+  if (u.offtopic) {
+    return askOutcome(c, q, 'offtopic', '「这个……跟我要说的事有关系吗？」他显然不知道该怎么接，只是把刚才看到的画面又重复了一遍，声音比刚才更小了些。');
+  }
+
+  // 语气与表达影响难度：安抚 -2 / 提问清楚 -1 / 含糊 +3 / 已被安抚过 -calm / 说到不该说的 +4
+  var dc = 10;
+  if (u.vague) dc += 3;
+  if (u.soothe) dc -= 2;
+  if (u.ask) dc -= 1;
+  if (u.bad) dc += 4;
+  dc -= (state.calm || 0);
+  if (dc < 4) dc = 4;
+
   var roll = 1 + Math.floor(Math.random() * 20);
   var speech = attrs.speech || 0, luck = attrs.luck || 0;
   var total = roll + speech + luck;
-  var dc = 10, ok = total >= dc;
+  var kind = roll === 1 ? 'hang'
+    : (roll === 20 || total >= dc + 5) ? 'great'
+    : total >= dc ? 'ok'
+    : total >= dc - 3 ? 'weak' : 'fail';
+
+  var note = '';
+  if (u.bad) note = '「……你怎么也这么说。」他的语气里第一次有了戒备。';
+  else if (u.vague) note = '「啊？……哦，您是说。」他没太听懂你在问什么，犹豫着开了口。';
+  else if (u.soothe) note = '你先安抚了两句，他的呼吸慢慢匀了下来——';
+  else if (u.key) note = '你问到了点子上——';
+  else note = '他把话筒换到另一只手上——';
+
   state.rolling = true;
   var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
   fl.classList.add('show');
@@ -686,29 +787,79 @@ function askFree() {
       setTimeout(function () {
         fl.classList.remove('show');
         state.rolling = false;
-        var box = $('askAns'), div = document.createElement('div');
-        if (ok) {
-          var a = pending >= 0 ? c.asks[pending] : null;
-          if (pending >= 0) state.asked[pending] = true;
-          if (a && a.key) { state.clues++; $('progClue').textContent = state.clues; }
-          div.className = 'ask-ans clue';
-          div.innerHTML = '<span class="q">◆ 问到了关键线索　「' + esc(q.slice(0, 24)) + '」</span>' +
-            (a ? esc(a.a) : '市民把自己知道的都说了出来——没有再超出档案记载，但语气里的恐惧是真的。');
-          if (pending >= 0) {
-            var btn = document.querySelector('#askBtns .ask-btn[data-i="' + pending + '"]');
-            if (btn) { btn.classList.add('done'); btn.textContent = '✓ ' + c.asks[pending].q; }
-          }
-        } else {
-          div.className = 'ask-ans';
-          div.innerHTML = '<span class="q">○ 没问出来　「' + esc(q.slice(0, 24)) + '」</span>' +
-            '电话那头沉默了几秒：「这个……我说不好。」（这个问题没有得到有效信息）';
-        }
-        box.appendChild(div);
-        $('askFreeIn').value = '';
-        if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
+        askOutcome(c, q, kind, note, pending);
       }, 850);
     }
   }, 80);
+}
+
+/* 提问的五档后果：大成功 / 成功 / 勉强 / 失败 / 挂断 */
+function askOutcome(c, q, kind, intro, pendingIdx) {
+  if (pendingIdx === undefined) {
+    pendingIdx = -1;
+    c.asks.forEach(function (a, i) { if (a.key && !state.asked[i] && pendingIdx < 0) pendingIdx = i; });
+  }
+  var box = $('askAns'), div = document.createElement('div');
+  var tag = '「' + esc(String(q).slice(0, 22)) + (String(q).length > 22 ? '…' : '') + '」';
+  var lead = '他想了想，把知道的说了出来——';
+
+  if (kind === 'hang') {
+    state.hungUp = true;
+    div.className = 'ask-ans bad';
+    div.innerHTML = '<span class="q">✕ 电话被挂断　' + tag + '</span>' +
+      (intro || '') + '再打过去，只有忙音。这一通电话，你只能靠已经听到的东西做判断了。';
+    lockAsks('（对方已挂断电话）');
+  } else if (kind === 'offtopic') {
+    div.className = 'ask-ans';
+    div.innerHTML = '<span class="q">○ 没有得到回答　' + tag + '</span>' + (intro || '');
+  } else if (kind === 'great') {
+    var a = pendingIdx >= 0 ? c.asks[pendingIdx] : null;
+    if (pendingIdx >= 0) state.asked[pendingIdx] = true;
+    if (a && a.key) { state.clues++; state.calm++; $('progClue').textContent = state.clues; }
+    div.className = 'ask-ans clue';
+    div.innerHTML = '<span class="q">◆ 他主动说了更多　' + tag + '</span>' + (intro || '') +
+      (a ? esc(a.a) : '他把憋着的话一口气都说了出来，情绪也慢慢稳了下来。') +
+      '<br><span style="color:var(--lv-ordinary);font-size:11px">（他的情绪稳定下来，后面的沟通会更容易）</span>';
+    if (pendingIdx >= 0) {
+      var btn = document.querySelector('#askBtns .ask-btn[data-i="' + pendingIdx + '"]');
+      if (btn) { btn.classList.add('done'); btn.textContent = '✓ ' + c.asks[pendingIdx].q; }
+    }
+  } else if (kind === 'ok') {
+    var a2 = pendingIdx >= 0 ? c.asks[pendingIdx] : null;
+    if (pendingIdx >= 0) state.asked[pendingIdx] = true;
+    if (a2 && a2.key) { state.clues++; $('progClue').textContent = state.clues; }
+    div.className = 'ask-ans clue';
+    div.innerHTML = '<span class="q">◆ 问出来了　' + tag + '</span>' + (intro || '') + lead +
+      (a2 ? esc(a2.a) : '他把自己知道的都说了，没有再超出档案记载。');
+    if (pendingIdx >= 0) {
+      var btn2 = document.querySelector('#askBtns .ask-btn[data-i="' + pendingIdx + '"]');
+      if (btn2) { btn2.classList.add('done'); btn2.textContent = '✓ ' + c.asks[pendingIdx].q; }
+    }
+  } else if (kind === 'weak') {
+    div.className = 'ask-ans';
+    div.innerHTML = '<span class="q">△ 只问到一点　' + tag + '</span>' + (intro || '') +
+      '「大概是……我也说不准。」他给了一句模糊的回答，里面没有能用的东西——但至少，他还愿意跟你说话。';
+  } else {
+    div.className = 'ask-ans';
+    div.innerHTML = '<span class="q">○ 没问出来　' + tag + '</span>' + (intro || '') +
+      (state.calm > 0
+        ? '电话那头沉默了几秒：「这个……我说不好。」他没有回答你的问题，但呼吸还在，人还在这条线上。'
+        : '电话那头沉默了几秒：「这个……我说不好。」他没有回答你的问题。你听见他把听筒往旁边挪了一点。');
+  }
+  box.appendChild(div);
+  if ($('askFreeIn')) $('askFreeIn').value = '';
+  if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
+}
+
+/* 挂断后禁用追问区 */
+function lockAsks(placeholder) {
+  Array.prototype.forEach.call(document.querySelectorAll('#askBtns .ask-btn'), function (b) {
+    b.classList.add('done'); b.onclick = null;
+  });
+  var ta = $('askFreeIn');
+  if (ta) { ta.disabled = true; ta.placeholder = placeholder || '（对方已挂断电话）'; }
+  var sb = document.querySelector('#askWrap .free-send');
+  if (sb) { sb.disabled = true; }
 }
 
 /* 选择处置建议 → 按规程直接判定（不掷骰） */
@@ -720,8 +871,12 @@ function choose(i) {
   var clueBonus = 0;
   c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
   // 策略质量直接决定结局：佳 +4 以上 → 顺利；中庸 → 勉强；负值 → 出事；线索充足可把「勉强」提升为「顺利」
-  var kind = opt.mod >= 4 ? 'good' : opt.mod >= 0 ? 'mid' : 'bad';
-  if (kind === 'mid' && clueBonus >= 4) kind = 'good';
+  var mod = opt.mod;
+  // 玩家把对方激怒、电话被挂断 → 指令传不过去，策略加值大幅下降，且无法再拿到顺利结局
+  if (state.hungUp) mod -= 5;
+  var kind = mod >= 4 ? 'good' : mod >= 0 ? 'mid' : 'bad';
+  if (state.hungUp && kind === 'good') kind = 'mid';
+  if (kind === 'mid' && clueBonus >= 4 && !state.hungUp) kind = 'good';
   resolve(kind, 0, 0, c);
 }
 
@@ -782,6 +937,8 @@ function doRoll() {
   var clueBonus = 0;
   c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
   var bonus = mod + clueBonus + attrVal + luckVal;
+  // 电话已被挂断：无法把处置意见传达给对方，效果大打折扣
+  if (state.hungUp) bonus -= 5;
   var total = roll + bonus;
   var setup = $('rollSetup');
   if (setup) setup.parentNode.removeChild(setup);
@@ -823,6 +980,7 @@ function resolve(kind, roll, total, c) {
   try { localStorage.setItem('imac_hotline_coll2', JSON.stringify(collected)); } catch (e) {}
 
   var label = kind === 'good' ? (roll === 20 ? '★ 奇迹般的结果' : '✓ 处置奏效') : kind === 'mid' ? '△ 勉强度过' : (roll === 1 ? '✕ 最坏的结果' : '✕ 出事了');
+  if (state.hungUp) label += ' · 通话已中断';
   var text = buildOutcome(kind, c, !!state.currentFree, roll);
   var v = $('verdictBox');
   v.innerHTML =
@@ -928,12 +1086,40 @@ function drawCard(rank) {
 }
 function saveCard() {
   var cv = $('shareCanvas');
-  try {
-    var a = document.createElement('a');
-    a.href = cv.toDataURL('image/png'); a.download = 'IMAC-异常热线-值班记录.png';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  } catch (e) { alert('保存失败，可长按图片保存'); }
+  if (!cv) { alert('导出组件未就绪，请刷新页面后重试'); return; }
+  if (cv.style.display === 'none' || !cv.style.display) drawCard(rankOf(state.score));
+  saveCanvasImage(cv, 'IMAC-异常热线-值班记录.png');
 }
+
+/* 保存画布为图片：优先直接下载；内置浏览器/不支持下载时，改为在页面上显示图片（可长按保存） */
+function saveCanvasImage(cv, filename) {
+  var url;
+  try { url = cv.toDataURL('image/png'); } catch (e) { alert('图片导出失败：' + e.message); return; }
+  var a = document.createElement('a');
+  var canDownload = ('download' in a);
+  var ua = navigator.userAgent || '';
+  var webview = /MicroMessenger|Feishu|Lark|DingTalk|QQ\/|Weibo|Alipay|Electron/i.test(ua) ||
+    (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua));
+  if (canDownload && !webview) {
+    try {
+      a.href = url; a.download = filename; a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      return;
+    } catch (e) { /* 落到下面的兜底 */ }
+  }
+  showImageFallback(url, filename);
+}
+
+function showImageFallback(url, filename) {
+  var old = $('imgFallback');
+  if (old) old.parentNode.removeChild(old);
+  var d = document.createElement('div');
+  d.className = 'img-fallback'; d.id = 'imgFallback';
+  d.innerHTML = '<div class="if-box"><div class="if-t">长按图片保存 · 或截图保存<br>' + esc(filename) + '</div>' +
+    '<img src="' + url + '" alt="card"><button class="btn-ghost" onclick="closeImageFallback()">关 闭</button></div>';
+  document.body.appendChild(d);
+}
+function closeImageFallback() { var d = $('imgFallback'); if (d) d.parentNode.removeChild(d); }
 
 /* ===== 工牌（联动网站注册／申请资料，也可自行填写） ===== */
 function readLS(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
@@ -1139,11 +1325,8 @@ function saveBadgeCard() {
   x.font = '500 13px Consolas,monospace'; x.fillStyle = '#45423c';
   x.fillText('IMAC 99 HOTLINE · 持牌溯界者 · 工牌仅用于展示', W / 2, H - 22);
 
-  try {
-    var a = document.createElement('a');
-    a.href = cv.toDataURL('image/png'); a.download = 'IMAC-溯界者工牌-' + (b.codename || 'tracer') + '.png';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  } catch (e) { alert('保存失败，可长按图片保存'); }
+  cv.style.display = 'block';
+  saveCanvasImage(cv, 'IMAC-溯界者工牌-' + (b.codename || 'tracer') + '.png');
 }
 $('navBack').style.visibility = 'hidden';
 goHome();
