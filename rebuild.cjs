@@ -30,7 +30,7 @@ console.log(
     (Buffer.byteLength(html) / 1024 / 1024).toFixed(2) + " MB)"
 );
 
-// [2/2] 打包部署文件（index.html + app.js + lib/ + pages/，排除 babel.min.js）
+// [2/2] 打包部署文件（index.html + app.js + game.html + lib/ + pages/，排除 babel.min.js）
 const dest = path.resolve("..", "IMAC-网站部署包.zip");
 if (fs.existsSync(dest)) fs.unlinkSync(dest);
 // 先复制到临时目录
@@ -40,6 +40,7 @@ fs.mkdirSync(path.join(tmp, "lib"), { recursive: true });
 fs.mkdirSync(path.join(tmp, "pages"), { recursive: true });
 fs.copyFileSync("index.html", path.join(tmp, "index.html"));
 fs.copyFileSync("app.js", path.join(tmp, "app.js"));
+if (fs.existsSync("game.html")) fs.copyFileSync("game.html", path.join(tmp, "game.html"));
 for (const f of fs.readdirSync("lib")) {
   if (f === "babel.min.js") continue;
   fs.copyFileSync(path.join("lib", f), path.join(tmp, "lib", f));
@@ -49,7 +50,9 @@ if (fs.existsSync(pagesDir)) {
     fs.copyFileSync(path.join(pagesDir, f), path.join(tmp, "pages", f));
   }
 }
-const r = spawnSync("tar", ["-a", "-cf", dest, "index.html", "app.js", "lib", "pages"], {
+const tarArgs = ["-a", "-cf", dest, "index.html", "app.js", "lib", "pages"];
+if (fs.existsSync("game.html")) tarArgs.splice(3, 0, "game.html");
+const r = spawnSync("tar", tarArgs, {
   cwd: tmp,
   stdio: "inherit",
 });

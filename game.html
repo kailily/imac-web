@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>IMAC · 异常热线 · 接线员</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0c'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23c42828' font-family='serif'%3E9%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg-deep:#0a0a0c; --bg:#101013; --bg-2:#15151a; --bg-3:#1b1b22;
+  --border:#26262e; --border-soft:#1f1f26; --border-light:#33333d;
+  --tp:#d8d4cc; --ts:#a09c94; --tm:#5c5952; --tf:#45423c;
+  --red:#c42828; --red-bright:#c42828; --blue:#7a96ad;
+  --lv-ordinary:#4a7c59; --lv-hazardous:#c49a2c; --lv-doomed:#d46828; --lv-abyssal:#c42828; --lv-unknown:#7a3ab0;
+  --mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace; --serif:'Noto Serif SC','Songti SC',serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;background:#050506;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;color:var(--tp);}
+body{display:flex;justify-content:center;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.phone{position:relative;width:100%;max-width:420px;height:100vh;max-height:920px;background:var(--bg-deep);
+  border-left:1px solid var(--border);border-right:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;}
+@media(min-width:460px){.phone{height:90vh;margin-top:5vh;border:1px solid var(--border);border-radius:18px;box-shadow:0 0 0 8px #060608,0 30px 80px rgba(0,0,0,.6);}}
+
+/* 顶部 */
+.nav{height:50px;flex-shrink:0;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--bg-2),var(--bg-deep));}
+.nav .bk{color:var(--tm);font-size:17px;cursor:pointer;width:24px;}
+.nav .nt{font-family:var(--serif);font-size:15px;letter-spacing:.04em;}
+.nav .nc{font-family:var(--mono);font-size:8.5px;color:var(--red);letter-spacing:.12em;border:1px solid rgba(196,40,40,.5);padding:2px 6px;margin-left:auto;white-space:nowrap;}
+.page{flex:1;overflow-y:auto;display:none;padding:14px 13px 18px;}
+.page.on{display:block;}
+.page::-webkit-scrollbar{width:0;}
+
+/* 首页 */
+.brand{font-family:var(--serif);font-size:22px;letter-spacing:.06em;}
+.brand b{color:var(--red);}
+.brand-sub{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.16em;margin-top:5px;}
+.promo{display:block;text-decoration:none;margin:12px 0 14px;border:1px solid var(--border-soft);background:var(--bg-2);padding:10px 12px;cursor:pointer;transition:border-color .2s;}
+.promo:hover{border-color:var(--red);}
+.promo .pt{font-size:11.5px;color:var(--ts);}
+.promo .ps{font-family:var(--mono);font-size:8.5px;color:var(--tf);margin-top:3px;letter-spacing:.06em;}
+.sec{font-family:var(--mono);font-size:10px;color:var(--tm);letter-spacing:.16em;margin:16px 2px 10px;border-left:2px solid var(--red);padding-left:8px;}
+.duty{border:1px solid var(--border);background:var(--bg-2);padding:12px;margin-bottom:12px;font-size:12px;color:var(--ts);line-height:1.75;}
+.duty b{color:var(--tp);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px;}
+.stat{border:1px solid var(--border);background:var(--bg-2);padding:9px 6px;text-align:center;}
+.stat .v{font-family:var(--serif);font-size:19px;color:var(--tp);}
+.stat .l{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.1em;margin-top:3px;}
+.btn-main{display:block;width:100%;border:1px solid var(--red);background:rgba(196,40,40,.14);color:var(--red);font-family:var(--mono);
+  font-size:13px;letter-spacing:.14em;padding:13px;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s;}
+.btn-main:hover{background:var(--red);color:#fff;}
+.btn-ghost{display:block;width:100%;border:1px solid var(--border-light);background:var(--bg-2);color:var(--ts);font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.1em;padding:11px;cursor:pointer;text-align:center;text-decoration:none;margin-top:8px;transition:all .2s;}
+.btn-ghost:hover{border-color:var(--blue);color:var(--tp);}
+
+/* 通话页 */
+.call-head{display:flex;align-items:center;gap:10px;padding:10px 2px 12px;border-bottom:1px solid var(--border-soft);margin-bottom:12px;}
+.ring{width:38px;height:38px;border-radius:50%;border:1px solid var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px;color:var(--red);animation:pulse 1.6s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(196,40,40,.35)}50%{box-shadow:0 0 0 8px rgba(196,40,40,0)}}
+.call-meta .cn{font-size:13px;color:var(--tp);}
+.call-meta .cd{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.1em;margin-top:3px;}
+.caller{background:var(--bg-2);border:1px solid var(--border-soft);border-left:3px solid var(--blue);padding:11px 12px;font-size:13px;line-height:1.8;color:var(--tp);font-style:italic;animation:fade .35s;}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.opts{margin-top:14px;display:grid;gap:9px;}
+.opt{border:1px solid var(--border);background:var(--bg-2);padding:12px;font-size:12.5px;color:var(--ts);line-height:1.6;cursor:pointer;transition:all .16s;animation:fade .3s;}
+.opt:hover{border-color:var(--red);color:var(--tp);transform:translateX(3px);}
+.opt .oi{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;margin-right:7px;}
+.opt.good{border-color:var(--lv-ordinary);background:rgba(74,124,89,.1);color:var(--tp);}
+.opt.bad{border-color:var(--red);background:rgba(196,40,40,.1);color:var(--tp);}
+.verdict{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;animation:fade .35s;}
+.verdict .vt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;margin-bottom:8px;}
+.verdict.ok .vt{color:var(--lv-ordinary);}
+.verdict.no .vt{color:var(--red);}
+.verdict p{margin:0 0 8px;font-size:12.5px;line-height:1.8;color:var(--ts);}
+.verdict p b{color:var(--tp);}
+.verdict .arch{display:block;margin-top:10px;border:1px solid var(--border-light);background:var(--bg-3);padding:9px 10px;text-decoration:none;color:var(--blue);font-size:11.5px;transition:all .2s;}
+.verdict .arch:hover{border-color:var(--red);color:var(--red);}
+.scorebar{display:flex;gap:10px;font-family:var(--mono);font-size:10px;color:var(--tm);margin:2px 0 12px;letter-spacing:.08em;}
+.scorebar b{color:var(--tp);}
+.combo{color:var(--lv-hazardous)!important;}
+
+/* 结算 */
+.end-card{border:1px solid var(--border);background:var(--bg-2);padding:16px;text-align:center;animation:fade .4s;}
+.end-rank{font-family:var(--serif);font-size:64px;line-height:1;margin:6px 0 4px;}
+.end-title{font-family:var(--serif);font-size:17px;color:var(--tp);}
+.end-sub{font-family:var(--mono);font-size:9px;color:var(--tm);letter-spacing:.14em;margin-top:6px;}
+.end-body{margin-top:14px;text-align:left;font-size:12.5px;line-height:1.85;color:var(--ts);border-top:1px dashed var(--border);padding-top:12px;}
+.end-body b{color:var(--tp);}
+.share-img{width:100%;border:1px solid var(--border);margin-top:12px;display:none;}
+.tips{font-family:var(--mono);font-size:9px;color:var(--tf);letter-spacing:.08em;margin-top:10px;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="nav">
+    <div class="bk" id="navBack" onclick="goHome()">✕</div>
+    <div class="nt" id="navTitle">异常热线</div>
+    <div class="nc">IMAC · 99</div>
+  </div>
+
+  <!-- 首页 -->
+  <div class="page on" id="pageHome">
+    <div class="brand">IMAC · <b>异常热线</b></div>
+    <div class="brand-sub">ANOMALY HOTLINE · DISPATCHER</div>
+
+    <a class="promo" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">
+      <div class="pt">你接听的每一个异常，都收录在国际异常管理联盟档案库</div>
+      <div class="ps">kailily.github.io/imac-web · 异常信息数据库</div>
+    </a>
+
+    <div class="duty">
+      你是 <b>IMAC 99 异常热线</b>的夜班接线员。<br>
+      市民打来电话描述他们看到的东西，你要在 <b>三条处置建议</b>中选出正确的那一条——
+      判断错了，电话那头的人可能就回不来了。
+    </div>
+
+    <div class="sec">执 勤 记 录</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="v" id="stBest">—</div><div class="l">BEST</div></div>
+      <div class="stat"><div class="v" id="stPlays">0</div><div class="l">出勤次数</div></div>
+      <div class="stat"><div class="v" id="stRank">—</div><div class="l">最高评定</div></div>
+    </div>
+
+    <button class="btn-main" style="margin-top:14px" onclick="startShift()">▶ 开 始 值 班</button>
+    <a class="btn-ghost" href="https://kailily.github.io/imac-web/#/database" target="_blank" rel="noopener">⊟ 查阅异常信息数据库</a>
+    <div class="tips">提示：共 10 通来电 · 满分 1000 · 连击有加成</div>
+  </div>
+
+  <!-- 通话页 -->
+  <div class="page" id="pageCall">
+    <div class="scorebar">
+      <span>第 <b id="progIdx">1</b>/10 通</span>
+      <span>得分 <b id="progScore">0</b></span>
+      <span id="progCombo"></span>
+    </div>
+    <div class="call-head">
+      <div class="ring">☎</div>
+      <div class="call-meta">
+        <div class="cn" id="callerName">来电</div>
+        <div class="cd" id="callerMeta">INCOMING · 99</div>
+      </div>
+    </div>
+    <div class="caller" id="callerText"></div>
+    <div class="opts" id="opts"></div>
+    <div id="verdictBox"></div>
+    <div id="nextBox"></div>
+  </div>
+
+  <!-- 结算页 -->
+  <div class="page" id="pageEnd">
+    <div class="end-card">
+      <div class="end-sub">SHIFT REPORT · 值 班 结 算</div>
+      <div class="end-rank" id="endRank">S</div>
+      <div class="end-title" id="endTitle">首席接线员</div>
+      <div class="end-sub" id="endScore">得分 0 / 1000</div>
+      <div class="end-body" id="endBody"></div>
+    </div>
+    <canvas class="share-img" id="shareCanvas" width="720" height="1000"></canvas>
+    <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存战绩图 · 分享给朋友</button>
+    <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前往 IMAC 异常信息数据库</a>
+    <button class="btn-ghost" onclick="startShift()">↻ 再来一班</button>
+    <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+var SITE = 'https://kailily.github.io/imac-web/';
+var DB = SITE + '#/database';
+var PERFECT = 1000;
+
+/* ===== 来电数据（全部对应 IMAC 档案库中的真实条目） ===== */
+var CALLS = [
+  {
+    id: 'OBA-0148', code: '安眠枕', lv: '常规级 · 安全', lvColor: 'var(--lv-ordinary)',
+    caller: '白松城的市民', meta: 'CALL 01 · 居民咨询',
+    text: '「医生给我开了个枕头，编号 OBA-0148。枕着它睡，我三个月没睡这么好了，一夜无梦，早上起来特别精神……这东西不会有问题吧？」',
+    opts: [
+      { t: '立即远离该枕头，等待专业处置', ok: false, why: '过度反应。安眠枕已在 IMAC 民用应用计划中登记，规则完全解析、评定为安全，通过医疗机构处方发放。' },
+      { t: '正常使用，按处方每日一次、不可转借', ok: true, why: '正确。安眠枕属常规级安全异常，规则清晰：绑定使用者、每日一次、约 90 分钟自然醒。遵守规则即可正常使用。' },
+      { t: '把枕头烧掉，异常必须销毁', ok: false, why: '严重错误。销毁异常载体属于违规处置，且会破坏已归档的民用应用样本。' }
+    ],
+    truth: '民用应用型异常不等于危险——前提是使用者遵守它绝对的规则。'
+  },
+  {
+    id: 'SPA-2088', code: '捷径门', lv: '常规级 · 安全', lvColor: 'var(--lv-ordinary)',
+    caller: '鸣海城通勤乘客', meta: 'CALL 02 · 交通咨询',
+    text: '「地铁三号线那两个门太神了，我刷卡进去，三秒钟就从南站到了会展中心，二十八公里啊！我同事想让我带他一起过，说两个人挤一挤能省一张卡，可以吗？」',
+    opts: [
+      { t: '让他正常刷卡一人一次，保持 30 秒间隔', ok: true, why: '正确。捷径门的规则要求单人穿行、限重 20 公斤、两批乘客间隔至少 30 秒。守规则，它是最安全的通勤方式。' },
+      { t: '两个人一起过，速度快就行', ok: false, why: '违规。穿行重叠是被明确禁止的——规则不会因为「赶时间」而通融。' },
+      { t: '别再用了，那东西迟早出事', ok: false, why: '不必要。捷径门运营十余年零事故，已纳入公共交通体系，安全级异常可以放心使用。' }
+    ],
+    truth: '把异常变成便利的前提，是先把它的规则一条条解析清楚。'
+  },
+  {
+    id: 'SPA-0421', code: '灰松岭循环路段', lv: '常规级', lvColor: 'var(--lv-ordinary)',
+    caller: '灰松岭伐木工', meta: 'CALL 03 · 道路异常',
+    text: '「公路上一段两百米的路，我开车进去三次，每次都从同一座桥、同一棵枯树下面过，怎么开都出不来。我最后把车停在路边走出来的……你们快来看看。」',
+    opts: [
+      { t: '让他回到车上继续尝试开出', ok: false, why: '错误。循环只对行驶中的车辆生效——再次驾车进入就会重新被困。' },
+      { t: '让他留在原地等，不要走动', ok: false, why: '不完全正确。徒步者虽不受循环影响，但异常区周边情况不明，应尽快离开并封锁路段。' },
+      { t: '让他立刻徒步离开该路段，并在远处封锁警示、上报 IMAC', ok: true, why: '正确。灰松岭循环路段的规则是「载具触发、徒步豁免」——徒步撤离是安全做法，随后由北境守望按标准流程处置。' }
+    ],
+    truth: '先撤离、再上报、绝不靠近——这三步能救大多数人。'
+  },
+  {
+    id: 'SPA-0317', code: '归途石', lv: '常规级 · 安全', lvColor: 'var(--lv-ordinary)',
+    caller: '阿尔茨海默症患者家属', meta: 'CALL 04 · 社区咨询',
+    text: '「我妈戴了你们发的那个石头，前天自己从菜市场走回来了——以前她总是迷路。但我有点怕，这算不算异常在控制她？」',
+    opts: [
+      { t: '告诉她：归途石只提示方向、不控制人，仍需家人陪同与防范路况风险', ok: true, why: '正确。归途石的规则是「以登记住址为锚点提示方向、半径五公里、每日一次」，它只给方向，不保证路径安全——家人的陪同仍然重要。' },
+      { t: '劝她立刻取下，异常物品都有危险', ok: false, why: '过度反应。归途石是长桥会社管理的安全级民用应用物品，定向发放给防走失人群。' },
+      { t: '告诉她有石头就万无一失，可以完全放手', ok: false, why: '危险误区。归途石只保证「方向正确」，洪水、断桥、塌方同样会被指向——脱离照护可能出事。' }
+    ],
+    truth: '安全级异常也需要人守好边界：石头指路，人保平安。'
+  },
+  {
+    id: 'SPB-0089', code: '镜像医院', lv: '厄运级', lvColor: 'var(--lv-doomed)',
+    caller: '洛林自由市护士', meta: 'CALL 05 · 内部上报',
+    text: '「我们医院西侧走廊出现了第二扇一模一样的大门，门牌号也对得上。刚才有个病人走进去，我看到他进了左手的门，可门口的监控显示他进了右手……走廊里现在很安静。」',
+    opts: [
+      { t: '让他立即封锁走廊、清空人员，原地等待专业队伍', ok: true, why: '正确。镜像医院为厄运级异常，空间对应关系不可信任——封锁、清空、等待 IMAC 专业处置是唯一安全做法。' },
+      { t: '让他进走廊寻找那名病人', ok: false, why: '严禁。追入镜像空间是历年伤亡的主因，进入者极少返回。' },
+      { t: '让全体医护人员进入检查设备是否故障', ok: false, why: '严禁。异常已确认存在（监控与人体位置矛盾），此时大规模进入等于把更多人交给异常。' }
+    ],
+    truth: '面对厄运级异常，第一原则永远是封锁而不是探索。'
+  },
+  {
+    id: 'PHA-0001', code: '空白地带', lv: '未知级', lvColor: 'var(--lv-unknown)',
+    caller: '极北勘测队员', meta: 'CALL 06 · 紧急求助',
+    text: '「我们车开到这片冰原上，GPS 全没了，指南针在转圈，前面看着什么都没有——不是黑，是「没有」，我形容不出来。我同事想下车往前走两步看看……」',
+    opts: [
+      { t: '立刻制止同伴下车，掉头沿原路缓慢撤离并持续上报', ok: true, why: '正确。空白地带是 IMAC 档案中信息最少的未知级异常，接触边界的物质会「消失」且无返回记录——不接近、不投物、立即撤离。' },
+      { t: '让他下车走两步确认边界位置', ok: false, why: '致命。接触边界的物质与生命体没有任何返回记录。' },
+      { t: '停留原地等待信号恢复', ok: false, why: '危险。区域内重力、电磁、时间读数全部失效，「等一等」不会让情况变好，应尽快脱离边界。' }
+    ],
+    truth: '信息越少的异常越危险——未知级的第一处置永远是撤离。'
+  },
+  {
+    id: 'TMA-0045', code: '雾中列车', lv: '厄运级', lvColor: 'var(--lv-doomed)',
+    caller: '东部铁路乘客', meta: 'CALL 07 · 列车求助',
+    text: '「列车开进雾里已经四十分钟了，窗外全是白的，报站也不对。刚才有人在前面那节车厢喊『下车就到家了』，好几个人往车门走……我要不要也跟着下车？」',
+    opts: [
+      { t: '告诉他：绝不下车，留在原位、保持清醒、等待救援', ok: true, why: '正确。雾中列车的规则之一是「下车者永不返回」。留在车厢、不睡、不跟随他人下车，是幸存者的共同做法。' },
+      { t: '让他跟着人群下车，人多安全', ok: false, why: '严禁。雾中列车的致命误区就是「随大流下车」，历年下车者无一返回。' },
+      { t: '让他躲进洗手间锁门睡一觉', ok: false, why: '错误。睡眠状态在该异常中会加剧定位失效，幸存者记录强调保持清醒与位置固定。' }
+    ],
+    truth: '在时间类异常里，「跟随他人」往往是最危险的选项。'
+  },
+  {
+    id: 'LOA-0073', code: '赤月学院', lv: '深渊级', lvColor: 'var(--lv-abyssal)',
+    caller: '白松城居民', meta: 'CALL 08 · 失踪上报',
+    text: '「我女儿昨晚在房间里写作业，我端牛奶进去的时候人就不见了，桌上摊着一本不是她的练习册，封面上写着「赤月学院 · 入学通知」。窗户是锁着的……我该怎么办？」',
+    opts: [
+      { t: '立即上报 IMAC 区域中心，封存现场物证，任何人不得自行寻找', ok: true, why: '正确。赤月学院为深渊级异常，拉入机制不可预测、致死率极高。现场物证（练习册）对定位有重要价值，但必须由专业队伍处置。' },
+      { t: '召集亲友沿附近学校逐一寻找', ok: false, why: '严禁。赤月学院的入口随机出现，盲目寻找既找不到人，还可能让更多人被拉入。' },
+      { t: '等待 24 小时后再报警', ok: false, why: '错误。异常相关失踪没有「黄金 24 小时」的说法——上报越早，现场信息保存得越完整。' }
+    ],
+    truth: '越危险的异常，越要把处置权交给专业的人。'
+  },
+  {
+    id: 'NONE-0001', code: '不是异常', lv: '误报', lvColor: 'var(--tm)',
+    caller: '鸣海城住户', meta: 'CALL 09 · 疑似误报',
+    text: '「我家猫最近总盯着墙角看，一动不动看半小时，是不是那个墙角有异常？我越看越怕，你们能不能派人来检测一下？」',
+    opts: [
+      { t: '耐心解释：猫盯着墙角多为听觉或光影反应，无需异常处置，可在热线登记观察', ok: true, why: '正确。99 热线的接线原则是「先判断再调度」——把资源留给真正的异常，同时也要安抚市民情绪、留下观察记录。' },
+      { t: '立即按最高等级上报，要求封锁住宅楼', ok: false, why: '错误。虚报会占用专业队伍的行动窗口，真正的异常可能因此延误处置。' },
+      { t: '批评对方浪费公共资源后挂断', ok: false, why: '不妥。接线员的态度会影响市民下一次是否愿意上报——而及时上报正是处置成功的关键。' }
+    ],
+    truth: '分辨真伪，是接线员最重要也最难的工作。'
+  },
+  {
+    id: 'NONE-0002', code: '异常收费诈骗', lv: '违法', lvColor: 'var(--red)',
+    caller: '白松城老人', meta: 'CALL 10 · 疑似诈骗',
+    text: '「有人上门说我家天花板「有异常能量」，交两千块就能帮我「做净化解厄」，还给我看了一张印着「联盟认证」的证书。他说不交钱三天内必出事……我该交吗？」',
+    opts: [
+      { t: '告诉他：IMAC 从不向市民收取任何异常处置费用，请立即挂断并向公安机关举报', ok: true, why: '正确。IMAC 是全球协作的公共机构，异常处置与民用应用发放均不收费。「收费净化」是典型的异常诈骗套路。' },
+      { t: '让他先交钱消灾，安全第一', ok: false, why: '错误。这正是骗局的落点——用恐惧换钱。' },
+      { t: '让他自己想办法找正规机构确认', ok: false, why: '不妥。老人已处于被恐吓状态，应给出明确结论并引导报警。' }
+    ],
+    truth: '真正的异常不会收费——收费的，一定是人。'
+  }
+];
+
+/* ===== 状态 ===== */
+var state = { idx: 0, score: 0, combo: 0, maxCombo: 0, right: 0, wrong: 0, answered: false, log: [] };
+var best = 0, plays = 0, bestRank = '—';
+
+try {
+  best = parseInt(localStorage.getItem('imac_hotline_best') || '0', 10) || 0;
+  plays = parseInt(localStorage.getItem('imac_hotline_plays') || '0', 10) || 0;
+  bestRank = localStorage.getItem('imac_hotline_rank') || '—';
+} catch (e) {}
+
+function $(id) { return document.getElementById(id); }
+function show(page) {
+  ['pageHome', 'pageCall', 'pageEnd'].forEach(function (p) { $(p).classList.toggle('on', p === page); });
+  $('navBack').style.visibility = page === 'pageHome' ? 'hidden' : 'visible';
+}
+function goHome() {
+  $('stBest').textContent = best ? best : '—';
+  $('stPlays').textContent = plays;
+  $('stRank').textContent = bestRank;
+  $('navTitle').textContent = '异常热线';
+  show('pageHome');
+}
+
+function startShift() {
+  state = { idx: 0, score: 0, combo: 0, maxCombo: 0, right: 0, wrong: 0, answered: false, log: [] };
+  $('navTitle').textContent = '值班中';
+  show('pageCall');
+  renderCall();
+}
+
+function rankOf(score) {
+  if (score >= 950) return { r: 'S', t: '首席接线员', c: 'var(--lv-ordinary)' };
+  if (score >= 800) return { r: 'A', t: '资深接线员', c: 'var(--blue)' };
+  if (score >= 600) return { r: 'B', t: '合格接线员', c: 'var(--lv-hazardous)' };
+  if (score >= 400) return { r: 'C', t: '见习接线员', c: 'var(--lv-doomed)' };
+  return { r: 'D', t: '需要重训', c: 'var(--red)' };
+}
+
+function renderCall() {
+  var c = CALLS[state.idx];
+  state.answered = false;
+  $('progIdx').textContent = state.idx + 1;
+  $('progScore').textContent = state.score;
+  $('progCombo').innerHTML = state.combo >= 2 ? '<span class="combo">连击 ×' + state.combo + '</span>' : '';
+  $('callerName').textContent = c.caller;
+  $('callerMeta').textContent = c.meta + ' · ' + c.lv;
+  $('callerMeta').style.color = c.lvColor;
+  $('callerText').textContent = c.text;
+  var box = $('opts');
+  box.innerHTML = '';
+  c.opts.forEach(function (o, i) {
+    var d = document.createElement('div');
+    d.className = 'opt';
+    d.innerHTML = '<span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t;
+    d.onclick = function () { answer(i, d); };
+    box.appendChild(d);
+  });
+  $('verdictBox').innerHTML = '';
+  $('nextBox').innerHTML = '';
+}
+
+function answer(i, el) {
+  if (state.answered) return;
+  state.answered = true;
+  var c = CALLS[state.idx];
+  var opt = c.opts[i];
+  var nodes = $('opts').children;
+  for (var k = 0; k < nodes.length; k++) {
+    nodes[k].onclick = null;
+    if (c.opts[k].ok) nodes[k].classList.add('good');
+    else if (k === i) nodes[k].classList.add('bad');
+  }
+  var gain = 0;
+  if (opt.ok) {
+    state.right++;
+    state.combo++;
+    if (state.combo > state.maxCombo) state.maxCombo = state.combo;
+    gain = 80 + Math.min(40, (state.combo - 1) * 20);
+    state.score += gain;
+    $('progScore').textContent = state.score;
+    $('progCombo').innerHTML = state.combo >= 2 ? '<span class="combo">连击 ×' + state.combo + '</span>' : '';
+  } else {
+    state.wrong++;
+    state.combo = 0;
+    $('progCombo').innerHTML = '';
+  }
+  state.log.push({ code: c.code, ok: opt.ok });
+
+  var v = $('verdictBox');
+  v.innerHTML =
+    '<div class="verdict ' + (opt.ok ? 'ok' : 'no') + '">' +
+      '<div class="vt">' + (opt.ok ? '✓ 处置正确　+' + gain + (state.combo >= 2 ? '（连击 ×' + state.combo + '）' : '') : '✕ 处置有误　+0') + '</div>' +
+      '<p>' + opt.why + '</p>' +
+      '<p style="color:var(--tm);font-size:11.5px">档案编号：<b style="color:' + c.lvColor + '">' + c.id + '</b> · ' + c.lv + '</p>' +
+      '<a class="arch" href="' + (c.id.indexOf('NONE') === 0 ? DB : SITE + '#/anomaly/' + c.id) + '" target="_blank" rel="noopener">' +
+        (c.id.indexOf('NONE') === 0 ? '→ 打开 IMAC 异常信息数据库' : '→ 查看 ' + c.id + ' 完整档案（IMAC 异常库）') +
+      '</a>' +
+    '</div>';
+  v.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  var last = state.idx === CALLS.length - 1;
+  var nb = $('nextBox');
+  nb.innerHTML = '';
+  var b = document.createElement('button');
+  b.className = 'btn-main';
+  b.style.marginTop = '12px';
+  b.textContent = last ? '结束值班 · 查看结算' : '接听下一通电话 →';
+  b.onclick = function () { last ? endShift() : (state.idx++, renderCall()); };
+  nb.appendChild(b);
+}
+
+function endShift() {
+  plays++;
+  var rank = rankOf(state.score);
+  if (state.score > best) { best = state.score; bestRank = rank.r; }
+  try {
+    localStorage.setItem('imac_hotline_best', String(best));
+    localStorage.setItem('imac_hotline_plays', String(plays));
+    localStorage.setItem('imac_hotline_rank', bestRank);
+  } catch (e) {}
+
+  $('navTitle').textContent = '值班结算';
+  $('endRank').textContent = rank.r;
+  $('endRank').style.color = rank.c;
+  $('endTitle').textContent = rank.t;
+  $('endScore').textContent = '本次得分 ' + state.score + ' / ' + PERFECT + ' · 正确 ' + state.right + '/' + CALLS.length;
+  var grade =
+    state.right === CALLS.length ? '你把十通电话全部接对了。专业、冷静、克制——正是这条热线存在的意义。' :
+    state.right >= 8 ? '你的判断相当可靠。个别案子出现偏差，但都在可挽回的范围内。' :
+    state.right >= 6 ? '基本合格。异常热线没有「下次注意」——每一次误判，代价都由电话那头的人承担。' :
+    '这一班出了不少问题。建议先去 IMAC 异常信息数据库，把档案从头读一遍。';
+  $('endBody').innerHTML =
+    '<p style="margin:0 0 10px">' + grade + '</p>' +
+    '<p style="margin:0 0 6px">正确处置 <b>' + state.right + '</b> 通 · 误判 <b>' + state.wrong + '</b> 通 · 最高连击 <b>' + state.maxCombo + '</b></p>' +
+    '<p style="margin:0 0 10px;color:var(--tm);font-size:11.5px">历史最佳 <b style="color:var(--tp)">' + best + '</b> 分（' + bestRank + ' 级） · 累计出勤 ' + plays + ' 次</p>' +
+    '<p style="margin:0">你接听的每一个异常，都真实收录在 <b>IMAC 国际异常管理联盟</b>档案库中——' +
+    '包含完整的发现经过、已确认规则与进入记录。<br>去数据库看看它们后来的故事：</p>' +
+    '<p style="margin:8px 0 0"><b style="color:var(--blue)">kailily.github.io/imac-web</b></p>';
+  show('pageEnd');
+  drawCard(rank);
+}
+
+/* ===== 战绩图 ===== */
+function drawCard(rank) {
+  var cv = $('shareCanvas');
+  var x = cv.getContext('2d');
+  var W = cv.width, H = cv.height;
+  x.fillStyle = '#0a0a0c'; x.fillRect(0, 0, W, H);
+  x.strokeStyle = '#26262e'; x.lineWidth = 2; x.strokeRect(22, 22, W - 44, H - 44);
+  x.fillStyle = '#c42828'; x.fillRect(22, 22, W - 44, 4);
+
+  x.textAlign = 'center';
+  x.font = '600 26px "PingFang SC","Microsoft YaHei",sans-serif';
+  x.fillStyle = '#d8d4cc'; x.fillText('IMAC · 异常热线值班记录', W / 2, 100);
+  x.font = '500 15px Consolas,monospace'; x.fillStyle = '#5c5952';
+  x.fillText('ANOMALY HOTLINE · SHIFT REPORT', W / 2, 130);
+
+  x.font = '700 130px "Songti SC",serif'; x.fillStyle = rank.c === 'var(--lv-ordinary)' ? '#4a7c59' : rank.c === 'var(--blue)' ? '#7a96ad' : rank.c === 'var(--lv-hazardous)' ? '#c49a2c' : rank.c === 'var(--lv-doomed)' ? '#d46828' : '#c42828';
+  x.fillText(rank.r, W / 2, 290);
+  x.font = '600 30px "PingFang SC",sans-serif'; x.fillStyle = '#d8d4cc';
+  x.fillText(rank.t, W / 2, 345);
+
+  x.font = '500 22px Consolas,monospace'; x.fillStyle = '#a09c94';
+  x.fillText('得分 ' + state.score + ' / ' + PERFECT, W / 2, 400);
+  x.fillText('正确 ' + state.right + '/' + CALLS.length + ' · 最高连击 ' + state.maxCombo, W / 2, 436);
+
+  // 逐题结果
+  x.textAlign = 'left';
+  x.strokeStyle = '#1f1f26'; x.beginPath(); x.moveTo(70, 480); x.lineTo(W - 70, 480); x.stroke();
+  var cw = (W - 140) / 5;
+  state.log.forEach(function (l, i) {
+    var cx = 70 + (i % 5) * cw, cy = 520 + Math.floor(i / 5) * 74;
+    x.fillStyle = l.ok ? '#4a7c59' : '#c42828';
+    x.font = '600 26px Consolas,monospace';
+    x.fillText(l.ok ? '✓' : '✕', cx, cy);
+    x.fillStyle = '#a09c94'; x.font = '500 14px Consolas,monospace';
+    x.fillText(l.code.length > 9 ? l.code.slice(0, 9) : l.code, cx, cy + 26);
+  });
+
+  // 引流区
+  x.fillStyle = '#15151a'; x.fillRect(70, 700, W - 140, 168);
+  x.strokeStyle = '#26262e'; x.strokeRect(70, 700, W - 140, 168);
+  x.textAlign = 'left';
+  x.fillStyle = '#c42828'; x.font = '600 19px "PingFang SC",sans-serif';
+  x.fillText('这些异常都真实收录于 IMAC 档案库', 92, 742);
+  x.fillStyle = '#a09c94'; x.font = '500 16px "PingFang SC",sans-serif';
+  x.fillText('国际异常管理联盟 · 完整发现经过 / 已确认规则 / 进入记录', 92, 776);
+  x.fillStyle = '#7a96ad'; x.font = '600 21px Consolas,monospace';
+  x.fillText('kailily.github.io/imac-web', 92, 816);
+  x.fillStyle = '#5c5952'; x.font = '500 14px "PingFang SC",sans-serif';
+  x.fillText('扫码或直接访问 · 点击「查阅异常信息数据库」', 92, 846);
+
+  x.textAlign = 'center';
+  x.fillStyle = '#45423c'; x.font = '500 14px Consolas,monospace';
+  x.fillText('IMAC 99 HOTLINE · 值班记录已归档', W / 2, H - 60);
+  cv.style.display = 'block';
+}
+
+function saveCard() {
+  var cv = $('shareCanvas');
+  try {
+    var url = cv.toDataURL('image/png');
+    var a = document.createElement('a');
+    a.href = url; a.download = 'IMAC-异常热线-战绩.png';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  } catch (e) {
+    alert('保存失败，可长按图片保存');
+  }
+}
+
+$('navBack').style.visibility = 'hidden';
+goHome();
+</script>
+</body>
+</html>

@@ -69,6 +69,7 @@ function Header({ scrolled, currentRoute }) {
     { label: "应急指南", en: "Guide", to: "/guide", match: ["/guide"], icon: "shield" },
     { label: "新闻中心", en: "News", to: "/news", match: ["/news", "/media-auth", "/media-guidelines"], icon: "news" },
     { label: "溯界者", en: "Anomalists", to: "/join", match: ["/join"], icon: "user" },
+    { label: "异常热线 · 小游戏", en: "Hotline Game", to: "/game", match: [], icon: "game", external: "game.html" },
     { label: "成员组织", en: "Organizations", to: "/organizations", match: ["/organizations"], prefix: "/org/", icon: "org" },
     { label: "异常信息数据库", en: "Database", to: "/database", match: ["/database", "/anomaly-archive"], prefix: "/anomaly/", locked: true, required: "internal", icon: "db" },
     { label: "关于我们", en: "About", to: "/#about-imac", match: [], icon: "info" },
@@ -117,6 +118,7 @@ function Header({ scrolled, currentRoute }) {
       org: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></>,
       db: <><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.657 4.03 3 9 3s9-1.343 9-3V5"/><path d="M3 12c0 1.657 4.03 3 9 3s9-1.343 9-3"/></>,
       info: <><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></>,
+      game: <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>,
     };
     return (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -603,9 +605,11 @@ function Header({ scrolled, currentRoute }) {
             {navItems.map((item) => (
               <a
                 key={item.label}
-                href={`#${item.to}`}
+                href={item.external ? item.external : `#${item.to}`}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener" : undefined}
                 className={`nav-item ${isActive(item) ? "active" : ""}`}
-                onClick={(e) => handleNavClick(item, e)}
+                onClick={item.external ? undefined : (e) => handleNavClick(item, e)}
               >
                 {item.label}
                 {item.locked && !canAccess(item.required) && (
@@ -817,9 +821,11 @@ function Header({ scrolled, currentRoute }) {
                   {navItems.map((item) => (
                     <a
                       key={item.label}
-                      href={`#${item.to}`}
+                      href={item.external ? item.external : `#${item.to}`}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener" : undefined}
                       className={`mobile-nav-item ${isActive(item) ? "active" : ""}`}
-                      onClick={(e) => handleNavClick(item, e)}
+                      onClick={item.external ? undefined : (e) => handleNavClick(item, e)}
                     >
                       <span className="mobile-nav-label">
                         <span className="mobile-nav-icon">
