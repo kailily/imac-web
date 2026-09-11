@@ -696,15 +696,9 @@ function Header({
           background: linear-gradient(90deg, transparent 0%, var(--accent-red-bright) 50%, transparent 100%);
         }
 
-        @media (max-width: 1400px) {
-          .header-nav { gap: 12px; margin: 0 10px; }
-          .nav-item { font-size: 11.5px; }
-          .logo-main { font-size: 15px; }
-        }
         @media (max-width: 1200px) {
-          .header-nav { gap: 10px; }
-          .nav-item { font-size: 11px; }
-          .header-right { gap: 12px; }
+          .header-nav { gap: 16px; }
+          .nav-item { font-size: 12px; }
         }
         @media (max-width: 1080px) {
           .header-nav { display: none; }
@@ -712,7 +706,6 @@ function Header({
           .mobile-menu-btn { display: flex; }
           .header-inner { padding: 0 24px; }
           .hotline-mini-text { display: none; }
-          .logo-main { font-size: 17px; }
         }
         @media (max-width: 768px) {
           .header-inner { padding: 0 16px; height: 56px; }
