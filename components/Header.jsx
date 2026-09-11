@@ -156,13 +156,13 @@ function Header({ scrolled, currentRoute }) {
         }
         .header-left {
           display: flex; align-items: center; gap: 12px; cursor: pointer;
-          flex: none;
+          margin-left: -16px;
         }
-        .logo-mark { width: 36px; height: 36px; flex: none; }
+        .logo-mark { width: 36px; height: 36px; }
         .logo-text-group { display: flex; flex-direction: column; line-height: 1.2; }
         .logo-main {
           font-family: var(--font-serif);
-          font-size: 17px;
+          font-size: 14px;
           font-weight: 700;
           color: var(--text-primary);
           letter-spacing: 0.05em;
@@ -174,16 +174,14 @@ function Header({ scrolled, currentRoute }) {
           letter-spacing: 0.2em;
         }
         .header-nav {
-          display: flex; align-items: center; gap: 14px;
-          flex: 1 1 auto;
-          justify-content: center;
-          min-width: 0;
-          margin: 0 14px;
-          overflow: hidden;
+          display: flex; align-items: center; gap: 22px;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
         }
         .nav-item {
           position: relative;
-          font-size: 12px;
+          font-size: 13px;
           color: var(--text-secondary);
           cursor: pointer;
           transition: color 0.2s ease;
@@ -205,7 +203,6 @@ function Header({ scrolled, currentRoute }) {
         .nav-item .lock-icon { width: 12px; height: 12px; color: var(--text-muted); }
         .header-right {
           display: flex; align-items: center; gap: 16px;
-          flex: none;
         }
         .hotline-mini {
           display: flex; align-items: center; gap: 8px;
