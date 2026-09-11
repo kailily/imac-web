@@ -740,6 +740,59 @@ function HomePage() {
           color: var(--text-secondary);
           text-align: center;
         }
+        /* 异常热线 · 接线员 小游戏入口 */
+        .hotline-game-entry {
+          margin-top: 16px;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 18px 22px;
+          border: 1px solid var(--border-color);
+          border-left: 3px solid var(--accent-red-bright);
+          background: var(--bg-card);
+          text-decoration: none;
+          transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+        }
+        .hotline-game-entry:hover {
+          border-color: var(--accent-red-bright);
+          background: rgba(196, 40, 40, 0.06);
+          transform: translateY(-2px);
+        }
+        .hotline-game-icon {
+          width: 44px; height: 44px; flex: none;
+          border-radius: 50%;
+          background: rgba(196, 40, 40, 0.12);
+          border: 1px solid rgba(196, 40, 40, 0.4);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--accent-red-bright);
+        }
+        .hotline-game-icon svg { width: 22px; height: 22px; }
+        .hotline-game-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .hotline-game-text strong {
+          font-size: 15px;
+          color: var(--text-primary);
+          font-family: var(--font-serif);
+          letter-spacing: 0.05em;
+        }
+        .hotline-game-text span { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+        .hotline-game-btn {
+          flex: none;
+          display: flex; align-items: center; gap: 6px;
+          font-family: var(--font-mono);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          color: var(--accent-red-bright);
+          border: 1px solid var(--accent-red-bright);
+          padding: 8px 16px;
+          border-radius: 4px;
+          transition: background 0.2s ease, color 0.2s ease;
+          white-space: nowrap;
+        }
+        .hotline-game-entry:hover .hotline-game-btn { background: var(--accent-red-bright); color: #fff; }
+        @media (max-width: 640px) {
+          .hotline-game-entry { flex-direction: column; align-items: flex-start; gap: 12px; }
+          .hotline-game-btn { width: 100%; justify-content: center; }
+        }
 
         /* Orgs map section */
         .orgs-map-section {
@@ -1390,6 +1443,26 @@ function HomePage() {
           <div className="hotline-app-tip">
             安珀历30年后，部分城市试点「异常预警APP」，实时推送周边异常风险评估。
           </div>
+
+          {/* 异常热线 · 接线员 小游戏入口（独立窗口） */}
+          <a className="hotline-game-entry" href="game.html" target="_blank" rel="noopener">
+            <div className="hotline-game-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M3 18v-6a9 9 0 0118 0v6"/>
+                <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/>
+              </svg>
+            </div>
+            <div className="hotline-game-text">
+              <strong>异常热线 · 接线员</strong>
+              <span>坐上接线席，处理一个个真实的异常来电——你的每一次判断，都决定来电者的生死。</span>
+            </div>
+            <span className="hotline-game-btn">
+              开始体验
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="12" height="12">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </span>
+          </a>
         </div>
       </section>
 

@@ -69,7 +69,6 @@ function Header({ scrolled, currentRoute }) {
     { label: "应急指南", en: "Guide", to: "/guide", match: ["/guide"], icon: "shield" },
     { label: "新闻中心", en: "News", to: "/news", match: ["/news", "/media-auth", "/media-guidelines"], icon: "news" },
     { label: "溯界者", en: "Anomalists", to: "/join", match: ["/join"], icon: "user" },
-    { label: "异常热线 · 小游戏", en: "Hotline Game", to: "/game", match: [], icon: "game", external: "game.html" },
     { label: "成员组织", en: "Organizations", to: "/organizations", match: ["/organizations"], prefix: "/org/", icon: "org" },
     { label: "异常信息数据库", en: "Database", to: "/database", match: ["/database", "/anomaly-archive"], prefix: "/anomaly/", locked: true, required: "internal", icon: "db" },
     { label: "关于我们", en: "About", to: "/#about-imac", match: [], icon: "info" },
@@ -156,13 +155,12 @@ function Header({ scrolled, currentRoute }) {
         }
         .header-left {
           display: flex; align-items: center; gap: 12px; cursor: pointer;
-          margin-left: -16px;
         }
         .logo-mark { width: 36px; height: 36px; }
         .logo-text-group { display: flex; flex-direction: column; line-height: 1.2; }
         .logo-main {
           font-family: var(--font-serif);
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 700;
           color: var(--text-primary);
           letter-spacing: 0.05em;

@@ -725,6 +725,59 @@ function HomePage() {
           color: var(--text-secondary);
           text-align: center;
         }
+        /* 异常热线 · 接线员 小游戏入口 */
+        .hotline-game-entry {
+          margin-top: 16px;
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          padding: 18px 22px;
+          border: 1px solid var(--border-color);
+          border-left: 3px solid var(--accent-red-bright);
+          background: var(--bg-card);
+          text-decoration: none;
+          transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+        }
+        .hotline-game-entry:hover {
+          border-color: var(--accent-red-bright);
+          background: rgba(196, 40, 40, 0.06);
+          transform: translateY(-2px);
+        }
+        .hotline-game-icon {
+          width: 44px; height: 44px; flex: none;
+          border-radius: 50%;
+          background: rgba(196, 40, 40, 0.12);
+          border: 1px solid rgba(196, 40, 40, 0.4);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--accent-red-bright);
+        }
+        .hotline-game-icon svg { width: 22px; height: 22px; }
+        .hotline-game-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .hotline-game-text strong {
+          font-size: 15px;
+          color: var(--text-primary);
+          font-family: var(--font-serif);
+          letter-spacing: 0.05em;
+        }
+        .hotline-game-text span { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+        .hotline-game-btn {
+          flex: none;
+          display: flex; align-items: center; gap: 6px;
+          font-family: var(--font-mono);
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          color: var(--accent-red-bright);
+          border: 1px solid var(--accent-red-bright);
+          padding: 8px 16px;
+          border-radius: 4px;
+          transition: background 0.2s ease, color 0.2s ease;
+          white-space: nowrap;
+        }
+        .hotline-game-entry:hover .hotline-game-btn { background: var(--accent-red-bright); color: #fff; }
+        @media (max-width: 640px) {
+          .hotline-game-entry { flex-direction: column; align-items: flex-start; gap: 12px; }
+          .hotline-game-btn { width: 100%; justify-content: center; }
+        }
 
         /* Orgs map section */
         .orgs-map-section {
@@ -1473,7 +1526,36 @@ function HomePage() {
     className: "hotline-step-text"
   }, /*#__PURE__*/React.createElement("strong", null, "\u4E0D\u4F20\u64AD\u4F4D\u7F6E\u4FE1\u606F"), "\u4E0D\u5411\u4ED6\u4EBA\u900F\u9732\u5F02\u5E38\u7684\u5177\u4F53\u4F4D\u7F6E"))), /*#__PURE__*/React.createElement("div", {
     className: "hotline-app-tip"
-  }, "\u5B89\u73C0\u538630\u5E74\u540E\uFF0C\u90E8\u5206\u57CE\u5E02\u8BD5\u70B9\u300C\u5F02\u5E38\u9884\u8B66APP\u300D\uFF0C\u5B9E\u65F6\u63A8\u9001\u5468\u8FB9\u5F02\u5E38\u98CE\u9669\u8BC4\u4F30\u3002"))), /*#__PURE__*/React.createElement("section", {
+  }, "\u5B89\u73C0\u538630\u5E74\u540E\uFF0C\u90E8\u5206\u57CE\u5E02\u8BD5\u70B9\u300C\u5F02\u5E38\u9884\u8B66APP\u300D\uFF0C\u5B9E\u65F6\u63A8\u9001\u5468\u8FB9\u5F02\u5E38\u98CE\u9669\u8BC4\u4F30\u3002"), /*#__PURE__*/React.createElement("a", {
+    className: "hotline-game-entry",
+    href: "game.html",
+    target: "_blank",
+    rel: "noopener"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "hotline-game-icon"
+  }, /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M3 18v-6a9 9 0 0118 0v6"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "hotline-game-text"
+  }, /*#__PURE__*/React.createElement("strong", null, "\u5F02\u5E38\u70ED\u7EBF \xB7 \u63A5\u7EBF\u5458"), /*#__PURE__*/React.createElement("span", null, "\u5750\u4E0A\u63A5\u7EBF\u5E2D\uFF0C\u5904\u7406\u4E00\u4E2A\u4E2A\u771F\u5B9E\u7684\u5F02\u5E38\u6765\u7535\u2014\u2014\u4F60\u7684\u6BCF\u4E00\u6B21\u5224\u65AD\uFF0C\u90FD\u51B3\u5B9A\u6765\u7535\u8005\u7684\u751F\u6B7B\u3002")), /*#__PURE__*/React.createElement("span", {
+    className: "hotline-game-btn"
+  }, "\u5F00\u59CB\u4F53\u9A8C", /*#__PURE__*/React.createElement("svg", {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.5",
+    width: "12",
+    height: "12"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "9 18 15 12 9 6"
+  })))))), /*#__PURE__*/React.createElement("section", {
     id: "news",
     className: "hp-section"
   }, /*#__PURE__*/React.createElement("div", {

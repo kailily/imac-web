@@ -106,13 +106,6 @@ function Header({
     match: ["/join"],
     icon: "user"
   }, {
-    label: "异常热线 · 小游戏",
-    en: "Hotline Game",
-    to: "/game",
-    match: [],
-    icon: "game",
-    external: "game.html"
-  }, {
     label: "成员组织",
     en: "Organizations",
     to: "/organizations",
@@ -286,13 +279,12 @@ function Header({
         }
         .header-left {
           display: flex; align-items: center; gap: 12px; cursor: pointer;
-          margin-left: -16px;
         }
         .logo-mark { width: 36px; height: 36px; }
         .logo-text-group { display: flex; flex-direction: column; line-height: 1.2; }
         .logo-main {
           font-family: var(--font-serif);
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 700;
           color: var(--text-primary);
           letter-spacing: 0.05em;
