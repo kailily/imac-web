@@ -136,11 +136,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .id-stats div{border:1px solid var(--border);background:rgba(10,10,14,.5);padding:7px 4px;text-align:center;}
 .id-stats .n{font-family:var(--serif);font-size:15px;}
 .id-stats .t{font-family:var(--mono);font-size:8px;color:var(--tm);letter-spacing:.08em;margin-top:2px;}
-.id-attrs{margin-top:11px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-.id-attrs div{border:1px solid var(--border-soft);background:rgba(122,150,173,.06);padding:6px 3px;text-align:center;}
-.id-attrs .an{display:block;font-family:var(--serif);font-size:17px;color:var(--blue);line-height:1.1;}
-.id-attrs .at{display:block;font-family:var(--mono);font-size:7.5px;color:var(--tm);letter-spacing:.06em;margin-top:3px;}
-.id-attrs-hd{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.12em;margin-top:12px;}
+.id-attrs{margin-top:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;}
+.id-attrs div{border:1px solid rgba(122,150,173,.55);background:rgba(122,150,173,.12);padding:9px 4px;text-align:center;}
+.id-attrs .an{display:block;font-family:var(--serif);font-size:23px;color:var(--blue);line-height:1.05;}
+.id-attrs .at{display:block;font-family:var(--mono);font-size:9px;color:var(--ts);letter-spacing:.04em;margin-top:4px;}
+.id-attrs-hd{font-family:var(--mono);font-size:9.5px;color:var(--blue);letter-spacing:.14em;margin-top:15px;border-left:2px solid var(--blue);padding-left:7px;}
 .id-foot{margin-top:11px;border-top:1px solid var(--border-soft);padding-top:9px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:var(--tf);letter-spacing:.08em;}
 .edit-form{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;}
 .edit-form .ef{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
@@ -793,12 +793,6 @@ function renderBadge() {
         '<div><div class="n">' + collCount() + '/' + ENDINGS + '</div><div class="t">结局收集</div></div>' +
         '<div><div class="n" style="color:' + rank.c + '">' + (best ? rank.r : '—') + '</div><div class="t">最高评定</div></div>' +
       '</div>' +
-      '<div class="id-attrs-hd">能 力 属 性 · ATTRIBUTES</div>' +
-      '<div class="id-attrs">' +
-        ATTR_KEYS.map(function (k) {
-          return '<div><span class="an">' + (attrs[k] || 0) + '</span><span class="at">' + ATTR_CN[k] + '</span></div>';
-        }).join('') +
-      '</div>' +
       '<div class="id-foot"><span>IMAC · INTERNATIONAL ANOMALY MANAGEMENT COALITION</span><span>' + (best ? 'BEST ' + best : 'NO RECORD') + '</span></div>' +
     '</div>';
 }
@@ -918,17 +912,6 @@ function saveBadgeCard() {
     x.fillText(s[1], cx, 486);
     x.font = '500 13px Consolas,monospace'; x.fillStyle = '#5c5952';
     x.fillText(s[0], cx, 510);
-  });
-
-  // 能力属性
-  x.font = '500 15px Consolas,monospace'; x.fillStyle = '#5c5952';
-  x.fillText('ATTRIBUTES · 能力属性', 78, 566);
-  ATTR_KEYS.forEach(function (k, i) {
-    var cx = 78 + i * ((W - 156) / 4);
-    x.font = '600 32px "Songti SC",serif'; x.fillStyle = '#7a96ad';
-    x.fillText(String(attrs[k] || 0), cx, 620);
-    x.font = '500 13px Consolas,monospace'; x.fillStyle = '#5c5952';
-    x.fillText(ATTR_CN[k], cx, 644);
   });
 
   // 引导区
