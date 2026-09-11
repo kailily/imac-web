@@ -136,6 +136,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .id-stats div{border:1px solid var(--border);background:rgba(10,10,14,.5);padding:7px 4px;text-align:center;}
 .id-stats .n{font-family:var(--serif);font-size:15px;}
 .id-stats .t{font-family:var(--mono);font-size:8px;color:var(--tm);letter-spacing:.08em;margin-top:2px;}
+.id-attrs{margin-top:11px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.id-attrs div{border:1px solid var(--border-soft);background:rgba(122,150,173,.06);padding:6px 3px;text-align:center;}
+.id-attrs .an{display:block;font-family:var(--serif);font-size:17px;color:var(--blue);line-height:1.1;}
+.id-attrs .at{display:block;font-family:var(--mono);font-size:7.5px;color:var(--tm);letter-spacing:.06em;margin-top:3px;}
+.id-attrs-hd{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.12em;margin-top:12px;}
 .id-foot{margin-top:11px;border-top:1px solid var(--border-soft);padding-top:9px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:var(--tf);letter-spacing:.08em;}
 .edit-form{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;}
 .edit-form .ef{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
@@ -179,7 +184,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <button class="btn-main" style="margin-top:14px" onclick="startShift()">▶ 接 通 热 线</button>
     <button class="btn-ghost" onclick="showAttrs()">⚙ 能 力 设 定（影响掷骰加值）</button>
     <button class="btn-ghost" onclick="showBadge()">▣ 我 的 工 牌</button>
-    <a class="btn-ghost" href="https://kailily.github.io/imac-web/#/database" target="_blank" rel="noopener">⊟ 查阅异常信息数据库</a>
+    <a class="btn-ghost" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">⊟ 前 往 IMAC 官 网</a>
     <div class="tips">10 通来电 · 可追问线索 · 处置时按能力属性掷骰 · 每个案子 3 种结局</div>
   </div>
 
@@ -238,7 +243,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <canvas class="share-img" id="badgeCanvas" width="720" height="1040"></canvas>
     <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存值班记录 · 分享给朋友</button>
     <button class="btn-ghost" onclick="showBadge()">▣ 查看我的工牌</button>
-    <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前往 IMAC 异常信息数据库</a>
+    <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前 往 IMAC 官 网 · 查看完整档案库</a>
     <button class="btn-ghost" onclick="startShift()">↻ 再来一班</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
   </div>
@@ -625,8 +630,8 @@ function resolve(kind, roll, total, c) {
       '<div class="rt">' + label + '　业绩 +' + gain + (clueBonus ? '（线索 +' + clueBonus + '）' : '') + (isNew ? '　· 新结局已收集' : '') + '</div>' +
       '<div class="roll">' + c.code + ' · ' + c.lv + '　|　D20 ' + roll + ' ＋ 合计 ' + total + ' / DC ' + c.dc + '</div>' +
       '<p>' + esc(text) + '</p>' +
-      '<a class="arch" href="' + (c.id.indexOf('NONE') === 0 ? DB : SITE + '#/anomaly/' + c.id) + '" target="_blank" rel="noopener">' +
-        (c.id.indexOf('NONE') === 0 ? '→ 打开 IMAC 异常信息数据库' : '→ 查看 ' + c.id + ' 完整档案（IMAC 异常库）') +
+      '<a class="arch" href="' + SITE + '" target="_blank" rel="noopener">' +
+        (c.id.indexOf('NONE') === 0 ? '→ 前往 IMAC 官网 · 了解异常处置规范' : '→ 前往 IMAC 官网 · 查看 ' + c.id + ' 完整档案') +
       '</a>' +
     '</div>';
   if (v.scrollIntoView) { try { v.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
@@ -735,21 +740,22 @@ function writeLS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } cat
 
 function badgeData() {
   var own = readLS('imac_badge_profile');
-  if (own) return own;
   var reg = readLS('imac_registered_profile');
   var app = readLS('imac_application_profile');
-  var id = readLS('imac_badge_id');
+  // 编号：与 IMAC 网站一致（注册信息优先，其次申请表，最后本地固定生成）
+  var id = (reg && reg.imacId) || (app && app.imacId);
   if (!id) {
-    id = 'IMAC-99-' + String(1000 + Math.floor(Math.random() * 9000));
-    writeLS('imac_badge_id', id);
+    id = readLS('imac_badge_id');
+    if (!id) {
+      id = 'IMAC-99-' + String(1000 + Math.floor(Math.random() * 9000));
+      writeLS('imac_badge_id', id);
+    }
   }
-  return {
-    name: (reg && reg.realName) || (app && app.realName) || '未登记姓名',
-    codename: (reg && reg.codename) || (app && app.codename) || '夜莺',
-    id: (reg && reg.imacId) || id,
-    org: (reg && reg.organization) || (app && app.organization) || 'IMAC 异常热线中心',
-    rank: (reg && reg.rank) || '见习'
-  };
+  var name = (own && own.name) || (reg && reg.realName) || (app && app.realName) || '未登记姓名';
+  var codename = (own && own.codename) || (reg && reg.codename) || (app && app.codename) || '夜莺';
+  var rank = (own && own.rank) || (reg && reg.rank) || '见习';
+  // 工牌由联盟签发：组织统一显示国际异常管理联盟
+  return { name: name, codename: codename, id: id, org: '国际异常管理联盟', rank: rank };
 }
 
 function showBadge() {
@@ -787,7 +793,13 @@ function renderBadge() {
         '<div><div class="n">' + collCount() + '/' + ENDINGS + '</div><div class="t">结局收集</div></div>' +
         '<div><div class="n" style="color:' + rank.c + '">' + (best ? rank.r : '—') + '</div><div class="t">最高评定</div></div>' +
       '</div>' +
-      '<div class="id-foot"><span>属性 ' + ATTR_KEYS.map(function (k) { return ATTR_CN[k] + ' ' + (attrs[k] || 0); }).join(' · ') + '</span><span>' + (best ? 'BEST ' + best : 'NO RECORD') + '</span></div>' +
+      '<div class="id-attrs-hd">能 力 属 性 · ATTRIBUTES</div>' +
+      '<div class="id-attrs">' +
+        ATTR_KEYS.map(function (k) {
+          return '<div><span class="an">' + (attrs[k] || 0) + '</span><span class="at">' + ATTR_CN[k] + '</span></div>';
+        }).join('') +
+      '</div>' +
+      '<div class="id-foot"><span>IMAC · INTERNATIONAL ANOMALY MANAGEMENT COALITION</span><span>' + (best ? 'BEST ' + best : 'NO RECORD') + '</span></div>' +
     '</div>';
 }
 
@@ -906,6 +918,17 @@ function saveBadgeCard() {
     x.fillText(s[1], cx, 486);
     x.font = '500 13px Consolas,monospace'; x.fillStyle = '#5c5952';
     x.fillText(s[0], cx, 510);
+  });
+
+  // 能力属性
+  x.font = '500 15px Consolas,monospace'; x.fillStyle = '#5c5952';
+  x.fillText('ATTRIBUTES · 能力属性', 78, 566);
+  ATTR_KEYS.forEach(function (k, i) {
+    var cx = 78 + i * ((W - 156) / 4);
+    x.font = '600 32px "Songti SC",serif'; x.fillStyle = '#7a96ad';
+    x.fillText(String(attrs[k] || 0), cx, 620);
+    x.font = '500 13px Consolas,monospace'; x.fillStyle = '#5c5952';
+    x.fillText(ATTR_CN[k], cx, 644);
   });
 
   // 引导区
