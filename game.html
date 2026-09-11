@@ -168,7 +168,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 'use strict';
 var SITE = 'https://kailily.github.io/imac-web/';
 var DB = SITE + '#/database';
-var PERFECT = 1000;
 
 /* ===== 来电数据（全部对应 IMAC 档案库中的真实条目） ===== */
 var CALLS = [
@@ -285,6 +284,8 @@ var CALLS = [
 ];
 
 /* ===== 状态 ===== */
+// 满分（全对 + 连击加成的理论最高分）
+var PERFECT = CALLS.reduce(function (sum, c, i) { return sum + 80 + Math.min(40, i * 20); }, 0);
 var state = { idx: 0, score: 0, combo: 0, maxCombo: 0, right: 0, wrong: 0, answered: false, log: [] };
 var best = 0, plays = 0, bestRank = '—';
 
@@ -382,7 +383,7 @@ function answer(i, el) {
         (c.id.indexOf('NONE') === 0 ? '→ 打开 IMAC 异常信息数据库' : '→ 查看 ' + c.id + ' 完整档案（IMAC 异常库）') +
       '</a>' +
     '</div>';
-  v.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (v.scrollIntoView) { try { v.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
 
   var last = state.idx === CALLS.length - 1;
   var nb = $('nextBox');
@@ -429,7 +430,8 @@ function endShift() {
 /* ===== 战绩图 ===== */
 function drawCard(rank) {
   var cv = $('shareCanvas');
-  var x = cv.getContext('2d');
+  var x = (cv && cv.getContext) ? cv.getContext('2d') : null;
+  if (!x) { if (cv) cv.style.display = 'none'; return; }
   var W = cv.width, H = cv.height;
   x.fillStyle = '#0a0a0c'; x.fillRect(0, 0, W, H);
   x.strokeStyle = '#26262e'; x.lineWidth = 2; x.strokeRect(22, 22, W - 44, H - 44);
