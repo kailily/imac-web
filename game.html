@@ -142,6 +142,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .id-attrs .at{display:block;font-family:var(--mono);font-size:9px;color:var(--ts);letter-spacing:.04em;margin-top:4px;}
 .id-attrs-hd{font-family:var(--mono);font-size:9.5px;color:var(--blue);letter-spacing:.14em;margin-top:15px;border-left:2px solid var(--blue);padding-left:7px;}
 .id-foot{margin-top:11px;border-top:1px solid var(--border-soft);padding-top:9px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:var(--tf);letter-spacing:.08em;}
+/* 区块小标题（替代模式切换，简洁） */
+.sec-line{font-family:var(--mono);font-size:10px;color:var(--tm);letter-spacing:.12em;margin:14px 2px 9px;border-left:2px solid var(--border-light);padding-left:8px;}
+.free-box{display:none;}
+.free-box.on{display:block;}
 .edit-form{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;}
 .edit-form .ef{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
 .edit-form .ef label{font-family:var(--mono);font-size:10px;color:var(--tm);width:52px;flex-shrink:0;letter-spacing:.06em;}
@@ -244,7 +248,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存值班记录 · 分享给朋友</button>
     <button class="btn-ghost" onclick="showBadge()">▣ 查看我的工牌</button>
     <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前 往 IMAC 官 网 · 查看完整档案库</a>
-    <button class="btn-ghost" onclick="startShift()">↻ 再来一班</button>
+    <button class="btn-ghost" onclick="startShift()">↻ 再 玩 一 次</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
   </div>
 
@@ -552,36 +556,26 @@ function renderCall() {
   c.asks.forEach(function (a, i) { html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(a.q) + '</button>'; });
   html += '</div><div id="askAns"></div>' +
     '<div style="margin-top:11px;border-top:1px dashed var(--border-light);padding-top:10px">' +
-      '<div class="ask-hd" style="margin-bottom:7px">✎ 自己写一个问题（需掷骰 · 沟通力＋运气 vs DC 10）</div>' +
+      '<div class="ask-hd" style="margin-bottom:7px">✎ 自己写一个问题（提交后自动判定并掷骰）</div>' +
       '<textarea class="free-in" id="askFreeIn" style="min-height:54px" placeholder="例如：你确定那扇门一直是开着的吗？附近还有别人看到吗？"></textarea>' +
-      '<button class="free-send" style="margin-top:7px" onclick="askFree()">提 问 · 掷 骰</button>' +
+      '<button class="free-send" style="margin-top:7px" onclick="askFree()">提 交</button>' +
     '</div></div>';
   $('askWrap').innerHTML = html;
   html = '<div class="act">' +
-    '<div class="act-tabs">' +
-      '<div class="act-tab on" id="tabOpt" onclick="setMode(\'opt\')">选 择 处 置 建 议</div>' +
-      '<div class="act-tab" id="tabFree" onclick="setMode(\'free\')">✎ 自 己 写 处 置 方 案</div>' +
-    '</div>' +
-    '<div id="optBox"><div class="opts" id="opts">';
+    '<div class="sec-line">处置建议 · 按规程执行（不掷骰）</div>' +
+    '<div class="opts" id="opts">';
   c.opts.forEach(function (o, i) {
     html += '<div class="opt" onclick="choose(' + i + ')"><span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t + '</div>';
   });
-  html += '</div></div>' +
-    '<div class="free-box" id="freeBox">' +
-      '<div class="free-hint">写下你的处置指令——<b>提交后需掷骰检定</b>。写清关键动作会提高加值（+4），写出危险动作会被扣分（−6）。</div>' +
-      '<textarea class="free-in" id="freeIn" placeholder="例如：让他立刻徒步离开该路段，不要再次驾车进入，并在安全距离外封锁警示、上报 IMAC。"></textarea>' +
-      '<button class="free-send" onclick="submitFree()">提 交 指 令 · 掷 骰 检 定</button>' +
+  html += '</div>' +
+    '<div class="sec-line" style="margin-top:18px">✎ 或者 · 自己写处置方案（提交后掷骰判定）</div>' +
+    '<div class="free-box on" id="freeBox">' +
+      '<textarea class="free-in" id="freeIn" placeholder="写下你的处置指令，例如：让他立刻徒步离开该路段，不要再次驾车进入，并在安全距离外封锁警示、上报 IMAC。"></textarea>' +
+      '<button class="free-send" onclick="submitFree()">提 交 处 置 方 案</button>' +
       '<div class="free-tags">关键词提示：' + kw.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
     '</div>' +
   '</div>';
   $('actWrap').innerHTML = html;
-}
-function setMode(m) {
-  if (state.answered || state.rolling) return;
-  $('tabOpt').classList.toggle('on', m === 'opt');
-  $('tabFree').classList.toggle('on', m === 'free');
-  $('optBox').style.display = m === 'opt' ? 'block' : 'none';
-  $('freeBox').classList.toggle('on', m === 'free');
 }
 function fillFree(k) {
   var t = $('freeIn');
