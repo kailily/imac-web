@@ -213,7 +213,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <button class="btn-ghost" onclick="showAttrs()">⚙ 能 力 设 定</button>
     <button class="btn-ghost" onclick="showBadge()">▣ 我 的 工 牌</button>
     <a class="btn-ghost" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">⊟ 前 往 IMAC 官 网</a>
-    <div class="tips">一夜 10 通来电 · 每通都有 3 种结局 · 档案编号都能在 IMAC 档案库查到</div>
+    <div class="tips">一夜 10 通来电 · 每通都有 3 种结局 · 所有异常均已收录在 IMAC 异常信息数据库</div>
   </div>
 
   <div class="page" id="pageAttrs">
@@ -237,7 +237,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <button class="btn-main" style="margin-top:12px" onclick="saveBadgeCard()">⤓ 保存工牌图片 · 分享</button>
     <button class="btn-ghost" onclick="toggleBadgeEdit()">✎ 编辑工牌信息</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
-    <div class="tips">工牌上的信息会优先取你在 IMAC 网站填过的注册／申请资料，也可以在这里自己改。</div>
   </div>
 
   <div class="page" id="pageCall">
@@ -420,7 +419,7 @@ var CALLS = [
     text: '「我女儿昨晚在房间里写作业，我端牛奶进去人就没了。桌上摊着一本不是她的练习册，封面写着「赤月学院 · 入学通知」。窗户是锁着的……我该怎么办？」',
     asks: [
       { q: '「那本练习册你动过吗？房间现在有人进出吗？」', a: '「我没敢动，用手机拍了照。她爸想进去翻，被我拦在门口了。」', key: true },
-      { q: '「女儿最近提过奇怪的学校或同学吗？」', a: '「上周她说过一句『有个学校在等我』，我以为是作业，没细问。」', key: false }
+      { q: '「女儿最近提过奇怪的学校或同学吗？」', a: '「上周她说过一句『有个学校在等我』，我觉得莫名其妙，但没细想。」', key: false }
     ],
     opts: [
       { t: '立即上报 IMAC，封存现场物证，禁止任何自行寻找', mod: 6 },
@@ -617,7 +616,7 @@ function renderCall() {
   $('verdictBox').innerHTML = '';
   $('nextBox').innerHTML = '';
   var kw = CALL_KEYS[c.id] || { keys: [], bads: [] };
-  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？· 能问 <b>' + c.asks.length + '</b> 句</div><div class="ask-btns" id="askBtns">';
+  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？</div><div class="ask-btns" id="askBtns">';
   c.asks.forEach(function (a, i) { html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(a.q) + '</button>'; });
   html += '</div><div id="askAns"></div>' +
     '<div style="margin-top:11px;border-top:1px dashed var(--border-light);padding-top:10px">' +
@@ -637,7 +636,7 @@ function renderCall() {
     '<div class="free-box on" id="freeBox">' +
       '<textarea class="free-in" id="freeIn" placeholder="你要他怎么做？直接说出来……"></textarea>' +
       '<button class="free-send" onclick="submitFree()">提 交</button>' +
-      '<div class="free-tags">他听得懂的说法：' + kw.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
+      '<div class="free-tags">关键词提示：' + kw.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
     '</div>' +
   '</div>';
   $('actWrap').innerHTML = html;
@@ -1239,12 +1238,12 @@ function renderAttrForm() {
       '<button class="rs-go" style="width:40px;flex:none;padding:6px" onclick="adjAttr(\'' + k + '\',-1)">−</button>' +
       '<b style="font-family:var(--mono);font-size:17px;width:36px;text-align:center;color:var(--tp);flex:none">' + (attrs[k] || 0) + '</b>' +
       '<button class="rs-go" style="width:40px;flex:none;padding:6px" onclick="adjAttr(\'' + k + '\',1)">+</button>' +
-      '<span style="font-size:11px;color:var(--tm);flex:1;text-align:right">' + (k === 'insight' ? '看得准不准' : k === 'agility' ? '动手快不快' : k === 'speech' ? '话说得动不动人' : '老天帮不帮你') + '</span>' +
+      '<span style="font-size:11px;color:var(--tm);flex:1;text-align:right">' + (k === 'insight' ? '分析类指令' : k === 'agility' ? '撤离封锁类' : k === 'speech' ? '解释安抚类' : '所有检定') + '</span>' +
       '</div>';
   }).join('');
   $('attrForm').innerHTML =
     '<div class="edit-form">' + rows +
-      '<div class="rs-dc" style="margin-top:8px">已经分了 <b style="color:' + (used > ATTR_TOTAL ? 'var(--red)' : 'var(--tp)') + '">' + used + '</b> 点（一共 ' + ATTR_TOTAL + ' 点，单项最多 ' + ATTR_MAX_EACH + ' 点）</div>' +
+      '<div class="rs-dc" style="margin-top:8px">已分配 <b style="color:' + (used > ATTR_TOTAL ? 'var(--red)' : 'var(--tp)') + '">' + used + '</b> / ' + ATTR_TOTAL + ' 点　（每项上限 ' + ATTR_MAX_EACH + '）</div>' +
     '</div>';
 }
 function adjAttr(k, d) {
