@@ -197,8 +197,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
     <div class="duty">
       凌晨两点，<b>IMAC 99 异常热线</b>的铃声响了。<br>
-      电话那头是活人——你要在几十秒里给出处置指令：<b>可以多问几句摸清情况</b>，也可以凭直觉下令。<br>
-      结果不只看判断，还看运气。<b>每一次按键，都会改变电话那头的结局。</b>
+      接起来，对面不是录音，是个正在发抖的人——今晚他只能问你。<br>
+      你可以<b>先多问几句</b>，把情况摸清楚再开口；也可以凭直觉，直接告诉他该怎么做。<br>
+      只是电话一挂，就没有第二次机会了。
     </div>
 
     <div class="sec">执 勤 记 录</div>
@@ -212,12 +213,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <button class="btn-ghost" onclick="showAttrs()">⚙ 能 力 设 定</button>
     <button class="btn-ghost" onclick="showBadge()">▣ 我 的 工 牌</button>
     <a class="btn-ghost" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">⊟ 前 往 IMAC 官 网</a>
-    <div class="tips">10 通来电 · 可追问线索 · 每个案子 3 种结局 · 全部对应 IMAC 真实档案</div>
+    <div class="tips">一夜 10 通来电 · 每通都有 3 种结局 · 档案编号都能在 IMAC 档案库查到</div>
   </div>
 
   <div class="page" id="pageAttrs">
     <div class="brand" style="font-size:18px">能 力 设 定</div>
-    <div class="brand-sub" style="margin-bottom:12px">TRACER ATTRIBUTES · 分配到总上限 20 点</div>
+    <div class="brand-sub" style="margin-bottom:12px">TRACER ATTRIBUTES · 一共 20 点，怎么分你说了算</div>
     <div class="ask-wrap" style="border-style:solid;background:rgba(196,40,40,.05)">
       <div class="ask-hd">你的能力会加进每一次判定——<b>判断力</b>用于分析类指令，<b>应变力</b>用于撤离封锁类，<b>沟通力</b>用于解释安抚类，<b>运气</b>永远有效。</div>
     </div>
@@ -236,7 +237,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     <button class="btn-main" style="margin-top:12px" onclick="saveBadgeCard()">⤓ 保存工牌图片 · 分享</button>
     <button class="btn-ghost" onclick="toggleBadgeEdit()">✎ 编辑工牌信息</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
-    <div class="tips">工牌信息优先取你在 IMAC 网站填写的注册／申请资料；也可在此自行填写。</div>
+    <div class="tips">工牌上的信息会优先取你在 IMAC 网站填过的注册／申请资料，也可以在这里自己改。</div>
   </div>
 
   <div class="page" id="pageCall">
@@ -616,27 +617,27 @@ function renderCall() {
   $('verdictBox').innerHTML = '';
   $('nextBox').innerHTML = '';
   var kw = CALL_KEYS[c.id] || { keys: [], bads: [] };
-  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？· <b>' + c.asks.length + '</b> 个问题</div><div class="ask-btns" id="askBtns">';
+  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？· 能问 <b>' + c.asks.length + '</b> 句</div><div class="ask-btns" id="askBtns">';
   c.asks.forEach(function (a, i) { html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(a.q) + '</button>'; });
   html += '</div><div id="askAns"></div>' +
     '<div style="margin-top:11px;border-top:1px dashed var(--border-light);padding-top:10px">' +
-      '<div class="ask-hd" style="margin-bottom:7px">✎ 或者 · 我有话说 / 我自己问</div>' +
-      '<textarea class="free-in" id="askFreeIn" style="min-height:56px" placeholder="我有话说…… 或者我想自己问："></textarea>' +
+      '<div class="ask-hd" style="margin-bottom:7px">✎ 或者 · 你想自己开口</div>' +
+      '<textarea class="free-in" id="askFreeIn" style="min-height:56px" placeholder="你想问他什么？想说什么就写什么……"></textarea>' +
       '<button class="free-send" style="margin-top:9px" onclick="askFree()">提 交</button>' +
     '</div></div>';
   $('askWrap').innerHTML = html;
   html = '<div class="act">' +
-    '<div class="sec-line">处 置 建 议</div>' +
+    '<div class="sec-line">你 打 算 怎 么 办</div>' +
     '<div class="opts" id="opts">';
   c.opts.forEach(function (o, i) {
     html += '<div class="opt" onclick="choose(' + i + ')"><span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t + '</div>';
   });
   html += '</div>' +
-    '<div class="sec-line" style="margin-top:18px">✎ 或者 · 我有话说 / 我自己下令</div>' +
+    '<div class="sec-line" style="margin-top:18px">✎ 或者 · 你想怎么下指令</div>' +
     '<div class="free-box on" id="freeBox">' +
-      '<textarea class="free-in" id="freeIn" placeholder="我有话说…… 或者我想这样处置："></textarea>' +
+      '<textarea class="free-in" id="freeIn" placeholder="你要他怎么做？直接说出来……"></textarea>' +
       '<button class="free-send" onclick="submitFree()">提 交</button>' +
-      '<div class="free-tags">关键词提示：' + kw.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
+      '<div class="free-tags">他听得懂的说法：' + kw.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
     '</div>' +
   '</div>';
   $('actWrap').innerHTML = html;
@@ -819,7 +820,7 @@ function askOutcome(c, q, kind, intro, pendingIdx) {
     div.className = 'ask-ans clue';
     div.innerHTML = '<span class="q">◆ 他主动说了更多　' + tag + '</span>' + (intro || '') +
       (a ? esc(a.a) : '他把憋着的话一口气都说了出来，情绪也慢慢稳了下来。') +
-      '<br><span style="color:var(--lv-ordinary);font-size:11px">（他的情绪稳定下来，后面的沟通会更容易）</span>';
+      '<br><span style="color:var(--lv-ordinary);font-size:11px">（他的声音稳下来了，接下来好开口多了）</span>';
     if (pendingIdx >= 0) {
       var btn = document.querySelector('#askBtns .ask-btn[data-i="' + pendingIdx + '"]');
       if (btn) { btn.classList.add('done'); btn.textContent = '✓ ' + c.asks[pendingIdx].q; }
@@ -1238,12 +1239,12 @@ function renderAttrForm() {
       '<button class="rs-go" style="width:40px;flex:none;padding:6px" onclick="adjAttr(\'' + k + '\',-1)">−</button>' +
       '<b style="font-family:var(--mono);font-size:17px;width:36px;text-align:center;color:var(--tp);flex:none">' + (attrs[k] || 0) + '</b>' +
       '<button class="rs-go" style="width:40px;flex:none;padding:6px" onclick="adjAttr(\'' + k + '\',1)">+</button>' +
-      '<span style="font-size:11px;color:var(--tm);flex:1;text-align:right">' + (k === 'insight' ? '分析类指令' : k === 'agility' ? '撤离封锁类' : k === 'speech' ? '解释安抚类' : '所有检定') + '</span>' +
+      '<span style="font-size:11px;color:var(--tm);flex:1;text-align:right">' + (k === 'insight' ? '看得准不准' : k === 'agility' ? '动手快不快' : k === 'speech' ? '话说得动不动人' : '老天帮不帮你') + '</span>' +
       '</div>';
   }).join('');
   $('attrForm').innerHTML =
     '<div class="edit-form">' + rows +
-      '<div class="rs-dc" style="margin-top:8px">已分配 <b style="color:' + (used > ATTR_TOTAL ? 'var(--red)' : 'var(--tp)') + '">' + used + '</b> / ' + ATTR_TOTAL + ' 点　（每项上限 ' + ATTR_MAX_EACH + '）</div>' +
+      '<div class="rs-dc" style="margin-top:8px">已经分了 <b style="color:' + (used > ATTR_TOTAL ? 'var(--red)' : 'var(--tp)') + '">' + used + '</b> 点（一共 ' + ATTR_TOTAL + ' 点，单项最多 ' + ATTR_MAX_EACH + ' 点）</div>' +
     '</div>';
 }
 function adjAttr(k, d) {
