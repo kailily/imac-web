@@ -10,7 +10,7 @@
   --bg-deep:#0a0a0c; --bg:#101013; --bg-2:#15151a; --bg-3:#1b1b22;
   --border:#26262e; --border-soft:#1f1f26; --border-light:#33333d;
   --tp:#d8d4cc; --ts:#a09c94; --tm:#5c5952; --tf:#45423c;
-  --red:#c42828; --red-bright:#c42828; --blue:#7a96ad;
+  --red:#c42828; --blue:#7a96ad;
   --lv-ordinary:#4a7c59; --lv-hazardous:#c49a2c; --lv-doomed:#d46828; --lv-abyssal:#c42828; --lv-unknown:#7a3ab0;
   --mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace; --serif:'Noto Serif SC','Songti SC',serif;
 }
@@ -32,16 +32,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .brand{font-family:var(--serif);font-size:22px;letter-spacing:.06em;}
 .brand b{color:var(--red);}
 .brand-sub{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.16em;margin-top:5px;}
-.promo{display:block;text-decoration:none;margin:12px 0 14px;border:1px solid var(--border-soft);background:var(--bg-2);padding:10px 12px;cursor:pointer;transition:border-color .2s;}
+.promo{display:block;text-decoration:none;margin:12px 0 14px;border:1px solid var(--border-soft);background:var(--bg-2);padding:10px 12px;transition:border-color .2s;}
 .promo:hover{border-color:var(--red);}
 .promo .pt{font-size:11.5px;color:var(--ts);}
 .promo .ps{font-family:var(--mono);font-size:8.5px;color:var(--tf);margin-top:3px;letter-spacing:.06em;}
 .sec{font-family:var(--mono);font-size:10px;color:var(--tm);letter-spacing:.16em;margin:16px 2px 10px;border-left:2px solid var(--red);padding-left:8px;}
 .duty{border:1px solid var(--border);background:var(--bg-2);padding:12px;margin-bottom:12px;font-size:12px;color:var(--ts);line-height:1.75;}
 .duty b{color:var(--tp);}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 .stat{border:1px solid var(--border);background:var(--bg-2);padding:9px 6px;text-align:center;}
-.stat .v{font-family:var(--serif);font-size:19px;color:var(--tp);}
+.stat .v{font-family:var(--serif);font-size:19px;}
 .stat .l{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.1em;margin-top:3px;}
 .btn-main{display:block;width:100%;border:1px solid var(--red);background:rgba(196,40,40,.14);color:var(--red);font-family:var(--mono);
   font-size:13px;letter-spacing:.14em;padding:13px;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s;}
@@ -54,9 +54,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(196,40,40,.35)}50%{box-shadow:0 0 0 8px rgba(196,40,40,0)}}
 .call-meta .cn{font-size:13px;}
 .call-meta .cd{font-family:var(--mono);font-size:8.5px;color:var(--tm);letter-spacing:.1em;margin-top:3px;}
-.caller{background:var(--bg-2);border:1px solid var(--border-soft);border-left:3px solid var(--blue);padding:11px 12px;font-size:13px;line-height:1.8;font-style:italic;animation:fade .35s;}
+.caller{background:var(--bg-2);border:1px solid var(--border-soft);border-left:3px solid var(--blue);padding:11px 12px;font-size:13px;line-height:1.85;font-style:italic;animation:fade .35s;}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-/* 追问 */
 .ask-wrap{margin-top:12px;border:1px dashed var(--border-light);background:rgba(122,150,173,.05);padding:10px 11px;}
 .ask-hd{font-family:var(--mono);font-size:9.5px;color:var(--blue);letter-spacing:.12em;margin-bottom:8px;}
 .ask-hd b{color:var(--tp);}
@@ -67,47 +66,42 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .ask-ans{margin-top:9px;border-left:2px solid var(--lv-unknown);background:rgba(122,58,176,.07);padding:9px 11px;font-size:12.5px;line-height:1.8;color:var(--ts);animation:fade .3s;}
 .ask-ans .q{font-family:var(--mono);font-size:9px;color:var(--lv-unknown);letter-spacing:.08em;display:block;margin-bottom:5px;}
 .ask-ans.clue{border-left-color:var(--lv-hazardous);background:rgba(196,154,44,.08);}
-/* 处置区 */
-.act{margin-top:14px;}
-.act-tabs{display:flex;gap:0;border:1px solid var(--border);margin-bottom:10px;}
-.act-tab{flex:1;text-align:center;padding:9px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--tm);cursor:pointer;background:var(--bg-2);}
-.act-tab.on{color:var(--red);background:rgba(196,40,40,.1);}
-.opts{display:grid;gap:9px;}
-.opt{border:1px solid var(--border);background:var(--bg-2);padding:12px;font-size:12.5px;color:var(--ts);line-height:1.6;cursor:pointer;transition:all .16s;animation:fade .3s;}
+.opts{margin-top:14px;display:grid;gap:9px;}
+.opt{border:1px solid var(--border);background:var(--bg-2);padding:12px;font-size:12.5px;color:var(--ts);line-height:1.65;cursor:pointer;transition:all .16s;animation:fade .3s;}
 .opt:hover{border-color:var(--red);color:var(--tp);transform:translateX(3px);}
 .opt .oi{font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;margin-right:7px;}
-.opt.good{border-color:var(--lv-ordinary);background:rgba(74,124,89,.1);color:var(--tp);}
-.opt.bad{border-color:var(--red);background:rgba(196,40,40,.1);color:var(--tp);}
-.free-box{display:none;}
-.free-box.on{display:block;}
-.free-hint{font-size:11.5px;color:var(--tm);line-height:1.7;margin-bottom:8px;}
-.free-in{width:100%;min-height:86px;background:rgba(10,10,14,.8);border:1px solid var(--border-light);color:var(--tp);
-  font-family:inherit;font-size:13px;line-height:1.75;padding:10px 11px;border-radius:6px;resize:vertical;}
-.free-in:focus{outline:none;border-color:var(--red);}
-.free-send{margin-top:8px;border:1px solid var(--blue);background:rgba(122,150,173,.12);color:var(--blue);
-  font-family:var(--mono);font-size:12px;letter-spacing:.1em;padding:11px;width:100%;cursor:pointer;transition:all .2s;}
-.free-send:hover{background:var(--blue);color:#fff;}
-.free-tags{margin-top:8px;font-size:11px;color:var(--tf);line-height:1.8;}
-.free-tags span{display:inline-block;border:1px solid var(--border);padding:2px 7px;margin:0 5px 5px 0;cursor:pointer;color:var(--tm);}
-.free-tags span:hover{border-color:var(--red);color:var(--red);}
-.verdict{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;animation:fade .35s;}
-.verdict .vt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;margin-bottom:8px;}
-.verdict.ok .vt{color:var(--lv-ordinary);}
-.verdict.half .vt{color:var(--lv-hazardous);}
-.verdict.no .vt{color:var(--red);}
-.verdict p{margin:0 0 8px;font-size:12.5px;line-height:1.8;color:var(--ts);}
-.verdict p b{color:var(--tp);}
-.verdict .arch{display:block;margin-top:10px;border:1px solid var(--border-light);background:var(--bg-3);padding:9px 10px;text-decoration:none;color:var(--blue);font-size:11.5px;transition:all .2s;}
-.verdict .arch:hover{border-color:var(--red);color:var(--red);}
+.opt .tg{font-family:var(--mono);font-size:9px;color:var(--tm);float:right;letter-spacing:.06em;}
+.result{margin-top:13px;border:1px solid var(--border);background:var(--bg-2);padding:12px;animation:fade .35s;}
+.result .rt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;margin-bottom:8px;}
+.result.good .rt{color:var(--lv-ordinary);}
+.result.mid .rt{color:var(--lv-hazardous);}
+.result.bad .rt{color:var(--red);}
+.result .roll{font-family:var(--mono);font-size:10.5px;color:var(--tm);margin-bottom:9px;letter-spacing:.06em;}
+.result .roll b{color:var(--tp);}
+.result p{margin:0 0 8px;font-size:12.5px;line-height:1.85;color:var(--ts);}
+.result p b{color:var(--tp);}
+.result .arch{display:block;margin-top:10px;border:1px solid var(--border-light);background:var(--bg-3);padding:9px 10px;text-decoration:none;color:var(--blue);font-size:11.5px;transition:all .2s;}
+.result .arch:hover{border-color:var(--red);color:var(--red);}
 .scorebar{display:flex;gap:10px;font-family:var(--mono);font-size:10px;color:var(--tm);margin:2px 0 10px;letter-spacing:.08em;flex-wrap:wrap;}
 .scorebar b{color:var(--tp);}
-.combo{color:var(--lv-hazardous)!important;}
+/* 骰子浮层 */
+.dice-float{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(5,5,6,.86);z-index:60;}
+.dice-float.show{display:flex;animation:fade .2s;}
+.dice-big{font-family:var(--serif);font-size:92px;color:var(--tp);text-shadow:0 0 30px rgba(196,40,40,.45);}
+.dice-big.crit{color:var(--lv-ordinary);}
+.dice-big.fumb{color:var(--red);}
+.dice-lab{position:absolute;bottom:33%;font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.2em;text-align:center;line-height:1.9;}
+/* 结局收集 */
 .end-card{border:1px solid var(--border);background:var(--bg-2);padding:16px;text-align:center;animation:fade .4s;}
-.end-rank{font-family:var(--serif);font-size:64px;line-height:1;margin:6px 0 4px;}
+.end-rank{font-family:var(--serif);font-size:62px;line-height:1;margin:6px 0 4px;}
 .end-title{font-family:var(--serif);font-size:17px;}
 .end-sub{font-family:var(--mono);font-size:9px;color:var(--tm);letter-spacing:.14em;margin-top:6px;}
 .end-body{margin-top:14px;text-align:left;font-size:12.5px;line-height:1.85;color:var(--ts);border-top:1px dashed var(--border);padding-top:12px;}
 .end-body b{color:var(--tp);}
+.coll{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;}
+.coll span{font-family:var(--mono);font-size:9px;border:1px solid var(--border);padding:2px 6px;color:var(--tm);}
+.coll span.g{border-color:var(--lv-ordinary);color:var(--lv-ordinary);}
+.coll span.b{border-color:var(--red);color:var(--red);}
 .share-img{width:100%;border:1px solid var(--border);margin-top:12px;display:none;}
 .tips{font-family:var(--mono);font-size:9px;color:var(--tf);letter-spacing:.08em;margin-top:10px;line-height:1.7;}
 </style>
@@ -122,7 +116,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
   <div class="page on" id="pageHome">
     <div class="brand">IMAC · <b>异常热线</b></div>
-    <div class="brand-sub">ANOMALY HOTLINE · DISPATCHER</div>
+    <div class="brand-sub">ANOMALY HOTLINE · NIGHT SHIFT</div>
 
     <a class="promo" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">
       <div class="pt">你接听的每一个异常，都收录在国际异常管理联盟档案库</div>
@@ -130,32 +124,28 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
     </a>
 
     <div class="duty">
-      你是 <b>IMAC 99 异常热线</b>的夜班接线员。<br>
-      可以 <b>追问市民</b> 收集线索，也可以 <b>自己写下处置方案</b>——
-      判断错了，电话那头的人可能就回不来了。
+      凌晨两点，<b>IMAC 99 异常热线</b>的铃声响了。<br>
+      电话那头是活人——你要在几十秒里给出处置指令：<b>可以多问几句摸清情况</b>，也可以凭直觉下令。<br>
+      结果不只看判断，还看运气。<b>每一次按键，都会改变电话那头的结局。</b>
     </div>
 
     <div class="sec">执 勤 记 录</div>
     <div class="stat-grid">
       <div class="stat"><div class="v" id="stBest">—</div><div class="l">BEST</div></div>
       <div class="stat"><div class="v" id="stPlays">0</div><div class="l">出勤次数</div></div>
-      <div class="stat"><div class="v" id="stRank">—</div><div class="l">最高评定</div></div>
+      <div class="stat"><div class="v" id="stColl">0/30</div><div class="l">结局收集</div></div>
     </div>
 
-    <button class="btn-main" style="margin-top:14px" onclick="startShift()">▶ 开 始 值 班</button>
+    <button class="btn-main" style="margin-top:14px" onclick="startShift()">▶ 接 通 热 线</button>
     <a class="btn-ghost" href="https://kailily.github.io/imac-web/#/database" target="_blank" rel="noopener">⊟ 查阅异常信息数据库</a>
-    <div class="tips">
-      共 10 通来电 · 可自由追问（关键线索有加分）· 可自写处置（命中关键动作额外加分）<br>
-      评分 = 处置判定 + 连击 + 线索完整度
-    </div>
+    <div class="tips">10 通来电 · 追问线索可提高处置成功率 · 每个案子有 3 种结局</div>
   </div>
 
   <div class="page" id="pageCall">
     <div class="scorebar">
       <span>第 <b id="progIdx">1</b>/10 通</span>
-      <span>得分 <b id="progScore">0</b></span>
+      <span>业绩 <b id="progScore">0</b></span>
       <span>线索 <b id="progClue">0</b></span>
-      <span id="progCombo"></span>
     </div>
     <div class="call-head">
       <div class="ring">☎</div>
@@ -173,17 +163,23 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
   <div class="page" id="pageEnd">
     <div class="end-card">
-      <div class="end-sub">SHIFT REPORT · 值 班 结 算</div>
-      <div class="end-rank" id="endRank">S</div>
-      <div class="end-title" id="endTitle">首席接线员</div>
-      <div class="end-sub" id="endScore">得分 0</div>
+      <div class="end-sub">SHIFT REPORT · 值 班 交 接</div>
+      <div class="end-rank" id="endRank">A</div>
+      <div class="end-title" id="endTitle">资深接线员</div>
+      <div class="end-sub" id="endScore"></div>
       <div class="end-body" id="endBody"></div>
+      <div class="coll" id="endColl"></div>
     </div>
     <canvas class="share-img" id="shareCanvas" width="720" height="1000"></canvas>
-    <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存战绩图 · 分享给朋友</button>
+    <button class="btn-main" style="margin-top:12px" onclick="saveCard()">⤓ 保存值班记录 · 分享给朋友</button>
     <a class="btn-main" style="margin-top:8px;border-color:var(--blue);color:var(--blue);background:rgba(122,150,173,.12)" href="https://kailily.github.io/imac-web/" target="_blank" rel="noopener">→ 前往 IMAC 异常信息数据库</a>
     <button class="btn-ghost" onclick="startShift()">↻ 再来一班</button>
     <button class="btn-ghost" onclick="goHome()">← 返回首页</button>
+  </div>
+
+  <div class="dice-float" id="diceFloat">
+    <div class="dice-big" id="diceBig">20</div>
+    <div class="dice-lab" id="diceLab">D20</div>
   </div>
 </div>
 
@@ -192,194 +188,194 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 var SITE = 'https://kailily.github.io/imac-web/';
 var DB = SITE + '#/database';
 
-/* ===== 来电数据（对应 IMAC 档案库真实条目）=====
-   asks: 可追问的问题（key=true 为关键线索，问了有加分）
-   keys: 自由作答时命中即判「正确」的关键动作词
-   bads: 命中即判「严重错误」的危险动作词
+/* ===== 来电（对应 IMAC 档案库真实条目）
+   dc：基础难度（安全级低、深渊级高）
+   asks：可追问，关键线索给检定加值（+2/条）
+   opts：可选处置，mod 为该策略的检定加值（越贴合规则越高）
+   good/mid/bad：电话那头的三种结局
 */
 var CALLS = [
   {
     id: 'OBA-0148', code: '安眠枕', lv: '常规级 · 安全', lvColor: 'var(--lv-ordinary)',
-    caller: '白松城的市民', meta: 'CALL 01 · 居民咨询',
+    caller: '白松城的市民', meta: 'CALL 01 · 居民咨询', dc: 8,
     text: '「医生给我开了个枕头，编号 OBA-0148。枕着它睡，我三个月没睡这么好了，一夜无梦，早上起来特别精神……这东西不会有问题吧？」',
     asks: [
-      { q: '「是谁给你的？有没有使用说明？」', a: '「是白松城医院的睡眠门诊，凭处方领的，护士叮嘱我一天只能用一次，不能借给别人。」', key: true },
-      { q: '「用完之后身体有什么不舒服吗？」', a: '「没有，就是早上起来那几分钟有点发懵，然后就特别清醒。」', key: false }
+      { q: '「谁给你的？使用上有什么交代？」', a: '「白松城医院睡眠门诊，凭处方领的。护士说一天只能用一次，不能借给别人。」', key: true },
+      { q: '「用完之后身体有不舒服吗？」', a: '「没有。就是早上起来那几分钟有点发懵，然后就特别清醒。」', key: false }
     ],
-    keys: ['正常使用', '按处方', '每日一次', '不转借', '继续用', '遵循', '遵守', '可以用', '放心'],
-    bads: ['销毁', '烧掉', '远离', '扔掉', '危险', '封存'],
     opts: [
-      { t: '立即远离该枕头，等待专业处置', ok: false, why: '过度反应。安眠枕已在 IMAC 民用应用计划中登记，规则完全解析、评定为安全，通过医疗机构处方发放。' },
-      { t: '正常使用，按处方每日一次、不可转借', ok: true, why: '正确。安眠枕属常规级安全异常，规则清晰：绑定使用者、每日一次、约 90 分钟自然醒。遵守规则即可正常使用。' },
-      { t: '把枕头烧掉，异常必须销毁', ok: false, why: '严重错误。销毁异常载体属于违规处置，且会破坏已归档的民用应用样本。' }
+      { t: '按处方正常使用，提醒他每日一次、不可转借', mod: 5 },
+      { t: '让他先停用，等我们上门复检', mod: 1 },
+      { t: '建议他把枕头处理掉，以绝后患', mod: -7 }
     ],
-    truth: '民用应用型异常不等于危险——前提是使用者遵守它绝对的规则。'
+    good: '你按流程交代了用法，电话那头笑了一声：「那我今晚能睡踏实了。」挂断前他还说了句谢谢。晨会时晨星团发来一条备注：本季度 OBA-0148 使用者无一例不良反应。',
+    mid: '你让他先停用观察。他愣了一下，说「那我这礼拜又得熬着」。第二天他重新来电报备：枕头被收走复检了一周，确认无恙，还给了他——只是他少睡了一周好觉。',
+    bad: '他照着你的话把枕头扔了。三天后 IMAC 的通报发到值班室：民用应用样本 OBA-0148 载体损毁，晨星团需要重新培养一批——而你弄丢的，是四百名失眠者这个冬天的睡眠。'
   },
   {
     id: 'SPA-2088', code: '捷径门', lv: '常规级 · 安全', lvColor: 'var(--lv-ordinary)',
-    caller: '鸣海城通勤乘客', meta: 'CALL 02 · 交通咨询',
-    text: '「地铁三号线那两个门太神了，我刷卡进去，三秒钟就从南站到了会展中心，二十八公里啊！我同事想让我带他一起过，说两个人挤一挤能省一张卡，可以吗？」',
+    caller: '鸣海城通勤乘客', meta: 'CALL 02 · 交通咨询', dc: 9,
+    text: '「地铁那两扇门太神了，刷卡进去三秒就到会展中心，二十八公里啊！我同事想让我带他一起过，说两个人挤一挤能省一张卡，可以吗？」',
     asks: [
-      { q: '「闸机那里有什么提示？」', a: '「写着『一人一卡 · 间隔三十秒』，还有个告示说随身物品不得超过二十公斤。」', key: true },
-      { q: '「你每天都要走这条路吗？」', a: '「是啊，以前一个半小时，现在刷卡就到，同事都羡慕我。」', key: false }
+      { q: '「闸机那边有什么提示？」', a: '「写着『一人一卡 · 间隔三十秒』，还有告示说随身物品不超过二十公斤。」', key: true },
+      { q: '「你每天都走这条路吗？」', a: '「是啊，以前一个半小时，现在刷卡就到，同事都羡慕我。」', key: false }
     ],
-    keys: ['一人一次', '一人一卡', '刷卡', '间隔', '守规则', '遵守', '不要一起', '不能带', '分开'],
-    bads: ['一起过', '挤一挤', '两个人', '带他', '同时'],
     opts: [
-      { t: '让他正常刷卡一人一次，保持 30 秒间隔', ok: true, why: '正确。捷径门的规则要求单人穿行、限重 20 公斤、两批乘客间隔至少 30 秒。守规则，它是最安全的通勤方式。' },
-      { t: '两个人一起过，速度快就行', ok: false, why: '违规。穿行重叠是被明确禁止的——规则不会因为「赶时间」而通融。' },
-      { t: '别再用了，那东西迟早出事', ok: false, why: '不必要。捷径门运营十余年零事故，已纳入公共交通体系，安全级异常可以放心使用。' }
+      { t: '让他一人一卡、间隔三十秒依次通行', mod: 5 },
+      { t: '让他错开高峰再走，别凑热闹', mod: 0 },
+      { t: '让他带同事一起过，快点省事', mod: -8 }
     ],
-    truth: '把异常变成便利的前提，是先把它的规则一条条解析清楚。'
+    good: '你复述了一遍规则，他连声说知道了。当天傍晚，驻站组在日志里写：南站—会展中心区间当日通过两万一千人次，无一起穿行重叠。',
+    mid: '你劝他避开高峰。他答应了，但那晚他多等了二十分钟，末班车差点没赶上——好在人没事。',
+    bad: '两个人挤进同一扇门。据驻站组记录，穿行重叠导致折叠通道瞬时错位，两人被甩在区间夹层里，九分钟后才被引导员定位送出——都活着，但那位同事从那以后一进地铁就手抖。'
   },
   {
     id: 'SPA-0421', code: '灰松岭循环路段', lv: '常规级', lvColor: 'var(--lv-ordinary)',
-    caller: '灰松岭伐木工', meta: 'CALL 03 · 道路异常',
+    caller: '灰松岭伐木工', meta: 'CALL 03 · 道路异常', dc: 11,
     text: '「公路上一段两百米的路，我开车进去三次，每次都从同一座桥、同一棵枯树下面过，怎么开都出不来。我最后把车停在路边走出来的……你们快来看看。」',
     asks: [
-      { q: '「你走出来的路上，还看到别的车吗？」', a: '「有一辆车还在里面绕，我喊他他也听不见……我自己是走出来的，走路没事。」', key: true },
-      { q: '「你在里面待了多久？」', a: '「说不清，手机时间跳得乱七八糟，感觉很久，出来看表才十几分钟。」', key: false }
+      { q: '「你走出来的路上还看到别的车吗？」', a: '「有一辆车还在里面绕，我喊他他也听不见……我自己走路没事。」', key: true },
+      { q: '「你在里面待了多久？」', a: '「说不清，手机时间乱跳，出来看表才十几分钟。」', key: false }
     ],
-    keys: ['徒步', '离开', '撤离', '上报', '封锁', '不要再开', '不要开车', '步行', '警示'],
-    bads: ['回到车上', '继续开', '再试一次', '开车进去', '自己解决', '等待'],
     opts: [
-      { t: '让他回到车上继续尝试开出', ok: false, why: '错误。循环只对行驶中的车辆生效——再次驾车进入就会重新被困。' },
-      { t: '让他留在原地等，不要走动', ok: false, why: '不完全正确。徒步者虽不受循环影响，但异常区周边情况不明，应尽快离开并封锁路段。' },
-      { t: '让他立刻徒步离开该路段，并在远处封锁警示、上报 IMAC', ok: true, why: '正确。灰松岭循环路段的规则是「载具触发、徒步豁免」——徒步撤离是安全做法，随后由北境守望按标准流程处置。' }
+      { t: '让他徒步撤离，并在远处封锁警示、上报 IMAC', mod: 6 },
+      { t: '让他留在原地等救援，别乱走', mod: -2 },
+      { t: '让他回到车上，试试能不能开出去', mod: -8 }
     ],
-    truth: '先撤离、再上报、绝不靠近——这三步能救大多数人。'
+    good: '半小时后北境守望到场，用连续视距锚定法破了循环。那辆还在绕的车被引了出来，司机下车时腿都是软的——但车上三个人，一个不少。',
+    mid: '他一直在路边等着。救援队两小时后才到场，其间那辆绕圈的车油耗尽，司机弃车徒步逃出，受了点擦伤。人都活着。',
+    bad: '他听了你的话回到车上。第四圈的时候他还在方向盘的后面——等北境守望破开循环，那辆车停在枯树边上，车门开着，人不见了。'
   },
   {
     id: 'SPA-0317', code: '归途石', lv: '常规级 · 安全', lvColor: 'var(--lv-ordinary)',
-    caller: '阿尔茨海默症患者家属', meta: 'CALL 04 · 社区咨询',
+    caller: '阿尔茨海默症患者家属', meta: 'CALL 04 · 社区咨询', dc: 10,
     text: '「我妈戴了你们发的那个石头，前天自己从菜市场走回来了——以前她总是迷路。但我有点怕，这算不算异常在控制她？」',
     asks: [
-      { q: '「发放的时候，工作人员交代过什么？」', a: '「说石头只指方向，不保证路好不好走，让我们家属还是要陪着，还留了管理站的电话。」', key: true },
-      { q: '「你妈妈自己觉得怎么样？」', a: '「她说心里有底了，走路不那么慌，但还是会累，走远了就不行。」', key: false }
+      { q: '「发放时工作人员交代过什么？」', a: '「说石头只指方向，不保证路好不好走，让家属还是要陪着，还留了管理站电话。」', key: true },
+      { q: '「你妈妈自己觉得怎么样？」', a: '「她说心里有底了，走路不那么慌，但走远了还是会累。」', key: false }
     ],
-    keys: ['陪同', '继续佩戴', '放心', '可以戴', '注意路况', '仍然要陪', '家人', '照看'],
-    bads: ['取下来', '摘掉', '控制', '危险', '完全放心', '不用管', '独自'],
     opts: [
-      { t: '告诉她：归途石只提示方向、不控制人，仍需家人陪同与防范路况风险', ok: true, why: '正确。归途石的规则是「以登记住址为锚点提示方向、半径五公里、每日一次」，它只给方向，不保证路径安全——家人的陪同仍然重要。' },
-      { t: '劝她立刻取下，异常物品都有危险', ok: false, why: '过度反应。归途石是长桥会社管理的安全级民用应用物品，定向发放给防走失人群。' },
-      { t: '告诉她有石头就万无一失，可以完全放手', ok: false, why: '危险误区。归途石只保证「方向正确」，洪水、断桥、塌方同样会被指向——脱离照护可能出事。' }
+      { t: '说明它只提示方向，请家人继续陪同并注意路况', mod: 5 },
+      { t: '让她取下石头，改回原来的照护方式', mod: -3 },
+      { t: '告诉她有石头就万无一失，可以放心让她独行', mod: -8 }
     ],
-    truth: '安全级异常也需要人守好边界：石头指路，人保平安。'
+    good: '你把边界讲清楚了。第二天她在管理站更新了登记住址，还多领了一枚备用石。三个月后社区回访：老人独自走过两次菜市场，都有家属远远跟着——一次都没走丢。',
+    mid: '她半信半疑地取下了石头。两周后又在小区门口转了四十分钟，最后是邻居送回来的。没出事，但那种「心里没底」的慌，又回来了。',
+    bad: '你告诉她可以完全放手。三天后，巡河队在下游台阶下找到她——归途石指对了方向，但那座桥在雨后塌了一半，它不会提醒人绕路。'
   },
   {
     id: 'SPB-0089', code: '镜像医院', lv: '厄运级', lvColor: 'var(--lv-doomed)',
-    caller: '洛林自由市护士', meta: 'CALL 05 · 内部上报',
-    text: '「我们医院西侧走廊出现了第二扇一模一样的大门，门牌号也对得上。刚才有个病人走进去，我看到他进了左手的门，可门口的监控显示他进了右手……走廊里现在很安静。」',
+    caller: '洛林自由市护士', meta: 'CALL 05 · 内部上报', dc: 13,
+    text: '「西侧走廊出现了第二扇一模一样的大门，门牌号也对得上。刚才有个病人走进去，我看见他进了左手那扇，可监控显示他进了右手……走廊现在很安静。」',
     asks: [
-      { q: '「走廊里现在有人吗？门是开着的吗？」', a: '「我让同事都退到护士站了，门自己开着，里面看不到头，灯是亮的但不反光。」', key: true },
-      { q: '「那个病人是什么情况？」', a: '「是个术后复查的老人，家属在楼下等，我还没敢告诉他家属。」', key: false }
+      { q: '「人员都撤出来了吗？门是开着还是关着？」', a: '「我让同事都退到护士站了。门自己开着，里面看不到头，灯亮着但不反光。」', key: true },
+      { q: '「走进去的病人是什么情况？」', a: '「术后复查的老人，家属还在楼下等，我还没敢说。」', key: false }
     ],
-    keys: ['封锁', '清空', '撤离', '不要进入', '别进去', '上报', '等待专业', '拉警戒', '通知'],
-    bads: ['进去找', '进去看', '自己搜', '组织人员进入', '检查设备', '追进去'],
     opts: [
-      { t: '让他立即封锁走廊、清空人员，原地等待专业队伍', ok: true, why: '正确。镜像医院为厄运级异常，空间对应关系不可信任——封锁、清空、等待 IMAC 专业处置是唯一安全做法。' },
-      { t: '让他进走廊寻找那名病人', ok: false, why: '严禁。追入镜像空间是历年伤亡的主因，进入者极少返回。' },
-      { t: '让全体医护人员进入检查设备是否故障', ok: false, why: '严禁。异常已确认存在（监控与人体位置矛盾），此时大规模进入等于把更多人交给异常。' }
+      { t: '封楼、清空西侧、封锁走廊，等专业队到场', mod: 6 },
+      { t: '先锁上那扇门，让保安守住门口', mod: 0 },
+      { t: '带两名同事进走廊把病人找回来', mod: -9 }
     ],
-    truth: '面对厄运级异常，第一原则永远是封锁而不是探索。'
+    good: '你把西侧整层封了。IMAC 处置组四十分钟后到场，用信标阵列校准了镜像面，两小时后那名老人从「右手那扇门」里被扶了出来——他以为只过了几分钟，家属扑上去的时候他还在问「怎么这么多人」。',
+    mid: '保安锁上了门，但走廊尽头的「第二扇门」还开着。夜里两点，那扇门又出现了一次，一名陪护差点走进去——被值班护士喊住了。没出事，但西侧那层楼封了整整一个星期。',
+    bad: '你们进了走廊。搜救记录上写着：进入三人，返回一人。回来的那位护士对之后四十分钟没有任何记忆，仅在随身记录仪里留下一段没有画面的音频——像有人在很远的地方，反复念同一个门牌号。'
   },
   {
     id: 'PHA-0001', code: '空白地带', lv: '未知级', lvColor: 'var(--lv-unknown)',
-    caller: '极北勘测队员', meta: 'CALL 06 · 紧急求助',
-    text: '「我们车开到这片冰原上，GPS 全没了，指南针在转圈，前面看着什么都没有——不是黑，是「没有」，我形容不出来。我同事想下车往前走两步看看……」',
+    caller: '极北勘测队员', meta: 'CALL 06 · 紧急求助', dc: 14,
+    text: '「车开到这片冰原上，GPS 全没了，指南针在转圈，前面看着什么都没有——不是黑，是「没有」，我形容不出来。我同事想下车往前走两步看看……」',
     asks: [
-      { q: '「你们距离那个边界大概多远？」', a: '「车头离那片「没有」不到二十米，我身上起鸡皮疙瘩，发动机声音都怪怪的。」', key: true },
-      { q: '「车上还有别的设备吗？」', a: '「还有一台备用电台，但信号全是雪花，只有短波偶尔响一下。」', key: false }
+      { q: '「离那片边界大概多远？」', a: '「车头离那片「没有」不到二十米，我身上起鸡皮疙瘩，发动机声音都怪怪的。」', key: true },
+      { q: '「车上还有什么设备？」', a: '「一台备用电台，信号全是雪花，短波偶尔响一下。」', key: false }
     ],
-    keys: ['制止', '不要下车', '撤离', '后退', '掉头', '远离', '上报', '不要再靠近', '原路'],
-    bads: ['下车', '走两步', '靠近', '试探', '投物', '等待', '停留'],
     opts: [
-      { t: '立刻制止同伴下车，掉头沿原路缓慢撤离并持续上报', ok: true, why: '正确。空白地带是 IMAC 档案中信息最少的未知级异常，接触边界的物质会「消失」且无返回记录——不接近、不投物、立即撤离。' },
-      { t: '让他下车走两步确认边界位置', ok: false, why: '致命。接触边界的物质与生命体没有任何返回记录。' },
-      { t: '停留原地等待信号恢复', ok: false, why: '危险。区域内重力、电磁、时间读数全部失效，「等一等」不会让情况变好，应尽快脱离边界。' }
+      { t: '喝止下车，立即掉头沿原路缓慢撤离并持续上报', mod: 6 },
+      { t: '让他原地下车，用绳索结组慢慢后退', mod: -1 },
+      { t: '让他同事下车走两步，确认边界位置', mod: -9 }
     ],
-    truth: '信息越少的异常越危险——未知级的第一处置永远是撤离。'
+    good: '他们掉头开了四十分钟，GPS 在傍晚重新落回定位。车停下时，副驾那位半天没说话，然后说了句「刚才我脚已经在门外了」。档案上后来加了一行：本次勘察无人员损失。',
+    mid: '他们留在原地等信号，等到凌晨才敢动车。回去后两人都做了心理评估，报告写着「短期记忆闪回」。人回来了，但那片「没有」在他们脑子里留了印子。',
+    bad: '那名队员下了车。他说自己「只走了两步」，电台里传来他同事的喊声，随后是风声，再之后什么都没有。勘测队原地等了一夜——什么都没等到，连脚印都在二十米处断掉了。'
   },
   {
     id: 'TMA-0045', code: '雾中列车', lv: '厄运级', lvColor: 'var(--lv-doomed)',
-    caller: '东部铁路乘客', meta: 'CALL 07 · 列车求助',
-    text: '「列车开进雾里已经四十分钟了，窗外全是白的，报站也不对。刚才有人在前面那节车厢喊『下车就到家了』，好几个人往车门走……我要不要也跟着下车？」',
+    caller: '东部铁路乘客', meta: 'CALL 07 · 列车求助', dc: 13,
+    text: '「列车开进雾里四十分钟了，窗外全是白的，报站也不对。前面车厢有人喊『下车就到家了』，好几个人往车门走……我要不要也下车？」',
     asks: [
-      { q: '「车厢里还有乘务员吗？车厢号是多少？」', a: '「没看到乘务员，我在第六节，门上的编号是 06，其他几节都看不清。」', key: true },
-      { q: '「你现在感觉怎么样？」', a: '「有点困，眼皮很沉，刚才差点睡过去。」', key: true }
+      { q: '「你在第几节车厢？有乘务员吗？」', a: '「第六节，门上是 06。没看到乘务员，其他车厢看不清。」', key: true },
+      { q: '「你现在身体什么感觉？」', a: '「很困，眼皮沉，刚才差点睡过去。」', key: true }
     ],
-    keys: ['不要下车', '留在车厢', '保持清醒', '别睡', '等待救援', '原位', '不要跟', '报警'],
-    bads: ['下车', '跟着下', '随大流', '睡觉', '睡一觉', '躲进洗手间', '找出口'],
     opts: [
-      { t: '告诉他：绝不下车，留在原位、保持清醒、等待救援', ok: true, why: '正确。雾中列车的规则之一是「下车者永不返回」。留在车厢、不睡、不跟随他人下车，是幸存者的共同做法。' },
-      { t: '让他跟着人群下车，人多安全', ok: false, why: '严禁。雾中列车的致命误区就是「随大流下车」，历年下车者无一返回。' },
-      { t: '让他躲进洗手间锁门睡一觉', ok: false, why: '错误。睡眠状态在该异常中会加剧定位失效，幸存者记录强调保持清醒与位置固定。' }
+      { t: '让他留在原位、靠着椅背保持清醒，等你调车', mod: 6 },
+      { t: '让他挪到车厢连接处，离车门远一点', mod: 2 },
+      { t: '让他跟人群一起下车，人多安全', mod: -9 }
     ],
-    truth: '在时间类异常里，「跟随他人」往往是最危险的选项。'
+    good: '你陪着他数了四十分钟的报站灯。雾散时列车停在东部枢纽，他下车第一件事是给你回了个电话：「我还在车上，我没下去。」——第六节车厢，二十三名乘客，全部安全。',
+    mid: '他挪到了连接处，硬撑着没睡。雾散后他被送到枢纽医务室，诊断是轻度定向障碍——人没事，但他说以后再也不坐夜车了。',
+    bad: '车门开了。他和另外五个人走了出去。搜救持续了十一天，回收到的只有一只落在轨道边的鞋，鞋里塞着一张被雾泡软的车票。'
   },
   {
     id: 'LOA-0073', code: '赤月学院', lv: '深渊级', lvColor: 'var(--lv-abyssal)',
-    caller: '白松城居民', meta: 'CALL 08 · 失踪上报',
-    text: '「我女儿昨晚在房间里写作业，我端牛奶进去的时候人就不见了，桌上摊着一本不是她的练习册，封面上写着「赤月学院 · 入学通知」。窗户是锁着的……我该怎么办？」',
+    caller: '白松城居民', meta: 'CALL 08 · 失踪上报', dc: 15,
+    text: '「我女儿昨晚在房间里写作业，我端牛奶进去人就没了。桌上摊着一本不是她的练习册，封面写着「赤月学院 · 入学通知」。窗户是锁着的……我该怎么办？」',
     asks: [
-      { q: '「那本练习册你动过吗？房间现在有人进去吗？」', a: '「我没敢动，就用手机拍了照。她爸想进去找，被我拦在门口了。」', key: true },
-      { q: '「女儿最近有没有提过奇怪的学校或者同学？」', a: '「上周她说过一句『有个学校在等我』，我以为是学校作业，没细问……」', key: false }
+      { q: '「那本练习册你动过吗？房间现在有人进出吗？」', a: '「我没敢动，用手机拍了照。她爸想进去翻，被我拦在门口了。」', key: true },
+      { q: '「女儿最近提过奇怪的学校或同学吗？」', a: '「上周她说过一句『有个学校在等我』，我以为是作业，没细问。」', key: false }
     ],
-    keys: ['上报', '封存', '不要动', '保护现场', '等待专业', '通知 IMAC', '原地', '不要自行'],
-    bads: ['自己找', '召集亲友', '到处找', '进入房间翻', '等待24小时', '明天再说', '等等看'],
     opts: [
-      { t: '立即上报 IMAC 区域中心，封存现场物证，任何人不得自行寻找', ok: true, why: '正确。赤月学院为深渊级异常，拉入机制不可预测、致死率极高。现场物证（练习册）对定位有重要价值，但必须由专业队伍处置。' },
-      { t: '召集亲友沿附近学校逐一寻找', ok: false, why: '严禁。赤月学院的入口随机出现，盲目寻找既找不到人，还可能让更多人被拉入。' },
-      { t: '等待 24 小时后再报警', ok: false, why: '错误。异常相关失踪没有「黄金 24 小时」的说法——上报越早，现场信息保存得越完整。' }
+      { t: '立即上报 IMAC，封存现场物证，禁止任何自行寻找', mod: 6 },
+      { t: '先报警，等警方立案后再联系 IMAC', mod: 1 },
+      { t: '召集亲友沿附近学校逐一寻找', mod: -9 }
     ],
-    truth: '越危险的异常，越要把处置权交给专业的人。'
+    good: '你没有让他们踏进房间一步。IMAC 处置组两小时后封闭了整栋楼，用练习册上的笔墨残留锁定了锚定面。第十四天，孩子在城东一处废弃校舍里被找到——她以为自己只上了三节课。',
+    mid: '警方立了案，三天后转到 IMAC。练习册被家属翻动过，锚定定位多花了九天。孩子最终被找到，但她对那九天没有任何记忆，医生说，那部分可能永远回不来了。',
+    bad: '亲友分头去找。三天里又有两个人失踪，一个是在城西小学门口，一个是在自家楼道。赤月学院的「入学通知」上，多了两个新名字。'
   },
   {
     id: 'NONE-0001', code: '误报排查', lv: '非异常线索', lvColor: 'var(--tm)',
-    caller: '鸣海城住户', meta: 'CALL 09 · 疑似误报',
+    caller: '鸣海城住户', meta: 'CALL 09 · 疑似误报', dc: 9,
     text: '「我家猫最近总盯着墙角看，一动不动看半小时，是不是那个墙角有异常？我越看越怕，你们能不能派人来检测一下？」',
     asks: [
-      { q: '「墙角附近有插座、管道或者通风口吗？」', a: '「好像有个空调管道，还有插座……对了，最近楼上在装修。」', key: true },
-      { q: '「除了猫，你自己有看到或听到什么吗？」', a: '「没有，就是猫总看那边，我才多想的。」', key: false }
+      { q: '「墙角附近有插座、管道或通风口吗？」', a: '「有个空调管道，还有插座……对了，最近楼上在装修。」', key: true },
+      { q: '「除了猫，你自己看到或听到什么了吗？」', a: '「没有，就是猫总看那边，我才多想的。」', key: false }
     ],
-    keys: ['听觉', '光影', '老鼠', '管道', '装修', '正常', '无需', '登记观察', '安抚', '不是异常'],
-    bads: ['封锁', '最高等级', '立即撤离', '派队', '严肃处理', '挂断', '批评', '浪费'],
     opts: [
-      { t: '耐心解释：猫盯着墙角多为听觉或光影反应，无需异常处置，可在热线登记观察', ok: true, why: '正确。99 热线的接线原则是「先判断再调度」——把资源留给真正的异常，同时也要安抚市民情绪、留下观察记录。' },
-      { t: '立即按最高等级上报，要求封锁住宅楼', ok: false, why: '错误。虚报会占用专业队伍的行动窗口，真正的异常可能因此延误处置。' },
-      { t: '批评对方浪费公共资源后挂断', ok: false, why: '不妥。接线员的态度会影响市民下一次是否愿意上报——而及时上报正是处置成功的关键。' }
+      { t: '解释猫的反应多为听觉光影所致，登记观察并安抚', mod: 5 },
+      { t: '派一组人上门做常规环境检测', mod: 0 },
+      { t: '按最高等级上报，封锁整栋楼', mod: -8 }
     ],
-    truth: '分辨真伪，是接线员最重要也最难的工作。'
+    good: '你顺着管道和装修的事聊了几句，她说然大悟：「哦——那可能是老鼠。」挂断前她笑了，说以后会先自己听一听。当晚热线没再接到她的电话。',
+    mid: '你派了人上门。检测组花了四十分钟，结论是墙体共振与楼上施工噪声——猫的听力，比仪器还灵。她道了歉，说以后不再大惊小怪。',
+    bad: '整栋楼封了六个小时。三支队伍到场，疏散八十多户居民，最后一无所获。同一夜里，城东一通报案电话打了进来——那边是真的异常，而处置组还在你这里拆墙角。'
   },
   {
     id: 'NONE-0002', code: '异常收费诈骗', lv: '违法行为', lvColor: 'var(--red)',
-    caller: '白松城老人', meta: 'CALL 10 · 疑似诈骗',
+    caller: '白松城老人', meta: 'CALL 10 · 疑似诈骗', dc: 10,
     text: '「有人上门说我家天花板「有异常能量」，交两千块就能帮我「做净化解厄」，还给我看了一张印着「联盟认证」的证书。他说不交钱三天内必出事……我该交吗？」',
     asks: [
-      { q: '「他有留下联系方式或者收据吗？」', a: '「留了个手写号码，说交钱后开收据，还让我别跟别人说，说「说了就不灵了」。」', key: true },
-      { q: '「他穿什么衣服？有工牌吗？」', a: '「普通夹克，工牌是自己打印的那种，照片都糊。」', key: false }
+      { q: '「他留下联系方式或收据了吗？」', a: '「留了个手写号码，说交钱后开收据，还让我别跟别人说，说『说了就不灵了』。」', key: true },
+      { q: '「他穿什么衣服？有工牌吗？」', a: '「普通夹克，工牌是自己打印的，照片都糊。」', key: false }
     ],
-    keys: ['不交钱', '诈骗', '报警', '举报', '收费', '不要给钱', '挂断', '核实', '免费'],
-    bads: ['交钱', '先交', '给钱', '消灾', '相信', '自己想办法', '私了'],
     opts: [
-      { t: '告诉他：IMAC 从不向市民收取任何异常处置费用，请立即挂断并向公安机关举报', ok: true, why: '正确。IMAC 是全球协作的公共机构，异常处置与民用应用发放均不收费。「收费净化」是典型的异常诈骗套路。' },
-      { t: '让他先交钱消灾，安全第一', ok: false, why: '错误。这正是骗局的落点——用恐惧换钱。' },
-      { t: '让他自己想办法找正规机构确认', ok: false, why: '不妥。老人已处于被恐吓状态，应给出明确结论并引导报警。' }
+      { t: '明确告知：IMAC 从不收费，立即挂断并报警举报', mod: 6 },
+      { t: '让他先核实对方身份，再决定要不要给钱', mod: 0 },
+      { t: '让他先交钱消灾，安全第一', mod: -9 }
     ],
-    truth: '真正的异常不会收费——收费的，一定是人。'
+    good: '你陪着他把话说清楚，还帮他把号码报给了派出所。三天后片区民警回电：那人是个惯犯，专挑独居老人下手，这一单没成，前面几单的也一并追了回来。',
+    mid: '他半信半疑，没交钱，也没报警。半年后派出所破获同类诈骗案时找到他做笔录，他才明白自己当初躲过了什么——只是那三个月里，他每晚都要抬头看看天花板。',
+    bad: '他交了两千块。一周后对方又来了，说「上次只净了客厅」。他第二次打电话到热线时声音在抖——而那个号码，从此再也打不通。'
   }
 ];
 
-// 满分：全对（80）+ 全关键线索（30）+ 全自由作答奖励（20）+ 连击加成
-var PERFECT = CALLS.length * (80 + 30 + 20) + (function () { var s = 0; for (var i = 0; i < CALLS.length; i++) s += Math.min(40, i * 20); return s; })();
-
-var state = { idx: 0, score: 0, combo: 0, maxCombo: 0, right: 0, wrong: 0, half: 0, clues: 0, clueTotal: 0, asked: {}, answered: false, log: [], mode: 'opt' };
-var best = 0, plays = 0, bestRank = '—';
+var ENDINGS = CALLS.length * 3;
+var state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false };
+var best = 0, plays = 0, collected = {};
 try {
-  best = parseInt(localStorage.getItem('imac_hotline_best') || '0', 10) || 0;
-  plays = parseInt(localStorage.getItem('imac_hotline_plays') || '0', 10) || 0;
-  bestRank = localStorage.getItem('imac_hotline_rank') || '—';
+  best = parseInt(localStorage.getItem('imac_hotline_best2') || '0', 10) || 0;
+  plays = parseInt(localStorage.getItem('imac_hotline_plays2') || '0', 10) || 0;
+  collected = JSON.parse(localStorage.getItem('imac_hotline_coll2') || '{}') || {};
 } catch (e) {}
+function collCount() { var n = 0; for (var k in collected) if (collected[k]) n++; return n; }
 
 function $(id) { return document.getElementById(id); }
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
@@ -390,170 +386,117 @@ function show(p) {
 function goHome() {
   $('stBest').textContent = best ? best : '—';
   $('stPlays').textContent = plays;
-  $('stRank').textContent = bestRank;
+  $('stColl').textContent = collCount() + '/' + ENDINGS;
   $('navTitle').textContent = '异常热线';
   show('pageHome');
 }
 function startShift() {
-  state = { idx: 0, score: 0, combo: 0, maxCombo: 0, right: 0, wrong: 0, half: 0, clues: 0, clueTotal: 0, asked: {}, answered: false, log: [], mode: 'opt' };
+  state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false };
   $('navTitle').textContent = '值班中';
   show('pageCall');
   renderCall();
 }
 function rankOf(s) {
-  if (s >= 1500) return { r: 'S', t: '首席接线员', c: 'var(--lv-ordinary)' };
-  if (s >= 1200) return { r: 'A', t: '资深接线员', c: 'var(--blue)' };
-  if (s >= 850) return { r: 'B', t: '合格接线员', c: 'var(--lv-hazardous)' };
-  if (s >= 500) return { r: 'C', t: '见习接线员', c: 'var(--lv-doomed)' };
+  if (s >= 1300) return { r: 'S', t: '首席接线员', c: 'var(--lv-ordinary)' };
+  if (s >= 1050) return { r: 'A', t: '资深接线员', c: 'var(--blue)' };
+  if (s >= 750) return { r: 'B', t: '合格接线员', c: 'var(--lv-hazardous)' };
+  if (s >= 450) return { r: 'C', t: '见习接线员', c: 'var(--lv-doomed)' };
   return { r: 'D', t: '需要重训', c: 'var(--red)' };
 }
 
 function renderCall() {
   var c = CALLS[state.idx];
-  state.answered = false;
-  state.mode = 'opt';
-  state.asked = {};
+  state.answered = false; state.asked = {};
   $('progIdx').textContent = state.idx + 1;
   $('progScore').textContent = state.score;
   $('progClue').textContent = state.clues;
-  $('progCombo').innerHTML = state.combo >= 2 ? '<span class="combo">连击 ×' + state.combo + '</span>' : '';
   $('callerName').textContent = c.caller;
   $('callerMeta').textContent = c.meta + ' · ' + c.lv;
   $('callerMeta').style.color = c.lvColor;
   $('callerText').textContent = c.text;
   $('verdictBox').innerHTML = '';
   $('nextBox').innerHTML = '';
-  renderAsks(c);
-  renderAct(c);
-}
-
-/* 追问区：自由决定问什么 */
-function renderAsks(c) {
-  var html = '<div class="ask-wrap"><div class="ask-hd">追问市民 · <b>' + c.asks.length + '</b> 个可问问题（关键线索有加分）</div><div class="ask-btns" id="askBtns">';
+  var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？· <b>' + c.asks.length + '</b> 个问题（线索可提高成功率）</div><div class="ask-btns" id="askBtns">';
   c.asks.forEach(function (a, i) { html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(a.q) + '</button>'; });
   html += '</div><div id="askAns"></div></div>';
   $('askWrap').innerHTML = html;
+  html = '<div class="opts" id="opts">';
+  c.opts.forEach(function (o, i) {
+    html += '<div class="opt" onclick="choose(' + i + ')"><span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t + '</div>';
+  });
+  html += '</div>';
+  $('actWrap').innerHTML = html;
 }
 function ask(i) {
-  if (state.answered) return;
-  var c = CALLS[state.idx];
-  var a = c.asks[i];
-  if (state.asked[i]) return;
+  if (state.answered || state.asked[i]) return;
+  var c = CALLS[state.idx], a = c.asks[i];
   state.asked[i] = true;
+  if (a.key) { state.clues++; $('progClue').textContent = state.clues; }
   var btn = document.querySelector('#askBtns .ask-btn[data-i="' + i + '"]');
   if (btn) { btn.classList.add('done'); btn.textContent = '✓ ' + a.q; }
-  if (a.key) { state.clues++; state.clueTotal++; $('progClue').textContent = state.clues; }
-  var box = $('askAns');
-  var div = document.createElement('div');
+  var box = $('askAns'), div = document.createElement('div');
   div.className = 'ask-ans' + (a.key ? ' clue' : '');
   div.innerHTML = '<span class="q">' + (a.key ? '◆ 关键线索' : '○ 补充信息') + '</span>' + esc(a.a);
   box.appendChild(div);
   if (box.scrollIntoView) { try { box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
 }
 
-/* 处置区：可选建议，也可自己写 */
-function renderAct(c) {
-  var html = '<div class="act">' +
-    '<div class="act-tabs">' +
-      '<div class="act-tab on" id="tabOpt" onclick="setMode(\'opt\')">选择处置建议</div>' +
-      '<div class="act-tab" id="tabFree" onclick="setMode(\'free\')">✎ 自己写处置方案</div>' +
-    '</div>' +
-    '<div id="optBox"><div class="opts" id="opts"></div></div>' +
-    '<div class="free-box" id="freeBox">' +
-      '<div class="free-hint">写下你的处置指令（写清「让市民做什么」）。命中关键动作判定正确，命中危险动作判定错误。</div>' +
-      '<textarea class="free-in" id="freeIn" placeholder="例如：让他立刻徒步离开该路段，不要再次驾车进入，并在安全距离外封锁警示、上报 IMAC。"></textarea>' +
-      '<button class="free-send" onclick="submitFree()">提交处置指令</button>' +
-      '<div class="free-tags">关键词提示：' + c.keys.slice(0, 5).map(function (k) { return '<span onclick="fillFree(\'' + k + '\')">' + k + '</span>'; }).join('') + '</div>' +
-    '</div>' +
-  '</div>';
-  $('actWrap').innerHTML = html;
-  var box = $('opts');
-  c.opts.forEach(function (o, i) {
-    var d = document.createElement('div');
-    d.className = 'opt';
-    d.innerHTML = '<span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t;
-    d.onclick = function () { answerOpt(i); };
-    box.appendChild(d);
-  });
-}
-function setMode(m) {
-  if (state.answered) return;
-  state.mode = m;
-  $('tabOpt').classList.toggle('on', m === 'opt');
-  $('tabFree').classList.toggle('on', m === 'free');
-  $('optBox').style.display = m === 'opt' ? 'block' : 'none';
-  $('freeBox').classList.toggle('on', m === 'free');
-}
-function fillFree(k) {
-  var t = $('freeIn');
-  t.value = (t.value ? t.value.replace(/[，,。\s]*$/, '') + '，' : '') + k;
-  t.focus();
-}
-
-/* 判定：选项 */
-function answerOpt(i) {
-  if (state.answered) return;
-  var c = CALLS[state.idx];
-  var nodes = $('opts').children;
-  for (var k = 0; k < nodes.length; k++) {
-    nodes[k].onclick = null;
-    if (c.opts[k].ok) nodes[k].classList.add('good');
-    else if (k === i) nodes[k].classList.add('bad');
-  }
-  finish(c.opts[i].ok ? 'ok' : 'no', c.opts[i].ok ? 80 : 0, c.opts[i].why, c, false);
-}
-
-/* 判定：自由输入（关键词识别） */
-function submitFree() {
-  if (state.answered) return;
-  var c = CALLS[state.idx];
-  var txt = ($('freeIn').value || '').trim();
-  if (!txt) { alert('请先写下你的处置指令'); return; }
-  var hitKeys = c.keys.filter(function (k) { return txt.indexOf(k) >= 0; });
-  var hitBads = c.bads.filter(function (k) { return txt.indexOf(k) >= 0; });
-  var ok, gain, why, half = false;
-  if (hitBads.length > 0) {
-    ok = false; gain = 0;
-    why = '<b>你的指令包含危险动作：「' + hitBads.join('、') + '」</b><br>' + c.opts.filter(function (o) { return !o.ok; })[0].why + '<br>正确做法：<b>' + c.opts.filter(function (o) { return o.ok; })[0].t + '</b>';
-  } else if (hitKeys.length > 0) {
-    ok = true; gain = 100; // 自由作答 80 + 20 奖励
-    why = '<b>命中关键处置动作：「' + hitKeys.slice(0, 4).join('、') + '」</b><br>' + c.opts.filter(function (o) { return o.ok; })[0].why + '（自由作答 +20）';
-  } else {
-    ok = false; half = true; gain = 40;
-    why = '<b>处置方向不够明确</b>——没有识别到关键动作词，但也没有明显错误。<br>建议表述为：<b>' + c.opts.filter(function (o) { return o.ok; })[0].t + '</b><br>' + c.opts.filter(function (o) { return o.ok; })[0].why;
-  }
-  finish(ok ? 'ok' : (half ? 'half' : 'no'), gain, why, c, true);
-}
-
-function finish(kind, base, why, c, isFree) {
-  state.answered = true;
-  var gain = 0;
-  if (kind === 'ok') {
-    state.right++; state.combo++;
-    if (state.combo > state.maxCombo) state.maxCombo = state.combo;
-    gain = base + Math.min(40, (state.combo - 1) * 20);
-  } else if (kind === 'half') {
-    state.half++; state.combo = 0; gain = base;
-  } else {
-    state.wrong++; state.combo = 0; gain = 0;
-  }
-  state.score += gain;
+/* 掷骰 → 判定 → 结局 */
+function choose(i) {
+  if (state.answered || state.rolling) return;
+  state.rolling = true;
+  var c = CALLS[state.idx], opt = c.opts[i];
   var clueBonus = 0;
-  c.asks.forEach(function (a, i) { if (a.key && state.asked[i]) clueBonus += 15; });
-  state.score += clueBonus;
+  c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 2; });
+  var roll = 1 + Math.floor(Math.random() * 20);
+  var total = roll + opt.mod + clueBonus;
+
+  var fl = $('diceFloat'), big = $('diceBig'), lab = $('diceLab');
+  fl.classList.add('show');
+  big.className = 'dice-big'; big.textContent = roll;
+  lab.innerHTML = 'D20 检定中…';
+  var ticks = 0;
+  var timer = setInterval(function () {
+    big.textContent = 1 + Math.floor(Math.random() * 20);
+    if (++ticks > 12) {
+      clearInterval(timer);
+      big.textContent = roll;
+      var kind = (roll === 20 || total >= c.dc + 5) ? 'good' : (roll === 1 || total < c.dc) ? 'bad' : 'mid';
+      if (roll === 20) big.className = 'dice-big crit';
+      else if (roll === 1) big.className = 'dice-big fumb';
+      lab.innerHTML = 'D20 掷出 <b style="color:var(--tp)">' + roll + '</b>' +
+        (opt.mod ? ' · 策略 ' + (opt.mod > 0 ? '+' : '') + opt.mod : '') +
+        (clueBonus ? ' · 线索 +' + clueBonus : '') +
+        ' → <b style="color:' + (kind === 'good' ? 'var(--lv-ordinary)' : kind === 'mid' ? 'var(--lv-hazardous)' : 'var(--red)') + '">' + total + '</b> / DC ' + c.dc;
+      setTimeout(function () { fl.classList.remove('show'); resolve(kind, roll, total, c); }, 900);
+    }
+  }, 80);
+}
+
+function resolve(kind, roll, total, c) {
+  state.answered = true; state.rolling = false;
+  var gain = kind === 'good' ? (roll === 20 ? 150 : 120) : kind === 'mid' ? 60 : 20;
+  var clueBonus = 0;
+  c.asks.forEach(function (a, k) { if (a.key && state.asked[k]) clueBonus += 10; });
+  state.score += gain + clueBonus;
+  if (kind === 'good') state.good++; else if (kind === 'mid') state.mid++; else state.bad++;
   $('progScore').textContent = state.score;
   $('progClue').textContent = state.clues;
-  $('progCombo').innerHTML = state.combo >= 2 ? '<span class="combo">连击 ×' + state.combo + '</span>' : '';
   state.log.push({ code: c.code, kind: kind });
 
-  var label = kind === 'ok' ? '✓ 处置正确' : kind === 'half' ? '△ 方向不明' : '✕ 处置有误';
+  var key = c.id + ':' + kind;
+  var isNew = !collected[key];
+  collected[key] = true;
+  try { localStorage.setItem('imac_hotline_coll2', JSON.stringify(collected)); } catch (e) {}
+
+  var label = kind === 'good' ? (roll === 20 ? '★ 奇迹般的结果' : '✓ 处置奏效') : kind === 'mid' ? '△ 勉强度过' : (roll === 1 ? '✕ 最坏的结果' : '✕ 出事了');
+  var text = kind === 'good' ? c.good : kind === 'mid' ? c.mid : c.bad;
   var v = $('verdictBox');
   v.innerHTML =
-    '<div class="verdict ' + kind + '">' +
-      '<div class="vt">' + label + '　+' + gain + (state.combo >= 2 && kind === 'ok' ? '（连击 ×' + state.combo + '）' : '') +
-        (clueBonus ? '　线索 +' + clueBonus : '') + '</div>' +
-      '<p>' + why + '</p>' +
-      '<p style="color:var(--tm);font-size:11.5px">档案编号：<b style="color:' + c.lvColor + '">' + c.id + '</b> · ' + c.lv + '</p>' +
+    '<div class="result ' + kind + '">' +
+      '<div class="rt">' + label + '　业绩 +' + gain + (clueBonus ? '（线索 +' + clueBonus + '）' : '') + (isNew ? '　· 新结局已收集' : '') + '</div>' +
+      '<div class="roll">' + c.code + ' · ' + c.lv + '　|　D20 ' + roll + ' ＋ 合计 ' + total + ' / DC ' + c.dc + '</div>' +
+      '<p>' + esc(text) + '</p>' +
       '<a class="arch" href="' + (c.id.indexOf('NONE') === 0 ? DB : SITE + '#/anomaly/' + c.id) + '" target="_blank" rel="noopener">' +
         (c.id.indexOf('NONE') === 0 ? '→ 打开 IMAC 异常信息数据库' : '→ 查看 ' + c.id + ' 完整档案（IMAC 异常库）') +
       '</a>' +
@@ -561,12 +504,10 @@ function finish(kind, base, why, c, isFree) {
   if (v.scrollIntoView) { try { v.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); } catch (e) {} }
 
   var last = state.idx === CALLS.length - 1;
-  var nb = $('nextBox');
-  nb.innerHTML = '';
+  var nb = $('nextBox'); nb.innerHTML = '';
   var b = document.createElement('button');
-  b.className = 'btn-main';
-  b.style.marginTop = '12px';
-  b.textContent = last ? '结束值班 · 查看结算' : '接听下一通电话 →';
+  b.className = 'btn-main'; b.style.marginTop = '12px';
+  b.textContent = last ? '天亮了 · 交班' : '接听下一通电话 →';
   b.onclick = function () { if (last) endShift(); else { state.idx++; renderCall(); } };
   nb.appendChild(b);
 }
@@ -574,29 +515,32 @@ function finish(kind, base, why, c, isFree) {
 function endShift() {
   plays++;
   var rank = rankOf(state.score);
-  if (state.score > best) { best = state.score; bestRank = rank.r; }
+  if (state.score > best) best = state.score;
   try {
-    localStorage.setItem('imac_hotline_best', String(best));
-    localStorage.setItem('imac_hotline_plays', String(plays));
-    localStorage.setItem('imac_hotline_rank', bestRank);
+    localStorage.setItem('imac_hotline_best2', String(best));
+    localStorage.setItem('imac_hotline_plays2', String(plays));
   } catch (e) {}
-  $('navTitle').textContent = '值班结算';
+  $('navTitle').textContent = '交班';
   $('endRank').textContent = rank.r;
   $('endRank').style.color = rank.c;
   $('endTitle').textContent = rank.t;
-  $('endScore').textContent = '本次得分 ' + state.score + ' / ' + PERFECT + ' · 正确 ' + state.right + '/' + CALLS.length;
-  var grade =
-    state.right === CALLS.length && state.clueTotal >= CALLS.length ? '十通电话全部处置正确，关键线索也一条没漏。专业、冷静、克制——正是这条热线存在的意义。' :
-    state.right >= 8 ? '你的判断相当可靠，个别案子出现偏差，但都在可挽回的范围内。' :
-    state.right >= 6 ? '基本合格。异常热线没有「下次注意」——每一次误判，代价都由电话那头的人承担。' :
-    '这一班出了不少问题。建议先去 IMAC 异常信息数据库，把档案从头读一遍。';
+  $('endScore').textContent = '本班业绩 ' + state.score + ' · 顺利 ' + state.good + ' / 勉强 ' + state.mid + ' / 出事 ' + state.bad;
+  var line =
+    state.bad === 0 && state.mid === 0 ? '十通电话，十个平安的夜晚。你把每一次按键都用在了对的地方。' :
+    state.bad === 0 ? '没有一个人出事。有几次是运气站在了你这边——但接线员不能只靠运气。' :
+    state.bad <= 2 ? '多数人平安，但仍有人没能等到天亮。通讯记录会归档，名字会留在里面。' :
+    '这一班，太多电话没有好结果。晨会上队长只说了句：再去读一遍档案。';
   $('endBody').innerHTML =
-    '<p style="margin:0 0 10px">' + grade + '</p>' +
-    '<p style="margin:0 0 6px">正确处置 <b>' + state.right + '</b> 通 · 方向不明 <b>' + state.half + '</b> 通 · 误判 <b>' + state.wrong + '</b> 通</p>' +
-    '<p style="margin:0 0 6px">追问线索 <b>' + state.clueTotal + '</b> 条 · 最高连击 <b>' + state.maxCombo + '</b></p>' +
-    '<p style="margin:0 0 10px;color:var(--tm);font-size:11.5px">历史最佳 <b style="color:var(--tp)">' + best + '</b> 分（' + bestRank + ' 级） · 累计出勤 ' + plays + ' 次</p>' +
-    '<p style="margin:0">你接听的每一个异常，都真实收录在 <b>IMAC 国际异常管理联盟</b>档案库中——包含完整的发现经过、已确认规则与进入记录。<br>去数据库看看它们后来的故事：</p>' +
+    '<p style="margin:0 0 10px">' + line + '</p>' +
+    '<p style="margin:0 0 6px">追问线索 <b>' + state.clues + '</b> 条 · 历史最佳 <b>' + best + '</b> · 累计出勤 <b>' + plays + '</b> 次</p>' +
+    '<p style="margin:0">你接听的每一个异常，都真实收录在 <b>IMAC 国际异常管理联盟</b>档案库中——完整的发现经过、已确认规则与进入记录，都在那里。</p>' +
     '<p style="margin:8px 0 0"><b style="color:var(--blue)">kailily.github.io/imac-web</b></p>';
+  var coll = $('endColl');
+  coll.innerHTML = CALLS.map(function (c) {
+    var n = 0;
+    ['good', 'mid', 'bad'].forEach(function (k) { if (collected[c.id + ':' + k]) n++; });
+    return '<span class="' + (n === 3 ? 'g' : n > 0 ? 'b' : '') + '">' + c.code + ' ' + n + '/3</span>';
+  }).join('');
   show('pageEnd');
   drawCard(rank);
 }
@@ -606,7 +550,7 @@ function drawCard(rank) {
   var x = (cv && cv.getContext) ? cv.getContext('2d') : null;
   if (!x) { if (cv) cv.style.display = 'none'; return; }
   var W = cv.width, H = cv.height;
-  var colorMap = { 'var(--lv-ordinary)': '#4a7c59', 'var(--blue)': '#7a96ad', 'var(--lv-hazardous)': '#c49a2c', 'var(--lv-doomed)': '#d46828', 'var(--red)': '#c42828' };
+  var cmap = { 'var(--lv-ordinary)': '#4a7c59', 'var(--blue)': '#7a96ad', 'var(--lv-hazardous)': '#c49a2c', 'var(--lv-doomed)': '#d46828', 'var(--red)': '#c42828' };
   x.fillStyle = '#0a0a0c'; x.fillRect(0, 0, W, H);
   x.strokeStyle = '#26262e'; x.lineWidth = 2; x.strokeRect(22, 22, W - 44, H - 44);
   x.fillStyle = '#c42828'; x.fillRect(22, 22, W - 44, 4);
@@ -614,22 +558,22 @@ function drawCard(rank) {
   x.font = '600 26px "PingFang SC","Microsoft YaHei",sans-serif'; x.fillStyle = '#d8d4cc';
   x.fillText('IMAC · 异常热线值班记录', W / 2, 100);
   x.font = '500 15px Consolas,monospace'; x.fillStyle = '#5c5952';
-  x.fillText('ANOMALY HOTLINE · SHIFT REPORT', W / 2, 130);
-  x.font = '700 130px "Songti SC",serif'; x.fillStyle = colorMap[rank.c] || '#c42828';
+  x.fillText('ANOMALY HOTLINE · NIGHT SHIFT', W / 2, 130);
+  x.font = '700 130px "Songti SC",serif'; x.fillStyle = cmap[rank.c] || '#c42828';
   x.fillText(rank.r, W / 2, 290);
   x.font = '600 30px "PingFang SC",sans-serif'; x.fillStyle = '#d8d4cc';
   x.fillText(rank.t, W / 2, 345);
   x.font = '500 22px Consolas,monospace'; x.fillStyle = '#a09c94';
-  x.fillText('得分 ' + state.score + ' / ' + PERFECT, W / 2, 400);
-  x.fillText('正确 ' + state.right + '/' + CALLS.length + ' · 线索 ' + state.clueTotal + ' 条 · 最高连击 ' + state.maxCombo, W / 2, 436);
+  x.fillText('业绩 ' + state.score + ' · 顺利 ' + state.good + ' / 勉强 ' + state.mid + ' / 出事 ' + state.bad, W / 2, 400);
+  x.fillText('线索 ' + state.clues + ' 条 · 结局收集 ' + collCount() + '/' + ENDINGS, W / 2, 436);
   x.textAlign = 'left';
   x.strokeStyle = '#1f1f26'; x.beginPath(); x.moveTo(70, 480); x.lineTo(W - 70, 480); x.stroke();
   var cw = (W - 140) / 5;
   state.log.forEach(function (l, i) {
     var cx = 70 + (i % 5) * cw, cy = 520 + Math.floor(i / 5) * 74;
-    x.fillStyle = l.kind === 'ok' ? '#4a7c59' : l.kind === 'half' ? '#c49a2c' : '#c42828';
+    x.fillStyle = l.kind === 'good' ? '#4a7c59' : l.kind === 'mid' ? '#c49a2c' : '#c42828';
     x.font = '600 26px Consolas,monospace';
-    x.fillText(l.kind === 'ok' ? '✓' : l.kind === 'half' ? '△' : '✕', cx, cy);
+    x.fillText(l.kind === 'good' ? '✓' : l.kind === 'mid' ? '△' : '✕', cx, cy);
     x.fillStyle = '#a09c94'; x.font = '500 14px Consolas,monospace';
     x.fillText(l.code.length > 9 ? l.code.slice(0, 9) : l.code, cx, cy + 26);
   });
@@ -638,7 +582,7 @@ function drawCard(rank) {
   x.fillStyle = '#c42828'; x.font = '600 19px "PingFang SC",sans-serif';
   x.fillText('这些异常都真实收录于 IMAC 档案库', 92, 742);
   x.fillStyle = '#a09c94'; x.font = '500 16px "PingFang SC",sans-serif';
-  x.fillText('国际异常管理联盟 · 完整发现经过 / 已确认规则 / 进入记录', 92, 776);
+  x.fillText('国际异常管理联盟 · 发现经过 / 已确认规则 / 进入记录', 92, 776);
   x.fillStyle = '#7a96ad'; x.font = '600 21px Consolas,monospace';
   x.fillText('kailily.github.io/imac-web', 92, 816);
   x.fillStyle = '#5c5952'; x.font = '500 14px "PingFang SC",sans-serif';
@@ -651,13 +595,11 @@ function drawCard(rank) {
 function saveCard() {
   var cv = $('shareCanvas');
   try {
-    var url = cv.toDataURL('image/png');
     var a = document.createElement('a');
-    a.href = url; a.download = 'IMAC-异常热线-战绩.png';
+    a.href = cv.toDataURL('image/png'); a.download = 'IMAC-异常热线-值班记录.png';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   } catch (e) { alert('保存失败，可长按图片保存'); }
 }
-
 $('navBack').style.visibility = 'hidden';
 goHome();
 </script>
