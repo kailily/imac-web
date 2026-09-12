@@ -634,9 +634,9 @@ var ORGS = [
   { abbr: 'WNP', name: '白夜哨站' },
   { abbr: 'LBC', name: '长桥会社' }
 ];
-/* 工牌默认值：玩家没填过任何资料时显示的编号与所属组织
-   （编号格式与 IMAC 官网一致：IMAC-组织缩写-四位数字，MC = 晨星团） */
-var DEFAULT_BADGE_ID = 'IMAC-MC-8100';
+/* 工牌默认值：玩家没填过任何资料时显示的所属组织
+   （编号格式与 IMAC 官网一致：IMAC-组织缩写-四位数字，MC = 晨星团）
+   默认编号 = 组织缩写 + 随机四位数字，生成后写进本地，同一个玩家始终是同一个号 */
 var DEFAULT_BADGE_ORG = '晨星团';
 function orgAbbr(name) {
   for (var i = 0; i < ORGS.length; i++) if (ORGS[i].name === name) return ORGS[i].abbr;
@@ -1287,9 +1287,16 @@ function badgeData() {
   var orgName = (own && own.org) || (reg && reg.organization) || (app && app.organization);
   if (!orgName || !isMemberOrg(orgName)) orgName = DEFAULT_BADGE_ORG;
   // 编号：与 IMAC 官网一致（IMAC-组织缩写-四位数字）
-  // 优先级：网站注册的编号 > 工牌里自己填过的 > 默认编号（不再随机生成）
+  // 优先级：网站注册的编号 > 工牌里自己填过的 > 默认编号（MC + 随机四位，存本地后不再变）
   var id = (reg && reg.imacId) || (own && own.id);
-  if (!id || !/^IMAC-[A-Za-z0-9]+-\d+$/.test(id)) id = DEFAULT_BADGE_ID;
+  if (!id || !/^IMAC-[A-Za-z0-9]+-\d+$/.test(id)) {
+    var prefix = 'IMAC-' + orgAbbr(orgName) + '-';
+    var auto = readLS('imac_badge_id');
+    if (!auto || !/^IMAC-[A-Za-z0-9]+-\d+$/.test(auto) || auto.indexOf(prefix) !== 0) {
+      auto = makeImacId(orgAbbr(orgName));
+    }
+    id = auto;
+  }
   writeLS('imac_badge_id', id);
   var name = (own && own.name) || (reg && reg.realName) || (app && app.realName) || '未登记姓名';
   var codename = (own && own.codename) || (reg && reg.codename) || (app && app.codename) || '夜莺';
