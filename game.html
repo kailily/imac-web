@@ -577,6 +577,15 @@ try {
 function collCount() { var n = 0; for (var k in collected) if (collected[k]) n++; return n; }
 
 function $(id) { return document.getElementById(id); }
+/* 随机洗牌：返回打乱后的新数组（不改原数组） */
+function shuffleArr(a) {
+  var r = a.slice();
+  for (var i = r.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = r[i]; r[i] = r[j]; r[j] = t;
+  }
+  return r;
+}
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 /* 滚动复位：切换页面、进入下一通时都回到顶部，否则新内容会在视口上方看不见 */
 function pageTop(id) {
@@ -600,6 +609,8 @@ function goHome() {
 }
 function startShift() {
   state = { idx: 0, score: 0, clues: 0, good: 0, mid: 0, bad: 0, asked: {}, answered: false, log: [], rolling: false, pick: 0, hungUp: false, calm: 0 };
+  /* 每一班的异常顺序都不同（结局、档案编号不受影响，只换出场次序） */
+  CALLS = shuffleArr(CALLS);
   $('navTitle').textContent = '值班中';
   show('pageCall');
   renderCall();
@@ -626,7 +637,9 @@ function renderCall() {
   $('nextBox').innerHTML = '';
   var kw = CALL_KEYS[c.id] || { keys: [], bads: [] };
   var html = '<div class="ask-wrap"><div class="ask-hd">先问几句？</div><div class="ask-btns" id="askBtns">';
-  c.asks.forEach(function (a, i) { html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(a.q) + '</button>'; });
+  shuffleArr(c.asks.map(function (a, i) { return i; })).forEach(function (i) {
+    html += '<button class="ask-btn" data-i="' + i + '" onclick="ask(' + i + ')">❯ ' + esc(c.asks[i].q) + '</button>';
+  });
   html += '</div><div id="askAns"></div>' +
     '<div style="margin-top:11px;border-top:1px dashed var(--border-light);padding-top:10px">' +
       '<div class="ask-hd" style="margin-bottom:7px">✎ 或者 · 你想自己开口</div>' +
@@ -637,7 +650,8 @@ function renderCall() {
   html = '<div class="act">' +
     '<div class="sec-line">你 打 算 怎 么 办</div>' +
     '<div class="opts" id="opts">';
-  c.opts.forEach(function (o, i) {
+  state.showOpts = shuffleArr(c.opts);
+  state.showOpts.forEach(function (o, i) {
     html += '<div class="opt" onclick="choose(' + i + ')"><span class="oi">' + String.fromCharCode(65 + i) + '</span>' + o.t + '</div>';
   });
   html += '</div>' +
@@ -875,7 +889,8 @@ function lockAsks(placeholder) {
 /* 选择处置建议 → 按规程直接判定（不掷骰） */
 function choose(i) {
   if (state.answered || state.rolling) return;
-  var c = CALLS[state.idx], opt = c.opts[i];
+  var c = CALLS[state.idx], opt = (state.showOpts || c.opts)[i];
+  if (!opt) return;
   state.pick = i;
   state.freeMode = false;
   var clueBonus = 0;
@@ -1038,7 +1053,7 @@ function endShift() {
     '<p style="margin:0">你接听的每一个异常，都真实收录在 <b>IMAC 国际异常管理联盟</b>档案库中——完整的发现经过、已确认规则与进入记录，都在那里。</p>' +
     '<p style="margin:8px 0 0"><b style="color:var(--blue)">kailily.github.io/imac-web</b></p>';
   var coll = $('endColl');
-  coll.innerHTML = CALLS.map(function (c) {
+  coll.innerHTML = CALLS.slice().sort(function (a, b) { return a.id < b.id ? -1 : a.id > b.id ? 1 : 0; }).map(function (c) {
     var n = 0;
     ['good', 'mid', 'bad'].forEach(function (k) { if (collected[c.id + ':' + k]) n++; });
     return '<span class="' + (n === 3 ? 'g' : n > 0 ? 'b' : '') + '">' + c.code + ' ' + n + '/3</span>';
