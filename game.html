@@ -578,9 +578,18 @@ function collCount() { var n = 0; for (var k in collected) if (collected[k]) n++
 
 function $(id) { return document.getElementById(id); }
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+/* 滚动复位：切换页面、进入下一通时都回到顶部，否则新内容会在视口上方看不见 */
+function pageTop(id) {
+  var p = $(id);
+  if (p) p.scrollTop = 0;
+  var d = document.documentElement, b = document.body;
+  if (d && d.scrollTop) d.scrollTop = 0;
+  if (b && b.scrollTop) b.scrollTop = 0;
+}
 function show(p) {
   ['pageHome', 'pageCall', 'pageEnd', 'pageBadge', 'pageAttrs'].forEach(function (x) { $(x).classList.toggle('on', x === p); });
   $('navBack').style.visibility = p === 'pageHome' ? 'hidden' : 'visible';
+  pageTop(p);
 }
 function goHome() {
   $('stBest').textContent = best ? best : '—';
@@ -640,6 +649,7 @@ function renderCall() {
     '</div>' +
   '</div>';
   $('actWrap').innerHTML = html;
+  pageTop('pageCall');
 }
 function fillFree(k) {
   var t = $('freeIn');
