@@ -1,14 +1,18 @@
 function RegisterPage() {
   const { navigate } = useRouter();
+  // 自动填入：读取本地保存的「溯界者申请」资料（纯前端，同一浏览器共享）
+  const appliedProfile = (() => {
+    try { return JSON.parse(localStorage.getItem("imac_application_profile") || "null"); } catch (e) { return null; }
+  })();
   const [formData, setFormData] = React.useState({
-    realName: "",
-    codename: "",
+    realName: appliedProfile?.realName || "",
+    codename: appliedProfile?.codename || "",
     imacId: "",
-    organization: "",
+    organization: appliedProfile?.organization || "",
     rank: "见习",
     password: "",
     confirmPassword: "",
-    contact: "",
+    contact: appliedProfile?.contact || "",
     agreement: false,
   });
   const [errors, setErrors] = React.useState({});
@@ -190,6 +194,17 @@ function RegisterPage() {
           cursor: pointer;
         }
         .reg-tip a:hover { text-decoration: underline; }
+
+        .reg-prefill-tip {
+          margin-bottom: 20px;
+          padding: 12px 16px;
+          border: 1px solid rgba(74, 124, 89, 0.5);
+          border-left: 3px solid var(--level-ordinary);
+          background: rgba(74, 124, 89, 0.08);
+          font-size: 12.5px;
+          color: var(--text-secondary);
+          line-height: 1.7;
+        }
 
         .reg-classification-tag {
           display: inline-flex;
@@ -548,6 +563,11 @@ function RegisterPage() {
             </div>
 
             <form className="reg-form-card" onSubmit={handleSubmit}>
+              {appliedProfile && (
+                <div className="reg-prefill-tip">
+                  ✓ 已从「溯界者申请」自动填入姓名、代号、联系方式与意向组织，请补充 IMAC 编号与密码
+                </div>
+              )}
               {/* 基本信息 */}
               <div className="reg-section">
                 <div className="reg-section-title">

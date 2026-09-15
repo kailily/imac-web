@@ -2,15 +2,23 @@ function RegisterPage() {
   const {
     navigate
   } = useRouter();
+  // 自动填入：读取本地保存的「溯界者申请」资料（纯前端，同一浏览器共享）
+  const appliedProfile = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("imac_application_profile") || "null");
+    } catch (e) {
+      return null;
+    }
+  })();
   const [formData, setFormData] = React.useState({
-    realName: "",
-    codename: "",
+    realName: appliedProfile?.realName || "",
+    codename: appliedProfile?.codename || "",
     imacId: "",
-    organization: "",
+    organization: appliedProfile?.organization || "",
     rank: "见习",
     password: "",
     confirmPassword: "",
-    contact: "",
+    contact: appliedProfile?.contact || "",
     agreement: false
   });
   const [errors, setErrors] = React.useState({});
@@ -182,6 +190,17 @@ function RegisterPage() {
           cursor: pointer;
         }
         .reg-tip a:hover { text-decoration: underline; }
+
+        .reg-prefill-tip {
+          margin-bottom: 20px;
+          padding: 12px 16px;
+          border: 1px solid rgba(74, 124, 89, 0.5);
+          border-left: 3px solid var(--level-ordinary);
+          background: rgba(74, 124, 89, 0.08);
+          font-size: 12.5px;
+          color: var(--text-secondary);
+          line-height: 1.7;
+        }
 
         .reg-classification-tag {
           display: inline-flex;
@@ -553,7 +572,9 @@ function RegisterPage() {
   }, "\u524D\u5F80\"\u52A0\u5165\u6211\u4EEC\"\u4E86\u89E3\u7533\u8BF7\u6D41\u7A0B"))), /*#__PURE__*/React.createElement("form", {
     className: "reg-form-card",
     onSubmit: handleSubmit
-  }, /*#__PURE__*/React.createElement("div", {
+  }, appliedProfile && /*#__PURE__*/React.createElement("div", {
+    className: "reg-prefill-tip"
+  }, "\u2713 \u5DF2\u4ECE\u300C\u6EAF\u754C\u8005\u7533\u8BF7\u300D\u81EA\u52A8\u586B\u5165\u59D3\u540D\u3001\u4EE3\u53F7\u3001\u8054\u7CFB\u65B9\u5F0F\u4E0E\u610F\u5411\u7EC4\u7EC7\uFF0C\u8BF7\u8865\u5145 IMAC \u7F16\u53F7\u4E0E\u5BC6\u7801"), /*#__PURE__*/React.createElement("div", {
     className: "reg-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "reg-section-title"

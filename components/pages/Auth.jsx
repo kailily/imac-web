@@ -3,7 +3,14 @@ function AuthPage() {
   const { navigate } = useRouter();
   const { setAuth, logout, authLevel, levels, currentLevelInfo } = useAuth();
   const [selectedTier, setSelectedTier] = React.useState(null);
-  const [formData, setFormData] = React.useState({});
+  // 自动填入：读取本地注册信息中的 IMAC 编号（纯前端，同一浏览器共享）
+  const [formData, setFormData] = React.useState(() => {
+    try {
+      const reg = JSON.parse(localStorage.getItem("imac_registered_profile") || "null");
+      if (reg && reg.imacId) return { staffId: reg.imacId };
+    } catch (e) {}
+    return {};
+  });
    const [error, setError] = React.useState("");
    const [success, setSuccess] = React.useState("");
 
