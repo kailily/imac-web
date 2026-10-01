@@ -27,6 +27,8 @@ function AnomalyDetailPage() {
   const isHomeward = anomalyId === "SPA-0317";
   const isSilent = anomalyId === "PHB-0521";
   const isUmbrella = anomalyId === "OBA-0371";
+  const isShadow = anomalyId === "ENA-0019";
+  const isElevator = anomalyId === "TMB-0233";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -245,7 +247,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -2186,6 +2188,491 @@ function AnomalyDetailPage() {
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: umbrellaData
+    });
+  }
+  if (isShadow) {
+    const shadowMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("circle", {
+      cx: "40",
+      cy: "36",
+      r: "10",
+      fill: "rgba(196,164,44,0.3)",
+      stroke: "rgba(196,164,44,0.9)",
+      strokeWidth: "1.3"
+    }), [0, 1, 2, 3].map(i => /*#__PURE__*/React.createElement("line", {
+      key: i,
+      x1: "52",
+      y1: 26 + i * 6,
+      x2: "92",
+      y2: 22 + i * 12,
+      stroke: "rgba(196,164,44,0.45)",
+      strokeWidth: "0.8"
+    })), /*#__PURE__*/React.createElement("text", {
+      x: "16",
+      y: "18",
+      fill: "rgba(196,164,44,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u5F3A\u76F4\u5C04\u5149 \xB7 \u5904\u7F6E\u7A97\u53E3"), /*#__PURE__*/React.createElement("circle", {
+      cx: "150",
+      cy: "52",
+      r: "8",
+      fill: "none",
+      stroke: "rgba(168,168,180,0.95)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "150",
+      y1: "60",
+      x2: "150",
+      y2: "88",
+      stroke: "rgba(168,168,180,0.95)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "150",
+      y1: "68",
+      x2: "136",
+      y2: "80",
+      stroke: "rgba(168,168,180,0.95)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "150",
+      y1: "68",
+      x2: "164",
+      y2: "80",
+      stroke: "rgba(168,168,180,0.95)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "150",
+      y1: "88",
+      x2: "142",
+      y2: "108",
+      stroke: "rgba(168,168,180,0.95)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "150",
+      y1: "88",
+      x2: "158",
+      y2: "108",
+      stroke: "rgba(168,168,180,0.95)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "138",
+      y: "126",
+      fill: "rgba(168,168,180,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u672C\u4F53"), /*#__PURE__*/React.createElement("ellipse", {
+      cx: "238",
+      cy: "112",
+      rx: "32",
+      ry: "11",
+      fill: "rgba(10,10,12,0.95)",
+      stroke: "rgba(196,40,40,0.75)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "214",
+      y: "138",
+      fill: "rgba(196,40,40,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u5F71 \xB7 \u6EDE\u540E 0.5s\u2191"), /*#__PURE__*/React.createElement("path", {
+      d: "M168 96 Q 202 84, 226 100",
+      fill: "none",
+      stroke: "rgba(196,40,40,0.65)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("polygon", {
+      points: "226,100 216,96 220,106",
+      fill: "rgba(196,40,40,0.75)"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "60",
+      y1: "158",
+      x2: "300",
+      y2: "158",
+      stroke: "rgba(74,88,104,0.6)",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "248",
+      y1: "152",
+      x2: "248",
+      y2: "164",
+      stroke: "rgba(196,40,40,0.9)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "200",
+      y: "152",
+      fill: "rgba(196,40,40,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u6EDE\u540E>3s \xB7 \u6362\u5F71"), /*#__PURE__*/React.createElement("text", {
+      x: "64",
+      y: "152",
+      fill: "rgba(168,168,180,0.6)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u9644\u7740\u65F6\u957F \u2192")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u5F71\u968F\u673A\u5236\u793A\u610F \xB7 \u6EDE\u540E\u968F\u9644\u7740\u65F6\u957F\u9012\u589E \xB7 \u5F3A\u5149\u4E0B\u6EDE\u540E\u5F52\u96F6\uFF08\u552F\u4E00\u5904\u7F6E\u7A97\u53E3\uFF09"));
+    const shadowData = {
+      id: "ENA-0019",
+      name: "影随人",
+      nameEn: "SHADOWBOUND · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "22.4",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 34,
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "ENA-0019"), "名称", "影随人 · Shadowbound"], ["所属管辖", "边界研究院 · 投影异常研究所", "首次记录", "安珀历17年 · 洛林自由市"], ["异常等级", {
+        levelKey: "hazardous",
+        text: "危险级 · HAZARDOUS"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 34%"), "（30人进入，20人死亡或失踪）"], "信息价值", "高（唯一确证的「投影层」异常样本）"], ["档案更新", "安珀历39年 · 春", "处置状态", "持续监测 · 无法封锁（以个人为单位附着）"]],
+      discovery: ["安珀历17年秋，洛林自由市一名女教师在夜间巡逻时向警署报告：她站在路灯下，看见自己的影子「朝她挥了挥手」。警员到场后未发现异常，记录为疲劳所致；三周后该女教师失踪，其住所墙面上留下一个人形的灰白痕迹，衣物整齐地摆在痕迹中央。", "边界研究院在接到警署转交的案件后，于安珀历18年春建立专项研究。第一批四名研究员按照「影子滞后」的目击描述进行复现试验，其中两人先后出现影子动作滞后现象——这是人类第一次在受控条件下记录到该异常，也是「影随人」被正式编号（ENA-0019）的开端。两名出现滞后现象的研究员随后失踪，其档案至今列为待寻。", "此后二十年，BRI 陆续收集到十余起确证案例，并确认该异常不依附地点、只依附个人的特性——这使其成为 IMAC 档案中少数「无法用封锁处理」的异常之一。"],
+      features: ["影随人是一类<strong>以个人为单位的投影层异常</strong>（危险级）：它与某人的影子建立附着后，该影子开始与本体动作脱节，滞后随时间递增，最终「追上」本体并完成替换——档案中称为「换影」。", "异常不占据空间，也不受地理范围限制：被附着者无论走到哪里，影子都会跟随（包括在完全无光的房间中，影子依然以「看不见」的方式存在）。因此无法通过区域封锁处理，只能对个人实施观察与干预。", "唯一的处置手段是<strong>强直射光</strong>：照度超过约8万勒克斯时（正午阳光、大功率探照灯），影子被迫与本体同步、滞后归零，此时可执行「剥离处置」。窗口时长与人的体温相关，常温下通常为90秒至4分钟。"],
+      mapNode: shadowMap,
+      mapTag: "机制示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "附着条件",
+        desc: "在背光环境（无窗走廊、夜间路灯下、地下通道）连续停留超过约30分钟后建立附着；一次附着仅针对一人，同一空间内多人时附着目标随机。"
+      }, {
+        num: "二",
+        title: "滞后递增",
+        desc: "附着后影子动作出现约0.5秒滞后，之后每小时约增加0.2秒；滞后不可逆，休息、睡眠均不减缓。"
+      }, {
+        num: "三",
+        title: "强光同步",
+        desc: "照度超过约8万勒克斯的直射光下，影子被迫与本体同步、滞后归零并「静止」；离开强光后从原滞后值继续递增（窗口内未被处置者，滞后不再清零）。"
+      }, {
+        num: "四",
+        title: "换影界限",
+        desc: "滞后超过约3秒后，影子开始独立行动并主动「靠近」本体；完全追平瞬间，本体意识被替换——被替换者（「换影者」）外表无变化，但从此再不进入任何阴影环境。"
+      }, {
+        num: "五",
+        title: "镜像无效",
+        desc: "水面、玻璃、镜面等反射影像不受影响，既不能作为规避手段，也不能用于处置；相反，长时间注视反射影像会加速滞后。"
+      }],
+      speculatedRules: ["影随人可能并非独立实体，而是「投影层」上早已存在的某种结构被异常解除绑定——BRI 的措辞是「不是影子活了，是影子不再属于你」", "处置窗口时长与体温负相关：低温环境下（冷库、冬季户外）最长记录达14分钟，高热状态下不足40秒", "「换影者」的躯壳在数日至数周内行为完全正常，但从不进入阴影——这一行为规律已成为当前唯一可靠的甄别手段", "该异常与「无声剧场」（CGA-0502）的「影幕效应」可能存在同源关系，但两者样本均不足，无法确认"],
+      entryRecords: [{
+        term: "首次记录",
+        year: "安珀历17年·秋",
+        count: 1,
+        org: "洛林自由市警署",
+        result: "上报者失踪 · 案件转交 BRI",
+        status: "death"
+      }, {
+        term: "第一批勘察",
+        year: "安珀历18年·春",
+        count: 4,
+        org: "边界研究院",
+        result: "2人生还，2人失踪",
+        status: "mixed"
+      }, {
+        term: "第二批",
+        year: "安珀历20年·夏",
+        count: 6,
+        org: "BRI",
+        result: "2人生还，4人失踪",
+        status: "death"
+      }, {
+        term: "第三批",
+        year: "安珀历24年·冬",
+        count: 5,
+        org: "晨星团",
+        result: "2人生还，3人死亡",
+        status: "death"
+      }, {
+        term: "第四批",
+        year: "安珀历31年·秋",
+        count: 8,
+        org: "BRI/晨星团联合",
+        result: "3人生还，5人失踪",
+        status: "death"
+      }, {
+        term: "第五批",
+        year: "安珀历38年·夏",
+        count: 6,
+        org: "边界研究院",
+        result: "2人生还，4人失踪",
+        status: "death"
+      }],
+      phenomena: ["<strong>「影子的手势」：</strong>附着初期，影子会在无人注视的时刻做出本体未做的小动作（抬手、侧头、停顿）；监控画面中这些动作均出现在画面边缘，正对镜头时从未被记录。", "<strong>「双影对视」：</strong>在双光源环境下，被附着者会出现两个影子，其一始终滞后；当两个影子在墙面或地面上相互靠近时，会同时「停下来」，保持静止数秒后错开——目击者描述为「它们在打量彼此」。", "<strong>「灰白痕迹」：</strong>被替换者失踪后，其长期停留的居所墙面上会留下人形灰白痕迹，衣物整齐摆放在痕迹中央，无外力痕迹；痕迹无法擦除，只能覆盖。"],
+      imacNote: "影随人是目前已知唯一以「个人」为单位的实体类异常——它不占据地点，只跟着一个人。如果你发现自己的影子出现滞后、或做出你没做过的动作，请记住三条：不要奔跑（运动不改变滞后）；不要躲进暗处（暗处加速附着）；立即前往强光环境并联络 99 热线。处置窗口由光决定，而不是由你跑得多快。",
+      suggestedActions: ["在洛林自由市及周边城市推广「正午影子自查」（背光站立，观察影子是否同步），作为公众早期识别手段", "与城市照明部门协商，在重点街区加装可调高照度路灯，作为应急处置光源点并标注位置", "持续跟踪现有 7 例「换影者」躯壳的长期档案，记录其行为规律与最终去向"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u8FB9\u754C\u7814\u7A76\u9662\u5185\u90E8\u8BC4\u4F30 \xB7 \u6295\u5F71\u5F02\u5E38\u7814\u7A76\u6240\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5F71\u968F\u4EBA\u662F\u6211\u6240\u6700\u4E0D\u613F\u5199\u8FDB\u516C\u5F00\u6863\u6848\u7684\u4E00\u6761\u3002\u4E0D\u662F\u56E0\u4E3A\u5B83\u7684\u6B7B\u4EA1\u7387\u2014\u201434% \u5728\u5371\u9669\u7EA7\u91CC\u5E76\u4E0D\u7B97\u9AD8\u2014\u2014\u800C\u662F\u56E0\u4E3A\u5B83\u628A\u300C\u5B89\u5168\u300D\u8FD9\u4E2A\u6982\u5FF5\u5F7B\u5E95\u5F04\u677E\u4E86\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5E38\u89C4\u5F02\u5E38\u5360\u636E\u4E00\u4E2A\u5730\u65B9\uFF0C\u4F60\u53EF\u4EE5\u7ED5\u5F00\uFF1B\u5F71\u968F\u4EBA\u5360\u636E\u4E00\u4E2A\u4EBA\uFF0C\u800C\u4E14\u662F\u4F60\u81EA\u5DF1\u3002\u88AB\u9644\u7740\u8005\u6700\u521D\u7684\u65E5\u5B50\u5F80\u5F80\u6700\u8F7B\u677E\uFF1A\u5F71\u5B50\u6162\u534A\u62CD\uFF0C\u770B\u8D77\u6765\u751A\u81F3\u6709\u70B9\u6ED1\u7A3D\uFF0C\u6709\u4EBA\u8FD8\u62FF\u5B83\u5F00\u73A9\u7B11\u3002\u7136\u540E\u6EDE\u540E\u4E00\u70B9\u70B9\u53D8\u5927\uFF0C\u73A9\u7B11\u6CA1\u4E86\uFF0C\u53EA\u5269\u4E0B\u6BCF\u5929\u91CF\u4E00\u6B21\u5F71\u5B50\u2014\u2014\u50CF\u91CF\u4F53\u6E29\u4E00\u6837\uFF0C\u91CF\u81EA\u5DF1\u8FD8\u5269\u591A\u5C11\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u552F\u4E00\u80FD\u7ED9\u7684\u5904\u7F6E\u5EFA\u8BAE\u662F\u300C\u53BB\u5F3A\u5149\u4E0B\u300D\u3002\u8FD9\u53E5\u8BDD\u5728\u5B9E\u9A8C\u5BA4\u91CC\u6210\u7ACB\uFF0C\u5728\u6DF1\u591C\u7684\u5730\u4E0B\u901A\u9053\u91CC\u7B49\u4E8E\u6CA1\u6709\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u9644\u5E26\u8BF4\u660E\uFF1A\u73B0\u5B58 7 \u4F8B\u6362\u5F71\u8005\u8EAF\u58F3\uFF0C\u6211\u4EEC\u4ECD\u5728\u89C2\u5BDF\u3002\u4ED6\u4EEC\u4E0D\u8FDB\u5165\u9634\u5F71\uFF0C\u4F46\u4E5F\u4E0D\u8FDB\u5165\u8C08\u8BBA\u2014\u2014\u4E03\u4EFD\u9762\u8C08\u8BB0\u5F55\u91CC\uFF0C\u6709\u516D\u4EFD\u63D0\u5230\u540C\u4E00\u53E5\u8BDD\uFF1A\u300C\u4ED6\u4E0D\u662F\u6211\u300D\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u8FB9\u754C\u7814\u7A76\u9662 \xB7 \u6295\u5F71\u5F02\u5E38\u7814\u7A76\u6240 \xB7 \u4EE3\u7406\u6240\u957F \u6C60\u781A")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: shadowData
+    });
+  }
+  if (isElevator) {
+    const elevatorMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "120",
+      y: "18",
+      width: "72",
+      height: "126",
+      fill: "none",
+      stroke: "rgba(74,88,104,0.55)",
+      strokeWidth: "1.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "156",
+      y1: "18",
+      x2: "156",
+      y2: "144",
+      stroke: "rgba(74,88,104,0.35)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), [18, 46, 74, 102, 130].map((y, i) => /*#__PURE__*/React.createElement("line", {
+      key: i,
+      x1: "120",
+      y1: y,
+      x2: "192",
+      y2: y,
+      stroke: "rgba(74,88,104,0.35)",
+      strokeWidth: "0.8"
+    })), /*#__PURE__*/React.createElement("circle", {
+      cx: "132",
+      cy: "80",
+      r: "5",
+      fill: "none",
+      stroke: "rgba(196,40,40,0.85)",
+      strokeWidth: "1.4"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "83",
+      fill: "rgba(196,40,40,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "7F \xB7 \u89E6\u53D1\u70B9"), /*#__PURE__*/React.createElement("circle", {
+      cx: "132",
+      cy: "30",
+      r: "5",
+      fill: "none",
+      stroke: "rgba(196,40,40,0.85)",
+      strokeWidth: "1.4"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "33",
+      fill: "rgba(196,40,40,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "14F \xB7 \u89E6\u53D1\u70B9"), /*#__PURE__*/React.createElement("rect", {
+      x: "142",
+      y: "70",
+      width: "28",
+      height: "20",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(168,168,180,0.8)",
+      strokeWidth: "1.2"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "146",
+      y: "84",
+      fill: "rgba(168,168,180,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u8F7F\u53A2"), /*#__PURE__*/React.createElement("rect", {
+      x: "120",
+      y: "102",
+      width: "72",
+      height: "18",
+      fill: "rgba(196,40,40,0.08)",
+      stroke: "rgba(196,40,40,0.5)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "198",
+      y: "115",
+      fill: "rgba(196,40,40,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u4E0D\u5B58\u5728\u5C42 \xB7 \u6BCF7\u6B21\u7EA61\u6B21"), /*#__PURE__*/React.createElement("text", {
+      x: "226",
+      y: "46",
+      fill: "rgba(196,164,44,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u8F7F\u53A2 18s"), /*#__PURE__*/React.createElement("text", {
+      x: "226",
+      y: "60",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u697C\u5916 3\u201340min\u2191"), /*#__PURE__*/React.createElement("line", {
+      x1: "222",
+      y1: "66",
+      x2: "300",
+      y2: "66",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "0.8"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "222",
+      y: "80",
+      fill: "rgba(168,168,180,0.6)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u65F6\u5DEE\u9519\u4F4D\u533A\u95F4"), /*#__PURE__*/React.createElement("text", {
+      x: "60",
+      y: "164",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u5355\u4EBA\u5FC5\u89E6\u53D1 \xB7 \u4E24\u4EBA\u89E6\u53D1\u7387\u7EA61/9 \xB7 \u4E09\u4EBA\u672A\u89C1\u8BB0\u5F55")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u4E95\u9053\u793A\u610F \xB7 \u4EC5 7F \u4E0E 14F \u505C\u9760\u70B9\u89E6\u53D1 \xB7 \u5C42\u663E\u53EA\u5728\u5F00\u95E8\u77AC\u95F4\u8DF3\u53D8"));
+    const elevatorData = {
+      id: "TMB-0233",
+      name: "迟到电梯",
+      nameEn: "LATE ELEVATOR · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "17.9",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 41,
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "TMB-0233"), "名称", "迟到电梯 · Late Elevator"], ["所属管辖", "长桥会社 · 城市交通异常科", "首次记录", "安珀历22年 · 鸣海城"], ["异常等级", {
+        levelKey: "hazardous",
+        text: "危险级 · HAZARDOUS"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 41%"), "（23人进入，13人死亡或失联）"], "信息价值", "高（时差错位类异常中唯一固定载体样本）"], ["档案更新", "安珀历39年 · 春", "处置状态", "轿厢原位保留 · 不改造楼体 · 乘梯引导中"]],
+      discovery: ["安珀历22年春，鸣海城中央区一栋写字楼的管理处接到投诉：有职员称乘坐 7 层至 14 层的电梯「坐了十几分钟」，出梯后手表慢了四个小时，当天的会议全部错过。管理处最初按电梯故障处理，检修记录显示该轿厢运行参数完全正常——18秒的行程，实际用时18秒。", "同年夏，长桥会社城市交通异常科依据异常热线上报介入调查。五名勘察员分组乘坐该轿厢，其中一组（两人）平安返回，另一组（三人）在抵达 14 层后失联；电梯层显停留于 14 长达 47 分钟，随后自行返回 7 层，轿厢内空无一人。", "此后十七年，该轿厢被原位保留并持续监测。长桥会社将其列为「城市交通异常」序列样本，也是目前唯一一个「载体固定、规则稳定、且仍在原建筑内运行」的时差错位类异常。"],
+      features: ["迟到电梯是一处<strong>固定载体的时差错位类异常</strong>（危险级）：位于鸣海城中央区写字楼的一部普通客运电梯，仅在 7 层与 14 层之间的行程中触发，轿厢内时间流速与楼外不一致。", "时差比值不固定：轿厢内完成一次约18秒的行程，楼外可能过去3至40分钟；偏差多为「楼外更久」，即乘梯者走出电梯时，外界已经过去了更长的时间。", "约每7次开门有1次停在「不存在的楼层」：该层布局与标准层完全一致，但无窗、无出口标识、无消防通道；停留期间轿厢门保持开启，不自动关闭。", "触发概率与轿厢内人数负相关：单人乘坐必然触发；两人约1/9；三人及以上至今无触发记录——这一规律是目前唯一的实用规避手段。"],
+      mapNode: elevatorMap,
+      mapTag: "井道示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "时差错位",
+        desc: "轿厢内时间流速与楼外不同，比值随行程变化且不固定（1分钟 ≈ 楼外3–40分钟）；偏差方向几乎总是「楼外更久」。"
+      }, {
+        num: "二",
+        title: "层显跳变",
+        desc: "运行过程中楼层显示屏数字不变化，只在开门瞬间跳变；记录中一次 7F→14F 的运行，层显直接从「7」跳到「14」，用时11分钟。"
+      }, {
+        num: "三",
+        title: "借位停靠",
+        desc: "约每7次开门有1次停在建筑图纸上不存在的楼层；该层无窗、无出口标识、无消防通道，轿厢门保持开启且不自动关闭。"
+      }, {
+        num: "四",
+        title: "人数规律",
+        desc: "单人乘坐必然触发；两人同行时触发概率约1/9；三人及以上未见触发记录。三人同乘是目前唯一被验证有效的规避方式。"
+      }, {
+        num: "五",
+        title: "开门中断",
+        desc: "在触发后立即按下开门键可中断「借位」，轿厢回到正常楼层；但已发生的时差错位不会回退。"
+      }],
+      speculatedRules: ["「不存在的楼层」可能不是空间，而是同一部电梯在另一个时间点的轿厢——即开门看到的仍是电梯，只是「门」开在时间轴上", "时差比值不固定，可能与轿厢内人数、楼外天气以及电梯负载相关；雨天的偏差普遍大于晴天", "有理由怀疑该电梯并非「被异常附着」，而是某一段时间里的电梯「误接」进了这座楼——即异常的本体在时间轴的另一侧", "「时间债」现象（多次乘梯者时间累积变慢）暗示影响并不随乘梯结束而终止"],
+      entryRecords: [{
+        term: "首次上报",
+        year: "安珀历22年·春",
+        count: 1,
+        org: "鸣海城写字楼管理处",
+        result: "职员时间认知错乱 · 送医观察",
+        status: "mixed"
+      }, {
+        term: "长桥会社勘察",
+        year: "安珀历22年·夏",
+        count: 5,
+        org: "长桥会社",
+        result: "3人生还，2人失联",
+        status: "mixed"
+      }, {
+        term: "第二次勘察",
+        year: "安珀历26年·秋",
+        count: 6,
+        org: "长桥会社/BRI",
+        result: "2人生还，4人失联",
+        status: "death"
+      }, {
+        term: "第三次勘察",
+        year: "安珀历33年·冬",
+        count: 7,
+        org: "长桥会社",
+        result: "3人生还，4人失联",
+        status: "death"
+      }, {
+        term: "第四次勘察",
+        year: "安珀历39年·春",
+        count: 4,
+        org: "长桥会社",
+        result: "2人生还，2人失联",
+        status: "mixed"
+      }],
+      phenomena: ["<strong>「时间债」：</strong>多次乘坐者的手表与手机会在乘梯后与楼外时间出现偏差，偏差多为「慢」，且随乘坐次数累积（一名物业管理员累计偏差达7小时12分）。被乘务记录戏称为「时间债」——坐一次，欠一点。", "<strong>「层显静默」：</strong>异常触发时，轿厢内的楼层显示屏不会逐层变化，而是保持一个数字不动；有乘梯者描述为「数字好像被冻住了」，直到开门才「解冻」跳变。", "<strong>「空梯返回」：</strong>失联事件发生后，轿厢总会在数十分钟后自行返回 7 层，门开启、照明正常、无人在内；返回后的轿厢内壁温度比楼外低约5℃，持续约二十分钟。"],
+      imacNote: "迟到电梯的危险不在于坠落，而在于时间——你进入的是18秒的行程，出来的可能是几小时后。请记住三条：不要独自乘坐该楼 7 层与 14 层区间的电梯；发现层显只跳不变、或门开在不认识的楼层时，留在轿厢内不要出去，并按下通话键；出梯后第一时间核对时间，若偏差超过10分钟，请联络 99 热线做时间校准与健康登记。",
+      suggestedActions: ["维持轿厢原位保留（不封停、不改造楼体），加装独立通话与定位装置并对接长桥会社值班室", "与物业管理方联合张贴乘梯提示，引导 7–14 层区间三人以上同乘，降低触发概率", "建立「时间债」登记表，追踪多次乘梯者的时间偏差累积情况与健康指标，作为长期观测数据"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u957F\u6865\u4F1A\u793E\u5185\u90E8\u8BC4\u4F30 \xB7 \u57CE\u5E02\u4EA4\u901A\u5F02\u5E38\u79D1\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u8FDF\u5230\u7535\u68AF\u662F\u6211\u4EEC\u79D1\u91CC\u6700\u300C\u65E5\u5E38\u300D\u7684\u4E00\u4EF6\u5F02\u5E38\uFF1A\u5B83\u5C31\u88C5\u5728\u4E00\u680B\u666E\u901A\u5199\u5B57\u697C\u91CC\uFF0C\u6BCF\u5929\u8F7D\u7740\u4E0A\u73ED\u65CF\u4E0A\u4E0B\u697C\uFF0C\u7535\u68AF\u91CC\u7684\u5E7F\u544A\u706F\u7BB1\u8FD8\u5728\u6B63\u5E38\u8F6E\u64AD\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u4F46\u5341\u4E03\u5E74\u91CC\uFF0C\u6211\u4EEC\u5728\u90A3\u90E8\u8F7F\u53A2\u91CC\u4E22\u4E86 13 \u4E2A\u4EBA\u3002\u6570\u5B57\u4E0D\u5927\uFF0C\u4EE3\u4EF7\u5F88\u5177\u4F53\uFF1A\u5176\u4E2D\u6709\u4F4D\u52D8\u5BDF\u5458\u662F\u4E24\u4E2A\u4EBA\u4E00\u8D77\u8FDB\u53BB\u7684\uFF0C\u4ED6\u51FA\u6765\u4E86\uFF0C\u540C\u4F34\u6CA1\u51FA\u6765\u2014\u2014\u4ED6\u8BF4\u300C\u95E8\u5F00\u7684\u65F6\u5019\uFF0C\u5916\u9762\u662F 14 \u5C42\u7684\u8D70\u5ECA\uFF0C\u6211\u56DE\u5934\u558A\u4ED6\uFF0C\u8D70\u5ECA\u5DF2\u7ECF\u6CA1\u4E86\u300D\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u73B0\u5728\u80FD\u7ED9\u7684\u6307\u5F15\u53EA\u6709\u4E00\u6761\u7BA1\u7528\u7684\uFF1A\u4E09\u4E2A\u4EBA\u4E00\u8D77\u5750\u3002\u542C\u8D77\u6765\u50CF\u73A9\u7B11\uFF0C\u4F46\u8FD9\u662F\u5341\u4E03\u5E74\u6362\u6765\u7684\u552F\u4E00\u4E00\u6761\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u53E6\u5916\u8BF7\u6863\u6848\u5BA4\u6CE8\u610F\uFF1A\u90A3 13 \u540D\u5931\u8054\u8005\u7684\u624B\u8868\uFF0C\u6709 4 \u53EA\u5728\u5931\u8054\u540E\u7EE7\u7EED\u4E0E\u697C\u5185\u7684\u65F6\u949F\u540C\u6B65\u8FC7\u2014\u2014\u6700\u957F\u7684\u4E00\u53EA\u6301\u7EED\u4E86\u4E09\u5E74\u3002\u6211\u4E0D\u77E5\u9053\u8BE5\u600E\u4E48\u89E3\u91CA\uFF0C\u4E5F\u4E0D\u6253\u7B97\u731C\u3002\u5C31\u5148\u8BB0\u4E0B\u6765\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u957F\u6865\u4F1A\u793E \xB7 \u57CE\u5E02\u4EA4\u901A\u5F02\u5E38\u79D1 \xB7 \u79D1\u957F \u90D1\u53D9")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: elevatorData
     });
   }
   if (isRift) {

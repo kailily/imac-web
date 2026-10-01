@@ -26,6 +26,8 @@ function AnomalyDetailPage() {
   const isHomeward = anomalyId === "SPA-0317";
   const isSilent = anomalyId === "PHB-0521";
   const isUmbrella = anomalyId === "OBA-0371";
+  const isShadow = anomalyId === "ENA-0019";
+  const isElevator = anomalyId === "TMB-0233";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -95,7 +97,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator) {
     return (
       <>
         <style>{`
@@ -1148,6 +1150,238 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={umbrellaData} />;
+  }
+
+  if (isShadow) {
+    const shadowMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 强光源 */}
+          <circle cx="40" cy="36" r="10" fill="rgba(196,164,44,0.3)" stroke="rgba(196,164,44,0.9)" strokeWidth="1.3"/>
+          {[0, 1, 2, 3].map((i) => (
+            <line key={i} x1="52" y1={26 + i * 6} x2="92" y2={22 + i * 12} stroke="rgba(196,164,44,0.45)" strokeWidth="0.8"/>
+          ))}
+          <text x="16" y="18" fill="rgba(196,164,44,0.9)" fontSize="8" fontFamily="monospace">强直射光 · 处置窗口</text>
+          {/* 本体 */}
+          <circle cx="150" cy="52" r="8" fill="none" stroke="rgba(168,168,180,0.95)" strokeWidth="1.5"/>
+          <line x1="150" y1="60" x2="150" y2="88" stroke="rgba(168,168,180,0.95)" strokeWidth="1.5"/>
+          <line x1="150" y1="68" x2="136" y2="80" stroke="rgba(168,168,180,0.95)" strokeWidth="1.5"/>
+          <line x1="150" y1="68" x2="164" y2="80" stroke="rgba(168,168,180,0.95)" strokeWidth="1.5"/>
+          <line x1="150" y1="88" x2="142" y2="108" stroke="rgba(168,168,180,0.95)" strokeWidth="1.5"/>
+          <line x1="150" y1="88" x2="158" y2="108" stroke="rgba(168,168,180,0.95)" strokeWidth="1.5"/>
+          <text x="138" y="126" fill="rgba(168,168,180,0.85)" fontSize="8" fontFamily="monospace">本体</text>
+          {/* 滞后的影子 */}
+          <ellipse cx="238" cy="112" rx="32" ry="11" fill="rgba(10,10,12,0.95)" stroke="rgba(196,40,40,0.75)" strokeWidth="1"/>
+          <text x="214" y="138" fill="rgba(196,40,40,0.9)" fontSize="8" fontFamily="monospace">影 · 滞后 0.5s↑</text>
+          {/* 滞后箭头 */}
+          <path d="M168 96 Q 202 84, 226 100" fill="none" stroke="rgba(196,40,40,0.65)" strokeWidth="1" strokeDasharray="4 3"/>
+          <polygon points="226,100 216,96 220,106" fill="rgba(196,40,40,0.75)"/>
+          {/* 换影阈值 */}
+          <line x1="60" y1="158" x2="300" y2="158" stroke="rgba(74,88,104,0.6)" strokeWidth="1"/>
+          <line x1="248" y1="152" x2="248" y2="164" stroke="rgba(196,40,40,0.9)" strokeWidth="1.5"/>
+          <text x="200" y="152" fill="rgba(196,40,40,0.85)" fontSize="8" fontFamily="monospace">滞后&gt;3s · 换影</text>
+          <text x="64" y="152" fill="rgba(168,168,180,0.6)" fontSize="8" fontFamily="monospace">附着时长 →</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          影随机制示意 · 滞后随附着时长递增 · 强光下滞后归零（唯一处置窗口）
+        </div>
+      </div>
+    );
+
+    const shadowData = {
+      id: "ENA-0019",
+      name: "影随人",
+      nameEn: "SHADOWBOUND · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "22.4",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 34,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>ENA-0019</span>, "名称", "影随人 · Shadowbound"],
+        ["所属管辖", "边界研究院 · 投影异常研究所", "首次记录", "安珀历17年 · 洛林自由市"],
+        ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 34%</span>, "（30人进入，20人死亡或失踪）"], "信息价值", "高（唯一确证的「投影层」异常样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "持续监测 · 无法封锁（以个人为单位附着）"],
+      ],
+      discovery: [
+        "安珀历17年秋，洛林自由市一名女教师在夜间巡逻时向警署报告：她站在路灯下，看见自己的影子「朝她挥了挥手」。警员到场后未发现异常，记录为疲劳所致；三周后该女教师失踪，其住所墙面上留下一个人形的灰白痕迹，衣物整齐地摆在痕迹中央。",
+        "边界研究院在接到警署转交的案件后，于安珀历18年春建立专项研究。第一批四名研究员按照「影子滞后」的目击描述进行复现试验，其中两人先后出现影子动作滞后现象——这是人类第一次在受控条件下记录到该异常，也是「影随人」被正式编号（ENA-0019）的开端。两名出现滞后现象的研究员随后失踪，其档案至今列为待寻。",
+        "此后二十年，BRI 陆续收集到十余起确证案例，并确认该异常不依附地点、只依附个人的特性——这使其成为 IMAC 档案中少数「无法用封锁处理」的异常之一。",
+      ],
+      features: [
+        "影随人是一类<strong>以个人为单位的投影层异常</strong>（危险级）：它与某人的影子建立附着后，该影子开始与本体动作脱节，滞后随时间递增，最终「追上」本体并完成替换——档案中称为「换影」。",
+        "异常不占据空间，也不受地理范围限制：被附着者无论走到哪里，影子都会跟随（包括在完全无光的房间中，影子依然以「看不见」的方式存在）。因此无法通过区域封锁处理，只能对个人实施观察与干预。",
+        "唯一的处置手段是<strong>强直射光</strong>：照度超过约8万勒克斯时（正午阳光、大功率探照灯），影子被迫与本体同步、滞后归零，此时可执行「剥离处置」。窗口时长与人的体温相关，常温下通常为90秒至4分钟。",
+      ],
+      mapNode: shadowMap,
+      mapTag: "机制示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "附着条件", desc: "在背光环境（无窗走廊、夜间路灯下、地下通道）连续停留超过约30分钟后建立附着；一次附着仅针对一人，同一空间内多人时附着目标随机。" },
+        { num: "二", title: "滞后递增", desc: "附着后影子动作出现约0.5秒滞后，之后每小时约增加0.2秒；滞后不可逆，休息、睡眠均不减缓。" },
+        { num: "三", title: "强光同步", desc: "照度超过约8万勒克斯的直射光下，影子被迫与本体同步、滞后归零并「静止」；离开强光后从原滞后值继续递增（窗口内未被处置者，滞后不再清零）。" },
+        { num: "四", title: "换影界限", desc: "滞后超过约3秒后，影子开始独立行动并主动「靠近」本体；完全追平瞬间，本体意识被替换——被替换者（「换影者」）外表无变化，但从此再不进入任何阴影环境。" },
+        { num: "五", title: "镜像无效", desc: "水面、玻璃、镜面等反射影像不受影响，既不能作为规避手段，也不能用于处置；相反，长时间注视反射影像会加速滞后。" },
+      ],
+      speculatedRules: [
+        "影随人可能并非独立实体，而是「投影层」上早已存在的某种结构被异常解除绑定——BRI 的措辞是「不是影子活了，是影子不再属于你」",
+        "处置窗口时长与体温负相关：低温环境下（冷库、冬季户外）最长记录达14分钟，高热状态下不足40秒",
+        "「换影者」的躯壳在数日至数周内行为完全正常，但从不进入阴影——这一行为规律已成为当前唯一可靠的甄别手段",
+        "该异常与「无声剧场」（CGA-0502）的「影幕效应」可能存在同源关系，但两者样本均不足，无法确认",
+      ],
+      entryRecords: [
+        { term: "首次记录", year: "安珀历17年·秋", count: 1, org: "洛林自由市警署", result: "上报者失踪 · 案件转交 BRI", status: "death" },
+        { term: "第一批勘察", year: "安珀历18年·春", count: 4, org: "边界研究院", result: "2人生还，2人失踪", status: "mixed" },
+        { term: "第二批", year: "安珀历20年·夏", count: 6, org: "BRI", result: "2人生还，4人失踪", status: "death" },
+        { term: "第三批", year: "安珀历24年·冬", count: 5, org: "晨星团", result: "2人生还，3人死亡", status: "death" },
+        { term: "第四批", year: "安珀历31年·秋", count: 8, org: "BRI/晨星团联合", result: "3人生还，5人失踪", status: "death" },
+        { term: "第五批", year: "安珀历38年·夏", count: 6, org: "边界研究院", result: "2人生还，4人失踪", status: "death" },
+      ],
+      phenomena: [
+        "<strong>「影子的手势」：</strong>附着初期，影子会在无人注视的时刻做出本体未做的小动作（抬手、侧头、停顿）；监控画面中这些动作均出现在画面边缘，正对镜头时从未被记录。",
+        "<strong>「双影对视」：</strong>在双光源环境下，被附着者会出现两个影子，其一始终滞后；当两个影子在墙面或地面上相互靠近时，会同时「停下来」，保持静止数秒后错开——目击者描述为「它们在打量彼此」。",
+        "<strong>「灰白痕迹」：</strong>被替换者失踪后，其长期停留的居所墙面上会留下人形灰白痕迹，衣物整齐摆放在痕迹中央，无外力痕迹；痕迹无法擦除，只能覆盖。",
+      ],
+      imacNote: "影随人是目前已知唯一以「个人」为单位的实体类异常——它不占据地点，只跟着一个人。如果你发现自己的影子出现滞后、或做出你没做过的动作，请记住三条：不要奔跑（运动不改变滞后）；不要躲进暗处（暗处加速附着）；立即前往强光环境并联络 99 热线。处置窗口由光决定，而不是由你跑得多快。",
+      suggestedActions: [
+        "在洛林自由市及周边城市推广「正午影子自查」（背光站立，观察影子是否同步），作为公众早期识别手段",
+        "与城市照明部门协商，在重点街区加装可调高照度路灯，作为应急处置光源点并标注位置",
+        "持续跟踪现有 7 例「换影者」躯壳的长期档案，记录其行为规律与最终去向",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【边界研究院内部评估 · 投影异常研究所】<br/><br/>
+              影随人是我所最不愿写进公开档案的一条。不是因为它的死亡率——34% 在危险级里并不算高——而是因为它把「安全」这个概念彻底弄松了。<br/><br/>
+              常规异常占据一个地方，你可以绕开；影随人占据一个人，而且是你自己。被附着者最初的日子往往最轻松：影子慢半拍，看起来甚至有点滑稽，有人还拿它开玩笑。然后滞后一点点变大，玩笑没了，只剩下每天量一次影子——像量体温一样，量自己还剩多少。<br/><br/>
+              我们唯一能给的处置建议是「去强光下」。这句话在实验室里成立，在深夜的地下通道里等于没有。<br/><br/>
+              附带说明：现存 7 例换影者躯壳，我们仍在观察。他们不进入阴影，但也不进入谈论——七份面谈记录里，有六份提到同一句话：「他不是我」。
+            </p>
+            <div className="internal-note-signature">— 边界研究院 · 投影异常研究所 · 代理所长 池砚</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={shadowData} />;
+  }
+
+  if (isElevator) {
+    const elevatorMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 井道 */}
+          <rect x="120" y="18" width="72" height="126" fill="none" stroke="rgba(74,88,104,0.55)" strokeWidth="1.5"/>
+          <line x1="156" y1="18" x2="156" y2="144" stroke="rgba(74,88,104,0.35)" strokeWidth="1" strokeDasharray="4 3"/>
+          {[18, 46, 74, 102, 130].map((y, i) => (
+            <line key={i} x1="120" y1={y} x2="192" y2={y} stroke="rgba(74,88,104,0.35)" strokeWidth="0.8"/>
+          ))}
+          {/* 7 层 */}
+          <circle cx="132" cy="80" r="5" fill="none" stroke="rgba(196,40,40,0.85)" strokeWidth="1.4"/>
+          <text x="60" y="83" fill="rgba(196,40,40,0.9)" fontSize="8" fontFamily="monospace">7F · 触发点</text>
+          {/* 14 层 */}
+          <circle cx="132" cy="30" r="5" fill="none" stroke="rgba(196,40,40,0.85)" strokeWidth="1.4"/>
+          <text x="60" y="33" fill="rgba(196,40,40,0.9)" fontSize="8" fontFamily="monospace">14F · 触发点</text>
+          {/* 轿厢 */}
+          <rect x="142" y="70" width="28" height="20" fill="rgba(20,20,24,0.9)" stroke="rgba(168,168,180,0.8)" strokeWidth="1.2"/>
+          <text x="146" y="84" fill="rgba(168,168,180,0.9)" fontSize="8" fontFamily="monospace">轿厢</text>
+          {/* 不存在的楼层 */}
+          <rect x="120" y="102" width="72" height="18" fill="rgba(196,40,40,0.08)" stroke="rgba(196,40,40,0.5)" strokeWidth="1" strokeDasharray="4 3"/>
+          <text x="198" y="115" fill="rgba(196,40,40,0.85)" fontSize="8" fontFamily="monospace">不存在层 · 每7次约1次</text>
+          {/* 时间对比 */}
+          <text x="226" y="46" fill="rgba(196,164,44,0.9)" fontSize="8" fontFamily="monospace">轿厢 18s</text>
+          <text x="226" y="60" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">楼外 3–40min↑</text>
+          <line x1="222" y1="66" x2="300" y2="66" stroke="rgba(74,88,104,0.5)" strokeWidth="0.8"/>
+          <text x="222" y="80" fill="rgba(168,168,180,0.6)" fontSize="8" fontFamily="monospace">时差错位区间</text>
+          {/* 底部标注 */}
+          <text x="60" y="164" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">单人必触发 · 两人触发率约1/9 · 三人未见记录</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          井道示意 · 仅 7F 与 14F 停靠点触发 · 层显只在开门瞬间跳变
+        </div>
+      </div>
+    );
+
+    const elevatorData = {
+      id: "TMB-0233",
+      name: "迟到电梯",
+      nameEn: "LATE ELEVATOR · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "17.9",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 41,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>TMB-0233</span>, "名称", "迟到电梯 · Late Elevator"],
+        ["所属管辖", "长桥会社 · 城市交通异常科", "首次记录", "安珀历22年 · 鸣海城"],
+        ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 41%</span>, "（23人进入，13人死亡或失联）"], "信息价值", "高（时差错位类异常中唯一固定载体样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "轿厢原位保留 · 不改造楼体 · 乘梯引导中"],
+      ],
+      discovery: [
+        "安珀历22年春，鸣海城中央区一栋写字楼的管理处接到投诉：有职员称乘坐 7 层至 14 层的电梯「坐了十几分钟」，出梯后手表慢了四个小时，当天的会议全部错过。管理处最初按电梯故障处理，检修记录显示该轿厢运行参数完全正常——18秒的行程，实际用时18秒。",
+        "同年夏，长桥会社城市交通异常科依据异常热线上报介入调查。五名勘察员分组乘坐该轿厢，其中一组（两人）平安返回，另一组（三人）在抵达 14 层后失联；电梯层显停留于 14 长达 47 分钟，随后自行返回 7 层，轿厢内空无一人。",
+        "此后十七年，该轿厢被原位保留并持续监测。长桥会社将其列为「城市交通异常」序列样本，也是目前唯一一个「载体固定、规则稳定、且仍在原建筑内运行」的时差错位类异常。",
+      ],
+      features: [
+        "迟到电梯是一处<strong>固定载体的时差错位类异常</strong>（危险级）：位于鸣海城中央区写字楼的一部普通客运电梯，仅在 7 层与 14 层之间的行程中触发，轿厢内时间流速与楼外不一致。",
+        "时差比值不固定：轿厢内完成一次约18秒的行程，楼外可能过去3至40分钟；偏差多为「楼外更久」，即乘梯者走出电梯时，外界已经过去了更长的时间。",
+        "约每7次开门有1次停在「不存在的楼层」：该层布局与标准层完全一致，但无窗、无出口标识、无消防通道；停留期间轿厢门保持开启，不自动关闭。",
+        "触发概率与轿厢内人数负相关：单人乘坐必然触发；两人约1/9；三人及以上至今无触发记录——这一规律是目前唯一的实用规避手段。",
+      ],
+      mapNode: elevatorMap,
+      mapTag: "井道示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "时差错位", desc: "轿厢内时间流速与楼外不同，比值随行程变化且不固定（1分钟 ≈ 楼外3–40分钟）；偏差方向几乎总是「楼外更久」。" },
+        { num: "二", title: "层显跳变", desc: "运行过程中楼层显示屏数字不变化，只在开门瞬间跳变；记录中一次 7F→14F 的运行，层显直接从「7」跳到「14」，用时11分钟。" },
+        { num: "三", title: "借位停靠", desc: "约每7次开门有1次停在建筑图纸上不存在的楼层；该层无窗、无出口标识、无消防通道，轿厢门保持开启且不自动关闭。" },
+        { num: "四", title: "人数规律", desc: "单人乘坐必然触发；两人同行时触发概率约1/9；三人及以上未见触发记录。三人同乘是目前唯一被验证有效的规避方式。" },
+        { num: "五", title: "开门中断", desc: "在触发后立即按下开门键可中断「借位」，轿厢回到正常楼层；但已发生的时差错位不会回退。" },
+      ],
+      speculatedRules: [
+        "「不存在的楼层」可能不是空间，而是同一部电梯在另一个时间点的轿厢——即开门看到的仍是电梯，只是「门」开在时间轴上",
+        "时差比值不固定，可能与轿厢内人数、楼外天气以及电梯负载相关；雨天的偏差普遍大于晴天",
+        "有理由怀疑该电梯并非「被异常附着」，而是某一段时间里的电梯「误接」进了这座楼——即异常的本体在时间轴的另一侧",
+        "「时间债」现象（多次乘梯者时间累积变慢）暗示影响并不随乘梯结束而终止",
+      ],
+      entryRecords: [
+        { term: "首次上报", year: "安珀历22年·春", count: 1, org: "鸣海城写字楼管理处", result: "职员时间认知错乱 · 送医观察", status: "mixed" },
+        { term: "长桥会社勘察", year: "安珀历22年·夏", count: 5, org: "长桥会社", result: "3人生还，2人失联", status: "mixed" },
+        { term: "第二次勘察", year: "安珀历26年·秋", count: 6, org: "长桥会社/BRI", result: "2人生还，4人失联", status: "death" },
+        { term: "第三次勘察", year: "安珀历33年·冬", count: 7, org: "长桥会社", result: "3人生还，4人失联", status: "death" },
+        { term: "第四次勘察", year: "安珀历39年·春", count: 4, org: "长桥会社", result: "2人生还，2人失联", status: "mixed" },
+      ],
+      phenomena: [
+        "<strong>「时间债」：</strong>多次乘坐者的手表与手机会在乘梯后与楼外时间出现偏差，偏差多为「慢」，且随乘坐次数累积（一名物业管理员累计偏差达7小时12分）。被乘务记录戏称为「时间债」——坐一次，欠一点。",
+        "<strong>「层显静默」：</strong>异常触发时，轿厢内的楼层显示屏不会逐层变化，而是保持一个数字不动；有乘梯者描述为「数字好像被冻住了」，直到开门才「解冻」跳变。",
+        "<strong>「空梯返回」：</strong>失联事件发生后，轿厢总会在数十分钟后自行返回 7 层，门开启、照明正常、无人在内；返回后的轿厢内壁温度比楼外低约5℃，持续约二十分钟。",
+      ],
+      imacNote: "迟到电梯的危险不在于坠落，而在于时间——你进入的是18秒的行程，出来的可能是几小时后。请记住三条：不要独自乘坐该楼 7 层与 14 层区间的电梯；发现层显只跳不变、或门开在不认识的楼层时，留在轿厢内不要出去，并按下通话键；出梯后第一时间核对时间，若偏差超过10分钟，请联络 99 热线做时间校准与健康登记。",
+      suggestedActions: [
+        "维持轿厢原位保留（不封停、不改造楼体），加装独立通话与定位装置并对接长桥会社值班室",
+        "与物业管理方联合张贴乘梯提示，引导 7–14 层区间三人以上同乘，降低触发概率",
+        "建立「时间债」登记表，追踪多次乘梯者的时间偏差累积情况与健康指标，作为长期观测数据",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【长桥会社内部评估 · 城市交通异常科】<br/><br/>
+              迟到电梯是我们科里最「日常」的一件异常：它就装在一栋普通写字楼里，每天载着上班族上下楼，电梯里的广告灯箱还在正常轮播。<br/><br/>
+              但十七年里，我们在那部轿厢里丢了 13 个人。数字不大，代价很具体：其中有位勘察员是两个人一起进去的，他出来了，同伴没出来——他说「门开的时候，外面是 14 层的走廊，我回头喊他，走廊已经没了」。<br/><br/>
+              我们现在能给的指引只有一条管用的：三个人一起坐。听起来像玩笑，但这是十七年换来的唯一一条。<br/><br/>
+              另外请档案室注意：那 13 名失联者的手表，有 4 只在失联后继续与楼内的时钟同步过——最长的一只持续了三年。我不知道该怎么解释，也不打算猜。就先记下来。
+            </p>
+            <div className="internal-note-signature">— 长桥会社 · 城市交通异常科 · 科长 郑叙</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={elevatorData} />;
   }
 
   if (isRift) {
