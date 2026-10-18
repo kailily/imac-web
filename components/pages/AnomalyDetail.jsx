@@ -28,6 +28,13 @@ function AnomalyDetailPage() {
   const isUmbrella = anomalyId === "OBA-0371";
   const isShadow = anomalyId === "ENA-0019";
   const isElevator = anomalyId === "TMB-0233";
+  const isEchoAlley = anomalyId === "CGA-0003";
+  const isMirrorHospital = anomalyId === "SPB-0089";
+  const isPermafrost = anomalyId === "TMB-0089";
+  const isGravityZone = anomalyId === "PHB-0815";
+  const isEchoHound = anomalyId === "ENB-0062";
+  const isLostApartment = anomalyId === "LOA-1045";
+  const isEchoBell = anomalyId === "OBB-0265";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -97,7 +104,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator && !isEchoAlley && !isMirrorHospital && !isPermafrost && !isGravityZone && !isEchoHound && !isLostApartment && !isEchoBell) {
     return (
       <>
         <style>{`
@@ -1382,6 +1389,631 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={elevatorData} />;
+  }
+
+  if (isEchoAlley) {
+    const echoAlleyMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 巷子两侧墙 */}
+          <line x1="30" y1="20" x2="30" y2="150" stroke="rgba(74,88,104,0.55)" strokeWidth="2"/>
+          <line x1="310" y1="20" x2="310" y2="150" stroke="rgba(74,88,104,0.55)" strokeWidth="2"/>
+          <line x1="30" y1="20" x2="310" y2="20" stroke="rgba(74,88,104,0.35)" strokeWidth="1"/>
+          <line x1="30" y1="150" x2="310" y2="150" stroke="rgba(74,88,104,0.35)" strokeWidth="1"/>
+          <text x="150" y="14" fill="rgba(168,168,180,0.8)" fontSize="8" fontFamily="monospace">回音巷 · 长约28m</text>
+          {/* 说话者 */}
+          <circle cx="72" cy="92" r="6" fill="none" stroke="rgba(168,168,180,0.9)" strokeWidth="1.3"/>
+          <line x1="72" y1="98" x2="72" y2="116" stroke="rgba(168,168,180,0.9)" strokeWidth="1.3"/>
+          <text x="52" y="132" fill="rgba(168,168,180,0.85)" fontSize="8" fontFamily="monospace">说话者</text>
+          {/* 回声弧 */}
+          {[1, 2, 3].map((i) => (
+            <path key={i} d={"M92 92 q " + (18 * i) + " -" + (10 * i) + " " + (30 * i) + " 0"} fill="none" stroke={"rgba(196,40,40," + (0.7 - i * 0.15) + ")"} strokeWidth="1"/>
+          ))}
+          <text x="150" y="80" fill="rgba(196,40,40,0.8)" fontSize="8" fontFamily="monospace">回声延迟 1.2s</text>
+          {/* 锚点石阶 */}
+          <rect x="196" y="126" width="46" height="10" fill="rgba(20,20,24,0.9)" stroke="rgba(196,164,44,0.8)" strokeWidth="1"/>
+          <text x="190" y="150" fill="rgba(196,164,44,0.85)" fontSize="8" fontFamily="monospace">磨平的石阶 · 锚点</text>
+          {/* 沉默区 */}
+          <rect x="252" y="30" width="52" height="86" fill="none" stroke="rgba(74,88,104,0.5)" strokeWidth="0.8" strokeDasharray="4 3"/>
+          <text x="258" y="74" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">无回声区</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          巷体示意 · 回声延迟固定 1.2s · 中段石阶为锚点
+        </div>
+      </div>
+    );
+
+    const echoAlleyData = {
+      id: "CGA-0003",
+      name: "回音巷",
+      nameEn: "ECHO ALLEY · RESOLVED",
+      stamp: "已归档 · ARCHIVED",
+      classification: "RESTRICTED",
+      ver: "31.2",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 67,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>CGA-0003</span>, "名称", "回音巷 · Echo Alley"],
+        ["所属管辖", "悬铃木学会 · 认知异常研究部", "首次记录", "安珀历9年 · 洛林自由市旧城区"],
+        ["异常等级", { levelKey: "ordinary", text: "常规级 · ORDINARY" }, "当前状态", { statusKey: "resolved", text: "● 已解决 · 坍缩 RESOLVED" }],
+        ["生还率", [<span key="s" style={{ color: "var(--level-ordinary)" }}>约 67%</span>, "（24人进入，8人死亡）"], "信息价值", "高（认知回声类异常首个完整样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 原址改建为社区花园"],
+      ],
+      discovery: [
+        "安珀历9年，洛林自由市旧城区居民陆续反映：一条不足30米长的窄巷里，说话的回声会「回答」一些没被问出口的问题。最初被视为传闻，直到悬铃木学会认知异常研究部的一名研究员在巷中测试时，听见回声用其已故母亲的声音说出了他童年时的一件心事——该内容从未向任何人提起。",
+        "学会随后对巷体进行全面勘察，确认回声锚点位于巷中段一块被岁月磨平的石阶。安珀历13年，在完成全部规则记录后，学会以移动石阶的方式进行处置，回声当即消失，巷道恢复正常。该案例成为认知类异常中第一个被完整记录并主动坍缩的样本。",
+      ],
+      features: [
+        "回音巷是一处<strong>认知干涉型空间异常</strong>（常规级）：巷内回声延迟固定约1.2秒，且回声内容与被说话者最后一句话不完全一致——它会「接话」，说出说话者未说出口的念头。",
+        "听到回声接话的人会产生强烈的接话冲动；一旦接话，便会忘记自己原本想说的内容，转而顺着回声的话继续对话。停留超过约20分钟后，回声开始使用说话者本人的声音，复述其过去在这里说过的句子——巷子会「记住」曾在此停留的人。",
+      ],
+      mapNode: echoAlleyMap,
+      mapTag: "巷体示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "回声延迟", desc: "正常回声延迟约0.4秒；巷内回声延迟固定约1.2秒，内容与被说话者最后一句不完全一致，会「续写」下一句。" },
+        { num: "二", title: "续话冲动", desc: "听到回声续话者会产生强烈接话冲动；接话后忘记原本想说的内容，并顺着回声的句子继续对话。" },
+        { num: "三", title: "记忆借用", desc: "停留超过约20分钟后，回声开始使用说话者本人声音复述其过去的句子；被复述的内容多为说话者已遗忘的旧事。" },
+        { num: "四", title: "锚点规则", desc: "巷中段一块被磨平的石阶为回声锚点；移动该石阶后回声立即消失，巷体恢复正常（安珀历13年坍缩方式）。" },
+      ],
+      entryRecords: [
+        { term: "首批目击", year: "安珀历9年·夏", count: 3, org: "旧城区居民", result: "3人出现「接话失忆」，次日恢复", status: "safe" },
+        { term: "学会勘察", year: "安珀历10年·春", count: 5, org: "悬铃木学会", result: "4人生还，1人滞留后失忆", status: "mixed" },
+        { term: "规则复现", year: "安珀历11年·秋", count: 8, org: "悬铃木学会/晨星团", result: "6人生还，2人失联", status: "mixed" },
+        { term: "坍缩处置", year: "安珀历13年·夏", count: 4, org: "悬铃木学会", result: "4人全部生还，异常坍缩", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「空巷回话」：</strong>无人在巷内说话时，巷子也会发出细碎的低语，内容多为过去在此说过的话的片段；夜间尤为明显，但传感器记录不到声源。",
+        "<strong>「旧声重响」：</strong>曾在此停留的人再次经过时，会听到自己多年前说过的一句话被完整复述，包括当时的语气与停顿。",
+      ],
+    };
+
+    return <AnomalyDossier data={echoAlleyData} />;
+  }
+
+  if (isMirrorHospital) {
+    const mirrorHospitalMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 楼层 */}
+          <rect x="24" y="26" width="292" height="118" fill="none" stroke="rgba(74,88,104,0.5)" strokeWidth="1.2"/>
+          {[26, 55, 84, 113].map((y, i) => (
+            <line key={i} x1="24" y1={y} x2="316" y2={y} stroke="rgba(74,88,104,0.3)" strokeWidth="0.8"/>
+          ))}
+          <text x="28" y="20" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">镜像医院 · 入口层</text>
+          {/* 走廊中线 */}
+          <line x1="24" y1="84" x2="316" y2="84" stroke="rgba(74,88,104,0.45)" strokeWidth="0.8" strokeDasharray="6 4"/>
+          <text x="132" y="80" fill="rgba(168,168,180,0.6)" fontSize="8" fontFamily="monospace">走廊 · 左右翻转</text>
+          {/* 镜面 */}
+          <line x1="236" y1="30" x2="236" y2="140" stroke="rgba(120,150,190,0.8)" strokeWidth="2"/>
+          <text x="240" y="94" fill="rgba(120,150,190,0.9)" fontSize="8" fontFamily="monospace">镜面 · 出口</text>
+          {/* 镜像医护 */}
+          <circle cx="120" cy="70" r="5" fill="none" stroke="rgba(196,40,40,0.85)" strokeWidth="1.2"/>
+          <line x1="120" y1="75" x2="120" y2="88" stroke="rgba(196,40,40,0.85)" strokeWidth="1.2"/>
+          <text x="92" y="102" fill="rgba(196,40,40,0.0)" fontSize="1">.</text>
+          <text x="66" y="100" fill="rgba(196,40,40,0.85)" fontSize="8" fontFamily="monospace">镜像医护（反向同步）</text>
+          {/* 镜中房间 */}
+          <rect x="246" y="40" width="60" height="34" fill="rgba(20,20,24,0.8)" stroke="rgba(120,150,190,0.5)" strokeWidth="0.8" strokeDasharray="3 2"/>
+          <text x="250" y="58" fill="rgba(120,150,190,0.8)" fontSize="8" fontFamily="monospace">镜中房间</text>
+          <text x="250" y="70" fill="rgba(168,168,180,0.6)" fontSize="8" fontFamily="monospace">通向任意楼层</text>
+          {/* 底部 */}
+          <text x="28" y="158" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">进入层 = 离开层 · 其他镜面离开登记为「未出院」</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          镜像医院示意 · 左右方向颠倒 · 仅入口层镜面可离院
+        </div>
+      </div>
+    );
+
+    const mirrorHospitalData = {
+      id: "SPB-0089",
+      name: "镜像医院",
+      nameEn: "MIRROR HOSPITAL · DOOMED",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "19.6",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 12,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>SPB-0089</span>, "名称", "镜像医院 · Mirror Hospital"],
+        ["所属管辖", "晨星团 · 空间异常处置组", "首次记录", "安珀历22年 · 洛林自由市郊"],
+        ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 12%</span>, "（20人进入，18人死亡或失踪）"], "信息价值", "高（镜像空间类最大样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "区域封锁 · 常规巡逻 · 禁止独立进入"],
+      ],
+      discovery: [
+        "安珀历22年，洛林自由市郊一座废弃医院的拆迁队报告：两名工人在清理东侧走廊时走散，其中一人从医院另一侧的窗户被找到——本人坚称自己「没有离开过那条走廊」。晨星团空间异常处置组接报后进入勘察，发现医院内部左右方向与外界完全颠倒，且走廊尽头的镜子中存在与真实房间一一对应的「镜中房间」。",
+        "首批四名勘察员进入后，仅一人从入口镜面返回；其余三人在镜中房间之间穿行，最后被记录为「未出院」。此后十七年，该院被晨星团接管封锁，作为镜像空间类异常的长期观测样本。",
+      ],
+      features: [
+        "镜像医院是一处<strong>镜像空间型异常</strong>（厄运级）：建筑内部左右方向与外界颠倒（左转即右转），但地面标线与指示牌并不翻转——因此顺着标线走的人往往越走越偏。",
+        "每层尽头的镜子里存在与真实房间一一对应的「镜中房间」：进入镜中房间后，出口可通向任意楼层。医院中还存在与真实医护动作完全同步、方向相反的「镜像医护」；被其「接诊」的人会接受一场在记录中显示为「已完成」的手术。",
+      ],
+      mapNode: mirrorHospitalMap,
+      mapTag: "楼层示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "左右翻转", desc: "进入后左右方向与外界颠倒（左转即右转），地面标线与指示牌不翻转，顺着标线行走会逐渐偏离。" },
+        { num: "二", title: "镜中房间", desc: "各层尽头镜面存在与真实房间对应的镜中房间；进入后出口通向任意楼层，楼层关系不再可靠。" },
+        { num: "三", title: "镜像医护", desc: "存在与真实医护动作同步、方向相反的镜像医护；被其接诊者会被记录为完成一场手术。" },
+        { num: "四", title: "离院规则", desc: "只能从进入时的那面镜子离开；从其他镜面离开者会被登记为「未出院」，至今未找到。" },
+      ],
+      speculatedRules: [
+        "镜像医院可能是同一建筑在不同时间点的叠印——镜中房间的陈设属于医院停业前的某个时段",
+        "「已完成」的手术记录笔迹与一名已故外科医生一致，该医生从未在此医院任职",
+        "被镜像医护接诊者的体温会在数日内缓慢下降约0.5℃，无明显健康影响",
+      ],
+      entryRecords: [
+        { term: "拆迁队误入", year: "安珀历22年·夏", count: 2, org: "拆迁队", result: "1人生还，1人失踪", status: "mixed" },
+        { term: "首批勘察", year: "安珀历22年·秋", count: 4, org: "晨星团", result: "1人生还，3人未出院", status: "death" },
+        { term: "第二批", year: "安珀历26年·春", count: 5, org: "晨星团/悬铃木学会", result: "1人生还，4人未出院", status: "death" },
+        { term: "第三批", year: "安珀历33年·冬", count: 4, org: "晨星团", result: "1人生还，3人未出院", status: "death" },
+        { term: "第四批", year: "安珀历38年·秋", count: 5, org: "晨星团", result: "1人生还，4人未出院", status: "death" },
+      ],
+      phenomena: [
+        "<strong>「双份病历」：</strong>医院档案室中，每位进入者的病历都会出现两份——一份为真实记录，另一份以「已完成手术」结尾，手术时间多为进入后的数小时。",
+        "<strong>「走廊尽头的自己」：</strong>勘察员多次报告在走廊尽头看到与自己动作相同的人影；靠近时人影会转身走入镜面，镜面随后恢复平静。",
+        "<strong>「夜班灯」：</strong>封锁期间，医院三楼手术室的灯会在深夜自动亮起，持续约两小时后熄灭；监控中无人进入该手术室。",
+      ],
+      imacNote: "镜像医院的危险不在于建筑本身，而在于「方向」。进入后请记住三件事：不要顺着地面标线走；不要进入任何镜面之后的房间；离开时只走进入时的那面镜子。如果发现走廊尽头的「自己」先转身，请立即原路返回，不要跟上去。",
+      suggestedActions: [
+        "维持封锁区三层围栏与夜间巡逻，入口处设立「方向校验点」（以固定参照物确认左右）",
+        "所有进入勘察必须双人一组并携带反光路标，沿进入路径逐段标记",
+        "对现有 20 名进入者的病历进行比对，追踪「双份病历」的出现规律",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【晨星团内部评估 · 空间异常处置组】<br/><br/>
+              镜像医院是我们组最重的档案：20 个人进去，18 个人没出来。<br/><br/>
+              最难受的是「双份病历」。每次有人进去，档案室就会多出一份写着手术完成的病历——病人姓名、年龄、手术名称都填得清清楚楚，主刀医生的签名我们也核对过：是一位三十年前就已去世、从未在这家医院任职的外科医生。<br/><br/>
+              我们不再派单人进去。双人也不行——有一组双人进去，出来的是一个。他说「我回头看的时候，我同伴正跟着另一个我从镜子里往外走」。<br/><br/>
+              我们现在的规矩只有一条：离开只走入口镜。其余的，等它自己告诉我们。
+            </p>
+            <div className="internal-note-signature">— 晨星团 · 空间异常处置组 · 组长 陆见山</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={mirrorHospitalData} />;
+  }
+
+  if (isPermafrost) {
+    const permafrostMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 地面 */}
+          <line x1="20" y1="46" x2="320" y2="46" stroke="rgba(74,88,104,0.6)" strokeWidth="1.5"/>
+          <text x="24" y="40" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">白松城地表 · 0m</text>
+          {/* 冻土层 */}
+          <rect x="20" y="46" width="300" height="66" fill="rgba(120,150,190,0.08)" stroke="rgba(120,150,190,0.55)" strokeWidth="1" strokeDasharray="5 3"/>
+          <text x="24" y="62" fill="rgba(120,150,190,0.9)" fontSize="8" fontFamily="monospace">冻土层 · 时间流速 约1/6</text>
+          {/* 竖井 */}
+          <rect x="150" y="46" width="26" height="66" fill="rgba(20,20,24,0.85)" stroke="rgba(168,168,180,0.7)" strokeWidth="1"/>
+          <text x="184" y="78" fill="rgba(168,168,180,0.8)" fontSize="8" fontFamily="monospace">入口竖井（唯一出口）</text>
+          {/* 冻结的物体 */}
+          <rect x="70" y="78" width="16" height="10" fill="rgba(168,168,180,0.5)" stroke="rgba(168,168,180,0.8)" strokeWidth="0.8"/>
+          <text x="58" y="102" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">冻结的旧物</text>
+          {/* 热源警告 */}
+          <circle cx="270" cy="84" r="6" fill="rgba(196,40,40,0.25)" stroke="rgba(196,40,40,0.85)" strokeWidth="1.2"/>
+          <text x="248" y="106" fill="rgba(196,40,40,0.85)" fontSize="8" fontFamily="monospace">热源 · 加速苏醒</text>
+          {/* 时间结算箭头 */}
+          <path d="M244 118 L 296 118" stroke="rgba(196,40,40,0.6)" strokeWidth="1" strokeDasharray="4 3"/>
+          <polygon points="296,118 286,114 288,122" fill="rgba(196,40,40,0.7)"/>
+          <text x="240" y="134" fill="rgba(196,40,40,0.75)" fontSize="8" fontFamily="monospace">新出口 = 时间结算</text>
+          {/* 底部 */}
+          <text x="24" y="160" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">土层内1小时 ≈ 地面10分钟 · 取出物体补算被冻结的时间</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          冻土层剖面示意 · 时间在土层内变慢 · 仅入口竖井可返回
+        </div>
+      </div>
+    );
+
+    const permafrostData = {
+      id: "TMB-0089",
+      name: "白松城冻土层",
+      nameEn: "BAISHONG PERMAFROST · HAZARDOUS",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "8.3",
+      updated: "安珀历39年·夏",
+      archiveDate: "安珀历39年夏",
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>TMB-0089</span>, "名称", "白松城冻土层 · Baishong Permafrost"],
+        ["所属管辖", "北境守望 · 极地异常科", "首次记录", "安珀历39年 · 白松城北郊"],
+        ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span key="s">—</span>, "（尚无完整进入统计：地表作业事故为主）"], "信息价值", "高（近年新确认的时间沉降类地质异常）"],
+        ["档案更新", "安珀历39年 · 夏", "处置状态", "北郊施工冻结 · 竖井封闭 · 持续监测"],
+      ],
+      discovery: [
+        "安珀历39年春，白松城北郊一项地下管廊工程在开挖至约11米深时，施工队报告「土层是冰的，但天气已经转暖两个月了」。三名工人下井作业约一小时后返回地面，发现外界已过去近六个小时，其中一名工人随身携带的保温杯里，早上倒的热水仍是温的。",
+        "北境守望极地异常科介入后确认，该区域冻土层内时间流速约为地表的六分之一，且土层内放置的物体不会腐坏、不会老化。工程随即停工，竖井封闭，冻土层划为监测区。由于发现时间较短，完整的进入统计仍未完成。",
+      ],
+      features: [
+        "白松城冻土层是一处<strong>时间沉降型地质异常</strong>（危险级）：在土层内活动时，时间流速约为地表的六分之一——土层内度过约1小时，地面只过去约10分钟。",
+        "土层中放置的物体不会腐败、不会老化；取出后会「补算」被冻结的时间，迅速衰老或腐坏。携带热源（含体温）会加速冻土层「苏醒」：局部温度骤降，土层开始主动包裹热源。",
+      ],
+      mapNode: permafrostMap,
+      mapTag: "剖面示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "时间沉降", desc: "土层内时间流速约为地表的1/6；土层内1小时 ≈ 地面10分钟，出入时以地表时钟为准。" },
+        { num: "二", title: "静物保存", desc: "土层内物体不腐坏、不老化；取出后补算被冻结的时间，可能立即腐坏或衰老。" },
+        { num: "三", title: "热源禁忌", desc: "携带热源（含体温过高）会加速土层苏醒：局部骤冷、土层主动包裹热源。" },
+        { num: "四", title: "出口规则", desc: "只能沿进入时的竖井返回；打新出口会触发「时间结算」，被冻结的时间一次性补上。" },
+      ],
+      speculatedRules: [
+        "冻土层可能是一处「天然时间沉降区」，白松城建于其上，城市地基与土层的时间差或已持续数十年",
+        "土层深处可能存在更早的「沉降物」——施工队在11米处探测到的金属回波尚未开挖确认",
+        "「时间结算」现象的强度与土层被扰动的体积相关，打穿整层可能引发区域性时间补算",
+      ],
+      entryRecords: [
+        { term: "施工队误入", year: "安珀历39年·春", count: 3, org: "北郊管廊工程队", result: "3人生还，1人手腕冻伤", status: "safe" },
+        { term: "北境守望勘察", year: "安珀历39年·夏", count: 4, org: "北境守望", result: "4人生还，1人轻度时间认知错乱", status: "safe" },
+        { term: "竖井封闭作业", year: "安珀历39年·夏", count: 6, org: "北境守望/白松城工程处", result: "6人生还，竖井封闭完成", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「温热的保温杯」：</strong>在土层中放置的热饮，取出后温度几乎不降；同一施工队另一只放在地面的保温杯，同时间段已完全冷却。",
+        "<strong>「一夜白头的工人」：</strong>有工人从新开的侧向出口离开后，在数小时内迅速衰老，被记录为「时间结算」的首例；当事人事后称「像是把欠了的时间一次还清了」。",
+        "<strong>「土层里的声音」：</strong>夜间监测设备在冻土层中录到规律的低频敲击声，间隔约11分钟，来源不明。",
+      ],
+      imacNote: "白松城冻土层是新确认的异常，规则仍在补充。请记住：不要进入北郊监测区；如遇施工误入，只沿原竖井返回，不要另开出口；在土层中停留后返回地面，请核对时间并检查随身物品是否「变旧」。如出现快速衰老迹象，立即联络 99 热线。",
+      suggestedActions: [
+        "维持北郊监测区围栏与竖井封闭，禁止任何未经批准的挖掘作业",
+        "在土层内布设时间基准设备，持续校准内外时间流速比",
+        "对施工队三名工人进行长期健康跟踪，记录「时间沉降」对人体的影响",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【北境守望内部评估 · 极地异常科】<br/><br/>
+              白松城冻土层是我们今年最警惕的一条。原因很简单：它就在城市下面，而且时间在变慢。<br/><br/>
+              11米处的金属回波我们还没有开挖。探测显示那东西的尺寸像一节车厢，表面温度比周围土层低约4℃。有人说可能是旧时代的工程遗迹，有人说不是。我们暂时按「不明沉降物」记录，不做猜测。<br/><br/>
+              目前唯一的好消息是它很稳定：只要不扰动，它就不动。所以我们的工作也很简单——替它看着那片地。别再有人下去，别再有人打新洞。<br/><br/>
+              另：那三名工人的体检报告显示，他们的生理年龄比实际年龄平均小约两个月。我们不知道该怎么写进结论里，就先记下来。
+            </p>
+            <div className="internal-note-signature">— 北境守望 · 极地异常科 · 值班组长 黎雪</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={permafrostData} />;
+  }
+
+  if (isGravityZone) {
+    const gravityMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 场地 */}
+          <rect x="24" y="24" width="292" height="120" fill="none" stroke="rgba(74,88,104,0.5)" strokeWidth="1.2"/>
+          <text x="28" y="18" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">旧吊车基座 · 场域半径约6m</text>
+          {/* 场域圆 */}
+          <circle cx="170" cy="84" r="48" fill="none" stroke="rgba(196,164,44,0.7)" strokeWidth="1.2" strokeDasharray="5 3"/>
+          {/* 重力方向 */}
+          {[0, 60, 120, 180, 240, 300].map((a, i) => {
+            const rad = (a * Math.PI) / 180;
+            const x1 = 170 + Math.cos(rad) * 30;
+            const y1 = 84 + Math.sin(rad) * 30;
+            const x2 = 170 + Math.cos(rad) * 46;
+            const y2 = 84 + Math.sin(rad) * 46;
+            return (
+              <g key={i}>
+                <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(196,164,44,0.8)" strokeWidth="1.2"/>
+                <circle cx={x2} cy={y2} r="2" fill="rgba(196,164,44,0.9)"/>
+              </g>
+            );
+          })}
+          {/* 钢锭 */}
+          <rect x="158" y="76" width="24" height="16" fill="rgba(20,20,24,0.9)" stroke="rgba(196,40,40,0.85)" strokeWidth="1.2"/>
+          <text x="150" y="104" fill="rgba(196,40,40,0.85)" fontSize="8" fontFamily="monospace">钢锭 · 锚点</text>
+          {/* 边界 */}
+          <line x1="24" y1="150" x2="316" y2="150" stroke="rgba(74,88,104,0.4)" strokeWidth="0.8"/>
+          <text x="28" y="162" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">重力沿切向偏移 · 圆心处约90° · 边界处方向突变</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          场域示意 · 重力沿切向偏移 · 中心钢锭为锚点
+        </div>
+      </div>
+    );
+
+    const gravityZoneData = {
+      id: "PHB-0815",
+      name: "重力偏移区",
+      nameEn: "GRAVITY SHIFT ZONE · RESOLVED",
+      stamp: "已归档 · ARCHIVED",
+      classification: "CONFIDENTIAL",
+      ver: "14.7",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 23,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>PHB-0815</span>, "名称", "重力偏移区 · Gravity Shift Zone"],
+        ["所属管辖", "晨星团 · 物理异常处置组", "首次记录", "安珀历33年 · 洛林自由市工业区"],
+        ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "resolved", text: "● 已解决 · 坍缩 RESOLVED" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 23%</span>, "（13人进入，10人死亡）"], "信息价值", "高（重力类异常首个可控样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "场域已消失 · 原址改建为变电站"],
+      ],
+      discovery: [
+        "安珀历33年秋，洛林自由市工业区一处旧吊车场内，三名拾荒者被发现贴在一面墙上行走，其中一人失足「向上」坠落十余米。晨星团物理异常处置组到场后确认：以旧吊车基座为圆心约6米半径内，重力方向沿切向偏移，圆心处偏移角约90°。",
+        "处置组先后组织四次进入，记录场域规则并定位锚点——一块悬浮在场域中心、无铭牌、约200公斤的钢锭。安珀历34年春，处置组以牵引设备将钢锭移出场域，重力随即恢复，场域消失。",
+      ],
+      features: [
+        "重力偏移区是一处<strong>局域重力异常</strong>（厄运级）：以旧吊车基座为圆心约6米半径内，重力方向沿切向偏移，越靠近圆心偏移角越大（圆心处约90°）。",
+        "场域边界处重力方向突变而非渐变，跨越边界时「脚下」与「头上」同时改变。进入场域的非固定物体沿新重力方向下落，直至贴附在「新的地面」上；人员贴壁后可正常行走，但落差判断完全失效。",
+      ],
+      mapNode: gravityMap,
+      mapTag: "场域示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "场域范围", desc: "以旧吊车基座为圆心约6米半径，重力沿切向偏移；越靠近圆心偏移角越大，圆心处约90°。" },
+        { num: "二", title: "边界突变", desc: "场域边界处重力方向突变而非渐变；跨越边界时「脚下」与「头上」同时改变，落差判断失效。" },
+        { num: "三", title: "静物贴附", desc: "非固定物体沿新重力方向下落并贴附「新地面」；人员贴壁后可正常行走。" },
+        { num: "四", title: "锚点规则", desc: "场域中心悬浮的无铭牌钢锭（约200kg）为锚点；移出场域后重力恢复（安珀历34年坍缩方式）。" },
+      ],
+      entryRecords: [
+        { term: "拾荒者误入", year: "安珀历33年·秋", count: 3, org: "工业区拾荒者", result: "1人生还，2人死亡", status: "death" },
+        { term: "首次勘察", year: "安珀历33年·冬", count: 4, org: "晨星团", result: "1人生还，3人死亡", status: "death" },
+        { term: "规则复现", year: "安珀历34年·春", count: 3, org: "晨星团", result: "1人生还，2人死亡", status: "death" },
+        { term: "坍缩处置", year: "安珀历34年·春", count: 3, org: "晨星团", result: "3人生还，场域消失", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「横向的雨」：</strong>场域存在期间，雨水不会垂直落下，而是斜向「流向」场域中心，像被无形的手拨过去。",
+        "<strong>「贴墙的钢管」：</strong>场域边界附近的散落钢管全部贴附在同一面墙上，排列方向与重力切线一致，如同磁铁吸附的铁屑。",
+      ],
+      imacNote: "重力偏移区已坍缩，但其规则对今后遇到的重力类异常具有参考价值。若再次遇到「物体横向坠落」「人贴墙行走」的区域，请保持距离，不要尝试跌落测试，也不要触碰场域中心的任何悬浮物——那可能就是锚点。联络 99 热线时，请先说明场域半径与重力方向。",
+      suggestedActions: [
+        "将场域示意图与锚点判定方法纳入溯界者培训教材（重力类异常章节）",
+        "对原址改建后的变电站进行为期一年的重力基线监测，确认无残留异常",
+        "保留钢锭样本，交边界研究院进行材质与异常残留分析",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【晨星团内部评估 · 物理异常处置组】<br/><br/>
+              重力偏移区是我们处理过的异常里，少数「解决得很干净」的一例：锚点移走，场域消失，原址现在是一座变电站，运行正常。<br/><br/>
+              但它的教训很重：13 个人进去，只有 3 个人活着出来。死者中有两名是在「贴墙行走」时踩空的——他们的身体记得房间的重力方向，但眼睛看到的是歪斜的世界，两条信息一冲突，脚下就没有了。<br/><br/>
+              我们把钢锭留了下来。它现在在边界研究院的仓库里，重约200公斤，无铭牌，表面没有任何加工痕迹。每隔一段时间，仓库的称重记录就会出现一次与它重量无关的波动——我们还没有弄明白原因，但已经学会了记录。
+            </p>
+            <div className="internal-note-signature">— 晨星团 · 物理异常处置组 · 组员 何晓</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={gravityZoneData} />;
+  }
+
+  if (isEchoHound) {
+    const echoHoundData = {
+      id: "ENB-0062",
+      name: "回音犬",
+      nameEn: "ECHO HOUND · ORDINARY",
+      stamp: "已归档 · ARCHIVED",
+      classification: "RESTRICTED",
+      ver: "9.1",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 68,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>ENB-0062</span>, "名称", "回音犬 · Echo Hound"],
+        ["所属管辖", "晨星团 · 实体异常观测组", "首次记录", "安珀历33年 · 白松城旧城区"],
+        ["异常等级", { levelKey: "ordinary", text: "常规级 · ORDINARY" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span key="s" style={{ color: "var(--level-ordinary)" }}>约 68%</span>, "（19次接触记录，13人平安，6人受惊）"], "信息价值", "中（拟声类实体首个常态样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "常态化观测 · 民间认知普及"],
+      ],
+      discovery: [
+        "安珀历33年，白松城旧城区多名居民反映：夜里听到自家狗在门口叫，开门却什么也没有；有人听到孩子的声音在巷口喊「妈妈」，走过去只看到一只灰白色的小型动物。晨星团实体异常观测组经过三个月的蹲点，确认这只动物样实体具备模仿人声的能力，并将其命名为「回音犬」。",
+        "观测显示，回音犬不攻击人，也不追逐；它模仿熟悉的声音呼唤行人，若被回应，便会在当晚跟随至住处，此后长期在住所周边活动。目前已知个体至少三只，活动范围集中在旧城区。",
+      ],
+      features: [
+        "回音犬是一类<strong>拟声型实体</strong>（常规级）：外形近似中型犬，通体灰白，行动安静；能够模仿任何它听过的声音（人声、门铃、手机铃声），模仿熟悉声音的成功率最高。",
+        "它对「回应」有明确的反应：被回应或与它对视后，会在当晚跟随至对方住处，此后长期在该住所周边活动。它不攻击人，但会逐渐学会模仿同住者之间的对话内容，制造误会。民间方法（门口放一碗清水与旧衣物）经验证可使其离开。",
+      ],
+      mapNode: (
+        <div className="rules-list">
+          <div className="rule-item verified">
+            <div className="rule-num">一</div>
+            <div className="rule-content"><div className="rule-title">外形与行为</div><p className="rule-desc">中型犬形，灰白色，行动安静；不攻击、不追逐，遇人时通常停在原地观察。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">二</div>
+            <div className="rule-content"><div className="rule-title">拟声范围</div><p className="rule-desc">可模仿人声、门铃、手机铃声等；对熟悉声音（主人、家人）的模仿最逼真。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">三</div>
+            <div className="rule-content"><div className="rule-title">回应与跟随</div><p className="rule-desc">被回应或对视后当晚跟随至住处，此后长期在周边活动；不进入室内。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">四</div>
+            <div className="rule-content"><div className="rule-title">驱离方法</div><p className="rule-desc">门口放一碗清水与旧衣物，翌日收起；经晨星团验证对其有效。</p></div>
+          </div>
+        </div>
+      ),
+      mapTitle: "行为说明",
+      mapTag: "文字说明 · NOTES",
+      verifiedRules: [
+        { num: "一", title: "拟声", desc: "可模仿任何听过的声音，熟悉声音（主人、家人、邻居）成功率最高；模仿时通常躲藏在视线死角。" },
+        { num: "二", title: "回应绑定", desc: "对它说「谁」「在吗」等回应，或与它长时间对视，会在当晚跟随至住处，此后长期在住所周边活动。" },
+        { num: "三", title: "无害性", desc: "不攻击人，不进入室内；但会逐渐模仿同住者之间的对话内容，制造误会（如模仿家人争吵）。" },
+        { num: "四", title: "驱离", desc: "门口放一碗清水与旧衣物，翌日收起，可使其离开；驱离后约一周内不再出现。" },
+      ],
+      speculatedRules: [
+        "回音犬可能是某只真实犬只残留的「记录」——旧城区有多起犬只走失记录，时间与首次目击吻合",
+        "个体的模仿能力随「听过」的声音累积而增强，已知三只个体中，最年长的一只可准确模仿六个人的声音",
+        "有居民报告回音犬曾在雨夜「带路」，将迷路的老人引至派出所门口，但无法确认其意图",
+      ],
+      entryRecords: [
+        { term: "首次目击", year: "安珀历33年·春", count: 1, org: "旧城区居民", result: "目击者平安", status: "safe" },
+        { term: "观测组蹲点", year: "安珀历33年·秋", count: 3, org: "晨星团", result: "3人平安，确认三只个体", status: "safe" },
+        { term: "驱离测试", year: "安珀历35年·夏", count: 4, org: "晨星团/社区", result: "4户家庭完成驱离，无异常", status: "safe" },
+        { term: "常态化观测", year: "安珀历38年·冬", count: 5, org: "晨星团", result: "5人平安，记录稳定", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「夜半敲门」：</strong>居民听到自家狗在门口叫，开门后无人；监控显示叫声发生前，有一只灰白身影从巷口经过。",
+        "<strong>「电话里的家人」：</strong>个别案例中，回音犬模仿家人声音在电话听筒旁说话（声音透窗传入），致电者误以为家人就在门外。",
+      ],
+    };
+
+    return <AnomalyDossier data={echoHoundData} />;
+  }
+
+  if (isLostApartment) {
+    const lostApartmentMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 楼体 */}
+          <rect x="60" y="18" width="150" height="128" fill="none" stroke="rgba(74,88,104,0.55)" strokeWidth="1.5"/>
+          {[18, 36, 54, 72, 90, 108, 126].map((y, i) => (
+            <line key={i} x1="60" y1={y} x2="210" y2={y} stroke="rgba(74,88,104,0.35)" strokeWidth="0.8"/>
+          ))}
+          <text x="64" y="14" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">失物公寓 · 7层</text>
+          {/* 房间 */}
+          {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+            <rect key={i} x={76 + (i % 3) * 44} y={22 + Math.floor(i / 3) * 36} width="34" height="26" fill="rgba(20,20,24,0.85)" stroke="rgba(168,168,180,0.5)" strokeWidth="0.8"/>
+          ))}
+          {/* 管理员房间 */}
+          <rect x="164" y="94" width="38" height="26" fill="rgba(196,164,44,0.1)" stroke="rgba(196,164,44,0.85)" strokeWidth="1.2"/>
+          <text x="166" y="110" fill="rgba(196,164,44,0.9)" fontSize="8" fontFamily="monospace">钥匙</text>
+          {/* 说明 */}
+          <text x="224" y="46" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">房门=失物</text>
+          <text x="224" y="62" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">房号每进入</text>
+          <text x="224" y="74" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">随机变化</text>
+          <line x1="224" y1="84" x2="300" y2="84" stroke="rgba(74,88,104,0.45)" strokeWidth="0.8"/>
+          <text x="224" y="98" fill="rgba(196,164,44,0.8)" fontSize="8" fontFamily="monospace">管理员房钥匙</text>
+          <text x="224" y="110" fill="rgba(196,164,44,0.8)" fontSize="8" fontFamily="monospace">= 坍缩锚点</text>
+          {/* 底部 */}
+          <text x="60" y="162" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">取走任何失物 = 成为新的失物（24小时内） · 归还钥匙 = 全部失物归还原主</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          楼层示意 · 每间房堆满失物 · 管理员房内钥匙为锚点
+        </div>
+      </div>
+    );
+
+    const lostApartmentData = {
+      id: "LOA-1045",
+      name: "失物公寓",
+      nameEn: "LOST & FOUND APARTMENTS · RESOLVED",
+      stamp: "已归档 · ARCHIVED",
+      classification: "CONFIDENTIAL",
+      ver: "6.8",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 62,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>LOA-1045</span>, "名称", "失物公寓 · Lost & Found Apartments"],
+        ["所属管辖", "衔尾蛇事务所 · 异常收容科", "首次记录", "安珀历37年 · 鸣海城西区"],
+        ["异常等级", { levelKey: "hazardous", text: "危险级 · HAZARDOUS" }, "当前状态", { statusKey: "resolved", text: "● 已解决 · 坍缩 RESOLVED" }],
+        ["生还率", [<span key="s" style={{ color: "var(--level-ordinary)" }}>约 62%</span>, "（21人进入，8人失联）"], "信息价值", "中（失物归集类空间样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 建筑拆除 · 失物已归还"],
+      ],
+      discovery: [
+        "安珀历37年，鸣海城西区一栋空置公寓的房东向异常热线报告：楼内每间房都堆满了不属于自己的物品——钥匙、雨伞、信件、照片，甚至有一只装满现金的钱包；住进楼里的租客则在数日内先后「丢失」了本人，只留下随身物品散落在城市各处。",
+        "衔尾蛇事务所异常收容科进入调查后确认，楼内物品均为建筑外丢失的物品被「归集」至此，而取走任何物品的人，都会在24小时内被登记为该楼的新「失物」。安珀历37年冬，收容科在7层管理员房间发现一把铜钥匙及其桌面凹槽，将钥匙放入凹槽后，楼内所有失物归还原主，异常坍缩。",
+      ],
+      features: [
+        "失物公寓是一处<strong>失物归集型空间异常</strong>（危险级）：楼内每个房间堆满建筑外的失物（钥匙、伞、信、照片等），且楼层数固定为7层，房号在每次进入时随机变化。",
+        "该异常的核心规则是「取物即失」：取走任何物品后，取物者会在24小时内被登记为该楼的新「失物」——其随身物品开始遗落在城市各处，本人则被楼「收容」。将管理员房间的钥匙放入桌面凹槽，可使全部失物归还原主。",
+      ],
+      mapNode: lostApartmentMap,
+      mapTag: "楼层示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "失物归集", desc: "楼内房间堆满建筑外丢失的物品，且与「丢失」这一行为相关；物品来源无法追溯，归还时自动回到原主身边。" },
+        { num: "二", title: "取物即失", desc: "取走任何物品后24小时内，取物者成为新「失物」：随身物品遗落各处，本人被楼收容。" },
+        { num: "三", title: "楼层规则", desc: "楼层固定为7层，房号在每次进入时随机变化；同一房间在不同次进入时对应不同失物。" },
+        { num: "四", title: "锚点规则", desc: "7层管理员房间内有一把铜钥匙与桌面凹槽；将钥匙放入凹槽后全部失物归还原主（安珀历37年坍缩方式）。" },
+      ],
+      entryRecords: [
+        { term: "房东上报", year: "安珀历37年·夏", count: 1, org: "西区房东", result: "1人平安（未取物）", status: "safe" },
+        { term: "租客失联", year: "安珀历37年·夏", count: 4, org: "楼内租客", result: "2人平安，2人失联", status: "mixed" },
+        { term: "首批勘察", year: "安珀历37年·秋", count: 6, org: "衔尾蛇事务所", result: "4人生还，2人失联", status: "mixed" },
+        { term: "坍缩处置", year: "安珀历37年·冬", count: 3, org: "衔尾蛇事务所", result: "3人生还，异常坍缩", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「归还的失物」：</strong>坍缩当天，鸣海城多个家庭报告多年前丢失的物品出现在门口，附一张空白纸条；部分物品已损坏，但均被归还原主。",
+        "<strong>「空房间」：</strong>坍缩后拆除前，楼内房间全部清空；最后一个离开的队员称「房间里连灰尘都没有」，而走廊的地面上仍留着厚厚一层灰。",
+      ],
+    };
+
+    return <AnomalyDossier data={lostApartmentData} />;
+  }
+
+  if (isEchoBell) {
+    const echoBellData = {
+      id: "OBB-0265",
+      name: "回声铃",
+      nameEn: "ECHO BELL · ORDINARY",
+      stamp: "已归档 · ARCHIVED",
+      classification: "RESTRICTED",
+      ver: "5.4",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 76,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>OBB-0265</span>, "名称", "回声铃 · Echo Bell"],
+        ["所属管辖", "白夜哨站 · 物品异常科", "首次记录", "安珀历36年 · 洛林自由市旧货市场"],
+        ["异常等级", { levelKey: "ordinary", text: "常规级 · ORDINARY" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span key="s" style={{ color: "var(--level-ordinary)" }}>约 76%</span>, "（应用41次，零事故；9人出现轻度副作用）"], "信息价值", "中（真言类物品首个可控样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "限用管理 · 单人累计≤3次 · 间隔≥7天"],
+      ],
+      discovery: [
+        "安珀历36年，洛林自由市旧货市场一名摊主向白夜哨站报告：他收购的一只旧铜铃在被顾客摇响后，现场所有人同时停住，其中一人当场哭着向同伴道歉——而在此之前，两人已经冷战了三个月。白夜哨站物品异常科确认该铜铃为异常物品，命名为「回声铃」。",
+        "后续测试显示，听到铃声的人会听到「自己最需要听到的话」：可能是一句道歉、一句告白，或一句警告，且声音多来自其信任的对象。铃声停止后约一分钟内，听者会不受控地说出真话。目前该物品被用于问询与调解场景，实行限用管理。",
+      ],
+      features: [
+        "回声铃是一只<strong>真言类异常物品</strong>（常规级）：铃声本身单调，但每个听者听到的内容不同——均为其「最需要听到」的话，声音源自其信任的对象。",
+        "铃声响起后约一分钟内，听者会不受控地说出真话，适合问询与调解；同一人累计听到铃声超过约9次后，会开始听到并不存在的铃声，并在无铃声时说出真话。",
+      ],
+      mapNode: (
+        <div className="rules-list">
+          <div className="rule-item verified">
+            <div className="rule-num">一</div>
+            <div className="rule-content"><div className="rule-title">外形结构</div><p className="rule-desc">旧铜铃，高约9cm，无铭牌；铃舌为普通铜质，铃身内侧刻有一圈磨损的弧形纹路。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">二</div>
+            <div className="rule-content"><div className="rule-title">声音规则</div><p className="rule-desc">铃声单调，但听者听到的内容各不相同；内容为「最需要听到的话」，声音来自听者信任的对象。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">三</div>
+            <div className="rule-content"><div className="rule-title">真言窗口</div><p className="rule-desc">铃声停止后约1分钟内，听者不受控地说出真话；无法指定内容。</p></div>
+          </div>
+          <div className="rule-item verified">
+            <div className="rule-num">四</div>
+            <div className="rule-content"><div className="rule-title">使用上限</div><p className="rule-desc">单人累计≤3次，间隔≥7天；超过9次会出现幻听与无意识真言。</p></div>
+          </div>
+        </div>
+      ),
+      mapTitle: "结构说明",
+      mapTag: "文字说明 · NOTES",
+      verifiedRules: [
+        { num: "一", title: "单一音", desc: "铃声本身单调，但每个听者听到的内容不同，均为其「最需要听到」的话，声音来自其信任的对象。" },
+        { num: "二", title: "真言窗口", desc: "铃声响起后约1分钟内，听者不受控地说出真话；适合问询与调解，但无法指定内容。" },
+        { num: "三", title: "回响累积", desc: "同一人累计听到铃声超过约9次后，开始听到并不存在的铃声，并在无铃声时说出真话。" },
+        { num: "四", title: "使用上限", desc: "建议单人累计不超过3次，间隔不少于7天；使用需登记，禁止在未经同意的情况下使用。" },
+      ],
+      speculatedRules: [
+        "回声铃可能是旧时代某机构遗留的「问询工具」，其铃声频率与一份已废止的应急通讯频段一致",
+        "铃身内侧的弧形纹路疑似磨损的刻度，可能记录着「安全使用次数」的原始设计值",
+        "长期使用者报告「更愿意说真话」，是否为心理暗示或物品效应，尚无定论",
+      ],
+      entryRecords: [
+        { term: "市集误用", year: "安珀历36年·春", count: 1, org: "旧货市场摊主", result: "1人平安，现场和解", status: "safe" },
+        { term: "首批测试", year: "安珀历36年·夏", count: 4, org: "白夜哨站", result: "4人平安，2人出现轻度副作用", status: "safe" },
+        { term: "问询应用", year: "安珀历37年·秋", count: 6, org: "白夜哨站/衔尾蛇事务所", result: "6人平安，问询完成", status: "safe" },
+        { term: "限用管理", year: "安珀历39年·春", count: 4, org: "白夜哨站", result: "4人平安，规则确认", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「无人处的铃声」：</strong>回声铃在无人触碰时会发出极轻的一声铃响，多发生在深夜；白夜哨站已将其记录为「自响」，尚未找到规律。",
+        "<strong>「同一句话」：</strong>在两名互不认识的听者身上，回声铃曾让他们听到同一句话（「对不起」）；该现象出现两次，均在调解场景中。",
+      ],
+    };
+
+    return <AnomalyDossier data={echoBellData} />;
   }
 
   if (isRift) {
