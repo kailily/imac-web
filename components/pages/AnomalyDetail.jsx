@@ -35,6 +35,8 @@ function AnomalyDetailPage() {
   const isEchoHound = anomalyId === "ENB-0062";
   const isLostApartment = anomalyId === "LOA-1045";
   const isEchoBell = anomalyId === "OBB-0265";
+  const isSwarm = anomalyId === "ENC-0104";
+  const isMemoryGallery = anomalyId === "CGB-0427";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [
@@ -104,7 +106,7 @@ function AnomalyDetailPage() {
     ]},
   ];
 
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator && !isEchoAlley && !isMirrorHospital && !isPermafrost && !isGravityZone && !isEchoHound && !isLostApartment && !isEchoBell) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator && !isEchoAlley && !isMirrorHospital && !isPermafrost && !isGravityZone && !isEchoHound && !isLostApartment && !isEchoBell && !isSwarm && !isMemoryGallery) {
     return (
       <>
         <style>{`
@@ -2014,6 +2016,210 @@ function AnomalyDetailPage() {
     };
 
     return <AnomalyDossier data={echoBellData} />;
+  }
+
+  if (isSwarm) {
+    const swarmMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 地面 */}
+          <line x1="20" y1="140" x2="320" y2="140" stroke="rgba(74,88,104,0.5)" strokeWidth="1.2"/>
+          {/* 堆体 */}
+          <path d="M120 140 L136 106 L152 118 L168 96 L186 120 L202 108 L216 140 Z" fill="rgba(30,30,36,0.95)" stroke="rgba(168,168,180,0.6)" strokeWidth="1.2"/>
+          <text x="130" y="158" fill="rgba(168,168,180,0.8)" fontSize="8" fontFamily="monospace">聚形 · 形似垃圾堆</text>
+          {/* 拾取范围 */}
+          <circle cx="168" cy="128" r="52" fill="none" stroke="rgba(196,40,40,0.55)" strokeWidth="1" strokeDasharray="5 3"/>
+          <text x="196" y="76" fill="rgba(196,40,40,0.8)" fontSize="8" fontFamily="monospace">拾取范围</text>
+          {/* 吸收的物品 */}
+          <rect x="236" y="122" width="12" height="9" fill="rgba(196,164,44,0.5)" stroke="rgba(196,164,44,0.9)" strokeWidth="0.8"/>
+          <path d="M232 126 L204 130" stroke="rgba(196,164,44,0.65)" strokeWidth="1" strokeDasharray="3 3"/>
+          <text x="240" y="150" fill="rgba(196,164,44,0.85)" fontSize="8" fontFamily="monospace">被吸收物品</text>
+          {/* 强光/清水 */}
+          <circle cx="70" cy="60" r="9" fill="rgba(196,164,44,0.3)" stroke="rgba(196,164,44,0.9)" strokeWidth="1.2"/>
+          <line x1="80" y1="62" x2="120" y2="96" stroke="rgba(196,164,44,0.5)" strokeWidth="1" strokeDasharray="4 3"/>
+          <text x="30" y="40" fill="rgba(196,164,44,0.9)" fontSize="8" fontFamily="monospace">强光30s / 大量清水</text>
+          <text x="30" y="54" fill="rgba(168,168,180,0.65)" fontSize="8" fontFamily="monospace">→ 暂时散开</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          堆体示意 · 拾取范围约数米 · 强光或清水可暂时驱散
+        </div>
+      </div>
+    );
+
+    const swarmData = {
+      id: "ENC-0104",
+      name: "拾荒群",
+      nameEn: "SCAVENGER SWARM · DOOMED",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "13.5",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 9,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>ENC-0104</span>, "名称", "拾荒群 · Scavenger Swarm"],
+        ["所属管辖", "第四面墙 · 实体收容部", "首次记录", "安珀历12年 · 洛林自由市工业区"],
+        ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "active", text: "● 活跃 ACTIVE" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 9%</span>, "（22人进入或接触，20人死亡或失踪）"], "信息价值", "高（群聚型实体唯一确证样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "区域封锁 · 夜间巡逻 · 强光与清水应急"],
+      ],
+      discovery: [
+        "安珀历12年，洛林自由市工业区夜班工人报告：一片垃圾堆在夜里「挪了位置」，次日又挪了回来；有工人的工具包放在堆边，半小时后连同包内的金属工具一起消失。第四面墙实体收容部到场后确认，该垃圾堆实为一群小型灰白实体聚合而成，将其编号为「拾荒群」。",
+        "此后二十余年，收容部陆续记录到至少三处聚形点。拾荒群移动缓慢，多在夜间沿巷道平移，以「吸收」无主物品为主；触碰堆体或试图从堆中拽回物品的人，会被整体拉入堆内，同伴仅能听到数秒的「撕纸声」。",
+      ],
+      features: [
+        "拾荒群是一类<strong>群聚型实体</strong>（厄运级）：平时呈一堆废弃物（纸箱、布料、金属碎片）状，静止时可被误认为普通垃圾堆；移动时整体缓慢平移，速度约每秒数厘米。",
+        "接触范围内的无主物品会被逐步「吸收」进堆内，物品在堆中约数分钟内消失。触碰堆体、或随身物品被吸收时仍不松手，会被拉入堆内；强光连续照射约30秒或大量清水可使其暂时散开，数小时后重新聚合。",
+      ],
+      mapNode: swarmMap,
+      mapTag: "堆体示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "聚形", desc: "平时呈废弃物堆状，静止时可被误认为垃圾堆；移动时整体缓慢平移，速度约每秒数厘米，夜间活动为主。" },
+        { num: "二", title: "拾取", desc: "接触范围内的无主物品会被逐步吸收进堆内，约数分钟内消失；对红色物品表现出明显偏好。" },
+        { num: "三", title: "靠近禁忌", desc: "触碰堆体、或随身物品被吸收时仍不松手，会被拉入堆内；同伴可听到数秒「撕纸声」，此后无任何动静。" },
+        { num: "四", title: "驱散", desc: "强光连续照射约30秒、或大量清水冲刷，可使堆体暂时散开；数小时后重新聚合，位置略有偏移。" },
+      ],
+      speculatedRules: [
+        "拾荒群可能是旧城区垃圾填埋场「被丢弃之物」的集体残留——聚形点均靠近旧填埋场运输路线",
+        "堆内偶尔可见完整的人形轮廓（衣物、鞋），疑为被吸收者的遗留；收容部尚未进行内部探查",
+        "它对红色物品的偏好可能与「警示色」相关——红布、红色工具、红色雨衣在记录中优先级最高",
+      ],
+      entryRecords: [
+        { term: "工人误触", year: "安珀历12年·夏", count: 2, org: "工业区夜班工人", result: "1人生还，1人失踪", status: "death" },
+        { term: "首次勘察", year: "安珀历12年·秋", count: 4, org: "第四面墙", result: "1人生还，3人失踪", status: "death" },
+        { term: "第二批", year: "安珀历17年·春", count: 5, org: "第四面墙/晨星团", result: "1人生还，4人失踪", status: "death" },
+        { term: "第三批", year: "安珀历25年·秋", count: 6, org: "第四面墙", result: "1人生还，5人失踪", status: "death" },
+        { term: "驱散测试", year: "安珀历38年·夏", count: 5, org: "第四面墙", result: "4人生还，1人被拉入", status: "mixed" },
+      ],
+      phenomena: [
+        "<strong>「半夜挪窝的垃圾堆」：</strong>居民多次报告巷口的垃圾堆位置变化；监控显示堆体在夜间整体平移数十米，途中未被任何摄像头拍到「移动过程」——画面在相邻两帧之间直接换了位置。",
+        "<strong>「堆边的失物」：</strong>被吸收的物品有时会出现在堆体边缘，完好无损；一名工人找到了三年前丢失的工具包，包内工具齐全，只是所有金属件都蒙着一层灰白粉末。",
+        "<strong>「撕纸声」：</strong>人员被拉入堆内时，同伴可听到持续约数秒的密集撕裂声，随后堆体恢复平静，表面无明显变化。",
+      ],
+      imacNote: "拾荒群的危险在于它「看起来只是垃圾」。如果你在夜间巷口看到一堆会缓慢移动的废弃物，请不要靠近、不要翻找、更不要伸手去拽自己的东西。它吸收的是物品，但拉进去的是人。联络 99 热线时说明位置与堆体大小，等待处置队携带强光设备到场。",
+      suggestedActions: [
+        "维持聚形点周边封锁与夜间巡逻，重点区域加装照明（持续强光可抑制其活动）",
+        "在工业区与旧城区张贴「夜巷废弃物勿近」提示，说明拾荒群的识别特征",
+        "对堆内人形轮廓进行非接触探查（高分辨率成像），确认被吸收者状态",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【第四面墙内部评估 · 实体收容部】<br/><br/>
+              拾荒群是我们收容部最「安静」的一件异常：它不追人、不叫、不发光，只是慢慢地把自己挪到别处。<br/><br/>
+              正因如此，它也是最难防的：22 个人里，20 个没回来。死者中有一半是在夜里把它当成垃圾堆，蹲下去翻找自己丢失的东西。<br/><br/>
+              我们做过驱散测试。强光有用，清水有用，但都只是「暂时」。它散开后会在几小时后重新聚合，像是从未分开过。<br/><br/>
+              有一件事我一直没写进报告：第三次勘察时，队员在堆边看到一只熟悉的鞋——和他前一天丢的那只是一双。他把鞋捡了起来。我们没能拉住他。<br/><br/>
+              现在我们的规矩是：看到堆，先开灯。灯照不到的地方，不要过去。
+            </p>
+            <div className="internal-note-signature">— 第四面墙 · 实体收容部 · 队长 闻野</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={swarmData} />;
+  }
+
+  if (isMemoryGallery) {
+    const memoryMap = (
+      <div className="stair-map">
+        <svg viewBox="0 0 340 170" width="100%" style={{ display: "block" }}>
+          {/* 走廊 */}
+          <line x1="20" y1="24" x2="320" y2="24" stroke="rgba(74,88,104,0.55)" strokeWidth="2"/>
+          <line x1="20" y1="140" x2="320" y2="140" stroke="rgba(74,88,104,0.55)" strokeWidth="2"/>
+          <text x="24" y="18" fill="rgba(168,168,180,0.75)" fontSize="8" fontFamily="monospace">记忆回廊 · 单向约60m</text>
+          {/* 墙面记忆 */
+          }
+          {[64, 122, 180, 238].map((x, i) => (
+            <g key={i}>
+              <rect x={x} y="46" width="40" height="30" fill="rgba(20,20,24,0.9)" stroke={"rgba(120,150,190," + (0.7 - i * 0.12) + ")"} strokeWidth="1"/>
+              <text x={x + 4} y="64" fill="rgba(120,150,190,0.85)" fontSize="8" fontFamily="monospace">记忆{i + 1}</text>
+            </g>
+          ))}
+          <text x="64" y="94" fill="rgba(168,168,180,0.7)" fontSize="8" fontFamily="monospace">观看 &gt;40s → 取走</text>
+          {/* 空白墙 */}
+          <rect x="284" y="46" width="32" height="80" fill="rgba(10,10,12,0.95)" stroke="rgba(74,88,104,0.8)" strokeWidth="1.2"/>
+          <text x="278" y="140" fill="rgba(168,168,180,0.8)" fontSize="8" fontFamily="monospace">空白墙 · 锚点</text>
+          {/* 他人记忆 */}
+          <rect x="180" y="100" width="58" height="22" fill="rgba(196,40,40,0.06)" stroke="rgba(196,40,40,0.45)" strokeWidth="0.8" strokeDasharray="4 3"/>
+          <text x="184" y="114" fill="rgba(196,40,40,0.8)" fontSize="8" fontFamily="monospace">他人记忆区</text>
+        </svg>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--text-tertiary)", marginTop: "10px", textAlign: "center", letterSpacing: "0.08em" }}>
+          回廊示意 · 墙面投影记忆 · 停留40秒即被取走 · 尽头空白墙为锚点
+        </div>
+      </div>
+    );
+
+    const memoryGalleryData = {
+      id: "CGB-0427",
+      name: "记忆回廊",
+      nameEn: "MEMORY GALLERY · RESOLVED",
+      stamp: "已归档 · ARCHIVED",
+      classification: "CONFIDENTIAL",
+      ver: "21.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 19,
+      info: [
+        ["异常编号", <span className="detail-file-id" style={{ fontSize: "18px" }}>CGB-0427</span>, "名称", "记忆回廊 · Memory Gallery"],
+        ["所属管辖", "边界研究院 · 认知记忆研究组", "首次记录", "安珀历30年 · 洛林自由市旧研究院"],
+        ["异常等级", { levelKey: "doomed", text: "厄运级 · DOOMED" }, "当前状态", { statusKey: "resolved", text: "● 已解决 · 坍缩 RESOLVED" }],
+        ["生还率", [<span className="survival-rate-red" key="s">约 19%</span>, "（16人进入，13人死亡或「空壳化」）"], "信息价值", "极高（记忆丢失类异常唯一完整样本）"],
+        ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 研究院旧址封闭"],
+      ],
+      discovery: [
+        "安珀历30年，洛林自由市一座废弃研究院的看门人报告：夜间走廊的墙面上会出现「会动的老照片」，多是他自己近几年的记忆片段；他连续几个晚上「看入了神」，后来发现自己已经想不起女儿婚礼上的任何细节——而墙上的画面里，那场婚礼还在循环播放。",
+        "边界研究院认知记忆研究组进入调查，确认走廊墙面会投影进入者的记忆片段，停留观看超过约40秒，该段记忆就会被「取走」，墙面永久保留。安珀历31年春，研究组在走廊尽头发现一面空白墙，以手按墙并说出「我记住了」后，投影停止，异常坍缩；但已被取走的记忆未能恢复。",
+      ],
+      features: [
+        "记忆回廊是一处<strong>记忆干涉型空间异常</strong>（厄运级）：走廊墙面会显示进入者的记忆片段（多为近三年），画面无声、按时间顺序排列，同一段记忆只出现一次。",
+        "在任一画面前停留超过约40秒，该段记忆会被「取走」——此后无法回忆，而墙面永久保留。走廊中段还可看到其他进入者的记忆，观看同样会被取走。记忆丢失过多者会「空壳化」：能说、能走，但不再拥有可检索的过去。",
+      ],
+      mapNode: memoryMap,
+      mapTag: "回廊示意 · DIAGRAM",
+      verifiedRules: [
+        { num: "一", title: "投影规则", desc: "墙面显示进入者的记忆片段，多为近三年，画面无声、按时间顺序排列；同一段记忆只出现一次。" },
+        { num: "二", title: "观看即取", desc: "在任一画面前停留超过约40秒，该记忆被取走——之后无法回忆，墙面永久保留该段画面。" },
+        { num: "三", title: "他人记忆", desc: "回廊中段可见其他进入者的记忆；观看同样会被取走（取走的是对其内容的认知能力）。" },
+        { num: "四", title: "锚点规则", desc: "尽头空白墙为锚点；以手按墙并说出「我记住了」后投影停止（安珀历31年坍缩方式），已丢失记忆不恢复。" },
+      ],
+      entryRecords: [
+        { term: "看门人误入", year: "安珀历30年·秋", count: 1, org: "研究院旧址看门人", result: "1人生还，失去部分近三年记忆", status: "mixed" },
+        { term: "首次勘察", year: "安珀历30年·冬", count: 4, org: "边界研究院", result: "1人生还，3人空壳化", status: "death" },
+        { term: "第二批", year: "安珀历31年·春", count: 5, org: "边界研究院", result: "1人生还，4人空壳化", status: "death" },
+        { term: "坍缩处置", year: "安珀历31年·春", count: 6, org: "边界研究院", result: "6人生还，异常坍缩", status: "safe" },
+      ],
+      phenomena: [
+        "<strong>「墙上的人叫你名字」：</strong>画面中的人物有时会转向观看者并呼唤其名字，口型与声音同步（尽管回廊内没有声音）；被呼唤者会不由自主地停下脚步。",
+        "<strong>「走廊变长」：</strong>多次观看后，回廊在视觉上明显变长，尽头空白墙「始终还有一段距离」；实测步数记录显示走廊长度未变。",
+        "<strong>「空壳化的老人」：</strong>一名空壳化者能准确说出家人的名字，却无法说出任何一件与这些名字相关的往事；被问及「你最快乐的一天」时，他沉默了很久，然后说「墙上那天，我看过」。" ,
+      ],
+      imacNote: "记忆回廊已坍缩，但其规则值得所有人记住：不要停下来看「自己」。如果你在陌生走廊里看到自己的记忆被投影出来，请低头快步通过——不要驻足、不要确认画面内容、不要回应画面里叫你名字的人。记忆一旦被取走，就无法找回。",
+      suggestedActions: [
+        "将「不要驻足观看」纳入溯界者认知防护培训，作为认知类异常的第一原则",
+        "保留研究院旧址封闭状态，定期检查是否出现新的投影墙面",
+        "对已「空壳化」的 7 名人员进行长期照护与记忆重建尝试（进展有限）",
+      ],
+      internalNode: (
+        <Restricted level="internal" label="机密级内容" compact>
+          <div className="internal-note">
+            <p className="internal-note-text">
+              【边界研究院内部评估 · 认知记忆研究组】<br/><br/>
+              记忆回廊是我们研究组最短命、也最痛的一份档案：16 个人进去，13 个人没能完整回来。坍缩只用了三个月，但失去的记忆到今天也没找回来。<br/><br/>
+              它的危险在于「好看」。人看到自己的记忆，会本能地想确认：那是不是我？我当时是不是这样？就这一下，40 秒过去了。<br/><br/>
+              最让我们难受的是那位看门人。他失去了女儿婚礼的全部细节，却保留了一个习惯——每天晚上，他会站在研究院旧址对面的路灯下，抬头看那扇早已被封死的走廊窗户。<br/><br/>
+              我们问他在看什么。他说：「看看我有没有忘了她。」<br/><br/>
+              我们不能替他记。但我们可以写下来。
+            </p>
+            <div className="internal-note-signature">— 边界研究院 · 认知记忆研究组 · 组长 沈默</div>
+          </div>
+        </Restricted>
+      ),
+    };
+
+    return <AnomalyDossier data={memoryGalleryData} />;
   }
 
   if (isRift) {

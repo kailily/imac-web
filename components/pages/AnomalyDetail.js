@@ -36,6 +36,8 @@ function AnomalyDetailPage() {
   const isEchoHound = anomalyId === "ENB-0062";
   const isLostApartment = anomalyId === "LOA-1045";
   const isEchoBell = anomalyId === "OBB-0265";
+  const isSwarm = anomalyId === "ENC-0104";
+  const isMemoryGallery = anomalyId === "CGB-0427";
 
   // === SPA-0021 无尽楼梯 档案数据 ===
   const stairVerifiedRules = [{
@@ -254,7 +256,7 @@ function AnomalyDetailPage() {
       orgType: "civilian"
     }]
   }];
-  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator && !isEchoAlley && !isMirrorHospital && !isPermafrost && !isGravityZone && !isEchoHound && !isLostApartment && !isEchoBell) {
+  if (!isDefault && !isHarbor && !isStairwell && !isTrain && !isOutpost && !isVoid && !isLoop && !isRift && !isShortcut && !isSlumber && !isKettle && !isHomeward && !isSilent && !isUmbrella && !isShadow && !isElevator && !isEchoAlley && !isMirrorHospital && !isPermafrost && !isGravityZone && !isEchoHound && !isLostApartment && !isEchoBell && !isSwarm && !isMemoryGallery) {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", null, `
           .detail-placeholder {
             padding: 100px 0;
@@ -3922,6 +3924,389 @@ function AnomalyDetailPage() {
     };
     return /*#__PURE__*/React.createElement(AnomalyDossier, {
       data: echoBellData
+    });
+  }
+  if (isSwarm) {
+    const swarmMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "140",
+      x2: "320",
+      y2: "140",
+      stroke: "rgba(74,88,104,0.5)",
+      strokeWidth: "1.2"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M120 140 L136 106 L152 118 L168 96 L186 120 L202 108 L216 140 Z",
+      fill: "rgba(30,30,36,0.95)",
+      stroke: "rgba(168,168,180,0.6)",
+      strokeWidth: "1.2"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "130",
+      y: "158",
+      fill: "rgba(168,168,180,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u805A\u5F62 \xB7 \u5F62\u4F3C\u5783\u573E\u5806"), /*#__PURE__*/React.createElement("circle", {
+      cx: "168",
+      cy: "128",
+      r: "52",
+      fill: "none",
+      stroke: "rgba(196,40,40,0.55)",
+      strokeWidth: "1",
+      strokeDasharray: "5 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "196",
+      y: "76",
+      fill: "rgba(196,40,40,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u62FE\u53D6\u8303\u56F4"), /*#__PURE__*/React.createElement("rect", {
+      x: "236",
+      y: "122",
+      width: "12",
+      height: "9",
+      fill: "rgba(196,164,44,0.5)",
+      stroke: "rgba(196,164,44,0.9)",
+      strokeWidth: "0.8"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M232 126 L204 130",
+      stroke: "rgba(196,164,44,0.65)",
+      strokeWidth: "1",
+      strokeDasharray: "3 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "240",
+      y: "150",
+      fill: "rgba(196,164,44,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u88AB\u5438\u6536\u7269\u54C1"), /*#__PURE__*/React.createElement("circle", {
+      cx: "70",
+      cy: "60",
+      r: "9",
+      fill: "rgba(196,164,44,0.3)",
+      stroke: "rgba(196,164,44,0.9)",
+      strokeWidth: "1.2"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "80",
+      y1: "62",
+      x2: "120",
+      y2: "96",
+      stroke: "rgba(196,164,44,0.5)",
+      strokeWidth: "1",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "30",
+      y: "40",
+      fill: "rgba(196,164,44,0.9)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u5F3A\u514930s / \u5927\u91CF\u6E05\u6C34"), /*#__PURE__*/React.createElement("text", {
+      x: "30",
+      y: "54",
+      fill: "rgba(168,168,180,0.65)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u2192 \u6682\u65F6\u6563\u5F00")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u5806\u4F53\u793A\u610F \xB7 \u62FE\u53D6\u8303\u56F4\u7EA6\u6570\u7C73 \xB7 \u5F3A\u5149\u6216\u6E05\u6C34\u53EF\u6682\u65F6\u9A71\u6563"));
+    const swarmData = {
+      id: "ENC-0104",
+      name: "拾荒群",
+      nameEn: "SCAVENGER SWARM · DOOMED",
+      stamp: "机密 · CONFIDENTIAL",
+      classification: "CONFIDENTIAL",
+      ver: "13.5",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 9,
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "ENC-0104"), "名称", "拾荒群 · Scavenger Swarm"], ["所属管辖", "第四面墙 · 实体收容部", "首次记录", "安珀历12年 · 洛林自由市工业区"], ["异常等级", {
+        levelKey: "doomed",
+        text: "厄运级 · DOOMED"
+      }, "当前状态", {
+        statusKey: "active",
+        text: "● 活跃 ACTIVE"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 9%"), "（22人进入或接触，20人死亡或失踪）"], "信息价值", "高（群聚型实体唯一确证样本）"], ["档案更新", "安珀历39年 · 春", "处置状态", "区域封锁 · 夜间巡逻 · 强光与清水应急"]],
+      discovery: ["安珀历12年，洛林自由市工业区夜班工人报告：一片垃圾堆在夜里「挪了位置」，次日又挪了回来；有工人的工具包放在堆边，半小时后连同包内的金属工具一起消失。第四面墙实体收容部到场后确认，该垃圾堆实为一群小型灰白实体聚合而成，将其编号为「拾荒群」。", "此后二十余年，收容部陆续记录到至少三处聚形点。拾荒群移动缓慢，多在夜间沿巷道平移，以「吸收」无主物品为主；触碰堆体或试图从堆中拽回物品的人，会被整体拉入堆内，同伴仅能听到数秒的「撕纸声」。"],
+      features: ["拾荒群是一类<strong>群聚型实体</strong>（厄运级）：平时呈一堆废弃物（纸箱、布料、金属碎片）状，静止时可被误认为普通垃圾堆；移动时整体缓慢平移，速度约每秒数厘米。", "接触范围内的无主物品会被逐步「吸收」进堆内，物品在堆中约数分钟内消失。触碰堆体、或随身物品被吸收时仍不松手，会被拉入堆内；强光连续照射约30秒或大量清水可使其暂时散开，数小时后重新聚合。"],
+      mapNode: swarmMap,
+      mapTag: "堆体示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "聚形",
+        desc: "平时呈废弃物堆状，静止时可被误认为垃圾堆；移动时整体缓慢平移，速度约每秒数厘米，夜间活动为主。"
+      }, {
+        num: "二",
+        title: "拾取",
+        desc: "接触范围内的无主物品会被逐步吸收进堆内，约数分钟内消失；对红色物品表现出明显偏好。"
+      }, {
+        num: "三",
+        title: "靠近禁忌",
+        desc: "触碰堆体、或随身物品被吸收时仍不松手，会被拉入堆内；同伴可听到数秒「撕纸声」，此后无任何动静。"
+      }, {
+        num: "四",
+        title: "驱散",
+        desc: "强光连续照射约30秒、或大量清水冲刷，可使堆体暂时散开；数小时后重新聚合，位置略有偏移。"
+      }],
+      speculatedRules: ["拾荒群可能是旧城区垃圾填埋场「被丢弃之物」的集体残留——聚形点均靠近旧填埋场运输路线", "堆内偶尔可见完整的人形轮廓（衣物、鞋），疑为被吸收者的遗留；收容部尚未进行内部探查", "它对红色物品的偏好可能与「警示色」相关——红布、红色工具、红色雨衣在记录中优先级最高"],
+      entryRecords: [{
+        term: "工人误触",
+        year: "安珀历12年·夏",
+        count: 2,
+        org: "工业区夜班工人",
+        result: "1人生还，1人失踪",
+        status: "death"
+      }, {
+        term: "首次勘察",
+        year: "安珀历12年·秋",
+        count: 4,
+        org: "第四面墙",
+        result: "1人生还，3人失踪",
+        status: "death"
+      }, {
+        term: "第二批",
+        year: "安珀历17年·春",
+        count: 5,
+        org: "第四面墙/晨星团",
+        result: "1人生还，4人失踪",
+        status: "death"
+      }, {
+        term: "第三批",
+        year: "安珀历25年·秋",
+        count: 6,
+        org: "第四面墙",
+        result: "1人生还，5人失踪",
+        status: "death"
+      }, {
+        term: "驱散测试",
+        year: "安珀历38年·夏",
+        count: 5,
+        org: "第四面墙",
+        result: "4人生还，1人被拉入",
+        status: "mixed"
+      }],
+      phenomena: ["<strong>「半夜挪窝的垃圾堆」：</strong>居民多次报告巷口的垃圾堆位置变化；监控显示堆体在夜间整体平移数十米，途中未被任何摄像头拍到「移动过程」——画面在相邻两帧之间直接换了位置。", "<strong>「堆边的失物」：</strong>被吸收的物品有时会出现在堆体边缘，完好无损；一名工人找到了三年前丢失的工具包，包内工具齐全，只是所有金属件都蒙着一层灰白粉末。", "<strong>「撕纸声」：</strong>人员被拉入堆内时，同伴可听到持续约数秒的密集撕裂声，随后堆体恢复平静，表面无明显变化。"],
+      imacNote: "拾荒群的危险在于它「看起来只是垃圾」。如果你在夜间巷口看到一堆会缓慢移动的废弃物，请不要靠近、不要翻找、更不要伸手去拽自己的东西。它吸收的是物品，但拉进去的是人。联络 99 热线时说明位置与堆体大小，等待处置队携带强光设备到场。",
+      suggestedActions: ["维持聚形点周边封锁与夜间巡逻，重点区域加装照明（持续强光可抑制其活动）", "在工业区与旧城区张贴「夜巷废弃物勿近」提示，说明拾荒群的识别特征", "对堆内人形轮廓进行非接触探查（高分辨率成像），确认被吸收者状态"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u7B2C\u56DB\u9762\u5899\u5185\u90E8\u8BC4\u4F30 \xB7 \u5B9E\u4F53\u6536\u5BB9\u90E8\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u62FE\u8352\u7FA4\u662F\u6211\u4EEC\u6536\u5BB9\u90E8\u6700\u300C\u5B89\u9759\u300D\u7684\u4E00\u4EF6\u5F02\u5E38\uFF1A\u5B83\u4E0D\u8FFD\u4EBA\u3001\u4E0D\u53EB\u3001\u4E0D\u53D1\u5149\uFF0C\u53EA\u662F\u6162\u6162\u5730\u628A\u81EA\u5DF1\u632A\u5230\u522B\u5904\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6B63\u56E0\u5982\u6B64\uFF0C\u5B83\u4E5F\u662F\u6700\u96BE\u9632\u7684\uFF1A22 \u4E2A\u4EBA\u91CC\uFF0C20 \u4E2A\u6CA1\u56DE\u6765\u3002\u6B7B\u8005\u4E2D\u6709\u4E00\u534A\u662F\u5728\u591C\u91CC\u628A\u5B83\u5F53\u6210\u5783\u573E\u5806\uFF0C\u8E72\u4E0B\u53BB\u7FFB\u627E\u81EA\u5DF1\u4E22\u5931\u7684\u4E1C\u897F\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u505A\u8FC7\u9A71\u6563\u6D4B\u8BD5\u3002\u5F3A\u5149\u6709\u7528\uFF0C\u6E05\u6C34\u6709\u7528\uFF0C\u4F46\u90FD\u53EA\u662F\u300C\u6682\u65F6\u300D\u3002\u5B83\u6563\u5F00\u540E\u4F1A\u5728\u51E0\u5C0F\u65F6\u540E\u91CD\u65B0\u805A\u5408\uFF0C\u50CF\u662F\u4ECE\u672A\u5206\u5F00\u8FC7\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6709\u4E00\u4EF6\u4E8B\u6211\u4E00\u76F4\u6CA1\u5199\u8FDB\u62A5\u544A\uFF1A\u7B2C\u4E09\u6B21\u52D8\u5BDF\u65F6\uFF0C\u961F\u5458\u5728\u5806\u8FB9\u770B\u5230\u4E00\u53EA\u719F\u6089\u7684\u978B\u2014\u2014\u548C\u4ED6\u524D\u4E00\u5929\u4E22\u7684\u90A3\u53EA\u662F\u4E00\u53CC\u3002\u4ED6\u628A\u978B\u6361\u4E86\u8D77\u6765\u3002\u6211\u4EEC\u6CA1\u80FD\u62C9\u4F4F\u4ED6\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u73B0\u5728\u6211\u4EEC\u7684\u89C4\u77E9\u662F\uFF1A\u770B\u5230\u5806\uFF0C\u5148\u5F00\u706F\u3002\u706F\u7167\u4E0D\u5230\u7684\u5730\u65B9\uFF0C\u4E0D\u8981\u8FC7\u53BB\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u7B2C\u56DB\u9762\u5899 \xB7 \u5B9E\u4F53\u6536\u5BB9\u90E8 \xB7 \u961F\u957F \u95FB\u91CE")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: swarmData
+    });
+  }
+  if (isMemoryGallery) {
+    const memoryMap = /*#__PURE__*/React.createElement("div", {
+      className: "stair-map"
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 340 170",
+      width: "100%",
+      style: {
+        display: "block"
+      }
+    }, /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "24",
+      x2: "320",
+      y2: "24",
+      stroke: "rgba(74,88,104,0.55)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "20",
+      y1: "140",
+      x2: "320",
+      y2: "140",
+      stroke: "rgba(74,88,104,0.55)",
+      strokeWidth: "2"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "24",
+      y: "18",
+      fill: "rgba(168,168,180,0.75)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u8BB0\u5FC6\u56DE\u5ECA \xB7 \u5355\u5411\u7EA660m"), [64, 122, 180, 238].map((x, i) => /*#__PURE__*/React.createElement("g", {
+      key: i
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: x,
+      y: "46",
+      width: "40",
+      height: "30",
+      fill: "rgba(20,20,24,0.9)",
+      stroke: "rgba(120,150,190," + (0.7 - i * 0.12) + ")",
+      strokeWidth: "1"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: x + 4,
+      y: "64",
+      fill: "rgba(120,150,190,0.85)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u8BB0\u5FC6", i + 1))), /*#__PURE__*/React.createElement("text", {
+      x: "64",
+      y: "94",
+      fill: "rgba(168,168,180,0.7)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u89C2\u770B >40s \u2192 \u53D6\u8D70"), /*#__PURE__*/React.createElement("rect", {
+      x: "284",
+      y: "46",
+      width: "32",
+      height: "80",
+      fill: "rgba(10,10,12,0.95)",
+      stroke: "rgba(74,88,104,0.8)",
+      strokeWidth: "1.2"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "278",
+      y: "140",
+      fill: "rgba(168,168,180,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u7A7A\u767D\u5899 \xB7 \u951A\u70B9"), /*#__PURE__*/React.createElement("rect", {
+      x: "180",
+      y: "100",
+      width: "58",
+      height: "22",
+      fill: "rgba(196,40,40,0.06)",
+      stroke: "rgba(196,40,40,0.45)",
+      strokeWidth: "0.8",
+      strokeDasharray: "4 3"
+    }), /*#__PURE__*/React.createElement("text", {
+      x: "184",
+      y: "114",
+      fill: "rgba(196,40,40,0.8)",
+      fontSize: "8",
+      fontFamily: "monospace"
+    }, "\u4ED6\u4EBA\u8BB0\u5FC6\u533A")), /*#__PURE__*/React.createElement("div", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "11px",
+        color: "var(--text-tertiary)",
+        marginTop: "10px",
+        textAlign: "center",
+        letterSpacing: "0.08em"
+      }
+    }, "\u56DE\u5ECA\u793A\u610F \xB7 \u5899\u9762\u6295\u5F71\u8BB0\u5FC6 \xB7 \u505C\u755940\u79D2\u5373\u88AB\u53D6\u8D70 \xB7 \u5C3D\u5934\u7A7A\u767D\u5899\u4E3A\u951A\u70B9"));
+    const memoryGalleryData = {
+      id: "CGB-0427",
+      name: "记忆回廊",
+      nameEn: "MEMORY GALLERY · RESOLVED",
+      stamp: "已归档 · ARCHIVED",
+      classification: "CONFIDENTIAL",
+      ver: "21.0",
+      updated: "安珀历39年·春",
+      archiveDate: "安珀历39年春",
+      survivalRate: 19,
+      info: [["异常编号", /*#__PURE__*/React.createElement("span", {
+        className: "detail-file-id",
+        style: {
+          fontSize: "18px"
+        }
+      }, "CGB-0427"), "名称", "记忆回廊 · Memory Gallery"], ["所属管辖", "边界研究院 · 认知记忆研究组", "首次记录", "安珀历30年 · 洛林自由市旧研究院"], ["异常等级", {
+        levelKey: "doomed",
+        text: "厄运级 · DOOMED"
+      }, "当前状态", {
+        statusKey: "resolved",
+        text: "● 已解决 · 坍缩 RESOLVED"
+      }], ["生还率", [/*#__PURE__*/React.createElement("span", {
+        className: "survival-rate-red",
+        key: "s"
+      }, "\u7EA6 19%"), "（16人进入，13人死亡或「空壳化」）"], "信息价值", "极高（记忆丢失类异常唯一完整样本）"], ["档案更新", "安珀历39年 · 春", "处置状态", "已坍缩 · 研究院旧址封闭"]],
+      discovery: ["安珀历30年，洛林自由市一座废弃研究院的看门人报告：夜间走廊的墙面上会出现「会动的老照片」，多是他自己近几年的记忆片段；他连续几个晚上「看入了神」，后来发现自己已经想不起女儿婚礼上的任何细节——而墙上的画面里，那场婚礼还在循环播放。", "边界研究院认知记忆研究组进入调查，确认走廊墙面会投影进入者的记忆片段，停留观看超过约40秒，该段记忆就会被「取走」，墙面永久保留。安珀历31年春，研究组在走廊尽头发现一面空白墙，以手按墙并说出「我记住了」后，投影停止，异常坍缩；但已被取走的记忆未能恢复。"],
+      features: ["记忆回廊是一处<strong>记忆干涉型空间异常</strong>（厄运级）：走廊墙面会显示进入者的记忆片段（多为近三年），画面无声、按时间顺序排列，同一段记忆只出现一次。", "在任一画面前停留超过约40秒，该段记忆会被「取走」——此后无法回忆，而墙面永久保留。走廊中段还可看到其他进入者的记忆，观看同样会被取走。记忆丢失过多者会「空壳化」：能说、能走，但不再拥有可检索的过去。"],
+      mapNode: memoryMap,
+      mapTag: "回廊示意 · DIAGRAM",
+      verifiedRules: [{
+        num: "一",
+        title: "投影规则",
+        desc: "墙面显示进入者的记忆片段，多为近三年，画面无声、按时间顺序排列；同一段记忆只出现一次。"
+      }, {
+        num: "二",
+        title: "观看即取",
+        desc: "在任一画面前停留超过约40秒，该记忆被取走——之后无法回忆，墙面永久保留该段画面。"
+      }, {
+        num: "三",
+        title: "他人记忆",
+        desc: "回廊中段可见其他进入者的记忆；观看同样会被取走（取走的是对其内容的认知能力）。"
+      }, {
+        num: "四",
+        title: "锚点规则",
+        desc: "尽头空白墙为锚点；以手按墙并说出「我记住了」后投影停止（安珀历31年坍缩方式），已丢失记忆不恢复。"
+      }],
+      entryRecords: [{
+        term: "看门人误入",
+        year: "安珀历30年·秋",
+        count: 1,
+        org: "研究院旧址看门人",
+        result: "1人生还，失去部分近三年记忆",
+        status: "mixed"
+      }, {
+        term: "首次勘察",
+        year: "安珀历30年·冬",
+        count: 4,
+        org: "边界研究院",
+        result: "1人生还，3人空壳化",
+        status: "death"
+      }, {
+        term: "第二批",
+        year: "安珀历31年·春",
+        count: 5,
+        org: "边界研究院",
+        result: "1人生还，4人空壳化",
+        status: "death"
+      }, {
+        term: "坍缩处置",
+        year: "安珀历31年·春",
+        count: 6,
+        org: "边界研究院",
+        result: "6人生还，异常坍缩",
+        status: "safe"
+      }],
+      phenomena: ["<strong>「墙上的人叫你名字」：</strong>画面中的人物有时会转向观看者并呼唤其名字，口型与声音同步（尽管回廊内没有声音）；被呼唤者会不由自主地停下脚步。", "<strong>「走廊变长」：</strong>多次观看后，回廊在视觉上明显变长，尽头空白墙「始终还有一段距离」；实测步数记录显示走廊长度未变。", "<strong>「空壳化的老人」：</strong>一名空壳化者能准确说出家人的名字，却无法说出任何一件与这些名字相关的往事；被问及「你最快乐的一天」时，他沉默了很久，然后说「墙上那天，我看过」。"],
+      imacNote: "记忆回廊已坍缩，但其规则值得所有人记住：不要停下来看「自己」。如果你在陌生走廊里看到自己的记忆被投影出来，请低头快步通过——不要驻足、不要确认画面内容、不要回应画面里叫你名字的人。记忆一旦被取走，就无法找回。",
+      suggestedActions: ["将「不要驻足观看」纳入溯界者认知防护培训，作为认知类异常的第一原则", "保留研究院旧址封闭状态，定期检查是否出现新的投影墙面", "对已「空壳化」的 7 名人员进行长期照护与记忆重建尝试（进展有限）"],
+      internalNode: /*#__PURE__*/React.createElement(Restricted, {
+        level: "internal",
+        label: "\u673A\u5BC6\u7EA7\u5185\u5BB9",
+        compact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "internal-note"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "internal-note-text"
+      }, "\u3010\u8FB9\u754C\u7814\u7A76\u9662\u5185\u90E8\u8BC4\u4F30 \xB7 \u8BA4\u77E5\u8BB0\u5FC6\u7814\u7A76\u7EC4\u3011", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u8BB0\u5FC6\u56DE\u5ECA\u662F\u6211\u4EEC\u7814\u7A76\u7EC4\u6700\u77ED\u547D\u3001\u4E5F\u6700\u75DB\u7684\u4E00\u4EFD\u6863\u6848\uFF1A16 \u4E2A\u4EBA\u8FDB\u53BB\uFF0C13 \u4E2A\u4EBA\u6CA1\u80FD\u5B8C\u6574\u56DE\u6765\u3002\u574D\u7F29\u53EA\u7528\u4E86\u4E09\u4E2A\u6708\uFF0C\u4F46\u5931\u53BB\u7684\u8BB0\u5FC6\u5230\u4ECA\u5929\u4E5F\u6CA1\u627E\u56DE\u6765\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u5B83\u7684\u5371\u9669\u5728\u4E8E\u300C\u597D\u770B\u300D\u3002\u4EBA\u770B\u5230\u81EA\u5DF1\u7684\u8BB0\u5FC6\uFF0C\u4F1A\u672C\u80FD\u5730\u60F3\u786E\u8BA4\uFF1A\u90A3\u662F\u4E0D\u662F\u6211\uFF1F\u6211\u5F53\u65F6\u662F\u4E0D\u662F\u8FD9\u6837\uFF1F\u5C31\u8FD9\u4E00\u4E0B\uFF0C40 \u79D2\u8FC7\u53BB\u4E86\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6700\u8BA9\u6211\u4EEC\u96BE\u53D7\u7684\u662F\u90A3\u4F4D\u770B\u95E8\u4EBA\u3002\u4ED6\u5931\u53BB\u4E86\u5973\u513F\u5A5A\u793C\u7684\u5168\u90E8\u7EC6\u8282\uFF0C\u5374\u4FDD\u7559\u4E86\u4E00\u4E2A\u4E60\u60EF\u2014\u2014\u6BCF\u5929\u665A\u4E0A\uFF0C\u4ED6\u4F1A\u7AD9\u5728\u7814\u7A76\u9662\u65E7\u5740\u5BF9\u9762\u7684\u8DEF\u706F\u4E0B\uFF0C\u62AC\u5934\u770B\u90A3\u6247\u65E9\u5DF2\u88AB\u5C01\u6B7B\u7684\u8D70\u5ECA\u7A97\u6237\u3002", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u95EE\u4ED6\u5728\u770B\u4EC0\u4E48\u3002\u4ED6\u8BF4\uFF1A\u300C\u770B\u770B\u6211\u6709\u6CA1\u6709\u5FD8\u4E86\u5979\u3002\u300D", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "\u6211\u4EEC\u4E0D\u80FD\u66FF\u4ED6\u8BB0\u3002\u4F46\u6211\u4EEC\u53EF\u4EE5\u5199\u4E0B\u6765\u3002"), /*#__PURE__*/React.createElement("div", {
+        className: "internal-note-signature"
+      }, "\u2014 \u8FB9\u754C\u7814\u7A76\u9662 \xB7 \u8BA4\u77E5\u8BB0\u5FC6\u7814\u7A76\u7EC4 \xB7 \u7EC4\u957F \u6C88\u9ED8")))
+    };
+    return /*#__PURE__*/React.createElement(AnomalyDossier, {
+      data: memoryGalleryData
     });
   }
   if (isRift) {
